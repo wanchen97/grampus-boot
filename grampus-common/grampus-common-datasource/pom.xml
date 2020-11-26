@@ -3,20 +3,18 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<artifactId>grampus-boot</artifactId>
+		<artifactId>grampus-common</artifactId>
 		<groupId>com.vdegree</groupId>
 		<version>1.0.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>grampus-common</artifactId>
-	<packaging>pom</packaging>
-	<modules>
-		<module>grampus-common-dependencies</module>
-		<module>grampus-common-core</module>
-		<module>grampus-common-mybatis</module>
-		<module>grampus-common-datasource</module>
-	</modules>
+	<artifactId>grampus-common-datasource</artifactId>
 
-
+	<dependencies>
+		<dependency>
+			<groupId>com.vdegree</groupId>
+			<artifactId>grampus-common-core</artifactId>
+		</dependency>
+	</dependencies>
 </project>
