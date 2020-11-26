@@ -10,6 +10,8 @@
 
 	<properties>
 		<grampus-boot.version>1.0.0</grampus-boot.version>
+		<lombok.version>1.18.4</lombok.version>
+		<guava.version>30.0-jre</guava.version>
 	</properties>
 
 	<dependencyManagement>
@@ -18,6 +20,16 @@
 				<groupId>com.vdegree</groupId>
 				<artifactId>grampus-common-core</artifactId>
 				<version>${grampus-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

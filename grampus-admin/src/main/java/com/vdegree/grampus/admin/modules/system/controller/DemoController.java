@@ -1,6 +1,7 @@
 package com.vdegree.grampus.admin.modules.system.controller;
 
 import com.google.common.collect.Maps;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +16,14 @@ import java.util.Map;
  * @author Beck
  * @date 2020-11-26
  */
+@Slf4j
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
 
 	@GetMapping("/test")
 	public ResponseEntity<Map<String, Object>> test() {
+		log.debug("request demo. time:{}", System.currentTimeMillis());
 		Map<String, Object> result = Maps.newHashMap();
 		result.put("item", "demo.");
 		return ResponseEntity.ok().body(result);
