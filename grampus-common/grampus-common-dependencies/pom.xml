@@ -27,6 +27,12 @@
 				<version>${grampus-boot.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>com.vdegree</groupId>
+				<artifactId>grampus-common-id-generator</artifactId>
+				<version>${grampus-boot.version}</version>
+			</dependency>
+
+			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>${lombok.version}</version>

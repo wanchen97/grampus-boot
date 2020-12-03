@@ -38,5 +38,9 @@
 			<groupId>com.vdegree</groupId>
 			<artifactId>grampus-common-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.vdegree</groupId>
+			<artifactId>grampus-common-id-generator</artifactId>
+		</dependency>
 	</dependencies>
 </project>

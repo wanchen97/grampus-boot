@@ -5,6 +5,12 @@ server:
 
 spring:
   profiles:
-    active: dev
+    active: @profiles.active@
   application:
     name: @artifactId@
+
+mapper:
+  idgenerator:
+    snowflake:
+      workerId: 4
+      dataCenterId: 8
