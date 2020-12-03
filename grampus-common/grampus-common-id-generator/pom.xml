@@ -9,12 +9,12 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>grampus-common-core</artifactId>
+	<artifactId>grampus-common-id-generator</artifactId>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
+			<groupId>com.vdegree</groupId>
+			<artifactId>grampus-common-core</artifactId>
 		</dependency>
 	</dependencies>
 </project>
