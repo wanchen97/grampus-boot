@@ -9,8 +9,32 @@ spring:
   application:
     name: @artifactId@
 
+mybatis:
+  configuration:
+    # 下划线转驼峰
+    map-underscore-to-camel-case: true
+  # 搜索指定包别名
+  typeAliasesPackage: com.vdegree.grampus.*.entity
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:/mappings/**/*.xml
+
+# mybatis增强配置
 mapper:
+  not-empty: false
+  style: camelhump
+  identity: MYSQL
+  wrap-keyword: "`{0}`"
+  safe-delete: true
+  safe-update: true
   idgenerator:
     snowflake:
       workerId: 4
       dataCenterId: 8
+
+# PageHelper分页插件
+pagehelper:
+  auto-dialect: true
+  helper-dialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
