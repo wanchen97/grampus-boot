@@ -16,7 +16,6 @@
 		<module>grampus-common-core</module>
 		<module>grampus-common-mybatis</module>
 		<module>grampus-common-datasource</module>
-        <module>grampus-common-sequence</module>
         <module>grampus-common-id-generator</module>
     </modules>
 
