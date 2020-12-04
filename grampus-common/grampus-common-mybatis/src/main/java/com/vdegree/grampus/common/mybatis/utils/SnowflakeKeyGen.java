@@ -1,5 +1,6 @@
 package com.vdegree.grampus.common.mybatis.utils;
 
+import com.vdegree.grampus.common.idgenerator.generator.IdGenerator;
 import tk.mybatis.mapper.genid.GenId;
 
 /**
@@ -11,8 +12,14 @@ import tk.mybatis.mapper.genid.GenId;
  */
 public class SnowflakeKeyGen implements GenId<Long> {
 
+	private static IdGenerator idGenerator;
+
 	@Override
 	public Long genId(String table, String column) {
-		return null;
+		return idGenerator.genKey();
+	}
+
+	public static void initIdGenerator(IdGenerator idGenerator) {
+		SnowflakeKeyGen.idGenerator = idGenerator;
 	}
 }

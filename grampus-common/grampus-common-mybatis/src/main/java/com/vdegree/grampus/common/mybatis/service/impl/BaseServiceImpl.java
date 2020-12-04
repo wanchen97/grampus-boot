@@ -16,10 +16,10 @@ import java.util.Collection;
  * @author Beck
  * @date 2020-12-02
  */
-public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> implements BaseService<T> {
+public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<T> {
 
 	@Autowired
-	private BaseMapper baseMapper;
+	private M baseMapper;
 
 	@Override
 	public boolean logicDelete(Long[] ids, Class<T> entity) {
