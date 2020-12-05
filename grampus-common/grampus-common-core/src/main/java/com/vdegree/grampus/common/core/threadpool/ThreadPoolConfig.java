@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * Company: v-degree
  *
  * @author Beck
- * @date 2020-11-26
+ * @date 2020-12-5
  */
 @Configuration
 public class ThreadPoolConfig {
@@ -47,7 +47,7 @@ public class ThreadPoolConfig {
 		executor.setQueueCapacity(QUEUE_CAPACITY);
 		executor.setKeepAliveSeconds(KEEP_ALIVE_SECONDS);
 		// 线程池对拒绝任务(无线程可用)的处理策略
-		executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+		executor.setRejectedExecutionHandler(new ThreadPoolExecutor.AbortPolicy());
 		return executor;
 	}
 
