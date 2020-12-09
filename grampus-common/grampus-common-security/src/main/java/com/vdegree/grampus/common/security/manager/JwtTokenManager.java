@@ -18,9 +18,10 @@ import java.util.List;
 
 /**
  * JWT token manager.
+ * Company: v-degree
  *
- * @author wfnuser
- * @author nkorange
+ * @author Beck
+ * @date 2020-12-5
  */
 @Component
 public class JwtTokenManager {
@@ -43,17 +44,17 @@ public class JwtTokenManager {
     /**
      * Create token.
      *
-     * @param userName auth info
+     * @param userNo auth info
      * @return token
      */
-    public String createToken(String userName) {
+    public String createToken(String userNo) {
         
         long now = System.currentTimeMillis();
         
         Date validity;
         validity = new Date(now + authProperties.getTokenValidityInSeconds() * 1000L);
         
-        Claims claims = Jwts.claims().setSubject(userName);
+        Claims claims = Jwts.claims().setSubject(userNo);
         return Jwts.builder().setClaims(claims).setExpiration(validity)
                 .signWith(Keys.hmacShaKeyFor(authProperties.getSecretKeyBytes()), SignatureAlgorithm.HS256).compact();
     }

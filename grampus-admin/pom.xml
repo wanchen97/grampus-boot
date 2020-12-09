@@ -42,6 +42,10 @@
 			<groupId>com.vdegree</groupId>
 			<artifactId>grampus-common-mybatis</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.vdegree</groupId>
+			<artifactId>grampus-common-security</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

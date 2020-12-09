@@ -18,6 +18,7 @@
 		<module>grampus-common-datasource</module>
         <module>grampus-common-id-generator</module>
 		<module>grampus-common-security</module>
+		<module>grampus-common-auth</module>
 	</modules>
 
 

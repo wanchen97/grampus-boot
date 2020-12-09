@@ -43,6 +43,16 @@
 				<artifactId>grampus-common-datasource</artifactId>
 				<version>${grampus-boot.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.vdegree</groupId>
+				<artifactId>grampus-common-auth</artifactId>
+				<version>${grampus-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.vdegree</groupId>
+				<artifactId>grampus-common-security</artifactId>
+				<version>${grampus-boot.version}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>org.projectlombok</groupId>
