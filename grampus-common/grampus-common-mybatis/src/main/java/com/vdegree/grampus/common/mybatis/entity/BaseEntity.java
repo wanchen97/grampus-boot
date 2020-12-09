@@ -28,13 +28,4 @@ public abstract class BaseEntity implements Serializable {
 	@GeneratedValue(generator = "JDBC")
 	@KeySql(genId = SnowflakeKeyGen.class)
     private Long id;
-    /**
-     * 创建者
-     */
-    private Long createBy;
-    /**
-     * 创建时间
-     */
-    private Date createDate;
-
 }
