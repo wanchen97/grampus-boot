@@ -4,6 +4,7 @@ import tk.mybatis.mapper.entity.Example;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Title: 基础服务接口，所有Service接口都要继承(继承后即可获得BaseMapper的CRUD功能)
@@ -21,7 +22,7 @@ public interface BaseService<T> {
 	 * @param entity 实体
 	 * @return boolean
 	 */
-	boolean logicDelete(Long[] ids, Class<T> entity);
+	void logicDelete(Long[] ids, Class<T> entity);
 
 	/**
 	 * <p>
@@ -30,7 +31,7 @@ public interface BaseService<T> {
 	 *
 	 * @param entity 实体对象
 	 */
-	boolean insert(T entity);
+	void insert(T entity);
 
 	/**
 	 * <p>
@@ -39,7 +40,7 @@ public interface BaseService<T> {
 	 *
 	 * @param entityList 实体对象集合
 	 */
-	boolean insertBatch(Collection<T> entityList);
+	void insertBatch(List<T> entityList);
 
 	/**
 	 * <p>
@@ -49,7 +50,7 @@ public interface BaseService<T> {
 	 * @param entityList 实体对象集合
 	 * @param batchSize  插入批次数量
 	 */
-	boolean insertBatch(Collection<T> entityList, int batchSize);
+	void insertBatch(List<T> entityList, int batchSize);
 
 	/**
 	 * <p>
@@ -58,7 +59,7 @@ public interface BaseService<T> {
 	 *
 	 * @param entity 实体对象
 	 */
-	boolean updateById(T entity);
+	void updateById(T entity);
 
 	/**
 	 * <p>
@@ -68,7 +69,7 @@ public interface BaseService<T> {
 	 * @param entity  实体对象
 	 * @param example 实体对象封装操作类 {@link tk.mybatis.mapper.entity.Example}
 	 */
-	boolean update(T entity, Example example);
+	void update(T entity, Example example);
 
 	/**
 	 * <p>
@@ -77,7 +78,7 @@ public interface BaseService<T> {
 	 *
 	 * @param entityList 实体对象集合
 	 */
-	boolean updateBatchById(Collection<T> entityList);
+	void updateBatchById(List<T> entityList);
 
 	/**
 	 * <p>
@@ -87,7 +88,7 @@ public interface BaseService<T> {
 	 * @param entityList 实体对象集合
 	 * @param batchSize  更新批次数量
 	 */
-	boolean updateBatchById(Collection<T> entityList, int batchSize);
+	void updateBatchById(List<T> entityList, int batchSize);
 
 	/**
 	 * <p>
@@ -105,7 +106,7 @@ public interface BaseService<T> {
 	 *
 	 * @param id 主键ID
 	 */
-	boolean deleteById(Serializable id);
+	void deleteById(Serializable id);
 
 	/**
 	 * <p>
@@ -114,5 +115,5 @@ public interface BaseService<T> {
 	 *
 	 * @param idList 主键ID列表
 	 */
-	boolean deleteBatchIds(Collection<? extends Serializable> idList);
+	void deleteBatchIds(Collection<? extends Serializable> idList);
 }

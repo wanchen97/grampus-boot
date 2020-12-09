@@ -21,20 +21,20 @@ import java.util.Date;
 @Setter
 public abstract class BaseEntity implements Serializable {
 	private static final long serialVersionUID = -1799573625766414211L;
-//	/**
-//     * id
-//     */
-//	@Id
-//	@GeneratedValue(generator = "JDBC")
-//	@KeySql(genId = SnowflakeKeyGen.class)
-//    private Long id;
-//    /**
-//     * 创建者
-//     */
-//    private Long createBy;
-//    /**
-//     * 创建时间
-//     */
-//    private Date createDate;
+	/**
+     * id
+     */
+	@Id
+	@GeneratedValue(generator = "JDBC")
+	@KeySql(genId = SnowflakeKeyGen.class)
+    private Long id;
+    /**
+     * 创建者
+     */
+    private Long createBy;
+    /**
+     * 创建时间
+     */
+    private Date createDate;
 
 }

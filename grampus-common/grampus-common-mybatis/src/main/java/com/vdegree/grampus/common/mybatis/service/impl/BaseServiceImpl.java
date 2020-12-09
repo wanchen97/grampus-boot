@@ -1,13 +1,19 @@
 package com.vdegree.grampus.common.mybatis.service.impl;
 
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 import com.vdegree.grampus.common.mybatis.entity.BaseEntity;
 import com.vdegree.grampus.common.mybatis.mapper.BaseMapper;
 import com.vdegree.grampus.common.mybatis.service.BaseService;
+import com.vdegree.grampus.common.mybatis.utils.SqlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Title: 基础服务类，所有Service接口都要继承(继承后即可获得BaseMapper的CRUD功能)
@@ -22,57 +28,87 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<
 	private M baseMapper;
 
 	@Override
-	public boolean logicDelete(Long[] ids, Class<T> entity) {
-		return false;
+	public void logicDelete(Long[] ids, Class<T> entity) {
+
 	}
 
 	@Override
-	public boolean insert(T entity) {
-		return false;
+	public void insert(T entity) {
+		baseMapper.insertSelective(entity);
 	}
 
 	@Override
-	public boolean insertBatch(Collection<T> entityList) {
-		return false;
+	@Transactional(rollbackFor = Exception.class)
+	public void insertBatch(List<T> entityList) {
+		this.insertBatch(entityList, 100);
 	}
 
 	@Override
-	public boolean insertBatch(Collection<T> entityList, int batchSize) {
-		return false;
+	@Transactional(rollbackFor = Exception.class)
+	public void insertBatch(List<T> entityList, int batchSize) {
+		if (CollectionUtils.isEmpty(entityList)) {
+			throw new IllegalArgumentException("Error: entityList must not be empty");
+		}
+		if (entityList.size() <= batchSize) {
+			for (T entity : entityList) {
+				baseMapper.insertSelective(entity);
+			}
+		}
+		List<List<T>> partitionList = Lists.partition(entityList, batchSize);
+		partitionList.forEach(anEntityList -> {
+			for (T entity : entityList) {
+				baseMapper.insertSelective(entity);
+			}
+		});
 	}
 
 	@Override
-	public boolean updateById(T entity) {
-		return false;
+	public void updateById(T entity) {
+		baseMapper.updateByPrimaryKeySelective(entity);
 	}
 
 	@Override
-	public boolean update(T entity, Example example) {
-		return false;
+	public void update(T entity, Example example) {
+		baseMapper.updateByExampleSelective(entity, example);
 	}
 
 	@Override
-	public boolean updateBatchById(Collection<T> entityList) {
-		return false;
+	@Transactional(rollbackFor = Exception.class)
+	public void updateBatchById(List<T> entityList) {
+		this.updateBatchById(entityList, 100);
 	}
 
 	@Override
-	public boolean updateBatchById(Collection<T> entityList, int batchSize) {
-		return false;
+	@Transactional(rollbackFor = Exception.class)
+	public void updateBatchById(List<T> entityList, int batchSize) {
+		if (CollectionUtils.isEmpty(entityList)) {
+			throw new IllegalArgumentException("Error: entityList must not be empty");
+		}
+		if (entityList.size() <= batchSize) {
+			for (T entity : entityList) {
+				baseMapper.updateByPrimaryKeySelective(entity);
+			}
+		}
+		List<List<T>> partitionList = Lists.partition(entityList, batchSize);
+		partitionList.forEach(anEntityList -> {
+			for (T entity : entityList) {
+				baseMapper.updateByPrimaryKeySelective(entity);
+			}
+		});
 	}
 
 	@Override
 	public T selectById(Serializable id) {
-		return null;
+		return baseMapper.selectByPrimaryKey(id);
 	}
 
 	@Override
-	public boolean deleteById(Serializable id) {
-		return false;
+	public void deleteById(Serializable id) {
+		baseMapper.deleteByPrimaryKey(id);
 	}
 
 	@Override
-	public boolean deleteBatchIds(Collection<? extends Serializable> idList) {
-		return false;
+	public void deleteBatchIds(Collection<? extends Serializable> idList) {
+		baseMapper.deleteByIds(Joiner.on(",").join(idList));
 	}
 }
