@@ -1,5 +1,6 @@
 package com.vdegree.grampus.common.mybatis.service;
 
+import com.github.pagehelper.PageInfo;
 import tk.mybatis.mapper.entity.Example;
 
 import java.io.Serializable;
@@ -98,6 +99,56 @@ public interface BaseService<T> {
 	 * @param id 主键ID
 	 */
 	T selectById(Serializable id);
+
+	/**
+	 * <p>
+	 * 条件查询
+	 * </p>
+	 *
+	 * @param entity 实体
+	 * @return 查询结果
+	 */
+	T selectOne(T entity);
+
+	/**
+	 * <p>
+	 * 条件查询
+	 * </p>
+	 *
+	 * @param entity 实体
+	 * @return 查询结果
+	 */
+	List<T> selectList(T entity);
+
+	/**
+	 * <p>
+	 * 查询所有
+	 * </p>
+	 *
+	 * @return 查询结果
+	 */
+	List<T> selectAll();
+
+	/**
+	 * <p>
+	 * 查询数据量
+	 * </p>
+	 *
+	 * @return 查询结果
+	 */
+	int selectCount(T entity);
+
+	/**
+	 * <p>
+	 * 分页条件查询
+	 * </p>
+	 *
+	 * @param entity    查询实例
+	 * @param pageNum   页码
+	 * @param pageSize  每页数据量
+	 * @return 查询结果
+	 */
+	PageInfo<T> selectPage(T entity, int pageNum, int pageSize);
 
 	/**
 	 * <p>

@@ -1,11 +1,11 @@
 package com.vdegree.grampus.common.mybatis.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
-import com.vdegree.grampus.common.mybatis.entity.BaseEntity;
 import com.vdegree.grampus.common.mybatis.mapper.BaseMapper;
 import com.vdegree.grampus.common.mybatis.service.BaseService;
-import com.vdegree.grampus.common.mybatis.utils.SqlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -100,6 +100,32 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<
 	@Override
 	public T selectById(Serializable id) {
 		return baseMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public T selectOne(T entity) {
+		return baseMapper.selectOne(entity);
+	}
+
+	@Override
+	public List<T> selectList(T entity) {
+		return baseMapper.select(entity);
+	}
+
+	@Override
+	public List<T> selectAll() {
+		return baseMapper.selectAll();
+	}
+
+	@Override
+	public int selectCount(T entity) {
+		return baseMapper.selectCount(entity);
+	}
+
+	@Override
+	public PageInfo<T> selectPage(T entity, int pageNum, int pageSize) {
+		return PageHelper.startPage(pageNum, pageSize)
+				.doSelectPageInfo(() -> baseMapper.select(entity));
 	}
 
 	@Override
