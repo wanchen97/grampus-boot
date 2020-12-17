@@ -11,4 +11,11 @@ import com.vdegree.grampus.admin.modules.system.entity.SysUser;
  */
 public interface SysUserService extends BaseService<SysUser> {
 
+	/**
+	 * 根据会员号获取会员数据
+	 *
+	 * @param userNo 会员号
+	 * @return 会员实体
+	 */
+	SysUser getSysUserByUserNo(String userNo);
 }

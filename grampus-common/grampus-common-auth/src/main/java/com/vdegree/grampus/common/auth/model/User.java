@@ -19,5 +19,10 @@ public class User implements Serializable {
     /**
      * Unique string representing user.
      */
-    private String userName;
+	private String username;
+
+	/**
+	 * password
+	 */
+	private String password;
 }

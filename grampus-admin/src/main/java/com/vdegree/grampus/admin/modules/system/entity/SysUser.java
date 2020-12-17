@@ -1,8 +1,11 @@
 package com.vdegree.grampus.admin.modules.system.entity;
 
 import com.vdegree.grampus.common.mybatis.entity.BaseEntity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import tk.mybatis.mapper.annotation.LogicDelete;
 
 import javax.persistence.Table;
@@ -15,6 +18,9 @@ import java.util.Date;
  * @since 2020-12-09 19:50:57
  */
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "sys_user")
 public class SysUser extends BaseEntity {

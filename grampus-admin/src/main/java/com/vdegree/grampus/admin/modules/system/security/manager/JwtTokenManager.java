@@ -1,6 +1,6 @@
-package com.vdegree.grampus.common.security.manager;
+package com.vdegree.grampus.admin.modules.system.security.manager;
 
-import com.vdegree.grampus.common.security.properties.AuthProperties;
+import com.vdegree.grampus.admin.modules.system.security.properties.AuthProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -56,7 +56,7 @@ public class JwtTokenManager {
         
         Claims claims = Jwts.claims().setSubject(userNo);
         return Jwts.builder().setClaims(claims).setExpiration(validity)
-                .signWith(Keys.hmacShaKeyFor(authProperties.getSecretKeyBytes()), SignatureAlgorithm.HS256).compact();
+                .signWith(Keys.hmacShaKeyFor(authProperties.getSecretKeyBytes()), SignatureAlgorithm.HS512).compact();
     }
     
     /**

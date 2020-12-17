@@ -15,8 +15,20 @@ spring:
       connection-timeout: 10000
       connection-test-query: SELECT 1
 
-#spring:
-#  shardingsphere:
+grampus:
+  security:
+    token:
+      secret-key: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  auth:
+    token:
+      secret:
+        key: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
+      expire:
+        seconds: 150000
+    system:
+      type: system
+      ignoreUrls:
+        - /register/**
 #    datasource:
 #      names: master,slave0
 #      master:

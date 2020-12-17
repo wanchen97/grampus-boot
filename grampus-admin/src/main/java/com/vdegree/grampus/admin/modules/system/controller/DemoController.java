@@ -1,19 +1,21 @@
 package com.vdegree.grampus.admin.modules.system.controller;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.vdegree.grampus.common.idgenerator.generator.IdGenerator;
+import com.vdegree.grampus.admin.modules.system.entity.SysDept;
+import com.vdegree.grampus.admin.modules.system.service.SysDeptService;
+import com.vdegree.grampus.common.mybatis.enums.DelFlagEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.Date;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.UUID;
 
 /**
  * Title: DemoController
@@ -28,23 +30,34 @@ import java.util.stream.Stream;
 public class DemoController {
 
 	@Autowired
-	private IdGenerator idGenerator;
+	private SysDeptService sysDeptService;
 
-	@GetMapping("/test")
-	public ResponseEntity<Map<String, Object>> test() {
-		log.debug("request demo. time:{}", System.currentTimeMillis());
-
-		List<Long> ids = Lists.newLinkedList();
-		for (int i = 0; i < 500; i++) {
-			ids.add(idGenerator.genKey());
-		}
-
-		List<Long> disIds = ids.stream().distinct().collect(Collectors.toList());
-
+	@GetMapping("/save")
+	public ResponseEntity<Map<String, Object>> test2() {
+		SysDept sysDept = new SysDept();
+		sysDept.setDeptName(UUID.randomUUID().toString());
+		sysDept.setCreateBy(1L);
+		sysDept.setCreateDate(new Date());
+		sysDept.setUpdateBy(1L);
+		sysDept.setUpdateDate(new Date());
+		sysDept.setDelFlag(DelFlagEnum.NORMAL.getValue());
+		sysDeptService.insert(sysDept);
 		Map<String, Object> result = Maps.newHashMap();
-		result.put("item", "demo.");
-		result.put("ids", ids);
-		result.put("count", disIds.size());
+		result.put("sysDept", sysDept);
+		return ResponseEntity.ok().body(result);
+	}
+
+	@GetMapping("/list")
+	public ResponseEntity<Map<String, Object>> list() {
+		Map<String, Object> result = Maps.newHashMap();
+		result.put("list", sysDeptService.selectAll());
+		return ResponseEntity.ok().body(result);
+	}
+
+	@GetMapping("/delete/{id}")
+	public ResponseEntity<Map<String, Object>> delete(@PathVariable("id") Long id) {
+		sysDeptService.deleteById(id);
+		Map<String, Object> result = Maps.newHashMap();
 		return ResponseEntity.ok().body(result);
 	}
 }

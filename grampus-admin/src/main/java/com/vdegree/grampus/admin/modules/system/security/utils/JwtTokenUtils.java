@@ -1,4 +1,4 @@
-package com.vdegree.grampus.common.security.utils;
+package com.vdegree.grampus.admin.modules.system.security.utils;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

@@ -1,6 +1,7 @@
 package com.vdegree.grampus.common.core.result;
 
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 
@@ -38,38 +39,47 @@ public class Result<T> implements Serializable {
 	private String errorCode;
 
     public static <T> Result<T> success() {
-        return restResult(SUCCESS_STATUS_CODE, null, DEFAULT_ERROR_CODE, DEFAULT_SUCCESS_PHRASE);
+		String msg = defaultMessage(SUCCESS_STATUS_CODE, null);
+        return restResult(SUCCESS_STATUS_CODE, null, DEFAULT_ERROR_CODE, msg);
     }
 
     public static <T> Result<T> success(T data) {
-        return restResult(SUCCESS_STATUS_CODE, data, DEFAULT_ERROR_CODE, DEFAULT_ERROR_PHRASE);
+		String msg = defaultMessage(SUCCESS_STATUS_CODE, null);
+        return restResult(SUCCESS_STATUS_CODE, data, DEFAULT_ERROR_CODE, msg);
     }
 
     public static <T> Result<T> success(T data, String msg) {
+		msg = defaultMessage(SUCCESS_STATUS_CODE, msg);
         return restResult(SUCCESS_STATUS_CODE, data, DEFAULT_ERROR_CODE, msg);
     }
 
     public static <T> Result<T> error() {
-        return restResult(ERROR_STATUS_CODE, null, ErrorCode.BASE_ERROR_CODE, null);
+		String msg = defaultMessage(ERROR_STATUS_CODE, null);
+        return restResult(ERROR_STATUS_CODE, null, ErrorCode.BASE_ERROR_CODE, msg);
     }
 
     public static <T> Result<T> error(String msg) {
+		msg = defaultMessage(ERROR_STATUS_CODE, msg);
         return restResult(ERROR_STATUS_CODE, null, ErrorCode.BASE_ERROR_CODE, msg);
     }
 
     public static <T> Result<T> error(String errorCode, String msg) {
+		msg = defaultMessage(ERROR_STATUS_CODE, msg);
         return restResult(ERROR_STATUS_CODE, null, errorCode, msg);
     }
 
     public static <T> Result<T> error(int status, String msg) {
+		msg = defaultMessage(ERROR_STATUS_CODE, msg);
         return restResult(status, null, ErrorCode.BASE_ERROR_CODE, msg);
     }
 
     public static <T> Result<T> error(T data) {
-        return restResult(ERROR_STATUS_CODE, data, ErrorCode.BASE_ERROR_CODE, null);
+		String msg = defaultMessage(ERROR_STATUS_CODE, null);
+        return restResult(ERROR_STATUS_CODE, data, ErrorCode.BASE_ERROR_CODE, msg);
     }
 
     public static <T> Result<T> error(T data, String msg) {
+    	msg = defaultMessage(ERROR_STATUS_CODE, msg);
         return restResult(ERROR_STATUS_CODE, data, ErrorCode.BASE_ERROR_CODE, msg);
     }
 
@@ -81,4 +91,12 @@ public class Result<T> implements Serializable {
 		result.setMessage(message);
         return result;
     }
+
+    private static String defaultMessage(int status, String msg) {
+    	if (StringUtils.isBlank(msg)) {
+			return status == ERROR_STATUS_CODE ?
+					DEFAULT_ERROR_PHRASE : DEFAULT_SUCCESS_PHRASE;
+		}
+		return msg;
+	}
 }
