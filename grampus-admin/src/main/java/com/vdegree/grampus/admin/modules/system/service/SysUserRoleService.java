@@ -3,6 +3,8 @@ package com.vdegree.grampus.admin.modules.system.service;
 import com.vdegree.grampus.common.mybatis.service.BaseService;
 import com.vdegree.grampus.admin.modules.system.entity.SysUserRole;
 
+import java.util.List;
+
 /**
  * 用户角色关联表(SysUserRole)表服务接口
  *
@@ -11,4 +13,10 @@ import com.vdegree.grampus.admin.modules.system.entity.SysUserRole;
  */
 public interface SysUserRoleService extends BaseService<SysUserRole> {
 
+	/**
+	 * 获取用户角色
+	 * @param userId 用户ID
+	 * @return 用户角色列表
+	 */
+	List<SysUserRole> getUserRole(Long userId);
 }

@@ -1,5 +1,6 @@
 package com.vdegree.grampus.admin.modules.system.security.manager;
 
+import com.google.common.base.Joiner;
 import com.vdegree.grampus.admin.modules.system.security.properties.AuthProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -13,8 +14,10 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * JWT token manager.
@@ -26,7 +29,7 @@ import java.util.List;
 @Component
 public class JwtTokenManager {
     
-    private static final String AUTHORITIES_KEY = "auth";
+    private static final String AUTHORITIES_KEY = "perms";
     
     @Autowired
     private AuthProperties authProperties;
@@ -38,7 +41,7 @@ public class JwtTokenManager {
      * @return token
      */
     public String createToken(Authentication authentication) {
-        return createToken(authentication.getName());
+        return createToken(authentication.getName(), authentication.getAuthorities());
     }
     
     /**
@@ -58,9 +61,28 @@ public class JwtTokenManager {
         return Jwts.builder().setClaims(claims).setExpiration(validity)
                 .signWith(Keys.hmacShaKeyFor(authProperties.getSecretKeyBytes()), SignatureAlgorithm.HS512).compact();
     }
+
+	/**
+	 * Create token with .
+	 *
+	 * @param userNo auth info
+	 * @return token
+	 */
+	public String createToken(String userNo, Collection<? extends GrantedAuthority> authorities) {
+
+		long now = System.currentTimeMillis();
+
+		Date validity = new Date(now + authProperties.getTokenValidityInSeconds() * 1000L);
+
+		String permissions = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(","));
+		Claims claims = Jwts.claims().setSubject(userNo);
+		claims.put(AUTHORITIES_KEY, permissions);
+		return Jwts.builder().setClaims(claims).setExpiration(validity)
+				.signWith(Keys.hmacShaKeyFor(authProperties.getSecretKeyBytes()), SignatureAlgorithm.HS512).compact();
+	}
     
     /**
-     * Get auth Info.
+     * Get auth Info. TODO 动态改权限，token不写入权限
      *
      * @param token token
      * @return auth info

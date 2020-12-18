@@ -20,6 +20,11 @@ public class SystemUserDetails implements UserDetails {
 	private static final long serialVersionUID = -2384821650336456082L;
 
 	/**
+	 * 用户ID
+	 */
+	private Long id;
+
+	/**
 	 * 员工号
 	 */
 	private String userNo;
@@ -54,10 +59,17 @@ public class SystemUserDetails implements UserDetails {
 	 */
 	private Integer enabled;
 
+	/**
+	 * 拥有权限
+	 */
+	private String permissions;
+
+	/**
+	 * 拥有权限集合
+	 */
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO: get authorities
-		return AuthorityUtils.commaSeparatedStringToAuthorityList("");
+		return AuthorityUtils.commaSeparatedStringToAuthorityList(permissions);
 	}
 
 	@JsonIgnore

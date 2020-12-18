@@ -32,6 +32,7 @@ public class DemoController {
 	@Autowired
 	private SysDeptService sysDeptService;
 
+	@PreAuthorize("hasAuthority('sys:demo:save')")
 	@GetMapping("/save")
 	public ResponseEntity<Map<String, Object>> test2() {
 		SysDept sysDept = new SysDept();
@@ -47,6 +48,7 @@ public class DemoController {
 		return ResponseEntity.ok().body(result);
 	}
 
+	@PreAuthorize("hasAuthority('sys:demo:list')")
 	@GetMapping("/list")
 	public ResponseEntity<Map<String, Object>> list() {
 		Map<String, Object> result = Maps.newHashMap();
@@ -54,6 +56,7 @@ public class DemoController {
 		return ResponseEntity.ok().body(result);
 	}
 
+	@PreAuthorize("hasAuthority('sys:demo:delete')")
 	@GetMapping("/delete/{id}")
 	public ResponseEntity<Map<String, Object>> delete(@PathVariable("id") Long id) {
 		sysDeptService.deleteById(id);

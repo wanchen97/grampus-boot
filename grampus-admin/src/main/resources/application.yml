@@ -16,7 +16,7 @@ mybatis:
   # 搜索指定包别名
   typeAliasesPackage: com.vdegree.grampus.*.entity
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
-  mapperLocations: classpath*:/mappings/**/*.xml
+  mapperLocations: classpath*:/mapper/**/*.xml
 
 # mybatis增强配置
 mapper:

@@ -4,6 +4,7 @@ import com.vdegree.grampus.admin.modules.system.entity.SysUser;
 import com.vdegree.grampus.admin.modules.system.enums.SysUserEnabledEnum;
 import com.vdegree.grampus.admin.modules.system.security.exception.UserDisabledException;
 import com.vdegree.grampus.admin.modules.system.security.exception.UserNotFoundException;
+import com.vdegree.grampus.admin.modules.system.security.roles.SystemRoleService;
 import com.vdegree.grampus.admin.modules.system.service.SysUserService;
 import com.vdegree.grampus.common.core.utils.BeanCopyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class SystemUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private SysUserService sysUserService;
+	@Autowired
+	private SystemRoleService systemRoleService;
 
 	@Override
 	public UserDetails loadUserByUsername(String userNo) throws UsernameNotFoundException {
@@ -43,8 +46,9 @@ public class SystemUserDetailsService implements UserDetailsService {
 		return buildUserDetails(user);
 	}
 
-
 	public UserDetails buildUserDetails(SysUser user) {
-		return BeanCopyUtil.copy(user, SystemUserDetails.class);
+		SystemUserDetails systemUserDetails = BeanCopyUtil.copy(user, SystemUserDetails.class);
+		systemUserDetails.setPermissions(systemRoleService.getPermissions(user.getId()));
+		return systemUserDetails;
 	}
 }
