@@ -19,6 +19,6 @@ public interface SystemSecurityErrorCode {
 	String USER_PASSWORD_ERROR = "120003";
 	/** 用户账号禁用异常 */
 	String USER_DISABLE_ERROR = "120004";
-	/** 验证码错误异常 */
-	String CAPTCHA_ERROR = "120005";
+	/** 用户访问权限异常 */
+	String USER_ACCESS_DENIED_ERROR = "120005";
 }

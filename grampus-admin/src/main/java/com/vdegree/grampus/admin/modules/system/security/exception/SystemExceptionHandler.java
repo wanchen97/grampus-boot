@@ -3,14 +3,11 @@ package com.vdegree.grampus.admin.modules.system.security.exception;
 import com.vdegree.grampus.common.core.exception.BaseException;
 import com.vdegree.grampus.common.core.result.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.NoHandlerFoundException;
 
 /**
  * Title: 全局异常处理器
@@ -23,14 +20,11 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @RestControllerAdvice
 public class SystemExceptionHandler {
 
-	@ExceptionHandler(BaseException.class)
-	public Result<Object> handleBaseException(BaseException e){
-		log.error(e.getMessage(), e);
-		return Result.error(e.getCode(), null);
-	}
-
+	/**
+	 * 通用异常
+	 */
 	@ExceptionHandler(Exception.class)
-	public Result<Object> handleException(Exception e){
+	public Result<Object> handleException(Exception e) {
 		if (e instanceof BaseException) {
 			BaseException ex = (BaseException) e;
 			Result.error(ex.getCode(), null);
@@ -39,6 +33,9 @@ public class SystemExceptionHandler {
 		return Result.error(SystemSecurityErrorCode.BASE_ERROR_CODE, null);
 	}
 
+	/**
+	 * 检索用户信息异常
+	 */
 	@ExceptionHandler(InternalAuthenticationServiceException.class)
 	public Result<Object> handleInternalAuthenticationServiceException(InternalAuthenticationServiceException e) {
 		log.error(e.getMessage());
@@ -49,9 +46,21 @@ public class SystemExceptionHandler {
 		return Result.error(SystemSecurityErrorCode.USER_PASSWORD_ERROR, null);
 	}
 
+	/**
+	 * 密码错误异常
+	 */
 	@ExceptionHandler(BadCredentialsException.class)
 	public Result<Object> handleBadCredentialsException(BadCredentialsException e) {
 		log.error(e.getMessage());
 		return Result.error(SystemSecurityErrorCode.USER_PASSWORD_ERROR, null);
+	}
+
+	/**
+	 * 接口权限异常
+	 */
+	@ExceptionHandler(AccessDeniedException.class)
+	public Result<Object> handleAccessDeniedException(AccessDeniedException e) {
+		log.error(e.getMessage());
+		return Result.error(SystemSecurityErrorCode.USER_ACCESS_DENIED_ERROR, null);
 	}
 }
