@@ -144,6 +144,6 @@ public class SnowflakeIdWorker {
 	 * @return 当前时间(毫秒)
 	 */
 	private long timeGen() {
-		return System.currentTimeMillis();
+		return SystemClock.INSTANCE.currentTimeMillis();
 	}
 }
