@@ -17,9 +17,9 @@ import com.vdegree.grampus.common.idgenerator.exception.IdGenException;
  */
 public class SnowflakeIdWorker {
 	/**
-	 * 开始时间截 (从2020-01-01起)
+	 * 开始时间截 (从2021-01-01起)
 	 */
-	private static final long START_TIME = 1577808000000L;
+	private static final long START_TIME = 1609430400000L;
 	/**
 	 * 机器ID所占位数
 	 */
