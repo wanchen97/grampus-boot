@@ -158,9 +158,9 @@
 			</activation>
 		</profile>
 		<profile>
-			<id>com.vdegree.grampus.common.security.test</id>
+			<id>test</id>
 			<properties>
-				<profiles.active>com.vdegree.grampus.common.security.test</profiles.active>
+				<profiles.active>test</profiles.active>
 			</properties>
 		</profile>
 		<profile>

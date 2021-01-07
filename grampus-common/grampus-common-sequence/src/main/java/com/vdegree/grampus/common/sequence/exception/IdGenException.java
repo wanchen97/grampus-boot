@@ -1,4 +1,4 @@
-package com.vdegree.grampus.common.idgenerator.exception;
+package com.vdegree.grampus.common.sequence.exception;
 
 import java.io.Serializable;
 

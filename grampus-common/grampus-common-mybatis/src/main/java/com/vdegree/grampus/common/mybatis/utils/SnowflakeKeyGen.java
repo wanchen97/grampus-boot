@@ -1,6 +1,6 @@
 package com.vdegree.grampus.common.mybatis.utils;
 
-import com.vdegree.grampus.common.idgenerator.generator.IdGenerator;
+import com.vdegree.grampus.common.sequence.generator.IdGenerator;
 import tk.mybatis.mapper.genid.GenId;
 
 /**

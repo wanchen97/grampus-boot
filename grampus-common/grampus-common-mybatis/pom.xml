@@ -26,7 +26,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.vdegree</groupId>
-			<artifactId>grampus-common-id-generator</artifactId>
+			<artifactId>grampus-common-sequence</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.vdegree</groupId>

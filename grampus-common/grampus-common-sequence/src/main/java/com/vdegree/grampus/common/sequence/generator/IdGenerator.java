@@ -1,4 +1,4 @@
-package com.vdegree.grampus.common.idgenerator.generator;
+package com.vdegree.grampus.common.sequence.generator;
 
 /**
  * Title: ID生成器

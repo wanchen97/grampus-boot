@@ -1,6 +1,6 @@
 package com.vdegree.grampus.common.mybatis;
 
-import com.vdegree.grampus.common.idgenerator.generator.IdGenerator;
+import com.vdegree.grampus.common.sequence.generator.IdGenerator;
 import com.vdegree.grampus.common.mybatis.utils.SnowflakeKeyGen;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;

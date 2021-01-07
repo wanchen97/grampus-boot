@@ -14,6 +14,7 @@
 		<guava.version>30.0-jre</guava.version>
 		<commons.lang.version>3.7</commons.lang.version>
 		<jjwt.version>0.11.2</jjwt.version>
+		<redisson.version>3.14.0</redisson.version>
 		<mysql.connector.version>8.0.12</mysql.connector.version>
 		<hikari.version>3.4.2</hikari.version>
 		<shardingsphere.version>4.1.1</shardingsphere.version>
@@ -30,7 +31,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.vdegree</groupId>
-				<artifactId>grampus-common-id-generator</artifactId>
+				<artifactId>grampus-common-sequence</artifactId>
 				<version>${grampus-boot.version}</version>
 			</dependency>
 			<dependency>
@@ -53,6 +54,11 @@
 				<artifactId>grampus-common-security</artifactId>
 				<version>${grampus-boot.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.vdegree</groupId>
+				<artifactId>grampus-common-redisson</artifactId>
+				<version>${grampus-boot.version}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>org.projectlombok</groupId>
@@ -69,6 +75,8 @@
 				<artifactId>commons-lang3</artifactId>
 				<version>${commons.lang.version}</version>
 			</dependency>
+
+			<!-- jjwt -->
 			<dependency>
 				<groupId>io.jsonwebtoken</groupId>
 				<artifactId>jjwt-api</artifactId>
@@ -85,6 +93,14 @@
 				<version>${jjwt.version}</version>
 			</dependency>
 
+			<!-- redis -->
+			<dependency>
+				<groupId>org.redisson</groupId>
+				<artifactId>redisson-spring-boot-starter</artifactId>
+				<version>${redisson.version}</version>
+			</dependency>
+
+			<!-- db -->
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>

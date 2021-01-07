@@ -1,8 +1,8 @@
-package com.vdegree.grampus.common.idgenerator.builder;
+package com.vdegree.grampus.common.sequence.builder;
 
-import com.vdegree.grampus.common.idgenerator.generator.IdGenerator;
-import com.vdegree.grampus.common.idgenerator.generator.SnowflakeIdGenerator;
-import com.vdegree.grampus.common.idgenerator.utils.SnowflakeIdWorker;
+import com.vdegree.grampus.common.sequence.generator.IdGenerator;
+import com.vdegree.grampus.common.sequence.generator.SnowflakeIdGenerator;
+import com.vdegree.grampus.common.sequence.utils.SnowflakeIdWorker;
 import lombok.Getter;
 import lombok.Setter;
 

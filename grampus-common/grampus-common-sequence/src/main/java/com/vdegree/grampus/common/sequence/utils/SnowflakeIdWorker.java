@@ -1,6 +1,6 @@
-package com.vdegree.grampus.common.idgenerator.utils;
+package com.vdegree.grampus.common.sequence.utils;
 
-import com.vdegree.grampus.common.idgenerator.exception.IdGenException;
+import com.vdegree.grampus.common.sequence.exception.IdGenException;
 
 /**
  * Snowflake算法是带有时间戳的全局唯一ID生成算法。它有一套固定的ID格式，如下：

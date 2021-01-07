@@ -1,6 +1,6 @@
-package com.vdegree.grampus.common.idgenerator.builder;
+package com.vdegree.grampus.common.sequence.builder;
 
-import com.vdegree.grampus.common.idgenerator.generator.IdGenerator;
+import com.vdegree.grampus.common.sequence.generator.IdGenerator;
 
 /**
  * Title: ID生成器Builder

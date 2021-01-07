@@ -1,4 +1,4 @@
-package com.vdegree.grampus.common.idgenerator.utils;
+package com.vdegree.grampus.common.sequence.utils;
 
 
 import java.sql.Timestamp;

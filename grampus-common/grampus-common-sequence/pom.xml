@@ -9,7 +9,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>grampus-common-id-generator</artifactId>
+	<artifactId>grampus-common-sequence</artifactId>
 
 	<dependencies>
 		<dependency>

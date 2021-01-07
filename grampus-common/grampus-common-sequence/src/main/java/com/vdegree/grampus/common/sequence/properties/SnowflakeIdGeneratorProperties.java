@@ -1,4 +1,4 @@
-package com.vdegree.grampus.common.idgenerator.properties;
+package com.vdegree.grampus.common.sequence.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
