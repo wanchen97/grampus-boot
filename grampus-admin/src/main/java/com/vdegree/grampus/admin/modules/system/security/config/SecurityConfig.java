@@ -88,6 +88,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) {
 		WebSecurity and = web.ignoring().and();
+		and.ignoring().antMatchers("/demo/test");
 		and.ignoring().antMatchers("/register/**");
 		and.ignoring().antMatchers("/login");
 	}

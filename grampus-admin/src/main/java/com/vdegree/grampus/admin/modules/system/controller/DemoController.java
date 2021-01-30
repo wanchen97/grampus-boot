@@ -10,12 +10,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Title: DemoController
@@ -31,6 +34,10 @@ public class DemoController {
 
 	@Autowired
 	private SysDeptService sysDeptService;
+	@Autowired
+	private DemoService demoService;
+
+	private static ExecutorService threadPool = Executors.newFixedThreadPool(100);
 
 	@PreAuthorize("hasAuthority('sys:demo:save')")
 	@GetMapping("/save")
@@ -62,5 +69,19 @@ public class DemoController {
 		sysDeptService.deleteById(id);
 		Map<String, Object> result = Maps.newHashMap();
 		return ResponseEntity.ok().body(result);
+	}
+
+	@PostMapping("/test")
+	public ResponseEntity<Void> test() {
+		for (int i = 0; i < 20; i++) {
+			threadPool.execute(() -> {
+				try {
+					demoService.testLock("user1", "user2", "user3");
+				} catch (Exception e) {
+
+				}
+			});
+		}
+		return ResponseEntity.ok().build();
 	}
 }

@@ -1,11 +1,8 @@
-package com.vdegree.grampus.admin.modules.system.entity;
+package com.vdegree.grampus.admin.modules.system.dto;
 
-import com.vdegree.grampus.common.mybatis.entity.BaseEntity;
+import com.vdegree.grampus.admin.modules.system.utils.TreeNode;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import tk.mybatis.mapper.annotation.LogicDelete;
-
-import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -15,10 +12,12 @@ import java.util.Date;
  * @since 2020-12-03 20:06:54
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-@Table(name = "sys_dept")
-public class SysDept extends BaseEntity {
-	private static final long serialVersionUID = 950431345148076167L;
+public class SysDeptDTO extends TreeNode<SysDeptDTO> implements Serializable {
+	private static final long serialVersionUID = -4286031575713376186L;
+	/**
+	 * 数据ID
+	 */
+	private Long id;
 	/**
 	 * 父级部门ID
 	 */
@@ -50,6 +49,5 @@ public class SysDept extends BaseEntity {
 	/**
 	 * 删除标识(0正常 1删除)
 	 */
-	@LogicDelete
 	private Integer delFlag;
 }

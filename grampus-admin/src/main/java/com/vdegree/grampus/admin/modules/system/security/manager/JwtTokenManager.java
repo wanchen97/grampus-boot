@@ -1,6 +1,5 @@
 package com.vdegree.grampus.admin.modules.system.security.manager;
 
-import com.google.common.base.Joiner;
 import com.vdegree.grampus.admin.modules.system.security.properties.AuthProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

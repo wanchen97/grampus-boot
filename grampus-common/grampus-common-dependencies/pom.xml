@@ -14,6 +14,7 @@
 		<guava.version>30.0-jre</guava.version>
 		<commons.lang.version>3.7</commons.lang.version>
 		<jjwt.version>0.11.2</jjwt.version>
+		<netty.version>4.1.58.Final</netty.version>
 		<redisson.version>3.14.0</redisson.version>
 		<mysql.connector.version>8.0.12</mysql.connector.version>
 		<hikari.version>3.4.2</hikari.version>
@@ -59,6 +60,11 @@
 				<artifactId>grampus-common-redisson</artifactId>
 				<version>${grampus-boot.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.vdegree</groupId>
+				<artifactId>grampus-common-lock</artifactId>
+				<version>${grampus-boot.version}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>org.projectlombok</groupId>
@@ -91,6 +97,13 @@
 				<groupId>io.jsonwebtoken</groupId>
 				<artifactId>jjwt-jackson</artifactId>
 				<version>${jjwt.version}</version>
+			</dependency>
+
+			<!-- netty -->
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-common</artifactId>
+				<version>${netty.version}</version>
 			</dependency>
 
 			<!-- redis -->
