@@ -34,7 +34,7 @@ public class TreeUtils {
 	 */
 	private static <T extends TreeNode> T findChildren(List<T> treeNodes, T rootNode) {
 		for (T treeNode : treeNodes) {
-			if (treeNode.getParentId().equals(rootNode.getId())) {
+			if (rootNode.getId().equals(treeNode.getParentId())) {
 				rootNode.getChildren().add(findChildren(treeNodes, treeNode));
 			}
 		}
