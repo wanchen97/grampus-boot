@@ -1,6 +1,5 @@
 package com.vdegree.grampus.common.core.threadpool;
 
-import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -51,17 +50,17 @@ public class ThreadPoolConfig {
 		return executor;
 	}
 
-	/**
-	 * 执行周期性或定时任务
-	 */
-	@Bean(name = "scheduledExecutorService")
-	protected ScheduledExecutorService scheduledExecutorService() {
-		return new ScheduledThreadPoolExecutor(CORE_POOL_SIZE,
-				new BasicThreadFactory.Builder().namingPattern("schedule-pool-%d").daemon(true).build()) {
-			@Override
-			protected void afterExecute(Runnable r, Throwable t) {
-				super.afterExecute(r, t);
-			}
-		};
-	}
+//	/**
+//	 * 执行周期性或定时任务
+//	 */
+//	@Bean(name = "scheduledExecutorService")
+//	protected ScheduledExecutorService scheduledExecutorService() {
+//		return new ScheduledThreadPoolExecutor(CORE_POOL_SIZE,
+//				new BasicThreadFactory.Builder().namingPattern("schedule-pool-%d").daemon(true).build()) {
+//			@Override
+//			protected void afterExecute(Runnable r, Throwable t) {
+//				super.afterExecute(r, t);
+//			}
+//		};
+//	}
 }

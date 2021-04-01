@@ -1,7 +1,7 @@
 package com.vdegree.grampus.common.core.result;
 
+import com.vdegree.grampus.common.core.utils.StringUtil;
 import lombok.Data;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 
@@ -93,7 +93,7 @@ public class Result<T> implements Serializable {
     }
 
     private static String defaultMessage(int status, String msg) {
-    	if (StringUtils.isBlank(msg)) {
+    	if (StringUtil.isBlank(msg)) {
 			return status == ERROR_STATUS_CODE ?
 					DEFAULT_ERROR_PHRASE : DEFAULT_SUCCESS_PHRASE;
 		}

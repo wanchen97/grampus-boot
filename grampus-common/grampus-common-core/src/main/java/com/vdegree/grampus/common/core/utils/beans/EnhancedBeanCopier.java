@@ -1,12 +1,12 @@
 package com.vdegree.grampus.common.core.utils.beans;
 
-import com.vdadmin.common.util.ReflectUtil;
-import com.vdpub.common.bean.BeanUtils;
-import org.apache.commons.lang3.StringUtils;
+import com.vdegree.grampus.common.core.utils.ReflectUtil;
+import com.vdegree.grampus.common.core.utils.StringUtil;
 import org.springframework.asm.ClassVisitor;
 import org.springframework.asm.Label;
 import org.springframework.asm.Opcodes;
 import org.springframework.asm.Type;
+import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.core.AbstractClassGenerator;
 import org.springframework.cglib.core.ClassEmitter;
 import org.springframework.cglib.core.CodeEmitter;
@@ -169,7 +169,7 @@ public abstract class EnhancedBeanCopier {
 						continue;
 					}
 					String aliasTargetPropName = targetIgnoreCopy.value();
-					if (StringUtils.isNotBlank(aliasTargetPropName)) {
+					if (StringUtil.isNotBlank(aliasTargetPropName)) {
 						propName = aliasTargetPropName;
 					}
 				}
@@ -292,7 +292,7 @@ public abstract class EnhancedBeanCopier {
 						continue;
 					}
 					String aliasTargetPropName = targetIgnoreCopy.value();
-					if (StringUtils.isNotBlank(aliasTargetPropName)) {
+					if (StringUtil.isNotBlank(aliasTargetPropName)) {
 						propName = aliasTargetPropName;
 					}
 				}
