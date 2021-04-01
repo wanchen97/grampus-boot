@@ -1,7 +1,7 @@
 package com.vdegree.grampus.admin.modules.system.security.filter;
 
 import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
-import org.apache.commons.lang3.StringUtils;
+import com.vdegree.grampus.common.core.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,7 +31,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws ServletException, IOException {
 		String jwt = resolveToken(request);
-		if (StringUtils.isNotBlank(jwt) && SecurityContextHolder.getContext().getAuthentication() == null) {
+		if (StringUtil.isNotBlank(jwt) && SecurityContextHolder.getContext().getAuthentication() == null) {
 			this.tokenManager.validateToken(jwt);
 			Authentication authentication = tokenManager.getAuthentication(jwt);
 			SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -44,7 +44,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 	 */
 	private String resolveToken(HttpServletRequest request) {
 		String bearerToken = request.getHeader("Authorization");
-		if (StringUtils.isNotBlank(bearerToken) && bearerToken.startsWith("Bearer ")) {
+		if (StringUtil.isNotBlank(bearerToken) && bearerToken.startsWith("Bearer ")) {
 			return bearerToken.substring(7);
 		}
 		return bearerToken;

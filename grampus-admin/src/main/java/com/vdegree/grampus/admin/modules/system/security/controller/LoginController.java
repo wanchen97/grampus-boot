@@ -6,8 +6,8 @@ import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetailsService;
 import com.vdegree.grampus.admin.modules.system.service.SysUserService;
 import com.vdegree.grampus.common.core.result.Result;
+import com.vdegree.grampus.common.core.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -49,7 +49,7 @@ public class LoginController {
 		String password = (String) params.get("password");
 		String name = (String) params.get("name");
 
-		if (StringUtils.isBlank(userNo) || StringUtils.isBlank(password)) {
+		if (StringUtil.isBlank(userNo) || StringUtil.isBlank(password)) {
 			throw new IllegalArgumentException("userNo or password is null!");
 		}
 

@@ -2,6 +2,7 @@ package com.vdegree.grampus.admin.modules.system.controller;
 
 import com.google.common.collect.Maps;
 import com.vdegree.grampus.admin.modules.system.entity.SysDept;
+import com.vdegree.grampus.admin.modules.system.security.roles.dao.SystemRoleDao;
 import com.vdegree.grampus.admin.modules.system.service.SysDeptService;
 import com.vdegree.grampus.common.mybatis.enums.DelFlagEnum;
 import lombok.extern.slf4j.Slf4j;
@@ -13,9 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -36,6 +40,8 @@ public class DemoController {
 	private SysDeptService sysDeptService;
 	@Autowired
 	private DemoService demoService;
+	@Autowired
+	private SystemRoleDao systemRoleDao;
 
 	private static ExecutorService threadPool = Executors.newFixedThreadPool(100);
 
@@ -83,5 +89,11 @@ public class DemoController {
 			});
 		}
 		return ResponseEntity.ok().build();
+	}
+
+	@GetMapping("/test1")
+	public ResponseEntity test1() {
+		Set<String> set = systemRoleDao.getPermissions(126742336940032000L);
+		return ResponseEntity.ok(set);
 	}
 }

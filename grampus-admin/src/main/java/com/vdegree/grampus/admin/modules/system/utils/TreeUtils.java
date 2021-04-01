@@ -1,41 +1,50 @@
 package com.vdegree.grampus.admin.modules.system.utils;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.CollectionUtils;
+
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
- * 树形结构工具类，如：菜单、部门等
+ * Title: Tree构建工具
  * Company: v-degree
  *
  * @author Beck
- * @date 2021-01-23
+ * @date 2021-03-31
  */
+@Slf4j
 public class TreeUtils {
 
 	/**
-	 * 根据rootId，构建树节点
+	 * 构建结点树
+	 *
+	 * @param treeNodeList 树结点列表
+	 * @param rootId       根结点ID(作为id不一定需要存在，但是作为parentId必须存在)
 	 */
-	public static <T extends TreeNode> List<T> build(List<T> treeNodes, Long rootId) {
-
-		List<T> treeList = new ArrayList<>();
-		for (T treeNode : treeNodes) {
-			if (rootId.equals(treeNode.getParentId())) {
-				treeList.add(findChildren(treeNodes, treeNode));
-			}
+	public static <T extends TreeNode> List<T> buildTree(List<T> treeNodeList, Long rootId) {
+		Map<Long, List<T>> pidMap = treeNodeList.stream().collect(Collectors.groupingBy(T::getParentId));
+		List<T> firstFloors = pidMap.get(rootId);
+		for (T child : firstFloors) {
+			assembleTree(pidMap, child);
 		}
-
-		return treeList;
+		return firstFloors;
 	}
 
 	/**
-	 * 查找子节点
+	 * 组装一棵树
+	 *
+	 * @param rootNode 需要补全的树的根结点
+	 * @return 补全后的根结点
 	 */
-	private static <T extends TreeNode> T findChildren(List<T> treeNodes, T rootNode) {
-		for (T treeNode : treeNodes) {
-			if (rootNode.getId().equals(treeNode.getParentId())) {
-				rootNode.getChildren().add(findChildren(treeNodes, treeNode));
+	public static <T extends TreeNode> T assembleTree(Map<Long, List<T>> pidMap, T rootNode) {
+		List<T> childList = pidMap.get(rootNode.getId());
+		if (!CollectionUtils.isEmpty(childList)) {
+			for (T child : childList) {
+				rootNode.getChildren().add(assembleTree(pidMap, child));
 			}
 		}
 		return rootNode;
@@ -48,10 +57,8 @@ public class TreeUtils {
 		List<T> result = new ArrayList<>();
 
 		// list转map
-		Map<Long, T> nodeMap = new LinkedHashMap<>(treeNodes.size());
-		for (T treeNode : treeNodes) {
-			nodeMap.put(treeNode.getId(), treeNode);
-		}
+		Map<Long, T> nodeMap = treeNodes.stream()
+				.collect(Collectors.toMap(T::getId, Function.identity()));
 
 		for (T node : nodeMap.values()) {
 			T parent = nodeMap.get(node.getParentId());
@@ -65,5 +72,4 @@ public class TreeUtils {
 
 		return result;
 	}
-
 }

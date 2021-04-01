@@ -4,7 +4,6 @@ import com.vdegree.grampus.admin.modules.system.security.filter.JwtAuthenticatio
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetailsService;
 import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
 import lombok.SneakyThrows;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -89,6 +88,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) {
 		WebSecurity and = web.ignoring().and();
 		and.ignoring().antMatchers("/demo/test");
+		and.ignoring().antMatchers("/demo/test1");
 		and.ignoring().antMatchers("/register/**");
 		and.ignoring().antMatchers("/login");
 	}
