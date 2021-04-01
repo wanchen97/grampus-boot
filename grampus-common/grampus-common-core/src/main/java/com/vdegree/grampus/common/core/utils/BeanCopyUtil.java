@@ -1,18 +1,17 @@
 package com.vdegree.grampus.common.core.utils;
 
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
-import org.springframework.cglib.beans.BeanCopier;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.vdegree.grampus.common.core.utils.beans.EnhancedBeanCopier;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
+
 /**
  * Title: BeanCopier封装
- * Company: v-degree
  *
  * @author Beck
  * @date 2020-07-03
@@ -24,7 +23,7 @@ public class BeanCopyUtil {
 	/*=================== BeanCopier ===================*/
 	/*=================================================*/
 
-	private static final Map<String, BeanCopier> BEAN_COPIER_MAP = new ConcurrentHashMap<>();
+	private static final Map<String, EnhancedBeanCopier> BEAN_COPIER_MAP = new ConcurrentHashMap<>();
 
 	@SneakyThrows
 	public static <T> T copy(Object from, Class<T> c) {
@@ -38,11 +37,11 @@ public class BeanCopyUtil {
 			return;
 		}
 		String beanKey = generateKey(from.getClass(), to.getClass());
-		BeanCopier copier;
+		EnhancedBeanCopier copier;
 		if (BEAN_COPIER_MAP.containsKey(beanKey) && BEAN_COPIER_MAP.get(beanKey) != null) {
 			copier = BEAN_COPIER_MAP.get(beanKey);
 		} else {
-			copier = BeanCopier.create(from.getClass(), to.getClass(), false);
+			copier = EnhancedBeanCopier.create(from.getClass(), to.getClass(), false);
 			BEAN_COPIER_MAP.put(beanKey, copier);
 		}
 		copier.copy(from, to, null);

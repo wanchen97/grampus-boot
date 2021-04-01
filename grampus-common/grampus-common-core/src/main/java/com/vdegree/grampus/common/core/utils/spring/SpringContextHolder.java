@@ -1,5 +1,6 @@
-package com.vdegree.grampus.common.core.utils;
+package com.vdegree.grampus.common.core.utils.spring;
 
+import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -93,6 +94,15 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
         }
         applicationContext.publishEvent(event);
     }
+
+	/**
+	 * 获取aop代理对象
+	 *
+	 * @return 代理对象
+	 */
+	public static <T> T getCurrentProxy() {
+		return (T) AopContext.currentProxy();
+	}
 
     /**
      * 实现DisposableBean接口, 在Context关闭时清理静态变量.
