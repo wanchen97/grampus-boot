@@ -55,21 +55,17 @@ public class TreeUtils {
 	 */
 	public static <T extends TreeNode> List<T> build(List<T> treeNodes) {
 		List<T> result = new ArrayList<>();
-
 		// list转map
 		Map<Long, T> nodeMap = treeNodes.stream()
 				.collect(Collectors.toMap(T::getId, Function.identity()));
-
 		for (T node : nodeMap.values()) {
 			T parent = nodeMap.get(node.getParentId());
 			if (parent != null && !(node.getId().equals(parent.getId()))) {
 				parent.getChildren().add(node);
 				continue;
 			}
-
 			result.add(node);
 		}
-
 		return result;
 	}
 }
