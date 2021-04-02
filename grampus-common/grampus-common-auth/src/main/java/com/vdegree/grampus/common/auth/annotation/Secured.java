@@ -2,7 +2,7 @@ package com.vdegree.grampus.common.auth.annotation;
 
 import com.vdegree.grampus.common.auth.parser.DefaultResourceParser;
 import com.vdegree.grampus.common.auth.parser.ResourceParser;
-import org.apache.commons.lang3.StringUtils;
+import com.vdegree.grampus.common.core.utils.chars.StringPool;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -22,7 +22,7 @@ public @interface Secured {
      *
      * @return resource name
      */
-    String resource() default StringUtils.EMPTY;
+    String resource() default StringPool.EMPTY;
     
     /**
      * Resource name parser. Should have lower priority than resource().

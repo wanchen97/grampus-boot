@@ -1,6 +1,6 @@
 package com.vdegree.grampus.common.auth.parser;
 
-import org.apache.commons.lang3.StringUtils;
+import com.vdegree.grampus.common.core.utils.chars.StringPool;
 
 /**
  * Default resource parser.
@@ -13,6 +13,6 @@ public class DefaultResourceParser implements ResourceParser {
     
     @Override
     public String parseName(Object request) {
-        return StringUtils.EMPTY;
+        return StringPool.EMPTY;
     }
 }

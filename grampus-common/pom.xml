@@ -23,7 +23,8 @@
         <module>grampus-common-lock</module>
         <module>grampus-common-delayqueue</module>
 		<module>grampus-common-rabbitmq</module>
-	</modules>
+        <module>grampus-common-redis</module>
+    </modules>
 
 
 </project>
