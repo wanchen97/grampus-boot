@@ -20,8 +20,8 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserDao, SysUser> imp
 	@Autowired
 	private SysUserDao sysUserDao;
 
-    @Override
-    public SysUser getSysUserByUserNo(String userNo) {
-        return sysUserDao.selectOne(SysUser.builder().userNo(userNo).delFlag(DelFlagEnum.NORMAL.getValue()).build());
-    }
+	@Override
+	public SysUser getSysUserByUserNo(String userNo) {
+		return sysUserDao.selectOne(SysUser.builder().userNo(userNo).delFlag(DelFlagEnum.NORMAL.getValue()).build());
+	}
 }

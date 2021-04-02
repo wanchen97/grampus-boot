@@ -15,6 +15,7 @@ public interface SysUserRoleService extends BaseService<SysUserRole> {
 
 	/**
 	 * 获取用户角色
+	 *
 	 * @param userId 用户ID
 	 * @return 用户角色列表
 	 */

@@ -3,14 +3,12 @@
 <mapper namespace="com.vdegree.grampus.admin.modules.system.security.roles.dao.SystemRoleDao">
 
 	<select id="getPermissions" resultType="java.lang.String">
-		select
-		  sm.`permission`
-		from
-		  sys_user_role sur
-		  left join sys_role_menu srm
-			on sur.`role_id` = srm.`role_id`
-		  left join sys_menu sm
-			on srm.`menu_id` = sm.`id`
+		select sm.`permission`
+		from sys_user_role sur
+				 left join sys_role_menu srm
+						   on sur.`role_id` = srm.`role_id`
+				 left join sys_menu sm
+						   on srm.`menu_id` = sm.`id`
 		where sur.`user_id` = #{userId}
 	</select>
 </mapper>
