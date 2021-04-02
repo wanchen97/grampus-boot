@@ -16,18 +16,18 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Secured {
-    
-    /**
-     * The name of resource related to the request.
-     *
-     * @return resource name
-     */
-    String resource() default StringPool.EMPTY;
-    
-    /**
-     * Resource name parser. Should have lower priority than resource().
-     *
-     * @return class type of resource parser
-     */
-    Class<? extends ResourceParser> parser() default DefaultResourceParser.class;
+
+	/**
+	 * The name of resource related to the request.
+	 *
+	 * @return resource name
+	 */
+	String resource() default StringPool.EMPTY;
+
+	/**
+	 * Resource name parser. Should have lower priority than resource().
+	 *
+	 * @return class type of resource parser
+	 */
+	Class<? extends ResourceParser> parser() default DefaultResourceParser.class;
 }

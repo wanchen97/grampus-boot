@@ -10,9 +10,9 @@ import com.vdegree.grampus.common.core.utils.chars.StringPool;
  * @date 2020-12-9
  */
 public class DefaultResourceParser implements ResourceParser {
-    
-    @Override
-    public String parseName(Object request) {
-        return StringPool.EMPTY;
-    }
+
+	@Override
+	public String parseName(Object request) {
+		return StringPool.EMPTY;
+	}
 }

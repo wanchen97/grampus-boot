@@ -15,7 +15,8 @@ import java.security.ProtectionDomain;
  * @date 2021-01-25
  */
 public abstract class EnhancedBeanMap extends BeanMap {
-	protected EnhancedBeanMap() {}
+	protected EnhancedBeanMap() {
+	}
 
 	protected EnhancedBeanMap(Object bean) {
 		super(bean);
@@ -52,6 +53,7 @@ public abstract class EnhancedBeanMap extends BeanMap {
 		 * out for another bean of the same type using {@link #setBean}.
 		 * Calling this method overrides any value previously set using {@link #setBeanClass}.
 		 * You must call either this method or {@link #setBeanClass} before {@link #create}.
+		 *
 		 * @param bean the initial bean
 		 */
 		public void setBean(Object bean) {
@@ -64,6 +66,7 @@ public abstract class EnhancedBeanMap extends BeanMap {
 		/**
 		 * Set the class of the bean that the generated map should support.
 		 * You must call either this method or {@link #setBeanClass} before {@link #create}.
+		 *
 		 * @param beanClass the class of the bean
 		 */
 		public void setBeanClass(Class beanClass) {
@@ -72,8 +75,9 @@ public abstract class EnhancedBeanMap extends BeanMap {
 
 		/**
 		 * Limit the properties reflected by the generated map.
+		 *
 		 * @param require any combination of {@link #REQUIRE_GETTER} and
-		 * {@link #REQUIRE_SETTER}; default is zero (any property allowed)
+		 *                {@link #REQUIRE_SETTER}; default is zero (any property allowed)
 		 */
 		public void setRequire(int require) {
 			this.require = require;
@@ -92,6 +96,7 @@ public abstract class EnhancedBeanMap extends BeanMap {
 		/**
 		 * Create a new instance of the <code>BeanMap</code>. An existing
 		 * generated class will be reused if possible.
+		 *
 		 * @return {EnhancedBeanMap}
 		 */
 		public EnhancedBeanMap create() {
@@ -100,7 +105,7 @@ public abstract class EnhancedBeanMap extends BeanMap {
 			}
 			setNamePrefix(beanClass.getName());
 			EnhancedBeanMapKey key = new EnhancedBeanMapKey(beanClass, require);
-			return (EnhancedBeanMap)super.create(key);
+			return (EnhancedBeanMap) super.create(key);
 		}
 
 		@Override
@@ -110,12 +115,12 @@ public abstract class EnhancedBeanMap extends BeanMap {
 
 		@Override
 		protected Object firstInstance(Class type) {
-			return ((BeanMap)ReflectUtils.newInstance(type)).newInstance(bean);
+			return ((BeanMap) ReflectUtils.newInstance(type)).newInstance(bean);
 		}
 
 		@Override
 		protected Object nextInstance(Object instance) {
-			return ((BeanMap)instance).newInstance(bean);
+			return ((BeanMap) instance).newInstance(bean);
 		}
 	}
 

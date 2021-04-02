@@ -70,8 +70,8 @@ public abstract class EnhancedBeanCopier {
 	/**
 	 * Bean copy
 	 *
-	 * @param from from Bean
-	 * @param to to Bean
+	 * @param from      from Bean
+	 * @param to        to Bean
 	 * @param converter Converter
 	 */
 	abstract public void copy(Object from, Object to, @Nullable Converter converter);
@@ -130,11 +130,11 @@ public abstract class EnhancedBeanCopier {
 			Type targetType = Type.getType(target);
 			ClassEmitter ce = new ClassEmitter(v);
 			ce.begin_class(Constants.V1_2,
-				Constants.ACC_PUBLIC,
-				getClassName(),
-				BEAN_COPIER,
-				null,
-				Constants.SOURCE_FILE);
+					Constants.ACC_PUBLIC,
+					getClassName(),
+					BEAN_COPIER,
+					null,
+					Constants.SOURCE_FILE);
 
 			EmitUtils.null_constructor(ce);
 			CodeEmitter e = ce.begin_method(Constants.ACC_PUBLIC, COPY, null);
@@ -267,8 +267,9 @@ public abstract class EnhancedBeanCopier {
 
 		/**
 		 * 处理 map 的 copy
-		 * @param ce ClassEmitter
-		 * @param e CodeEmitter
+		 *
+		 * @param ce         ClassEmitter
+		 * @param e          CodeEmitter
 		 * @param sourceType sourceType
 		 * @param targetType targetType
 		 */

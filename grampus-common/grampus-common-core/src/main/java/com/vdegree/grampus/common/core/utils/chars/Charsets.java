@@ -27,7 +27,7 @@ public class Charsets {
 
 	/**
 	 * 字符集utf-8
- 	 */
+	 */
 	public static final Charset UTF_8 = StandardCharsets.UTF_8;
 	public static final String UTF_8_NAME = UTF_8.name();
 }

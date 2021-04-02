@@ -54,7 +54,7 @@ class EnhancedBeanMapEmitter extends ClassEmitter {
 			for (Iterator it = allProps.keySet().iterator(); it.hasNext(); ) {
 				String name = (String) it.next();
 				if ((((require & EnhancedBeanMap.REQUIRE_GETTER) != 0) && !getters.containsKey(name)) ||
-					(((require & EnhancedBeanMap.REQUIRE_SETTER) != 0) && !setters.containsKey(name))) {
+						(((require & EnhancedBeanMap.REQUIRE_SETTER) != 0) && !setters.containsKey(name))) {
 					it.remove();
 					getters.remove(name);
 					setters.remove(name);

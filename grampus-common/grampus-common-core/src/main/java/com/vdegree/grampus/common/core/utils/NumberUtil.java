@@ -96,21 +96,22 @@ public class NumberUtil extends org.springframework.util.NumberUtils {
 	 * All possible chars for representing a number as a String
 	 */
 	final static byte[] DIGITS = {
-		'0' , '1' , '2' , '3' , '4' , '5' ,
-		'6' , '7' , '8' , '9' , 'a' , 'b' ,
-		'c' , 'd' , 'e' , 'f' , 'g' , 'h' ,
-		'i' , 'j' , 'k' , 'l' , 'm' , 'n' ,
-		'o' , 'p' , 'q' , 'r' , 's' , 't' ,
-		'u' , 'v' , 'w' , 'x' , 'y' , 'z' ,
-		'A' , 'B' , 'C' , 'D' , 'E' , 'F' ,
-		'G' , 'H' , 'I' , 'J' , 'K' , 'L' ,
-		'M' , 'N' , 'O' , 'P' , 'Q' , 'R' ,
-		'S' , 'T' , 'U' , 'V' , 'W' , 'X' ,
-		'Y' , 'Z'
+			'0', '1', '2', '3', '4', '5',
+			'6', '7', '8', '9', 'a', 'b',
+			'c', 'd', 'e', 'f', 'g', 'h',
+			'i', 'j', 'k', 'l', 'm', 'n',
+			'o', 'p', 'q', 'r', 's', 't',
+			'u', 'v', 'w', 'x', 'y', 'z',
+			'A', 'B', 'C', 'D', 'E', 'F',
+			'G', 'H', 'I', 'J', 'K', 'L',
+			'M', 'N', 'O', 'P', 'Q', 'R',
+			'S', 'T', 'U', 'V', 'W', 'X',
+			'Y', 'Z'
 	};
 
 	/**
 	 * 将 long 转短字符串 为 62 进制
+	 *
 	 * @param i 数字
 	 * @return 短字符串
 	 */
@@ -120,10 +121,10 @@ public class NumberUtil extends org.springframework.util.NumberUtils {
 		int charPos = 64;
 		i = -i;
 		while (i <= -radix) {
-			buf[charPos--] = DIGITS[(int)(-(i % radix))];
+			buf[charPos--] = DIGITS[(int) (-(i % radix))];
 			i = i / radix;
 		}
-		buf[charPos] = DIGITS[(int)(-i)];
+		buf[charPos] = DIGITS[(int) (-i)];
 		return new String(buf, charPos, (65 - charPos), Charsets.UTF_8);
 	}
 

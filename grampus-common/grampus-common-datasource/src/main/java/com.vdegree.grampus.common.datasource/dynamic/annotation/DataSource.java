@@ -21,5 +21,5 @@ import java.lang.annotation.Target;
 @Documented
 @Inherited
 public @interface DataSource {
-    DataSourceType value() default DataSourceType.MASTER;
+	DataSourceType value() default DataSourceType.MASTER;
 }

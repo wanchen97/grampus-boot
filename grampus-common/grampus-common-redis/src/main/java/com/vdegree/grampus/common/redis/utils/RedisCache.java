@@ -185,7 +185,7 @@ public class RedisCache {
 	/**
 	 * redis scan
 	 *
-	 * @param pattern 匹配表达式
+	 * @param pattern  匹配表达式
 	 * @param consumer 消费者
 	 * @return 扫描结果
 	 */
@@ -196,8 +196,8 @@ public class RedisCache {
 	/**
 	 * redis scan
 	 *
-	 * @param pattern 匹配表达式
-	 * @param count   一次扫描的数量
+	 * @param pattern  匹配表达式
+	 * @param count    一次扫描的数量
 	 * @param consumer 消费者
 	 * @return 扫描结果
 	 */
@@ -224,7 +224,7 @@ public class RedisCache {
 	/**
 	 * redis sscan
 	 *
-	 * @param key key
+	 * @param key     key
 	 * @param pattern 匹配表达式
 	 * @return 扫描结果
 	 */
@@ -237,7 +237,7 @@ public class RedisCache {
 	/**
 	 * redis sscan
 	 *
-	 * @param key key
+	 * @param key     key
 	 * @param pattern 匹配表达式
 	 * @param count   一次扫描的数量
 	 * @return 扫描结果
@@ -263,9 +263,9 @@ public class RedisCache {
 	/**
 	 * redis sscan
 	 *
-	 * @param key key
-	 * @param pattern 匹配表达式
-	 * @param consumer    consumer
+	 * @param key      key
+	 * @param pattern  匹配表达式
+	 * @param consumer consumer
 	 * @return 扫描结果
 	 */
 	public void sScan(String key, @Nullable String pattern, Consumer<String> consumer) {
@@ -275,10 +275,10 @@ public class RedisCache {
 	/**
 	 * redis sscan
 	 *
-	 * @param key key
-	 * @param pattern 匹配表达式
-	 * @param count   一次扫描的数量
-	 * @param consumer    consumer
+	 * @param key      key
+	 * @param pattern  匹配表达式
+	 * @param count    一次扫描的数量
+	 * @param consumer consumer
 	 * @return 扫描结果
 	 */
 	public void sScan(String key, @Nullable String pattern, @Nullable Long count, Consumer<String> consumer) {
@@ -427,9 +427,9 @@ public class RedisCache {
 	/**
 	 * 获取记数器的值，用于初始化获取 incr、incrBy 的值
 	 *
-	 * @param key key
+	 * @param key     key
 	 * @param seconds 超时时间
-	 * @param loader 加载器
+	 * @param loader  加载器
 	 */
 	public Long getCounter(String key, long seconds, Supplier<Long> loader) {
 		RedisSerializer<String> keySerializer = (RedisSerializer<String>) redisTemplate.getKeySerializer();

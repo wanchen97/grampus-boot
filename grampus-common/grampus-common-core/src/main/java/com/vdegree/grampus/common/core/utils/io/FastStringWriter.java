@@ -57,7 +57,7 @@ public class FastStringWriter extends Writer {
 	@Override
 	public void write(char[] c, int off, int len) {
 		if ((off < 0) || (off > c.length) || (len < 0) ||
-			((off + len) > c.length) || ((off + len) < 0)) {
+				((off + len) > c.length) || ((off + len) < 0)) {
 			throw new IndexOutOfBoundsException();
 		} else if (len == 0) {
 			return;

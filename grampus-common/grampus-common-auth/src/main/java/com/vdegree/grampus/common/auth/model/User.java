@@ -13,12 +13,12 @@ import java.io.Serializable;
  */
 @Data
 public class User implements Serializable {
-    
-    private static final long serialVersionUID = -8002966873087151367L;
-    
-    /**
-     * Unique string representing user.
-     */
+
+	private static final long serialVersionUID = -8002966873087151367L;
+
+	/**
+	 * Unique string representing user.
+	 */
 	private String username;
 
 	/**

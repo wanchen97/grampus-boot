@@ -49,10 +49,10 @@ public class LockTemplate implements InitializingBean {
 	/**
 	 * 加锁方法
 	 *
-	 * @param key         锁key 同一个key只能被一个客户端持有
-	 * @param expire      过期时间(ms) 防止死锁
-	 * @param waitTime	  尝试获取锁等待时间(ms)
-	 * @param strategy    加锁策略
+	 * @param key      锁key 同一个key只能被一个客户端持有
+	 * @param expire   过期时间(ms) 防止死锁
+	 * @param waitTime 尝试获取锁等待时间(ms)
+	 * @param strategy 加锁策略
 	 * @return 加锁成功返回锁信息 失败返回null
 	 */
 	public LockInfo lock(String key, long expire, long waitTime, Class<? extends LockStrategy> strategy) {

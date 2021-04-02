@@ -24,8 +24,8 @@ public class Exceptions {
 		if (e instanceof Error) {
 			throw (Error) e;
 		} else if (e instanceof IllegalAccessException ||
-			e instanceof IllegalArgumentException ||
-			e instanceof NoSuchMethodException) {
+				e instanceof IllegalArgumentException ||
+				e instanceof NoSuchMethodException) {
 			return new IllegalArgumentException(e);
 		} else if (e instanceof InvocationTargetException) {
 			return Exceptions.runtime(((InvocationTargetException) e).getTargetException());

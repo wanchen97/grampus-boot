@@ -143,9 +143,9 @@ public interface BaseService<T> {
 	 * 分页条件查询
 	 * </p>
 	 *
-	 * @param entity    查询实例
-	 * @param pageNum   页码
-	 * @param pageSize  每页数据量
+	 * @param entity   查询实例
+	 * @param pageNum  页码
+	 * @param pageSize 每页数据量
 	 * @return 查询结果
 	 */
 	PageInfo<T> selectPage(T entity, int pageNum, int pageSize);

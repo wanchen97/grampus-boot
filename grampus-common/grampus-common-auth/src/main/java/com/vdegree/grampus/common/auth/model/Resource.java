@@ -15,19 +15,19 @@ import java.io.Serializable;
 @Data
 @RequiredArgsConstructor
 public class Resource implements Serializable {
-    
-    public static final String SPLITTER = ":";
-    
-    public static final String ANY = "*";
-    
-    private static final long serialVersionUID = 925971662931204553L;
-    
-    /**
-     * The unique key of resource.
-     */
-    private String key;
-    
-    public String parseName() {
-        return key.substring(0, key.lastIndexOf(SPLITTER));
-    }
+
+	public static final String SPLITTER = ":";
+
+	public static final String ANY = "*";
+
+	private static final long serialVersionUID = 925971662931204553L;
+
+	/**
+	 * The unique key of resource.
+	 */
+	private String key;
+
+	public String parseName() {
+		return key.substring(0, key.lastIndexOf(SPLITTER));
+	}
 }

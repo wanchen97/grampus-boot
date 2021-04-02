@@ -102,9 +102,9 @@ public class WebUtil extends org.springframework.web.util.WebUtils {
 	@Nullable
 	public static HttpServletRequest getRequest() {
 		return Optional.ofNullable(RequestContextHolder.getRequestAttributes())
-			.map(x -> (ServletRequestAttributes) x)
-			.map(ServletRequestAttributes::getRequest)
-			.orElse(null);
+				.map(x -> (ServletRequestAttributes) x)
+				.map(ServletRequestAttributes::getRequest)
+				.orElse(null);
 	}
 
 	/**
@@ -115,9 +115,9 @@ public class WebUtil extends org.springframework.web.util.WebUtils {
 	@Nullable
 	public static HttpServletResponse getResponse() {
 		return Optional.ofNullable(RequestContextHolder.getRequestAttributes())
-			.map(x -> (ServletRequestAttributes) x)
-			.map(ServletRequestAttributes::getResponse)
-			.orElse(null);
+				.map(x -> (ServletRequestAttributes) x)
+				.map(ServletRequestAttributes::getResponse)
+				.orElse(null);
 	}
 
 	/**
@@ -128,16 +128,16 @@ public class WebUtil extends org.springframework.web.util.WebUtils {
 	@Nullable
 	public static String getIP() {
 		return Optional.ofNullable(WebUtil.getRequest())
-			.map(WebUtil::getIP)
-			.orElse(null);
+				.map(WebUtil::getIP)
+				.orElse(null);
 	}
 
 	private static final String[] IP_HEADER_NAMES = new String[]{
-		"x-forwarded-for",
-		"Proxy-Client-IP",
-		"WL-Proxy-Client-IP",
-		"HTTP_CLIENT_IP",
-		"HTTP_X_FORWARDED_FOR"
+			"x-forwarded-for",
+			"Proxy-Client-IP",
+			"WL-Proxy-Client-IP",
+			"HTTP_CLIENT_IP",
+			"HTTP_X_FORWARDED_FOR"
 	};
 
 	private static final Predicate<String> IS_BLANK_IP = (ip) -> StringUtil.isBlank(ip) || StringPool.UNKNOWN.equalsIgnoreCase(ip);

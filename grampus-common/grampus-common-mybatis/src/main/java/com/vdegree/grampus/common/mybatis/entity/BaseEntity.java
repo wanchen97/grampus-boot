@@ -8,7 +8,6 @@ import tk.mybatis.mapper.annotation.KeySql;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Title: 基础实体类，所有实体都需要继承
@@ -22,10 +21,10 @@ import java.util.Date;
 public abstract class BaseEntity implements Serializable {
 	private static final long serialVersionUID = -1799573625766414211L;
 	/**
-     * id
-     */
+	 * id
+	 */
 	@Id
 	@GeneratedValue(generator = "JDBC")
 	@KeySql(genId = SnowflakeKeyGen.class)
-    private Long id;
+	private Long id;
 }

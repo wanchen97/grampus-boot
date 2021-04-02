@@ -221,7 +221,7 @@ public class ObjectUtil extends org.springframework.util.ObjectUtils {
 	/**
 	 * 对象转为 Float
 	 *
-	 * @param object Object
+	 * @param object       Object
 	 * @param defaultValue float
 	 * @return 结果
 	 */
@@ -253,7 +253,7 @@ public class ObjectUtil extends org.springframework.util.ObjectUtils {
 	/**
 	 * 对象转为 Double
 	 *
-	 * @param object Object
+	 * @param object       Object
 	 * @param defaultValue double
 	 * @return 结果
 	 */
@@ -285,7 +285,7 @@ public class ObjectUtil extends org.springframework.util.ObjectUtils {
 	/**
 	 * 对象转为 Byte
 	 *
-	 * @param object Object
+	 * @param object       Object
 	 * @param defaultValue byte
 	 * @return 结果
 	 */
@@ -317,7 +317,7 @@ public class ObjectUtil extends org.springframework.util.ObjectUtils {
 	/**
 	 * 对象转为 Short
 	 *
-	 * @param object Object
+	 * @param object       Object
 	 * @param defaultValue short
 	 * @return 结果
 	 */
@@ -350,7 +350,7 @@ public class ObjectUtil extends org.springframework.util.ObjectUtils {
 	/**
 	 * 对象转为 Boolean
 	 *
-	 * @param object Object
+	 * @param object       Object
 	 * @param defaultValue 默认值
 	 * @return 结果
 	 */

@@ -17,11 +17,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Permission implements Serializable {
-    
-    private static final long serialVersionUID = -3583076254743606551L;
-    
-    /**
-     * An unique key of resource.
-     */
-    private String resource;
+
+	private static final long serialVersionUID = -3583076254743606551L;
+
+	/**
+	 * An unique key of resource.
+	 */
+	private String resource;
 }

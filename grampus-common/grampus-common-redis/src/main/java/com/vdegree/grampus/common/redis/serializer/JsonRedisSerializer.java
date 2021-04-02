@@ -16,25 +16,25 @@ import java.nio.charset.Charset;
  */
 public class JsonRedisSerializer<T> implements RedisSerializer<T> {
 
-    private Class<T> type;
+	private Class<T> type;
 
-    public JsonRedisSerializer(Class<T> type) {
-        this.type = type;
-    }
+	public JsonRedisSerializer(Class<T> type) {
+		this.type = type;
+	}
 
-    @Override
-    public byte[] serialize(T t) throws SerializationException {
-        if (t == null) {
-            return new byte[0];
-        }
-        return JSONUtil.writeValueAsString(t).getBytes(Charsets.UTF_8);
-    }
+	@Override
+	public byte[] serialize(T t) throws SerializationException {
+		if (t == null) {
+			return new byte[0];
+		}
+		return JSONUtil.writeValueAsString(t).getBytes(Charsets.UTF_8);
+	}
 
-    @Override
-    public T deserialize(byte[] bytes) throws SerializationException {
-        if (bytes == null || bytes.length <= 0) {
-            return null;
-        }
-        return JSONUtil.readValue(new String(bytes, Charsets.UTF_8), type);
-    }
+	@Override
+	public T deserialize(byte[] bytes) throws SerializationException {
+		if (bytes == null || bytes.length <= 0) {
+			return null;
+		}
+		return JSONUtil.readValue(new String(bytes, Charsets.UTF_8), type);
+	}
 }

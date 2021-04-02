@@ -169,8 +169,8 @@ public class CollectionUtil extends org.springframework.util.CollectionUtils {
 		Objects.requireNonNull(list, "List to partition must not null.");
 		Assert.isTrue(size > 0, "List to partition size must more then zero.");
 		return (list instanceof RandomAccess)
-			? new RandomAccessPartition<>(list, size)
-			: new Partition<>(list, size);
+				? new RandomAccessPartition<>(list, size)
+				: new Partition<>(list, size);
 	}
 
 	private static class RandomAccessPartition<T> extends Partition<T> implements RandomAccess {

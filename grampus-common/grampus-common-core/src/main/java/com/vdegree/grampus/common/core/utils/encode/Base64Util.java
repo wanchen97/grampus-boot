@@ -15,6 +15,7 @@ public class Base64Util extends org.springframework.util.Base64Utils {
 
 	/**
 	 * 编码
+	 *
 	 * @param value 字符串
 	 * @return {String}
 	 */
@@ -24,7 +25,8 @@ public class Base64Util extends org.springframework.util.Base64Utils {
 
 	/**
 	 * 编码
-	 * @param value 字符串
+	 *
+	 * @param value   字符串
 	 * @param charset 字符集
 	 * @return {String}
 	 */
@@ -35,6 +37,7 @@ public class Base64Util extends org.springframework.util.Base64Utils {
 
 	/**
 	 * 编码URL安全
+	 *
 	 * @param value 字符串
 	 * @return {String}
 	 */
@@ -44,7 +47,8 @@ public class Base64Util extends org.springframework.util.Base64Utils {
 
 	/**
 	 * 编码URL安全
-	 * @param value 字符串
+	 *
+	 * @param value   字符串
 	 * @param charset 字符集
 	 * @return {String}
 	 */
@@ -55,6 +59,7 @@ public class Base64Util extends org.springframework.util.Base64Utils {
 
 	/**
 	 * 解码
+	 *
 	 * @param value 字符串
 	 * @return {String}
 	 */
@@ -64,7 +69,8 @@ public class Base64Util extends org.springframework.util.Base64Utils {
 
 	/**
 	 * 解码
-	 * @param value 字符串
+	 *
+	 * @param value   字符串
 	 * @param charset 字符集
 	 * @return {String}
 	 */
@@ -76,6 +82,7 @@ public class Base64Util extends org.springframework.util.Base64Utils {
 
 	/**
 	 * 解码URL安全
+	 *
 	 * @param value 字符串
 	 * @return {String}
 	 */
@@ -85,7 +92,8 @@ public class Base64Util extends org.springframework.util.Base64Utils {
 
 	/**
 	 * 解码URL安全
-	 * @param value 字符串
+	 *
+	 * @param value   字符串
 	 * @param charset 字符集
 	 * @return {String}
 	 */
