@@ -6,7 +6,7 @@ import com.vdegree.grampus.admin.modules.system.security.exception.UserDisabledE
 import com.vdegree.grampus.admin.modules.system.security.exception.UserNotFoundException;
 import com.vdegree.grampus.admin.modules.system.security.roles.SystemRoleService;
 import com.vdegree.grampus.admin.modules.system.service.SysUserService;
-import com.vdegree.grampus.common.core.utils.BeanCopyUtil;
+import com.vdegree.grampus.common.core.utils.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -47,7 +47,7 @@ public class SystemUserDetailsService implements UserDetailsService {
 	}
 
 	public UserDetails buildUserDetails(SysUser user) {
-		SystemUserDetails systemUserDetails = BeanCopyUtil.copy(user, SystemUserDetails.class);
+		SystemUserDetails systemUserDetails = BeanUtil.copy(user, SystemUserDetails.class);
 		systemUserDetails.setPermissions(systemRoleService.getPermissions(user.getId()));
 		return systemUserDetails;
 	}

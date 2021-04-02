@@ -2,6 +2,7 @@ package com.vdegree.grampus.admin.modules.system.controller;
 
 import com.google.common.collect.Maps;
 import com.vdegree.grampus.admin.modules.system.entity.SysDept;
+import com.vdegree.grampus.admin.modules.system.security.redis.SystemUserDetailsRedis;
 import com.vdegree.grampus.admin.modules.system.security.roles.dao.SystemRoleDao;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
 import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
@@ -97,9 +98,12 @@ public class DemoController {
 		return ResponseEntity.ok(set);
 	}
 
+	@Autowired
+	private SystemUserDetailsRedis systemUserDetailsRedis;
 	@GetMapping("/test1")
 	public ResponseEntity test3() {
 		SystemUserDetails userDetails = SecurityUtils.getUserDetails();
-		return ResponseEntity.ok(userDetails);
+		systemUserDetailsRedis.saveSystemUserDetails(userDetails);
+		return ResponseEntity.ok(systemUserDetailsRedis.getSystemUserDetails(userDetails.getUserNo()));
 	}
 }
