@@ -35,7 +35,7 @@ public class SysDeptController {
 	@GetMapping("/list")
 	public Result<List<SysDeptDTO>> list() {
 		List<SysDept> list = sysDeptService.selectList(new SysDept());
-		List<SysDeptDTO> deptList = BeanUtil.copy(list, SysDeptDTO.class);
+		List<SysDeptDTO> deptList = BeanUtil.copyList(list, SysDeptDTO.class);
 		return Result.success(TreeUtils.build(deptList));
 	}
 

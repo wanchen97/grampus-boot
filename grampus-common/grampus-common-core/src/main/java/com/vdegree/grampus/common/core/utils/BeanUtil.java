@@ -192,8 +192,8 @@ public class BeanUtil extends org.springframework.beans.BeanUtils {
 	 * @param <T>         泛型标记
 	 * @return T
 	 */
-	public static <T> List<T> copy(@Nullable Collection<?> sourceList, Class<T> targetClazz) {
-		return copy(sourceList, (List<T>) null, targetClazz);
+	public static <T> List<T> copyList(@Nullable Collection<?> sourceList, Class<T> targetClazz) {
+		return copyList(sourceList, (List<T>) null, targetClazz);
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class BeanUtil extends org.springframework.beans.BeanUtils {
 	 * @param <T>         泛型标记
 	 * @return T
 	 */
-	public static <T> List<T> copy(@Nullable Collection<?> sourceList, @Nullable List<T> targetList, Class<T> targetClazz) {
+	public static <T> List<T> copyList(@Nullable Collection<?> sourceList, @Nullable List<T> targetList, Class<T> targetClazz) {
 		if (sourceList == null || sourceList.isEmpty()) {
 			return Collections.emptyList();
 		}

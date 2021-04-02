@@ -33,8 +33,8 @@ public class RedisCacheAutoConfiguration {
 		redisTemplate.setHashKeySerializer(new StringRedisSerializer(StandardCharsets.UTF_8));
 //		redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
 //		redisTemplate.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
-		redisTemplate.setValueSerializer(new JsonRedisSerializer<>(Map.class));
-		redisTemplate.setHashValueSerializer(new JsonRedisSerializer<>(Map.class));
+		redisTemplate.setValueSerializer(new JsonRedisSerializer<>(Object.class));
+		redisTemplate.setHashValueSerializer(new JsonRedisSerializer<>(Object.class));
 		redisTemplate.setConnectionFactory(factory);
 		return redisTemplate;
 	}

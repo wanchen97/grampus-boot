@@ -1,5 +1,6 @@
 package com.vdegree.grampus.common.redis.utils;
 
+import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.core.utils.CollectionUtil;
 import com.vdegree.grampus.common.core.utils.Exceptions;
 import com.vdegree.grampus.common.core.utils.tuple.Pair;

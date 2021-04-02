@@ -1,6 +1,7 @@
 package com.vdegree.grampus.admin.modules.system.security.redis;
 
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
+import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.redis.utils.RedisCache;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -40,7 +41,6 @@ public class SystemUserDetailsRedis {
 
 	public SystemUserDetails getSystemUserDetails(String userNo) {
 		String key = MessageFormat.format(SYSTEM_USERDETAILS_KEY, userNo);
-		Object obj = redisCache.get(key);
-		return (SystemUserDetails) obj;
+		return BeanUtil.copy(redisCache.get(key), SystemUserDetails.class);
 	}
 }
