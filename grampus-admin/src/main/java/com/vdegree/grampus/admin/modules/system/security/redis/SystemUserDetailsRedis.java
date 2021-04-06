@@ -27,20 +27,20 @@ public class SystemUserDetailsRedis {
 	 * KEY sys:user_details:{userNo}
 	 * VAL SystemUserDetails实体
 	 */
-	private static final String SYSTEM_USERDETAILS_KEY = "sys:user_details:{0}";
+	private static final String SYSTEM_USER_DETAILS_KEY = "sys:user_details:{0}";
 
 	public void saveSystemUserDetails(SystemUserDetails userDetails) {
-		String key = MessageFormat.format(SYSTEM_USERDETAILS_KEY, userDetails.getUserNo());
+		String key = MessageFormat.format(SYSTEM_USER_DETAILS_KEY, userDetails.getUserNo());
 		redisCache.setEx(key, userDetails, Duration.ofHours(8));
 	}
 
 	public void removeSystemUserDetails(String userNo) {
-		String key = MessageFormat.format(SYSTEM_USERDETAILS_KEY, userNo);
+		String key = MessageFormat.format(SYSTEM_USER_DETAILS_KEY, userNo);
 		redisCache.del(key);
 	}
 
 	public SystemUserDetails getSystemUserDetails(String userNo) {
-		String key = MessageFormat.format(SYSTEM_USERDETAILS_KEY, userNo);
+		String key = MessageFormat.format(SYSTEM_USER_DETAILS_KEY, userNo);
 		return BeanUtil.copy(redisCache.get(key), SystemUserDetails.class);
 	}
 }
