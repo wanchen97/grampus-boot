@@ -25,7 +25,7 @@ import java.util.List;
 public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<T> {
 
 	@Autowired
-	private M baseMapper;
+	protected M baseMapper;
 
 	@Override
 	public void logicDelete(Long[] ids, Class<T> entity) {

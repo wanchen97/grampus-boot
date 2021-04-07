@@ -2,6 +2,7 @@ package com.vdegree.grampus.admin.modules.system.service.impl;
 
 import com.vdegree.grampus.admin.modules.system.dto.SysMenuDTO;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
+import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.mybatis.service.impl.BaseServiceImpl;
 import com.vdegree.grampus.admin.modules.system.dao.SysMenuDao;
 import com.vdegree.grampus.admin.modules.system.entity.SysMenu;
@@ -42,7 +43,10 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuDao, SysMenu> imp
 
 	@Override
 	public List<SysMenuDTO> getMenuList(Integer type) {
-		return null;
+		SysMenu param = new SysMenu();
+		param.setType(type);
+		List<SysMenu> list = baseMapper.select(param);
+		return BeanUtil.copyList(list, SysMenuDTO.class);
 	}
 
 	@Override

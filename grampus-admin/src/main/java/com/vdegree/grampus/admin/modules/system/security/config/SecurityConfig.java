@@ -86,11 +86,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) {
-		WebSecurity and = web.ignoring().and();
-		and.ignoring().antMatchers("/demo/test");
-		and.ignoring().antMatchers("/demo/test1");
-		and.ignoring().antMatchers("/register/**");
-		and.ignoring().antMatchers("/login");
+		// @formatter:off
+		web.ignoring()
+			.antMatchers(HttpMethod.OPTIONS, "/**")
+			.antMatchers(
+				"/favicon.ico",
+				"/error",
+				"/static/**",
+				"/webjars*",
+				"/webjars/**",
+				"/auth/captcha",
+				"/auth/public-key",
+				"/upload/**",
+				"/swagger-resources/**",
+				"/v2/api-docs",
+				"/v3/api-docs",
+				"/doc.html",
+				"/register/**",
+				"/login",
+				"/demo/**"
+			);
+		// @formatter:on
 	}
 
 	@Bean

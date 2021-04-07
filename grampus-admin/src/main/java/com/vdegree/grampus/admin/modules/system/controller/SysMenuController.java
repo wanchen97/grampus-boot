@@ -5,6 +5,8 @@ import com.vdegree.grampus.admin.modules.system.service.SysMenuService;
 import com.vdegree.grampus.admin.modules.system.utils.TreeUtils;
 import com.vdegree.grampus.common.core.result.ErrorCode;
 import com.vdegree.grampus.common.core.result.Result;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,6 +27,7 @@ import java.util.List;
  * @author Beck
  * @date 2021-01-21
  */
+@Api(tags = "菜单模块")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/menu")
@@ -44,6 +47,7 @@ public class SysMenuController {
 //		return Result.success(set);
 //	}
 
+	@ApiOperation("菜单列表")
 	@GetMapping("list")
 	@PreAuthorize("hasAuthority('sys:menu:list')")
 	public Result<List<SysMenuDTO>> list(Integer type) {
