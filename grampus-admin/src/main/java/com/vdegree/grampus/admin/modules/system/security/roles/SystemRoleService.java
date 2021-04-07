@@ -5,7 +5,9 @@ import com.vdegree.grampus.admin.modules.system.security.roles.dao.SystemRoleDao
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Title: system role service
@@ -28,6 +30,6 @@ public class SystemRoleService {
 	 */
 	public String getPermissions(Long userId) {
 		Set<String> permissionSet = systemRoleDao.getPermissions(userId);
-		return Joiner.on(",").join(permissionSet);
+		return Joiner.on(",").join(permissionSet.stream().filter(Objects::nonNull).collect(Collectors.toSet()));
 	}
 }

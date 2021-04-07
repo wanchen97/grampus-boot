@@ -2,6 +2,7 @@ package com.vdegree.grampus.admin.modules.system.controller;
 
 import com.vdegree.grampus.admin.modules.system.dto.SysMenuDTO;
 import com.vdegree.grampus.admin.modules.system.service.SysMenuService;
+import com.vdegree.grampus.admin.modules.system.utils.TreeUtils;
 import com.vdegree.grampus.common.core.result.ErrorCode;
 import com.vdegree.grampus.common.core.result.Result;
 import lombok.RequiredArgsConstructor;
@@ -47,7 +48,7 @@ public class SysMenuController {
 	@PreAuthorize("hasAuthority('sys:menu:list')")
 	public Result<List<SysMenuDTO>> list(Integer type) {
 		List<SysMenuDTO> list = sysMenuService.getMenuList(type);
-		return Result.success(list);
+		return Result.success(TreeUtils.build(list));
 	}
 
 	@GetMapping("{id}")

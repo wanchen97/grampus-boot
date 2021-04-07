@@ -3,7 +3,6 @@ package com.vdegree.grampus.admin.modules.system.dto;
 import com.vdegree.grampus.admin.modules.system.utils.TreeNode;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -13,7 +12,7 @@ import java.util.Date;
  * @since 2020-12-03 20:06:54
  */
 @Data
-public class SysDeptDTO extends TreeNode<SysDeptDTO> implements Serializable {
+public class SysDeptDTO extends TreeNode<SysDeptDTO> {
 	private static final long serialVersionUID = -4286031575713376186L;
 	/**
 	 * 数据ID

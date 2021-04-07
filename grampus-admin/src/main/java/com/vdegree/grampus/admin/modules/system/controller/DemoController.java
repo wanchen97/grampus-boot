@@ -7,11 +7,14 @@ import com.vdegree.grampus.admin.modules.system.security.roles.dao.SystemRoleDao
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
 import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.admin.modules.system.service.SysDeptService;
+import com.vdegree.grampus.common.lock.annotation.DistributedLock;
+import com.vdegree.grampus.common.lock.strategy.RedissonLockStrategy;
 import com.vdegree.grampus.common.mybatis.enums.DelFlagEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -106,4 +109,16 @@ public class DemoController {
 		systemUserDetailsRedis.saveSystemUserDetails(userDetails);
 		return ResponseEntity.ok(systemUserDetailsRedis.getSystemUserDetails(userDetails.getUserNo()));
 	}
+
+	@Slf4j
+	@Service
+	public static class DemoService {
+
+		@DistributedLock(keys = {"#userId", " #userId2", "#userId3"}, waitTime = 200, leaseTime = 40000, strategy = RedissonLockStrategy.class)
+		public void testLock(String userId, String userId2, String userId3) throws InterruptedException {
+			Thread.sleep(500);
+			log.info("{} time:{}", Thread.currentThread().getName(), System.currentTimeMillis());
+		}
+	}
+
 }

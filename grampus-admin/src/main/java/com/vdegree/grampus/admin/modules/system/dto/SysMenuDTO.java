@@ -1,5 +1,6 @@
 package com.vdegree.grampus.admin.modules.system.dto;
 
+import com.vdegree.grampus.admin.modules.system.utils.TreeNode;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -12,7 +13,7 @@ import java.io.Serializable;
  * @date 2021-04-01
  */
 @Data
-public class SysMenuDTO implements Serializable {
+public class SysMenuDTO extends TreeNode<SysMenuDTO> {
 	private static final long serialVersionUID = 5330634077811336459L;
 
 	/**
