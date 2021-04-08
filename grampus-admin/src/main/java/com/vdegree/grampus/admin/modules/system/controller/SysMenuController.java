@@ -87,11 +87,4 @@ public class SysMenuController {
 		sysMenuService.delete(id);
 		return Result.success();
 	}
-
-//	@GetMapping("select")
-//	@PreAuthorize("hasAuthority('sys:menu:select')")
-//	public Result<List<SysMenuDTO>> select(){
-//		List<SysMenuDTO> list = sysMenuService.getUserMenuList(SecurityUser.getUser(), null);
-//		return Result.success(list);
-//	}
 }
