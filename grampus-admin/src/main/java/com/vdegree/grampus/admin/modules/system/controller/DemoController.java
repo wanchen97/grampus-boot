@@ -8,7 +8,8 @@ import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails
 import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.admin.modules.system.service.SysDeptService;
 import com.vdegree.grampus.common.lock.annotation.DistributedLock;
-import com.vdegree.grampus.common.lock.strategy.RedissonLockStrategy;
+//import com.vdegree.grampus.common.lock.strategy.RedissonLockStrategy;
+import com.vdegree.grampus.common.lock.strategy.RedisTemplateLockStrategy;
 import com.vdegree.grampus.common.mybatis.enums.DelFlagEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,7 +115,7 @@ public class DemoController {
 	@Service
 	public static class DemoService {
 
-		@DistributedLock(keys = {"#userId", " #userId2", "#userId3"}, waitTime = 200, leaseTime = 40000, strategy = RedissonLockStrategy.class)
+		@DistributedLock(keys = {"#userId", " #userId2", "#userId3"}, waitTime = 200, leaseTime = 40000, strategy = RedisTemplateLockStrategy.class)
 		public void testLock(String userId, String userId2, String userId3) throws InterruptedException {
 			Thread.sleep(500);
 			log.info("{} time:{}", Thread.currentThread().getName(), System.currentTimeMillis());

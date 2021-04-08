@@ -10,10 +10,10 @@ import com.vdegree.grampus.common.lock.aspect.LockInterceptor;
 import com.vdegree.grampus.common.lock.properties.DistributedLockProperties;
 import com.vdegree.grampus.common.lock.strategy.LockStrategy;
 import com.vdegree.grampus.common.lock.strategy.RedisTemplateLockStrategy;
-import com.vdegree.grampus.common.lock.strategy.RedissonLockStrategy;
+//import com.vdegree.grampus.common.lock.strategy.RedissonLockStrategy;
 import lombok.RequiredArgsConstructor;
-import org.redisson.Redisson;
-import org.redisson.api.RedissonClient;
+//import org.redisson.Redisson;
+//import org.redisson.api.RedissonClient;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -85,13 +85,13 @@ public class LockAutoConfiguration {
 		}
 	}
 
-	@Configuration
-	@ConditionalOnClass(Redisson.class)
-	static class RedissonStrategyAutoConfiguration {
-		@Bean
-		@Order(100)
-		public RedissonLockStrategy redissonLockStrategy(RedissonClient redissonClient) {
-			return new RedissonLockStrategy(redissonClient);
-		}
-	}
+//	@Configuration
+//	@ConditionalOnClass(Redisson.class)
+//	static class RedissonStrategyAutoConfiguration {
+//		@Bean
+//		@Order(100)
+//		public RedissonLockStrategy redissonLockStrategy(RedissonClient redissonClient) {
+//			return new RedissonLockStrategy(redissonClient);
+//		}
+//	}
 }
