@@ -25,7 +25,7 @@ public interface SysMenuService extends BaseService<SysMenu> {
 	void delete(Long id);
 
 	/**
-	 * 菜单列表
+	 * 菜单列表（全部）
 	 *
 	 * @param type 菜单类型
 	 */

@@ -1,16 +1,20 @@
 package com.vdegree.grampus.admin.modules.system.service.impl;
 
 import com.vdegree.grampus.admin.modules.system.dto.SysMenuDTO;
+import com.vdegree.grampus.admin.modules.system.enums.MenuTypeEnum;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
+import com.vdegree.grampus.common.core.utils.StringUtil;
 import com.vdegree.grampus.common.mybatis.service.impl.BaseServiceImpl;
 import com.vdegree.grampus.admin.modules.system.dao.SysMenuDao;
 import com.vdegree.grampus.admin.modules.system.entity.SysMenu;
 import com.vdegree.grampus.admin.modules.system.service.SysMenuService;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * 菜单表(SysMenu)表服务实现类
@@ -29,7 +33,7 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuDao, SysMenu> imp
 
 	@Override
 	public void save(SysMenuDTO dto) {
-		 SysMenu sysMenu = BeanUtil.copy(dto, SysMenu.class);
+		SysMenu sysMenu = BeanUtil.copy(dto, SysMenu.class);
 		baseMapper.insert(sysMenu);
 	}
 
@@ -54,18 +58,24 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuDao, SysMenu> imp
 
 	@Override
 	public List<SysMenuDTO> getUserMenuList(SystemUserDetails userDetail, Integer type) {
-		return null;
+		List<SysMenu> menuList = baseMapper.queryUserMenuList(userDetail.getId(), type);
+		return BeanUtil.copyList(menuList, SysMenuDTO.class);
 	}
 
 	@Override
 	public List<SysMenuDTO> getUserMenuNavList(SystemUserDetails userDetail) {
-		return null;
+		return this.getUserMenuList(userDetail, MenuTypeEnum.MENU.getValue());
 	}
 
 	@Override
 	public Set<String> getUserPermissions(SystemUserDetails userDetail) {
-
-		return null;
+		List<SysMenuDTO> menuNavList = this.getUserMenuNavList(userDetail);
+		Set<String> permissions = menuNavList.stream()
+				.filter(sysMenu -> StringUtil.isNotBlank(sysMenu.getPermission()))
+				.map(sysMenu -> sysMenu.getPermission().trim().split(","))
+				.flatMap(Arrays::stream)
+				.collect(Collectors.toSet());
+		return permissions;
 	}
 
 	@Override
