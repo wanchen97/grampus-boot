@@ -53,7 +53,7 @@ public class SysMenuController {
 	}
 
 	@ApiOperation("菜单列表")
-	@ApiImplicitParam(name = "type", value = "菜单类型 0：菜单 1：按钮  null：全部", paramType = "query", dataType = "int")
+	@ApiImplicitParam(name = "type", value = "菜单类型 0：菜单 1：按钮 null：全部", paramType = "query", dataType = "int")
 	@GetMapping("list")
 	@PreAuthorize("hasAuthority('sys:menu:list')")
 	public Result<List<SysMenuDTO>> list(Integer type) {
