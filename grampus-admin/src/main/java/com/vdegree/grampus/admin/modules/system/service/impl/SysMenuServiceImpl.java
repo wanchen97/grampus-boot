@@ -70,12 +70,11 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuDao, SysMenu> imp
 	@Override
 	public Set<String> getUserPermissions(SystemUserDetails userDetail) {
 		List<SysMenuDTO> menuNavList = this.getUserMenuNavList(userDetail);
-		Set<String> permissions = menuNavList.stream()
+		return menuNavList.stream()
 				.filter(sysMenu -> StringUtil.isNotBlank(sysMenu.getPermission()))
 				.map(sysMenu -> sysMenu.getPermission().trim().split(","))
 				.flatMap(Arrays::stream)
 				.collect(Collectors.toSet());
-		return permissions;
 	}
 
 	@Override
