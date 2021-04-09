@@ -1,6 +1,7 @@
 package com.vdegree.grampus.admin.modules.system.controller;
 
 import com.vdegree.grampus.admin.modules.system.dto.SysMenuDTO;
+import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.admin.modules.system.service.SysMenuService;
 import com.vdegree.grampus.admin.modules.system.utils.TreeUtils;
 import com.vdegree.grampus.common.core.result.ErrorCode;
@@ -35,11 +36,11 @@ public class SysMenuController {
 
 	private final SysMenuService sysMenuService;
 
-//	@GetMapping("nav")
-//	public Result<List<SysMenuDTO>> nav(){
-//		List<SysMenuDTO> list = sysMenuService.getUserMenuNavList(SecurityUser.getUser());
-//		return Result.success(list);
-//	}
+	@GetMapping("nav")
+	public Result<List<SysMenuDTO>> nav(){
+		List<SysMenuDTO> list = sysMenuService.getUserMenuNavList(SecurityUtils.getUserDetails());
+		return Result.success(list);
+	}
 //
 //	@GetMapping("permissions")
 //	public Result<Set<String>> permissions(){

@@ -3,8 +3,6 @@ package com.vdegree.grampus.admin.modules.system.dto;
 import com.vdegree.grampus.admin.modules.system.utils.TreeNode;
 import lombok.Data;
 
-import java.io.Serializable;
-
 /**
  * Title: 系统菜单DTO
  * Company: v-degree
