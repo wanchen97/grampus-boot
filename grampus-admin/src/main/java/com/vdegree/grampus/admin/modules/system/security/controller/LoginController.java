@@ -3,7 +3,6 @@ package com.vdegree.grampus.admin.modules.system.security.controller;
 import com.google.common.collect.Maps;
 import com.vdegree.grampus.admin.modules.system.entity.SysUser;
 import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
-import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetailsService;
 import com.vdegree.grampus.admin.modules.system.service.SysUserService;
 import com.vdegree.grampus.common.core.result.Result;
 import com.vdegree.grampus.common.core.utils.StringUtil;
@@ -34,8 +33,6 @@ public class LoginController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	@Autowired
-	private SystemUserDetailsService systemUserDetailsService;
 	@Autowired
 	private SysUserService sysUserService;
 	@Autowired
