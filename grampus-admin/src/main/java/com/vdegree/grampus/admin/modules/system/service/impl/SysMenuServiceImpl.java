@@ -2,10 +2,10 @@ package com.vdegree.grampus.admin.modules.system.service.impl;
 
 import com.vdegree.grampus.admin.modules.system.dto.SysMenuDTO;
 import com.vdegree.grampus.admin.modules.system.enums.MenuTypeEnum;
+import com.vdegree.grampus.admin.modules.system.security.enums.SuperAdminEnum;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
 import com.vdegree.grampus.admin.modules.system.utils.TreeUtils;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
-import com.vdegree.grampus.common.core.utils.StringUtil;
 import com.vdegree.grampus.common.mybatis.service.impl.BaseServiceImpl;
 import com.vdegree.grampus.admin.modules.system.dao.SysMenuDao;
 import com.vdegree.grampus.admin.modules.system.entity.SysMenu;
@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -59,8 +60,15 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuDao, SysMenu> imp
 
 	@Override
 	public List<SysMenuDTO> getUserMenuList(SystemUserDetails userDetail, Integer type) {
-		List<SysMenu> menuList = baseMapper.queryUserMenuList(userDetail.getId(), type);
-		return TreeUtils.build(BeanUtil.copyList(menuList, SysMenuDTO.class));
+		List<SysMenuDTO> sysMenuList;
+		boolean isSuperAdmin = SuperAdminEnum.TRUE.getValue().equals(userDetail.getSuperAdmin());
+		if (Boolean.TRUE.equals(isSuperAdmin)) {
+			sysMenuList = this.getMenuList(type);
+		} else {
+			List<SysMenu> menuList = baseMapper.queryUserMenuList(userDetail.getId(), type);
+			sysMenuList = BeanUtil.copyList(menuList, SysMenuDTO.class);
+		}
+		return TreeUtils.build(sysMenuList);
 	}
 
 	@Override
@@ -70,11 +78,14 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuDao, SysMenu> imp
 
 	@Override
 	public Set<String> getUserPermissions(SystemUserDetails userDetail) {
-		List<SysMenu> menuNavList =  baseMapper.queryUserMenuList(userDetail.getId(), null);
-		return menuNavList.stream()
-				.filter(sysMenu -> StringUtil.isNotBlank(sysMenu.getPermission()))
-				.map(sysMenu -> sysMenu.getPermission().trim().split(","))
-				.flatMap(Arrays::stream)
+//		List<SysMenu> menuNavList =  baseMapper.queryUserMenuList(userDetail.getId(), null);
+//		return menuNavList.stream()
+//				.filter(sysMenu -> StringUtil.isNotBlank(sysMenu.getPermission()))
+//				.map(sysMenu -> sysMenu.getPermission().trim().split(","))
+//				.flatMap(Arrays::stream)
+//				.collect(Collectors.toSet());
+		return Arrays.stream(userDetail.getPermissions().trim().split(","))
+				.filter(Objects::nonNull)
 				.collect(Collectors.toSet());
 	}
 
