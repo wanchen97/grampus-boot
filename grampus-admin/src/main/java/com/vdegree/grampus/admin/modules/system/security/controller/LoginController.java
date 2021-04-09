@@ -3,9 +3,13 @@ package com.vdegree.grampus.admin.modules.system.security.controller;
 import com.google.common.collect.Maps;
 import com.vdegree.grampus.admin.modules.system.entity.SysUser;
 import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
+import com.vdegree.grampus.admin.modules.system.security.pojo.LoginReq;
+import com.vdegree.grampus.admin.modules.system.security.pojo.RegisterReq;
 import com.vdegree.grampus.admin.modules.system.service.SysUserService;
 import com.vdegree.grampus.common.core.result.Result;
 import com.vdegree.grampus.common.core.utils.StringUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,6 +31,7 @@ import java.util.Map;
  * @author Beck
  * @date 2020-12-15
  */
+@Api(tags = "登陆注册")
 @Slf4j
 @RestController
 public class LoginController {
@@ -40,11 +45,12 @@ public class LoginController {
 	@Autowired
 	private JwtTokenManager jwtTokenManager;
 
+	@ApiOperation("/注册接口")
 	@PostMapping("/register")
-	public Result<Void> register(@RequestBody Map<String, Object> params) {
-		String userNo = (String) params.get("userNo");
-		String password = (String) params.get("password");
-		String name = (String) params.get("name");
+	public Result<Void> register(@RequestBody RegisterReq params) {
+		String userNo = params.getUserNo();
+		String password = params.getPassword();
+		String name = params.getName();
 
 		if (StringUtil.isBlank(userNo) || StringUtil.isBlank(password)) {
 			throw new IllegalArgumentException("userNo or password is null!");
@@ -60,12 +66,13 @@ public class LoginController {
 		return Result.success();
 	}
 
+	@ApiOperation("/登录接口")
 	@PostMapping("/login")
-	public Result<Map<String, Object>> login(@RequestBody Map<String, Object> params) {
-		String username = (String) params.get("userNo");
-		String password = (String) params.get("password");
+	public Result<Map<String, Object>> login(@RequestBody LoginReq params) {
+		String username = params.getUserNo();
+		String password = params.getPassword();
 		Authentication authentication =
-				authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
 		String token = jwtTokenManager.createToken(authentication);
