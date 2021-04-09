@@ -1,6 +1,7 @@
 package com.vdegree.grampus.admin.modules.system.security.users;
 
 import com.vdegree.grampus.admin.modules.system.entity.SysUser;
+import com.vdegree.grampus.admin.modules.system.security.enums.SuperAdminEnum;
 import com.vdegree.grampus.admin.modules.system.enums.SysUserEnabledEnum;
 import com.vdegree.grampus.admin.modules.system.security.exception.UserDisabledException;
 import com.vdegree.grampus.admin.modules.system.security.exception.UserNotFoundException;
@@ -48,7 +49,12 @@ public class SystemUserDetailsService implements UserDetailsService {
 
 	public UserDetails buildUserDetails(SysUser user) {
 		SystemUserDetails systemUserDetails = BeanUtil.copy(user, SystemUserDetails.class);
-		systemUserDetails.setPermissions(systemRoleService.getPermissions(user.getId()));
+		boolean isSuperAdmin = SuperAdminEnum.TRUE.getValue().equals(systemUserDetails.getSuperAdmin());
+		if (Boolean.TRUE.equals(isSuperAdmin)) {
+			systemUserDetails.setPermissions(systemRoleService.getAllPermissions());
+		} else {
+			systemUserDetails.setPermissions(systemRoleService.getPermissions(user.getId()));
+		}
 		return systemUserDetails;
 	}
 }

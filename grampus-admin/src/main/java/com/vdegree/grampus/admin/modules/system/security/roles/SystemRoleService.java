@@ -32,4 +32,14 @@ public class SystemRoleService {
 		Set<String> permissionSet = systemRoleDao.getPermissions(userId);
 		return Joiner.on(",").join(permissionSet.stream().filter(Objects::nonNull).collect(Collectors.toSet()));
 	}
+
+	/**
+	 * 获取所有权限标识
+	 *
+	 * @return 权限标识
+	 */
+	public String getAllPermissions() {
+		Set<String> permissionSet = systemRoleDao.getAllPermissions();
+		return Joiner.on(",").join(permissionSet.stream().filter(Objects::nonNull).collect(Collectors.toSet()));
+	}
 }

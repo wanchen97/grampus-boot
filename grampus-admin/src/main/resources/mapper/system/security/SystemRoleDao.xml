@@ -11,4 +11,10 @@
 		    ON srm.`menu_id` = sm.`id`
 		WHERE sur.`user_id` = #{userId}
 	</select>
+
+	<select id="getAllPermissions" resultType="java.lang.String">
+		SELECT sm.`permission`
+		FROM sys_menu sm
+		WHERE sm.`permission` IS NOT NULL
+	</select>
 </mapper>

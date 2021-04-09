@@ -22,4 +22,11 @@ public interface SystemRoleDao {
 	 * @return 权限标识
 	 */
 	Set<String> getPermissions(@Param("userId") Long userId);
+
+	/**
+	 * 获取所有权限标识
+	 *
+	 * @return 权限标识
+	 */
+	Set<String> getAllPermissions();
 }
