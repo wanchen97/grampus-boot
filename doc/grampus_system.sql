@@ -285,5 +285,15 @@ INSERT INTO `sys_menu` VALUES (35784994493317120, 35784905746038784, 1, '字典�
 INSERT INTO `sys_menu` VALUES (35784996384948224, 35784905746038784, 1, '字典删除', 'sys:dict:delete', '', '', 3, 0);
 INSERT INTO `sys_menu` VALUES (35784998272385024, 35784905746038784, 1, '字典导出', 'sys:dict:export', '', '', 4, 0);
 
+-- ----------------------------
+-- Records of sys_user
+-- ----------------------------
+INSERT INTO `sys_user` VALUES (126742336940032000, 'H001', 'H001', '$2a$10$Blav.U6cFEu7/1ONBeRAoudAQK12bA0qnysGEcl9CIOq.b4L7E94m', NULL, NULL, 1, NULL, NULL, '2020-12-15 09:48:47.812', NULL, '2020-12-15 09:48:47.812', 0);
+
+-- ----------------------------
+-- Records of sys_user_role
+-- ----------------------------
+INSERT INTO `sys_user_role` VALUES (1, 126742336940032000, 1);
+
 SET
 FOREIGN_KEY_CHECKS = 1;
