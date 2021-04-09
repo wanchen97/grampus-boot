@@ -23,22 +23,25 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuDao, SysMenu> imp
 
 	@Override
 	public SysMenuDTO get(Long id) {
-		return null;
+		SysMenu sysMenu = baseMapper.selectByPrimaryKey(id);
+		return BeanUtil.copy(sysMenu, SysMenuDTO.class);
 	}
 
 	@Override
 	public void save(SysMenuDTO dto) {
-
+		 SysMenu sysMenu = BeanUtil.copy(dto, SysMenu.class);
+		baseMapper.insert(sysMenu);
 	}
 
 	@Override
 	public void update(SysMenuDTO dto) {
-
+		SysMenu sysMenu = BeanUtil.copy(dto, SysMenu.class);
+		baseMapper.updateByPrimaryKeySelective(sysMenu);
 	}
 
 	@Override
 	public void delete(Long id) {
-
+		baseMapper.deleteByPrimaryKey(id);
 	}
 
 	@Override
@@ -61,11 +64,15 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuDao, SysMenu> imp
 
 	@Override
 	public Set<String> getUserPermissions(SystemUserDetails userDetail) {
+
 		return null;
 	}
 
 	@Override
-	public List<SysMenuDTO> getListPid(Long pid) {
-		return null;
+	public List<SysMenuDTO> getListByPid(Long pid) {
+		SysMenu sysMenu = new SysMenu();
+		sysMenu.setParentId(pid);
+		List<SysMenu> sysMenus = baseMapper.select(sysMenu);
+		return BeanUtil.copyList(sysMenus, SysMenuDTO.class);
 	}
 }

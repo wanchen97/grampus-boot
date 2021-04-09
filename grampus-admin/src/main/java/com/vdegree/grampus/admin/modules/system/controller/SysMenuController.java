@@ -90,7 +90,7 @@ public class SysMenuController {
 	@PreAuthorize("hasAuthority('sys:menu:delete')")
 	public Result<Void> delete(@PathVariable("id") Long id) {
 		//判断是否有子菜单或按钮
-		List<SysMenuDTO> list = sysMenuService.getListPid(id);
+		List<SysMenuDTO> list = sysMenuService.getListByPid(id);
 		if (list.size() > 0) {
 			return Result.error(ErrorCode.SUB_MENU_EXIST);
 		}

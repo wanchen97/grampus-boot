@@ -56,5 +56,5 @@ public interface SysMenuService extends BaseService<SysMenu> {
 	 *
 	 * @param pid 父菜单ID
 	 */
-	List<SysMenuDTO> getListPid(Long pid);
+	List<SysMenuDTO> getListByPid(Long pid);
 }
