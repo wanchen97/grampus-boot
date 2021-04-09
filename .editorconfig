@@ -1,19 +1,17 @@
 root = true
 
-[*]
-indent_style = space
-indent_size = 4
+[*.{adoc, bat, groovy, html, java, js, jsp, kt, kts, md, properties, py, rb, sh, sql, svg, txt, xml, xsd}]
 charset = utf-8
-end_of_line = lf
-trim_trailing_whitespace = true
-insert_final_newline = false
 
-[*.java]
+[*.{groovy, java, kt, kts, xml, xsd}]
 indent_style = tab
+indent_size = 4
+continuation_indent_size = 8
+end_of_line = lf
 
-[*.{json,yml}]
+[*.{js, html}]
+indent_style = space
 indent_size = 2
-
-[*.md]
-insert_final_newline = false
-trim_trailing_whitespace = false
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
