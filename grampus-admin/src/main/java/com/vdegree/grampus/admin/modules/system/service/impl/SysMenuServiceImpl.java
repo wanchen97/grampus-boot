@@ -3,6 +3,7 @@ package com.vdegree.grampus.admin.modules.system.service.impl;
 import com.vdegree.grampus.admin.modules.system.dto.SysMenuDTO;
 import com.vdegree.grampus.admin.modules.system.enums.MenuTypeEnum;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
+import com.vdegree.grampus.admin.modules.system.utils.TreeUtils;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.core.utils.StringUtil;
 import com.vdegree.grampus.common.mybatis.service.impl.BaseServiceImpl;
@@ -59,7 +60,7 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuDao, SysMenu> imp
 	@Override
 	public List<SysMenuDTO> getUserMenuList(SystemUserDetails userDetail, Integer type) {
 		List<SysMenu> menuList = baseMapper.queryUserMenuList(userDetail.getId(), type);
-		return BeanUtil.copyList(menuList, SysMenuDTO.class);
+		return TreeUtils.build(BeanUtil.copyList(menuList, SysMenuDTO.class));
 	}
 
 	@Override
@@ -69,7 +70,7 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuDao, SysMenu> imp
 
 	@Override
 	public Set<String> getUserPermissions(SystemUserDetails userDetail) {
-		List<SysMenuDTO> menuNavList = this.getUserMenuNavList(userDetail);
+		List<SysMenu> menuNavList =  baseMapper.queryUserMenuList(userDetail.getId(), null);
 		return menuNavList.stream()
 				.filter(sysMenu -> StringUtil.isNotBlank(sysMenu.getPermission()))
 				.map(sysMenu -> sysMenu.getPermission().trim().split(","))
