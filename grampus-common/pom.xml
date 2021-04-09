@@ -20,7 +20,6 @@
 		<module>grampus-common-sequence</module>
 		<module>grampus-common-security</module>
 		<module>grampus-common-auth</module>
-		<module>grampus-common-redisson</module>
 		<module>grampus-common-lock</module>
 		<module>grampus-common-delayqueue</module>
 		<module>grampus-common-rabbitmq</module>
