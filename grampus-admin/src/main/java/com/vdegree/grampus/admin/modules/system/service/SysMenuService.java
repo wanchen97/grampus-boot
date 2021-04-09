@@ -16,12 +16,32 @@ import java.util.Set;
  */
 public interface SysMenuService extends BaseService<SysMenu> {
 
+	/**
+	 * 根据ID查询数据
+	 *
+	 * @param id 菜单数据ID
+	 */
 	SysMenuDTO get(Long id);
 
+	/**
+	 * 保存菜单信息
+	 *
+	 * @param dto 菜单信息
+	 */
 	void save(SysMenuDTO dto);
 
+	/**
+	 * 更新菜单信息
+	 *
+	 * @param dto 菜单信息
+	 */
 	void update(SysMenuDTO dto);
 
+	/**
+	 * 删除菜单信息
+	 *
+	 * @param id 菜单数据ID
+	 */
 	void delete(Long id);
 
 	/**
@@ -48,6 +68,8 @@ public interface SysMenuService extends BaseService<SysMenu> {
 
 	/**
 	 * 获取用户权限标识
+	 *
+	 * @param userDetail 用户信息
 	 */
 	Set<String> getUserPermissions(SystemUserDetails userDetail);
 
