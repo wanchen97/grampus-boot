@@ -69,6 +69,10 @@ public interface Constant {
      * 排序方式
      */
     String ORDER = "order";
+	/**
+	 * 是否查count
+	 */
+	String WITHCOUNT = "withCount";
     /**
      * token header
      */

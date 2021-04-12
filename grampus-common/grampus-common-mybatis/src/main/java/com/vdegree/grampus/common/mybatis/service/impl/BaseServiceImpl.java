@@ -123,26 +123,35 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<
 
 	@Override
 	public PageInfo<T> selectPage(Map<String, Object> params, T entity) {
+		String pageNumStr = (String) params.get(Constant.PAGE_NUM);
+		String pageSizeStr = (String) params.get(Constant.PAGE_SIZE);
+		String withCountStr = (String) params.get(Constant.WITHCOUNT);
 		// 分页字段
-		int pageNum = params.containsKey(Constant.PAGE_NUM) ? Integer.parseInt((String) params.get(Constant.PAGE_NUM)) : 1;
-		int pageSize = params.containsKey(Constant.PAGE_SIZE) ? Integer.parseInt((String) params.get(Constant.PAGE_SIZE)) : 10;
+		int pageNum = params.containsKey(Constant.PAGE_NUM) ? Integer.parseInt(pageNumStr) : 1;
+		int pageSize = params.containsKey(Constant.PAGE_SIZE) ? Integer.parseInt(pageSizeStr) : 10;
 		// 排序字段
 		String orderField = (String) params.get(Constant.ORDER_FIELD);
 		String order = (String) params.get(Constant.ORDER);
-		return this.selectPage(entity, pageNum, pageSize, orderField, order);
+		// 是否查count
+		boolean withCount = !params.containsKey(Constant.WITHCOUNT) || Boolean.parseBoolean(withCountStr);
+		return this.selectPage(entity, pageNum, pageSize, withCount, orderField, order);
 	}
 
 	@Override
 	public PageInfo<T> selectPage(T entity, int pageNum, int pageSize) {
-		return PageHelper.startPage(pageNum, pageSize)
-				.doSelectPageInfo(() -> baseMapper.select(entity));
+		return this.selectPage(entity, pageNum, pageSize, true);
 	}
 
 	@Override
-	public PageInfo<T> selectPage(T entity, int pageNum, int pageSize, String orderField, String order) {
-		Page<T> page = PageHelper.startPage(pageNum, pageSize);
+	public PageInfo<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount) {
+		return this.selectPage(entity, pageNum, pageSize, withCount, null, null);
+	}
+
+	@Override
+	public PageInfo<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount, String orderField, String order) {
+		Page<T> page = PageHelper.startPage(pageNum, pageSize, withCount);
 		if (StringUtil.isNotBlank(orderField)) {
-			page.setOrderBy(orderField + " " + (Constant.ASC.equalsIgnoreCase(order) ? Constant.ASC : Constant.DESC));
+			page.setOrderBy(orderField + " " + (Constant.DESC.equalsIgnoreCase(order) ? Constant.DESC : Constant.ASC));
 		}
 		return page.doSelectPageInfo(() -> baseMapper.select(entity));
 	}

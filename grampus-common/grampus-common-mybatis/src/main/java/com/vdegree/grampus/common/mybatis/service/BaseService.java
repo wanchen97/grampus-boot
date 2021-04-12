@@ -143,15 +143,28 @@ public interface BaseService<T> {
 
 	/**
 	 * <p>
-	 * 分页条件查询
+	 * 分页条件查询 (默认查count)
 	 * </p>
 	 *
-	 * @param entity   查询实例
-	 * @param pageNum  页码
-	 * @param pageSize 每页数据量
+	 * @param entity    查询实例
+	 * @param pageNum   页码
+	 * @param pageSize  每页数据量
 	 * @return 查询结果
 	 */
 	PageInfo<T> selectPage(T entity, int pageNum, int pageSize);
+
+	/**
+	 * <p>
+	 * 分页条件查询
+	 * </p>
+	 *
+	 * @param entity    查询实例
+	 * @param pageNum   页码
+	 * @param pageSize  每页数据量
+	 * @param withCount 是否查count(true查count false)
+	 * @return 查询结果
+	 */
+	PageInfo<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount);
 
 	/**
 	 * <p>
@@ -165,7 +178,7 @@ public interface BaseService<T> {
 	 * @param order      排序方式(asc desc)
 	 * @return 查询结果
 	 */
-	PageInfo<T> selectPage(T entity, int pageNum, int pageSize, String orderField, String order);
+	PageInfo<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount, String orderField, String order);
 
 	/**
 	 * <p>
