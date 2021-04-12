@@ -6,6 +6,7 @@ import tk.mybatis.mapper.entity.Example;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Title: 基础服务接口，所有Service接口都要继承(继承后即可获得BaseMapper的CRUD功能)
@@ -15,15 +16,6 @@ import java.util.List;
  * @date 2020-12-02
  */
 public interface BaseService<T> {
-
-	/**
-	 * 逻辑删除
-	 *
-	 * @param ids    ids
-	 * @param entity 实体
-	 * @return boolean
-	 */
-	void logicDelete(Long[] ids, Class<T> entity);
 
 	/**
 	 * <p>
@@ -143,12 +135,37 @@ public interface BaseService<T> {
 	 * 分页条件查询
 	 * </p>
 	 *
+	 * @param params 参数
+	 * @param entity 查询实例
+	 * @return 查询结果
+	 */
+	PageInfo<T> selectPage(Map<String, Object> params, T entity);
+
+	/**
+	 * <p>
+	 * 分页条件查询
+	 * </p>
+	 *
 	 * @param entity   查询实例
 	 * @param pageNum  页码
 	 * @param pageSize 每页数据量
 	 * @return 查询结果
 	 */
 	PageInfo<T> selectPage(T entity, int pageNum, int pageSize);
+
+	/**
+	 * <p>
+	 * 分页条件查询
+	 * </p>
+	 *
+	 * @param entity     查询实例
+	 * @param pageNum    页码
+	 * @param pageSize   每页数据量
+	 * @param orderField 排序字段
+	 * @param order      排序方式(asc desc)
+	 * @return 查询结果
+	 */
+	PageInfo<T> selectPage(T entity, int pageNum, int pageSize, String orderField, String order);
 
 	/**
 	 * <p>

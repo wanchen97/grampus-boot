@@ -2,6 +2,7 @@ package com.vdegree.grampus.admin.modules.system.security.filter;
 
 import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
+import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.utils.StringUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -51,7 +52,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 	 * Get token from header.
 	 */
 	private String resolveToken(HttpServletRequest request) {
-		String bearerToken = request.getHeader("Authorization");
+		String bearerToken = request.getHeader(Constant.AUTHORIZATION_HEADER);
 		if (StringUtil.isNotBlank(bearerToken) && bearerToken.startsWith("Bearer ")) {
 			return bearerToken.substring(7);
 		}
