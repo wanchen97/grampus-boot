@@ -1,6 +1,6 @@
 package com.vdegree.grampus.common.mybatis.service;
 
-import com.github.pagehelper.PageInfo;
+import com.vdegree.grampus.common.mybatis.page.PageData;
 import tk.mybatis.mapper.entity.Example;
 
 import java.io.Serializable;
@@ -136,22 +136,22 @@ public interface BaseService<T> {
 	 * </p>
 	 *
 	 * @param params 参数
-	 * @param entity 查询实例
+	 * @param clazz  查询条件映射实体的类名
 	 * @return 查询结果
 	 */
-	PageInfo<T> selectPage(Map<String, Object> params, T entity);
+	PageData<T> selectPage(Map<String, Object> params, Class<T> clazz);
 
 	/**
 	 * <p>
 	 * 分页条件查询 (默认查count)
 	 * </p>
 	 *
-	 * @param entity    查询实例
-	 * @param pageNum   页码
-	 * @param pageSize  每页数据量
+	 * @param entity   查询实例
+	 * @param pageNum  页码
+	 * @param pageSize 每页数据量
 	 * @return 查询结果
 	 */
-	PageInfo<T> selectPage(T entity, int pageNum, int pageSize);
+	PageData<T> selectPage(T entity, int pageNum, int pageSize);
 
 	/**
 	 * <p>
@@ -164,7 +164,7 @@ public interface BaseService<T> {
 	 * @param withCount 是否查count(true查count false)
 	 * @return 查询结果
 	 */
-	PageInfo<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount);
+	PageData<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount);
 
 	/**
 	 * <p>
@@ -178,7 +178,7 @@ public interface BaseService<T> {
 	 * @param order      排序方式(asc desc)
 	 * @return 查询结果
 	 */
-	PageInfo<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount, String orderField, String order);
+	PageData<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount, String orderField, String order);
 
 	/**
 	 * <p>

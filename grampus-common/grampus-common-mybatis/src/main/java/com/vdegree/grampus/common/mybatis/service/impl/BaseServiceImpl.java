@@ -2,12 +2,13 @@ package com.vdegree.grampus.common.mybatis.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import com.vdegree.grampus.common.core.constant.Constant;
+import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.core.utils.StringUtil;
 import com.vdegree.grampus.common.mybatis.mapper.BaseMapper;
+import com.vdegree.grampus.common.mybatis.page.PageData;
 import com.vdegree.grampus.common.mybatis.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -122,7 +123,8 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<
 	}
 
 	@Override
-	public PageInfo<T> selectPage(Map<String, Object> params, T entity) {
+	public PageData<T> selectPage(Map<String, Object> params, Class<T> clazz) {
+		T entity = BeanUtil.toBean(params, clazz);
 		String pageNumStr = (String) params.get(Constant.PAGE_NUM);
 		String pageSizeStr = (String) params.get(Constant.PAGE_SIZE);
 		String withCountStr = (String) params.get(Constant.WITH_COUNT);
@@ -138,22 +140,22 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<
 	}
 
 	@Override
-	public PageInfo<T> selectPage(T entity, int pageNum, int pageSize) {
+	public PageData<T> selectPage(T entity, int pageNum, int pageSize) {
 		return this.selectPage(entity, pageNum, pageSize, true);
 	}
 
 	@Override
-	public PageInfo<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount) {
+	public PageData<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount) {
 		return this.selectPage(entity, pageNum, pageSize, withCount, null, null);
 	}
 
 	@Override
-	public PageInfo<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount, String orderField, String order) {
+	public PageData<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount, String orderField, String order) {
 		Page<T> page = PageHelper.startPage(pageNum, pageSize, withCount);
 		if (StringUtil.isNotBlank(orderField)) {
 			page.setOrderBy(orderField + " " + (Constant.DESC.equalsIgnoreCase(order) ? Constant.DESC : Constant.ASC));
 		}
-		return page.doSelectPageInfo(() -> baseMapper.select(entity));
+		return new PageData<>(page.doSelectPageInfo(() -> baseMapper.select(entity)));
 	}
 
 	@Override
