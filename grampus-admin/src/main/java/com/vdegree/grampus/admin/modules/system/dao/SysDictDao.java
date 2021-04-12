@@ -4,6 +4,8 @@ import com.vdegree.grampus.admin.modules.system.entity.SysDict;
 import com.vdegree.grampus.common.mybatis.annotation.MyBatisMapper;
 import com.vdegree.grampus.common.mybatis.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * 字典表(SysDict)表数据库访问层
  *
@@ -12,5 +14,8 @@ import com.vdegree.grampus.common.mybatis.mapper.BaseMapper;
  */
 @MyBatisMapper
 public interface SysDictDao extends BaseMapper<SysDict> {
-
+	/**
+	 * 获取系统字典列表
+	 */
+	List<SysDict> getSysDictList();
 }
