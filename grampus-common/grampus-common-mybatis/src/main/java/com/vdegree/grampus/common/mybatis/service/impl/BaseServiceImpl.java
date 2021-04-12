@@ -125,7 +125,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<
 	public PageInfo<T> selectPage(Map<String, Object> params, T entity) {
 		String pageNumStr = (String) params.get(Constant.PAGE_NUM);
 		String pageSizeStr = (String) params.get(Constant.PAGE_SIZE);
-		String withCountStr = (String) params.get(Constant.WITHCOUNT);
+		String withCountStr = (String) params.get(Constant.WITH_COUNT);
 		// 分页字段
 		int pageNum = params.containsKey(Constant.PAGE_NUM) ? Integer.parseInt(pageNumStr) : 1;
 		int pageSize = params.containsKey(Constant.PAGE_SIZE) ? Integer.parseInt(pageSizeStr) : 10;
@@ -133,7 +133,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<
 		String orderField = (String) params.get(Constant.ORDER_FIELD);
 		String order = (String) params.get(Constant.ORDER);
 		// 是否查count
-		boolean withCount = !params.containsKey(Constant.WITHCOUNT) || Boolean.parseBoolean(withCountStr);
+		boolean withCount = !params.containsKey(Constant.WITH_COUNT) || Boolean.parseBoolean(withCountStr);
 		return this.selectPage(entity, pageNum, pageSize, withCount, orderField, order);
 	}
 

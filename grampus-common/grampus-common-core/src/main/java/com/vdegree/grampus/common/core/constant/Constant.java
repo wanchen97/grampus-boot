@@ -72,7 +72,7 @@ public interface Constant {
 	/**
 	 * 是否查count
 	 */
-	String WITHCOUNT = "withCount";
+	String WITH_COUNT = "withCount";
     /**
      * token header
      */
