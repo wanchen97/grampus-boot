@@ -2,7 +2,7 @@ package com.vdegree.grampus.common.mybatis;
 
 import com.vdegree.grampus.common.sequence.generator.IdGenerator;
 import com.vdegree.grampus.common.mybatis.utils.SnowflakeKeyGen;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 public class MybatisAutoConfiguration {
 
 	@Component
-	@RequiredArgsConstructor
+	@AllArgsConstructor
 	public static class KeyGenConfig implements InitializingBean {
 
 		private final IdGenerator idGenerator;

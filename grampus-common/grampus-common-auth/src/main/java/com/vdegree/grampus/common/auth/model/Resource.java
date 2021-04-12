@@ -1,7 +1,7 @@
 package com.vdegree.grampus.common.auth.model;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import java.io.Serializable;
 
@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @date 2020-12-9
  */
 @Data
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class Resource implements Serializable {
 
 	public static final String SPLITTER = ":";

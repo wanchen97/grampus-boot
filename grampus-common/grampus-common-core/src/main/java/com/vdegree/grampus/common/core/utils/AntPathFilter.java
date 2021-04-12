@@ -1,6 +1,6 @@
 package com.vdegree.grampus.common.core.utils;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 
@@ -13,7 +13,7 @@ import java.io.Serializable;
  *
  * @author Beck
  */
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AntPathFilter implements FileFilter, Serializable {
 	private static final long serialVersionUID = 812598009067554612L;
 	private static final PathMatcher PATH_MATCHER = new AntPathMatcher();

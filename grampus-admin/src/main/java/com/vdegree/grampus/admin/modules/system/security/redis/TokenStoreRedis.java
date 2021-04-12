@@ -2,7 +2,7 @@ package com.vdegree.grampus.admin.modules.system.security.redis;
 
 import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
 import com.vdegree.grampus.common.redis.utils.RedisCache;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
@@ -15,7 +15,7 @@ import java.time.Duration;
  * @date 2021-04-02
  */
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class TokenStoreRedis {
 
 	private final RedisCache redisCache;

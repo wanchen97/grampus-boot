@@ -1,6 +1,6 @@
 //package com.vdegree.grampus.common.lock.strategy;
 //
-//import lombok.RequiredArgsConstructor;
+//import lombok.AllArgsConstructor;
 //import lombok.extern.slf4j.Slf4j;
 //import org.redisson.api.RLock;
 //import org.redisson.api.RedissonClient;
@@ -16,7 +16,7 @@
 // * @date 2021-01-29
 // */
 //@Slf4j
-//@RequiredArgsConstructor
+//@AllArgsConstructor
 //public class RedissonLockStrategy extends AbstractLockStrategy<RLock> implements LockStrategy<RLock> {
 //
 //	private final RedissonClient redissonClient;

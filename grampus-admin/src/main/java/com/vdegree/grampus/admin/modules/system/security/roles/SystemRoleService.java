@@ -2,7 +2,7 @@ package com.vdegree.grampus.admin.modules.system.security.roles;
 
 import com.google.common.base.Joiner;
 import com.vdegree.grampus.admin.modules.system.security.roles.dao.SystemRoleDao;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  * @date 2020-12-15
  */
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class SystemRoleService {
 
 	private final SystemRoleDao systemRoleDao;

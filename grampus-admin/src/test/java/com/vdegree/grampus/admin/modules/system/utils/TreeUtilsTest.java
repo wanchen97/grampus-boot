@@ -5,7 +5,7 @@ import com.vdegree.grampus.admin.modules.system.entity.SysMenu;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import tk.mybatis.mapper.annotation.LogicDelete;

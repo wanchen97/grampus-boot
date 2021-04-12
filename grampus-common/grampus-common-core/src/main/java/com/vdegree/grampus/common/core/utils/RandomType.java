@@ -1,7 +1,7 @@
 package com.vdegree.grampus.common.core.utils;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 /**
  * 生成的随机数类型
@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
  * @author Beck
  */
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
 public enum RandomType {
 	/**
 	 * INT STRING ALL

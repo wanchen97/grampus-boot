@@ -1,6 +1,6 @@
 package com.vdegree.grampus.common.lock.strategy;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
@@ -16,7 +16,7 @@ import java.util.Collections;
  * @date 2021-01-29
  */
 @Slf4j
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class RedisTemplateLockStrategy extends AbstractLockStrategy<String> implements LockStrategy<String> {
 
 	private static final RedisScript<String> SCRIPT_LOCK = new DefaultRedisScript<>("return redis.call('set',KEYS[1]," +

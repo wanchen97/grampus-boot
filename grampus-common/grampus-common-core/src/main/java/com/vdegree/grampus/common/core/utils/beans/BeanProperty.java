@@ -1,7 +1,7 @@
 package com.vdegree.grampus.common.core.utils.beans;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 /**
  * Bean属性
@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
  * @author Beck
  */
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class BeanProperty {
 	private final String name;
 	private final Class<?> type;

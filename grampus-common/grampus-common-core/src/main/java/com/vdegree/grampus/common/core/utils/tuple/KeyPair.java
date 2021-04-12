@@ -1,7 +1,7 @@
 package com.vdegree.grampus.common.core.utils.tuple;
 
 import com.vdegree.grampus.common.core.utils.crypto.RSAUtil;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -11,7 +11,7 @@ import java.security.PublicKey;
  *
  * @author Beck
  */
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class KeyPair {
 	private final java.security.KeyPair keyPair;
 

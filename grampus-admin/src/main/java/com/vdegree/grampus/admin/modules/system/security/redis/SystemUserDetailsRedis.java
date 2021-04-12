@@ -3,7 +3,7 @@ package com.vdegree.grampus.admin.modules.system.security.redis;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.redis.utils.RedisCache;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
@@ -17,7 +17,7 @@ import java.time.Duration;
  * @date 2021-04-02
  */
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class SystemUserDetailsRedis {
 
 	private final RedisCache redisCache;

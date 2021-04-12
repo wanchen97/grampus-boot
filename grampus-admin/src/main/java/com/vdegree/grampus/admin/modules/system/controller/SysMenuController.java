@@ -9,7 +9,7 @@ import com.vdegree.grampus.common.core.result.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +32,7 @@ import java.util.Set;
  */
 @Api(tags = "菜单模块")
 @RestController
-@RequiredArgsConstructor
+@AllArgsConstructor
 @RequestMapping("/menu")
 public class SysMenuController {
 

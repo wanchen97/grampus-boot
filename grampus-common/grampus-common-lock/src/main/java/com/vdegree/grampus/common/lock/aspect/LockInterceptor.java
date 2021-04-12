@@ -4,7 +4,7 @@ import com.vdegree.grampus.common.lock.LockInfo;
 import com.vdegree.grampus.common.lock.LockKeyBuilder;
 import com.vdegree.grampus.common.lock.LockTemplate;
 import com.vdegree.grampus.common.lock.annotation.DistributedLock;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
@@ -17,7 +17,7 @@ import org.aopalliance.intercept.MethodInvocation;
  * @date 2021-01-29
  */
 @Slf4j
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class LockInterceptor implements MethodInterceptor {
 
 	private final LockTemplate lockTemplate;

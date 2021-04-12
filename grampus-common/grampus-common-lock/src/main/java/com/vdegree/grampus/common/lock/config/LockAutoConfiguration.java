@@ -11,7 +11,7 @@ import com.vdegree.grampus.common.lock.properties.DistributedLockProperties;
 import com.vdegree.grampus.common.lock.strategy.LockStrategy;
 import com.vdegree.grampus.common.lock.strategy.RedisTemplateLockStrategy;
 //import com.vdegree.grampus.common.lock.strategy.RedissonLockStrategy;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 //import org.redisson.Redisson;
 //import org.redisson.api.RedissonClient;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -35,7 +35,7 @@ import java.util.List;
  */
 @Configuration
 @EnableConfigurationProperties(DistributedLockProperties.class)
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class LockAutoConfiguration {
 
 	private final DistributedLockProperties properties;

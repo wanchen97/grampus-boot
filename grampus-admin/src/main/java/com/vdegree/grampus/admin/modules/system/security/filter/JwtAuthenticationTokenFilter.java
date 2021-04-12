@@ -3,7 +3,7 @@ package com.vdegree.grampus.admin.modules.system.security.filter;
 import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
 import com.vdegree.grampus.common.core.utils.StringUtil;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,7 +25,7 @@ import java.io.IOException;
  * @date 2020-12-15
  */
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
 	private final JwtTokenManager tokenManager;
