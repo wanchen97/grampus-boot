@@ -8,6 +8,8 @@ import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.admin.modules.system.utils.TreeUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,11 +32,11 @@ import java.util.List;
  */
 @Api(tags = "部门管理")
 @RestController
+@AllArgsConstructor
 @RequestMapping("/dept")
 public class SysDeptController {
 
-	@Autowired
-	private SysDeptService sysDeptService;
+	private final SysDeptService sysDeptService;
 
 	@ApiOperation("部门列表")
 	@GetMapping("/list")
