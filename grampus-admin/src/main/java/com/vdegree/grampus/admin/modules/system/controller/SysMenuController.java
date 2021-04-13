@@ -48,8 +48,18 @@ public class SysMenuController {
 	@ApiOperation("菜单权限")
 	@GetMapping("permissions")
 	public Result<Set<String>> permissions() {
-		Set<String> set = sysMenuService.getUserPermissions(SecurityUtils.getUserDetails());
-		return Result.success(set);
+		Set<String> permissions = sysMenuService.getUserPermissions(SecurityUtils.getUserDetails());
+		return Result.success(permissions);
+	}
+
+	/**
+	 * TODO 待定
+	 */
+	@ApiOperation("当前用户角色菜单列表")
+	@GetMapping("myMenus")
+	public Result<List<SysMenuDTO>> myMenus() {
+		List<SysMenuDTO> result = sysMenuService.getUserMenuList(SecurityUtils.getUserDetails(), null);
+		return Result.success(result);
 	}
 
 	@ApiOperation("菜单列表")

@@ -40,7 +40,7 @@ public class SysParamController {
 
 	private final SysParamService sysParamService;
 
-	@ApiOperation("分页")
+	@ApiOperation("参数分页查询")
 	@GetMapping("page")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = Constant.PAGE_NUM, value = "当前页码，从1开始", paramType = "query", required = true, dataType = "int"),
@@ -55,7 +55,7 @@ public class SysParamController {
 		return Result.success(result);
 	}
 
-	@ApiOperation("信息")
+	@ApiOperation("参数信息")
 	@GetMapping("{id}")
 	@PreAuthorize("hasAuthority('sys:params:info')")
 	public Result<SysParamDTO> get(@PathVariable("id") Long id) {
@@ -63,7 +63,7 @@ public class SysParamController {
 		return Result.success(result);
 	}
 
-	@ApiOperation("保存")
+	@ApiOperation("保存参数")
 	@PostMapping
 	@PreAuthorize("hasAuthority('sys:params:save')")
 	public Result<Void> save(@RequestBody SysParamDTO dto) {
@@ -71,7 +71,7 @@ public class SysParamController {
 		return Result.success();
 	}
 
-	@ApiOperation("修改")
+	@ApiOperation("修改参数")
 	@PutMapping
 	@PreAuthorize("hasAuthority('sys:params:update')")
 	public Result<Void> update(@RequestBody SysParamDTO dto) {
@@ -79,7 +79,7 @@ public class SysParamController {
 		return Result.success();
 	}
 
-	@ApiOperation("删除")
+	@ApiOperation("删除参数")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:params:delete')")
 	public Result<Void> delete(@RequestBody Long[] ids) {
