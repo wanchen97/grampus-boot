@@ -43,7 +43,6 @@ public class SysDictController {
 
 	private final SysDictService sysDictService;
 
-	@GetMapping("page")
 	@ApiOperation("字典分页查询")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = Constant.PAGE_NUM, value = "当前页码，从1开始", paramType = "query", required = true, dataType = "int"),
@@ -54,53 +53,54 @@ public class SysDictController {
 			@ApiImplicitParam(name = "dictType", value = "字典类型", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = "dictName", value = "字典名称", paramType = "query", dataType = "String")
 	})
+	@GetMapping("page")
 	@PreAuthorize("hasAuthority('sys:dict:list')")
 	public Result<PageData<SysDictDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
 		PageData<SysDictDTO> page = sysDictService.queryPage(params, SysDict.class);
 		return Result.success(page);
 	}
 
-	@GetMapping("{id}")
 	@ApiOperation("字典信息")
+	@GetMapping("{id}")
 	@PreAuthorize("hasAuthority('sys:dict:info')")
 	public Result<SysDictDTO> get(@PathVariable("id") Long id) {
 		SysDictDTO result = sysDictService.queryById(id);
 		return Result.success(result);
 	}
 
-	@PostMapping
 	@ApiOperation("字典保存")
+	@PostMapping
 	@PreAuthorize("hasAuthority('sys:dict:save')")
 	public Result<Void> save(@RequestBody SysDictDTO params) {
 		sysDictService.save(params);
 		return Result.success();
 	}
 
-	@PutMapping
 	@ApiOperation("字典修改")
+	@PutMapping
 	@PreAuthorize("hasAuthority('sys:dict:update')")
 	public Result<Void> update(@RequestBody SysDictDTO params) {
 		sysDictService.modifyById(params);
 		return Result.success();
 	}
 
-	@DeleteMapping
 	@ApiOperation("字典删除")
+	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:dict:delete')")
 	public Result<Void> delete(@RequestBody Long[] ids) {
 		sysDictService.deleteBatchIds(Arrays.asList(ids));
 		return Result.success();
 	}
 
-	@GetMapping("all")
 	@ApiOperation("所有字典数据")
+	@GetMapping("all")
 	public Result<List<SysDictDTO>> all() {
 		List<SysDictDTO> result = sysDictService.queryAll();
 		return Result.success(result);
 	}
 
-	@GetMapping("list")
 	@ApiOperation("字典列表")
+	@GetMapping("list")
 	public Result<List<SysDictDTO>> list() {
 		List<SysDict> list = sysDictService.getSysDictList();
 		return Result.success(BeanUtil.copyList(list, SysDictDTO.class));
