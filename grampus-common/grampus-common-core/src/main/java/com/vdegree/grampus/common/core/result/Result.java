@@ -1,7 +1,12 @@
 package com.vdegree.grampus.common.core.result;
 
 import com.vdegree.grampus.common.core.utils.StringUtil;
-import lombok.Data;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -12,7 +17,11 @@ import java.io.Serializable;
  * @author Beck
  * @date 2020-12-9
  */
-@Data
+@Getter
+@Setter
+@ToString
+@ApiModel(description = "返回信息")
+@NoArgsConstructor
 public class Result<T> implements Serializable {
 	private static final long serialVersionUID = -406541324632704646L;
 	private static final String DEFAULT_SUCCESS_PHRASE = "Success";
@@ -24,18 +33,22 @@ public class Result<T> implements Serializable {
 	/**
 	 * 消息
 	 */
+	@ApiModelProperty(value = "消息", required = true)
 	private String message;
 	/**
 	 * 数据
 	 */
+	@ApiModelProperty(value = "数据", required = true)
 	private T data;
 	/**
 	 * 消息状态码
 	 */
+	@ApiModelProperty(value = "消息状态码", required = true)
 	private int status;
 	/**
 	 * 消息错误码
 	 */
+	@ApiModelProperty(value = "消息错误码", required = true)
 	private String errorCode;
 
 	public static <T> Result<T> success() {
