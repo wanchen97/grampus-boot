@@ -72,7 +72,7 @@ public class LoginController {
 		String username = params.getUserNo();
 		String password = params.getPassword();
 		Authentication authentication =
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+				authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
 		String token = jwtTokenManager.createToken(authentication);

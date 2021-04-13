@@ -86,8 +86,8 @@ public class EnhancedBaseServiceImpl<M extends BaseMapper<T>, T, D> extends Base
 	}
 
 	@Override
-	public PageData<D> queryPage(Map<String, Object> params, Class<T> clazz) {
-		PageData<T> result = selectPage(params, clazz);
+	public PageData<D> queryPage(Map<String, Object> params) {
+		PageData<T> result = selectPage(params, getCurrentEntityClass());
 		List<D> dList = BeanUtil.copyList(result.getList(), getCurrentDtoClass());
 		return new PageData<>(result, dList);
 	}

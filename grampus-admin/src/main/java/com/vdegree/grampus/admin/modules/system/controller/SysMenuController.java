@@ -47,7 +47,7 @@ public class SysMenuController {
 
 	@ApiOperation("菜单权限")
 	@GetMapping("permissions")
-	public Result<Set<String>> permissions(){
+	public Result<Set<String>> permissions() {
 		Set<String> set = sysMenuService.getUserPermissions(SecurityUtils.getUserDetails());
 		return Result.success(set);
 	}
@@ -65,7 +65,7 @@ public class SysMenuController {
 	@GetMapping("{id}")
 	@PreAuthorize("hasAuthority('sys:menu:info')")
 	public Result<SysMenuDTO> get(@PathVariable("id") Long id) {
-		SysMenuDTO data = sysMenuService.get(id);
+		SysMenuDTO data = sysMenuService.queryById(id);
 		return Result.success(data);
 	}
 
@@ -81,7 +81,7 @@ public class SysMenuController {
 	@PutMapping
 	@PreAuthorize("hasAuthority('sys:menu:update')")
 	public Result<Void> update(@RequestBody SysMenuDTO dto) {
-		sysMenuService.update(dto);
+		sysMenuService.modifyById(dto);
 		return Result.success();
 	}
 
@@ -94,7 +94,7 @@ public class SysMenuController {
 		if (list.size() > 0) {
 			return Result.error(ErrorCode.SUB_MENU_EXIST);
 		}
-		sysMenuService.delete(id);
+		sysMenuService.deleteById(id);
 		return Result.success();
 	}
 }

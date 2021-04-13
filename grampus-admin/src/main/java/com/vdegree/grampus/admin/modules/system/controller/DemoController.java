@@ -104,6 +104,7 @@ public class DemoController {
 
 	@Autowired
 	private SystemUserDetailsRedis systemUserDetailsRedis;
+
 	@GetMapping("/test1")
 	public ResponseEntity test3() {
 		SystemUserDetails userDetails = SecurityUtils.getUserDetails();

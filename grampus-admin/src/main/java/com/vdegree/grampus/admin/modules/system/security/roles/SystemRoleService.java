@@ -2,6 +2,7 @@ package com.vdegree.grampus.admin.modules.system.security.roles;
 
 import com.google.common.base.Joiner;
 import com.vdegree.grampus.admin.modules.system.security.roles.dao.SystemRoleDao;
+import com.vdegree.grampus.common.core.utils.StringUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +31,8 @@ public class SystemRoleService {
 	 */
 	public String getPermissions(Long userId) {
 		Set<String> permissionSet = systemRoleDao.getPermissions(userId);
-		return Joiner.on(",").join(permissionSet.stream().filter(Objects::nonNull).collect(Collectors.toSet()));
+		return Joiner.on(",").join(permissionSet.stream().filter(perm -> Objects.nonNull(perm)
+				&& StringUtil.isNotBlank(perm)).collect(Collectors.toSet()));
 	}
 
 	/**
@@ -40,6 +42,7 @@ public class SystemRoleService {
 	 */
 	public String getAllPermissions() {
 		Set<String> permissionSet = systemRoleDao.getAllPermissions();
-		return Joiner.on(",").join(permissionSet.stream().filter(Objects::nonNull).collect(Collectors.toSet()));
+		return Joiner.on(",").join(permissionSet.stream().filter(perm -> Objects.nonNull(perm)
+				&& StringUtil.isNotBlank(perm)).collect(Collectors.toSet()));
 	}
 }

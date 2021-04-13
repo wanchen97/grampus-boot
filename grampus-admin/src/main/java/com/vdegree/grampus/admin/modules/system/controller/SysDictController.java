@@ -56,7 +56,7 @@ public class SysDictController {
 	@GetMapping("page")
 	@PreAuthorize("hasAuthority('sys:dict:list')")
 	public Result<PageData<SysDictDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
-		PageData<SysDictDTO> page = sysDictService.queryPage(params, SysDict.class);
+		PageData<SysDictDTO> page = sysDictService.queryPage(params);
 		return Result.success(page);
 	}
 

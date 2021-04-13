@@ -1,5 +1,6 @@
 package com.vdegree.grampus.admin.modules.system.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -14,6 +15,7 @@ import java.util.Date;
  * @date 2021-04-12
  */
 @Data
+@ApiModel("字典类型")
 public class SysDictDTO implements Serializable {
 	private static final long serialVersionUID = -3004268085455455303L;
 	/**

@@ -9,6 +9,7 @@ import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.admin.modules.system.dao.SysMenuDao;
 import com.vdegree.grampus.admin.modules.system.entity.SysMenu;
 import com.vdegree.grampus.admin.modules.system.service.SysMenuService;
+import com.vdegree.grampus.common.core.utils.StringUtil;
 import com.vdegree.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -26,29 +27,6 @@ import java.util.stream.Collectors;
  */
 @Service("sysMenuService")
 public class SysMenuServiceImpl extends EnhancedBaseServiceImpl<SysMenuDao, SysMenu, SysMenuDTO> implements SysMenuService {
-
-	@Override
-	public SysMenuDTO get(Long id) {
-		SysMenu sysMenu = baseMapper.selectByPrimaryKey(id);
-		return BeanUtil.copy(sysMenu, SysMenuDTO.class);
-	}
-
-	@Override
-	public void save(SysMenuDTO dto) {
-		SysMenu sysMenu = BeanUtil.copy(dto, SysMenu.class);
-		baseMapper.insert(sysMenu);
-	}
-
-	@Override
-	public void update(SysMenuDTO dto) {
-		SysMenu sysMenu = BeanUtil.copy(dto, SysMenu.class);
-		baseMapper.updateByPrimaryKeySelective(sysMenu);
-	}
-
-	@Override
-	public void delete(Long id) {
-		baseMapper.deleteByPrimaryKey(id);
-	}
 
 	@Override
 	public List<SysMenuDTO> getMenuList(Integer type) {
@@ -85,7 +63,8 @@ public class SysMenuServiceImpl extends EnhancedBaseServiceImpl<SysMenuDao, SysM
 //				.flatMap(Arrays::stream)
 //				.collect(Collectors.toSet());
 		return Arrays.stream(userDetail.getPermissions().trim().split(","))
-				.filter(Objects::nonNull)
+				.filter(permission -> Objects.nonNull(permission)
+						&& StringUtil.isNotBlank(permission))
 				.collect(Collectors.toSet());
 	}
 

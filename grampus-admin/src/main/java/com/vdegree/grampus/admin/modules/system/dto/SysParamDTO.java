@@ -8,50 +8,45 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Title: 字典详情
+ * Title: 系统参数DTO
  * Company: v-degree
  *
  * @author Beck
  * @date 2021-04-13
  */
 @Data
-@ApiModel("字典详情")
-public class SysDictItemDTO implements Serializable {
-	private static final long serialVersionUID = -8288240035977175413L;
+@ApiModel("系统参数")
+public class SysParamDTO implements Serializable {
+	private static final long serialVersionUID = -6988841582283661929L;
 	/**
 	 * 数据ID
 	 */
 	@ApiModelProperty("数据ID")
 	private Long id;
 	/**
-	 * 字典ID
+	 * 参数编码
 	 */
-	@ApiModelProperty("字典ID")
-	private Long dictId;
+	@ApiModelProperty("参数编码")
+	private String code;
 	/**
-	 * 字典标签
+	 * 参数值
 	 */
-	@ApiModelProperty("字典标签")
-	private String dictLabel;
+	@ApiModelProperty("参数值")
+	private String value;
 	/**
-	 * 字典值
+	 * 备注
 	 */
-	@ApiModelProperty("字典值")
-	private String dictValue;
-	/**
-	 * 排序
-	 */
-	@ApiModelProperty("排序")
-	private Integer sort;
+	@ApiModelProperty("备注")
+	private String remark;
 	/**
 	 * 创建者
 	 */
 	@ApiModelProperty("创建者")
 	private Long createBy;
 	/**
-	 * 创建时间
+	 * 创建日期
 	 */
-	@ApiModelProperty("创建时间")
+	@ApiModelProperty("创建日期")
 	private Date createDate;
 	/**
 	 * 更新者
@@ -59,8 +54,8 @@ public class SysDictItemDTO implements Serializable {
 	@ApiModelProperty("更新者")
 	private Long updateBy;
 	/**
-	 * 更新时间
+	 * 更新日期
 	 */
-	@ApiModelProperty("更新时间")
+	@ApiModelProperty("更新日期")
 	private Date updateDate;
 }

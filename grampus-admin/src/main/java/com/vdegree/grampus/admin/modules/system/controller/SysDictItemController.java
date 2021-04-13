@@ -41,26 +41,26 @@ public class SysDictItemController {
 		return Result.success(sysDictItemDTO);
 	}
 
-	@PostMapping
 	@ApiOperation("保存字典详细")
+	@PostMapping
 	@PreAuthorize("hasAuthority('sys:dict:save')")
-	public Result<Void> save(@RequestBody SysDictItemDTO dto){
+	public Result<Void> save(@RequestBody SysDictItemDTO dto) {
 		sysDictItemService.save(dto);
 		return Result.success();
 	}
 
-	@PutMapping
 	@ApiOperation("更新字典详情")
+	@PutMapping
 	@PreAuthorize("hasAuthority('sys:dict:update')")
-	public Result<Void> update(@RequestBody SysDictItemDTO dto){
+	public Result<Void> update(@RequestBody SysDictItemDTO dto) {
 		sysDictItemService.modifyById(dto);
 		return Result.success();
 	}
 
-	@DeleteMapping
 	@ApiOperation("删除字典详情")
+	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:dict:delete')")
-	public Result<Void> delete(@RequestBody Long[] ids){
+	public Result<Void> delete(@RequestBody Long[] ids) {
 		sysDictItemService.deleteBatchIds(Arrays.asList(ids));
 		return Result.success();
 	}

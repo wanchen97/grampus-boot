@@ -16,5 +16,6 @@
 		SELECT sm.`permission`
 		FROM sys_menu sm
 		WHERE sm.`permission` IS NOT NULL
+		  AND sm.`permission` != ''
 	</select>
 </mapper>

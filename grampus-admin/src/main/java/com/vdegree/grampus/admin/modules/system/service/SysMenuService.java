@@ -17,34 +17,6 @@ import java.util.Set;
 public interface SysMenuService extends EnhancedBaseService<SysMenu, SysMenuDTO> {
 
 	/**
-	 * 根据ID查询数据
-	 *
-	 * @param id 菜单数据ID
-	 */
-	SysMenuDTO get(Long id);
-
-	/**
-	 * 保存菜单信息
-	 *
-	 * @param dto 菜单信息
-	 */
-	void save(SysMenuDTO dto);
-
-	/**
-	 * 更新菜单信息
-	 *
-	 * @param dto 菜单信息
-	 */
-	void update(SysMenuDTO dto);
-
-	/**
-	 * 删除菜单信息
-	 *
-	 * @param id 菜单数据ID
-	 */
-	void delete(Long id);
-
-	/**
 	 * 菜单列表（全部）
 	 *
 	 * @param type 菜单类型
