@@ -50,7 +50,7 @@ public class SysDeptController {
 		return Result.success(result);
 	}
 
-	@ApiOperation("部门保存")
+	@ApiOperation("保存部门")
 	@PostMapping("/save")
 	@PreAuthorize("hasAuthority('sys:dept:save')")
 	public Result<Void> save(@RequestBody SysDeptDTO sysDeptDTO) {
@@ -58,7 +58,7 @@ public class SysDeptController {
 		return Result.success();
 	}
 
-	@ApiOperation("部门更新")
+	@ApiOperation("更新部门")
 	@PutMapping("/update")
 	@PreAuthorize("hasAuthority('sys:dept:update')")
 	public Result<Void> update(@RequestBody SysDeptDTO sysDeptDTO) {
@@ -66,7 +66,7 @@ public class SysDeptController {
 		return Result.success();
 	}
 
-	@ApiOperation("部门删除")
+	@ApiOperation("删除部门")
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasAuthority('sys:dept:delete')")
 	public Result<Void> delete(@PathVariable Long id) {

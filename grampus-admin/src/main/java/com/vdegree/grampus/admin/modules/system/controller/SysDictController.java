@@ -68,7 +68,7 @@ public class SysDictController {
 		return Result.success(result);
 	}
 
-	@ApiOperation("字典保存")
+	@ApiOperation("保存字典")
 	@PostMapping
 	@PreAuthorize("hasAuthority('sys:dict:save')")
 	public Result<Void> save(@RequestBody SysDictDTO params) {
@@ -76,7 +76,7 @@ public class SysDictController {
 		return Result.success();
 	}
 
-	@ApiOperation("字典修改")
+	@ApiOperation("更新字典")
 	@PutMapping
 	@PreAuthorize("hasAuthority('sys:dict:update')")
 	public Result<Void> update(@RequestBody SysDictDTO params) {
@@ -84,7 +84,7 @@ public class SysDictController {
 		return Result.success();
 	}
 
-	@ApiOperation("字典删除")
+	@ApiOperation("删除字典")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:dict:delete')")
 	public Result<Void> delete(@RequestBody Long[] ids) {
