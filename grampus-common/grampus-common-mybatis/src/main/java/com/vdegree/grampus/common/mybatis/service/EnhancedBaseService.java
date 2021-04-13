@@ -108,7 +108,7 @@ public interface EnhancedBaseService<T, D> extends BaseService<T> {
 	 * @param clazz  查询条件映射实体的类名
 	 * @return 查询结果
 	 */
-	PageData<D> queryPage(Map<String, Object> params, Class<D> clazz);
+	PageData<D> queryPage(Map<String, Object> params, Class<T> clazz);
 
 	/**
 	 * <p>

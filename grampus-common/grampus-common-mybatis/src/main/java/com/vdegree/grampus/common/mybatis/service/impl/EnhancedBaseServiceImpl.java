@@ -49,51 +49,64 @@ public class EnhancedBaseServiceImpl<M extends BaseMapper<T>, T, D> extends Base
 
 	@Override
 	public void modifyById(D dto) {
-		
+		T entity = BeanUtil.copy(dto, getCurrentEntityClass());
+		updateById(entity);
 	}
 
 	@Override
 	public D queryById(Serializable id) {
-		return null;
+		T result = selectById(id);
+		return BeanUtil.copy(result, getCurrentDtoClass());
 	}
 
 	@Override
 	public D queryOne(D dto) {
-		return null;
+		T params = BeanUtil.copy(dto, getCurrentEntityClass());
+		T result = selectOne(params);
+		return BeanUtil.copy(result, getCurrentDtoClass());
 	}
 
 	@Override
 	public List<D> queryList(D dto) {
-		return null;
+		T params = BeanUtil.copy(dto, getCurrentEntityClass());
+		List<T> result = selectList(params);
+		return BeanUtil.copyList(result, getCurrentDtoClass());
 	}
 
 	@Override
 	public List<D> queryAll() {
-		return null;
+		List<T> result = selectAll();
+		return BeanUtil.copyList(result, getCurrentDtoClass());
 	}
 
 	@Override
 	public int queryCount(D dto) {
-		return 0;
+		T params = BeanUtil.copy(dto, getCurrentEntityClass());
+		return selectCount(params);
 	}
 
 	@Override
-	public PageData<D> queryPage(Map<String, Object> params, Class<D> clazz) {
-		return null;
+	public PageData<D> queryPage(Map<String, Object> params, Class<T> clazz) {
+		PageData<T> result = selectPage(params, clazz);
+		List<D> dList = BeanUtil.copyList(result.getList(), getCurrentDtoClass());
+		return new PageData<>(result, dList);
 	}
 
 	@Override
 	public PageData<D> queryPage(D dto, int pageNum, int pageSize) {
-		return null;
+		return this.queryPage(dto, pageNum, pageSize, true);
 	}
 
 	@Override
 	public PageData<D> queryPage(D dto, int pageNum, int pageSize, boolean withCount) {
-		return null;
+		return this.queryPage(dto, pageNum, pageSize, withCount, null, null);
 	}
 
 	@Override
 	public PageData<D> queryPage(D dto, int pageNum, int pageSize, boolean withCount, String orderField, String order) {
-		return null;
+		T entity = BeanUtil.copy(dto, getCurrentEntityClass());
+		PageData<T> result = selectPage(entity, pageNum, pageSize, withCount, orderField, order);
+		List<D> dList = BeanUtil.copyList(result.getList(), getCurrentDtoClass());
+		return new PageData<>(result, dList);
 	}
 }

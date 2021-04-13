@@ -39,6 +39,18 @@ public class PageData<T> {
 	 */
 	private List<T> list;
 
+	public PageData() {
+	}
+
+	public PageData(PageData<?> pageData, List<T> list) {
+		this.setPageNum(pageData.getPageNum());
+		this.setPageSize(pageData.getPageSize());
+		this.setPages(pageData.getPages());
+		this.setLastPage(pageData.isLastPage());
+		this.setTotal(pageData.getTotal());
+		this.setList(list);
+	}
+
 	public PageData(PageInfo<T> pageInfo) {
 		this.setPageNum(pageInfo.getPageNum());
 		this.setPageSize(pageInfo.getPageSize());
