@@ -55,8 +55,8 @@ public class SysDictController {
 			@ApiImplicitParam(name = "dictName", value = "字典名称", paramType = "query", dataType = "String")
 	})
 	@PreAuthorize("hasAuthority('sys:dict:list')")
-	public Result<PageData<SysDict>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
-		PageData<SysDict> page = sysDictService.selectPage(params, SysDict.class);
+	public Result<PageData<SysDictDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
+		PageData<SysDictDTO> page = sysDictService.queryPage(params, SysDict.class);
 		return Result.success(page);
 	}
 
@@ -64,15 +64,15 @@ public class SysDictController {
 	@ApiOperation("字典信息")
 	@PreAuthorize("hasAuthority('sys:dict:info')")
 	public Result<SysDictDTO> get(@PathVariable("id") Long id) {
-		SysDict data = sysDictService.selectById(id);
-		return Result.success(BeanUtil.copy(data, SysDictDTO.class));
+		SysDictDTO result = sysDictService.queryById(id);
+		return Result.success(result);
 	}
 
 	@PostMapping
 	@ApiOperation("字典保存")
 	@PreAuthorize("hasAuthority('sys:dict:save')")
 	public Result<Void> save(@RequestBody SysDictDTO params) {
-		sysDictService.insert(BeanUtil.copy(params, SysDict.class));
+		sysDictService.save(params);
 		return Result.success();
 	}
 
@@ -80,7 +80,7 @@ public class SysDictController {
 	@ApiOperation("字典修改")
 	@PreAuthorize("hasAuthority('sys:dict:update')")
 	public Result<Void> update(@RequestBody SysDictDTO params) {
-		sysDictService.updateById(BeanUtil.copy(params, SysDict.class));
+		sysDictService.modifyById(params);
 		return Result.success();
 	}
 
@@ -95,8 +95,8 @@ public class SysDictController {
 	@GetMapping("all")
 	@ApiOperation("所有字典数据")
 	public Result<List<SysDictDTO>> all() {
-		List<SysDict> list = sysDictService.selectAll();
-		return Result.success(BeanUtil.copyList(list, SysDictDTO.class));
+		List<SysDictDTO> result = sysDictService.queryAll();
+		return Result.success(result);
 	}
 
 	@GetMapping("list")

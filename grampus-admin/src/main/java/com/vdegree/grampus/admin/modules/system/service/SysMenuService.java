@@ -2,8 +2,8 @@ package com.vdegree.grampus.admin.modules.system.service;
 
 import com.vdegree.grampus.admin.modules.system.dto.SysMenuDTO;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
-import com.vdegree.grampus.common.mybatis.service.BaseService;
 import com.vdegree.grampus.admin.modules.system.entity.SysMenu;
+import com.vdegree.grampus.common.mybatis.service.EnhancedBaseService;
 
 import java.util.List;
 import java.util.Set;
@@ -14,7 +14,7 @@ import java.util.Set;
  * @author Beck
  * @since 2020-12-09 19:49:30
  */
-public interface SysMenuService extends BaseService<SysMenu> {
+public interface SysMenuService extends EnhancedBaseService<SysMenu, SysMenuDTO> {
 
 	/**
 	 * 根据ID查询数据

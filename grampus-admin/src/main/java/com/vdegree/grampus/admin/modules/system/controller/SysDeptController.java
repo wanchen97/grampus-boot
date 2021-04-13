@@ -1,10 +1,8 @@
 package com.vdegree.grampus.admin.modules.system.controller;
 
 import com.vdegree.grampus.admin.modules.system.dto.SysDeptDTO;
-import com.vdegree.grampus.admin.modules.system.entity.SysDept;
 import com.vdegree.grampus.admin.modules.system.service.SysDeptService;
 import com.vdegree.grampus.common.core.result.Result;
-import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.admin.modules.system.utils.TreeUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -40,25 +38,23 @@ public class SysDeptController {
 	@GetMapping("/list")
 	@PreAuthorize("hasAuthority('sys:dept:list')")
 	public Result<List<SysDeptDTO>> list() {
-		List<SysDept> list = sysDeptService.selectList(new SysDept());
-		List<SysDeptDTO> deptList = BeanUtil.copyList(list, SysDeptDTO.class);
-		return Result.success(TreeUtils.build(deptList));
+		List<SysDeptDTO> result = sysDeptService.queryAll();
+		return Result.success(TreeUtils.build(result));
 	}
 
 	@ApiOperation("部门信息")
 	@GetMapping("/{id}")
 	@PreAuthorize("hasAuthority('sys:dept:info')")
 	public Result<SysDeptDTO> get(@PathVariable Long id) {
-		SysDept sysDept = sysDeptService.selectById(id);
-		return Result.success(BeanUtil.copy(sysDept, SysDeptDTO.class));
+		SysDeptDTO result = sysDeptService.queryById(id);
+		return Result.success(result);
 	}
 
 	@ApiOperation("部门保存")
 	@PostMapping("/save")
 	@PreAuthorize("hasAuthority('sys:dept:save')")
 	public Result<Void> save(@RequestBody SysDeptDTO sysDeptDTO) {
-		SysDept sysDept = BeanUtil.copy(sysDeptDTO, SysDept.class);
-		sysDeptService.insert(sysDept);
+		sysDeptService.save(sysDeptDTO);
 		return Result.success();
 	}
 
@@ -66,8 +62,7 @@ public class SysDeptController {
 	@PutMapping("/update")
 	@PreAuthorize("hasAuthority('sys:dept:update')")
 	public Result<Void> update(@RequestBody SysDeptDTO sysDeptDTO) {
-		SysDept sysDept = BeanUtil.copy(sysDeptDTO, SysDept.class);
-		sysDeptService.updateById(sysDept);
+		sysDeptService.modifyById(sysDeptDTO);
 		return Result.success();
 	}
 
