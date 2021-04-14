@@ -3,9 +3,15 @@ package com.vdegree.grampus.admin.modules.system.service.impl;
 import com.vdegree.grampus.admin.modules.system.dto.SysRoleDTO;
 import com.vdegree.grampus.admin.modules.system.dao.SysRoleDao;
 import com.vdegree.grampus.admin.modules.system.entity.SysRole;
+import com.vdegree.grampus.admin.modules.system.service.SysRoleMenuService;
 import com.vdegree.grampus.admin.modules.system.service.SysRoleService;
 import com.vdegree.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.io.Serializable;
+import java.util.Collection;
 
 /**
  * 角色表(SysRole)表服务实现类
@@ -13,7 +19,30 @@ import org.springframework.stereotype.Service;
  * @author Beck
  * @since 2020-12-09 19:50:17
  */
+@AllArgsConstructor
 @Service("sysRoleService")
 public class SysRoleServiceImpl extends EnhancedBaseServiceImpl<SysRoleDao, SysRole, SysRoleDTO> implements SysRoleService {
 
+	private final SysRoleMenuService sysRoleMenuService;
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public void save(SysRoleDTO dto) {
+		super.save(dto);
+		sysRoleMenuService.saveOrUpdate(dto.getId(), dto.getMenuIdList());
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public void modifyById(SysRoleDTO dto) {
+		super.modifyById(dto);
+		sysRoleMenuService.saveOrUpdate(dto.getId(), dto.getMenuIdList());
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public void deleteBatchIds(Collection<? extends Serializable> idList) {
+		super.deleteBatchIds(idList);
+		sysRoleMenuService.deleteByRoleIds(idList);
+	}
 }
