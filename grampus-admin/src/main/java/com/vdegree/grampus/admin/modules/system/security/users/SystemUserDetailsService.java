@@ -8,7 +8,7 @@ import com.vdegree.grampus.admin.modules.system.security.exception.UserNotFoundE
 import com.vdegree.grampus.admin.modules.system.security.roles.SystemRoleService;
 import com.vdegree.grampus.admin.modules.system.service.SysUserService;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,13 +21,12 @@ import org.springframework.stereotype.Service;
  * @author Beck
  * @date 2020-12-15
  */
+@AllArgsConstructor
 @Service
 public class SystemUserDetailsService implements UserDetailsService {
 
-	@Autowired
-	private SysUserService sysUserService;
-	@Autowired
-	private SystemRoleService systemRoleService;
+	private final SysUserService sysUserService;
+	private final SystemRoleService systemRoleService;
 
 	@Override
 	public UserDetails loadUserByUsername(String userNo) throws UsernameNotFoundException {

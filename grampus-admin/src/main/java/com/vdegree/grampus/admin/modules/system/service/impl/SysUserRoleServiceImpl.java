@@ -4,10 +4,9 @@ import com.vdegree.grampus.common.mybatis.service.impl.BaseServiceImpl;
 import com.vdegree.grampus.admin.modules.system.dao.SysUserRoleDao;
 import com.vdegree.grampus.admin.modules.system.entity.SysUserRole;
 import com.vdegree.grampus.admin.modules.system.service.SysUserRoleService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
-import tk.mybatis.mapper.util.Sqls;
 import tk.mybatis.mapper.weekend.WeekendSqls;
 
 import java.util.List;
@@ -18,11 +17,11 @@ import java.util.List;
  * @author Beck
  * @since 2020-12-09 19:51:18
  */
+@AllArgsConstructor
 @Service("sysUserRoleService")
 public class SysUserRoleServiceImpl extends BaseServiceImpl<SysUserRoleDao, SysUserRole> implements SysUserRoleService {
 
-	@Autowired
-	private SysUserRoleDao sysUserRoleDao;
+	private final SysUserRoleDao sysUserRoleDao;
 
 	@Override
 	public List<SysUserRole> getUserRole(Long userId) {

@@ -5,7 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,13 +25,13 @@ import java.util.stream.Collectors;
  * @author Beck
  * @date 2020-12-5
  */
+@AllArgsConstructor
 @Component
 public class JwtTokenManager {
 
 	private static final String AUTHORITIES_KEY = "perms";
 
-	@Autowired
-	private AuthProperties authProperties;
+	private final AuthProperties authProperties;
 
 	/**
 	 * Create token.

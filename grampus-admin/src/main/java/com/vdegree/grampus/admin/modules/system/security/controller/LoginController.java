@@ -10,8 +10,8 @@ import com.vdegree.grampus.common.core.result.Result;
 import com.vdegree.grampus.common.core.utils.StringUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -33,17 +33,14 @@ import java.util.Map;
  */
 @Api(tags = "登陆注册")
 @Slf4j
+@AllArgsConstructor
 @RestController
 public class LoginController {
 
-	@Autowired
-	private AuthenticationManager authenticationManager;
-	@Autowired
-	private SysUserService sysUserService;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	@Autowired
-	private JwtTokenManager jwtTokenManager;
+	private final AuthenticationManager authenticationManager;
+	private final SysUserService sysUserService;
+	private final PasswordEncoder passwordEncoder;
+	private final JwtTokenManager jwtTokenManager;
 
 	@ApiOperation("/注册接口")
 	@PostMapping("/register")

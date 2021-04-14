@@ -11,8 +11,8 @@ import com.vdegree.grampus.common.lock.annotation.DistributedLock;
 //import com.vdegree.grampus.common.lock.strategy.RedissonLockStrategy;
 import com.vdegree.grampus.common.lock.strategy.RedisTemplateLockStrategy;
 import com.vdegree.grampus.common.mybatis.enums.DelFlagEnum;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -37,16 +37,14 @@ import java.util.concurrent.Executors;
  * @date 2020-11-26
  */
 @Slf4j
+@AllArgsConstructor
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
 
-	@Autowired
-	private SysDeptService sysDeptService;
-	@Autowired
-	private DemoService demoService;
-	@Autowired
-	private SystemRoleDao systemRoleDao;
+	private final SysDeptService sysDeptService;
+	private final DemoService demoService;
+	private final SystemRoleDao systemRoleDao;
 
 	private static ExecutorService threadPool = Executors.newFixedThreadPool(100);
 
@@ -102,8 +100,7 @@ public class DemoController {
 		return ResponseEntity.ok(set);
 	}
 
-	@Autowired
-	private SystemUserDetailsRedis systemUserDetailsRedis;
+	private final SystemUserDetailsRedis systemUserDetailsRedis;
 
 	@GetMapping("/test1")
 	public ResponseEntity test3() {

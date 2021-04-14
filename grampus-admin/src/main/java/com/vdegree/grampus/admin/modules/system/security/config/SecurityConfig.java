@@ -2,9 +2,8 @@ package com.vdegree.grampus.admin.modules.system.security.config;
 
 import com.vdegree.grampus.admin.modules.system.security.filter.JwtAuthenticationTokenFilter;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetailsService;
-import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
+import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,19 +25,15 @@ import org.springframework.web.cors.CorsUtils;
  * @author Beck
  * @date 2020-12-15
  */
+@AllArgsConstructor
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	/**
 	 * 自定义用户认证逻辑
 	 */
-	@Autowired
-	private SystemUserDetailsService userDetailsService;
+	private final SystemUserDetailsService userDetailsService;
 
-	@Autowired
-	private JwtTokenManager jwtTokenManager;
-
-	@Autowired
-	private JwtAuthenticationTokenFilter jwtAuthenticationFilter;
+	private final JwtAuthenticationTokenFilter jwtAuthenticationFilter;
 
 	/**
 	 * anyRequest          |   匹配所有请求路径
