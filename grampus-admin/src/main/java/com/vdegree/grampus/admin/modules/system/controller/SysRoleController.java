@@ -1,6 +1,7 @@
 package com.vdegree.grampus.admin.modules.system.controller;
 
 import com.vdegree.grampus.admin.modules.system.dto.SysRoleDTO;
+import com.vdegree.grampus.admin.modules.system.service.SysRoleMenuService;
 import com.vdegree.grampus.admin.modules.system.service.SysRoleService;
 import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.result.Result;
@@ -40,6 +41,7 @@ import java.util.Map;
 public class SysRoleController {
 
 	private final SysRoleService sysRoleService;
+	private final SysRoleMenuService sysRoleMenuService;
 
 	@ApiOperation("角色分页查询")
 	@GetMapping("page")
@@ -69,15 +71,8 @@ public class SysRoleController {
 	@PreAuthorize("hasAuthority('sys:role:info')")
 	public Result<SysRoleDTO> get(@PathVariable("id") Long id) {
 		SysRoleDTO result = sysRoleService.queryById(id);
-
-//		//查询角色对应的菜单
-//		List<Long> menuIdList = sysRoleMenuService.getMenuIdList(id);
-//		result.setMenuIdList(menuIdList);
-//
-//		//查询角色对应的数据权限
-//		List<Long> deptIdList = sysRoleDataScopeService.getDeptIdList(id);
-//		result.setDeptIdList(deptIdList);
-
+		List<Long> menuIdList = sysRoleMenuService.getMenuIdList(id);
+		result.setMenuIdList(menuIdList);
 		return Result.success(result);
 	}
 

@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 系统角色DTO
@@ -27,6 +28,11 @@ public class SysRoleDTO implements Serializable {
 	 */
 	@ApiModelProperty("角色编号")
 	private String roleCode;
+	/**
+	 * 角色菜单ID列表
+	 */
+	@ApiModelProperty("角色菜单ID列表，既该角色目前具有哪些权限")
+	private List<Long> menuIdList;
 	/**
 	 * 创建者
 	 */
