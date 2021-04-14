@@ -50,6 +50,7 @@ public class SysRoleController {
 			@ApiImplicitParam(name = Constant.PAGE_SIZE, value = "每页显示记录数", paramType = "query", required = true, dataType = "int"),
 			@ApiImplicitParam(name = Constant.ORDER_FIELD, value = "排序字段", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = Constant.ORDER, value = "排序方式，可选值(asc、desc)", paramType = "query", dataType = "String"),
+			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean"),
 			@ApiImplicitParam(name = "name", value = "角色名", paramType = "query", dataType = "String")
 	})
 	@PreAuthorize("hasAuthority('sys:role:page')")

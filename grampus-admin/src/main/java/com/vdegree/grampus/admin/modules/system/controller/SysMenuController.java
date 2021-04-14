@@ -56,8 +56,8 @@ public class SysMenuController {
 	 * TODO 待定
 	 */
 	@ApiOperation("当前用户角色菜单列表")
-	@GetMapping("myMenus")
-	public Result<List<SysMenuDTO>> myMenus() {
+	@GetMapping("userMenus")
+	public Result<List<SysMenuDTO>> userMenus() {
 		List<SysMenuDTO> result = sysMenuService.getUserMenuList(SecurityUtils.getUserDetails(), null);
 		return Result.success(result);
 	}
