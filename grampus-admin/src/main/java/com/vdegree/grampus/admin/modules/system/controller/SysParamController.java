@@ -50,7 +50,7 @@ public class SysParamController {
 			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean"),
 			@ApiImplicitParam(name = "code", value = "参数编码", paramType = "query", dataType = "String")
 	})
-	@PreAuthorize("hasAuthority('sys:params:page')")
+	@PreAuthorize("hasAuthority('sys:params:list')")
 	public Result<PageData<SysParamDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
 		PageData<SysParamDTO> result = sysParamService.queryPage(params);
 		return Result.success(result);

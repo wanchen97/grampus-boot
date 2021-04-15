@@ -53,7 +53,7 @@ public class SysRoleController {
 			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean"),
 			@ApiImplicitParam(name = "name", value = "角色名", paramType = "query", dataType = "String")
 	})
-	@PreAuthorize("hasAuthority('sys:role:page')")
+	@PreAuthorize("hasAuthority('sys:role:list')")
 	public Result<PageData<SysRoleDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
 		PageData<SysRoleDTO> result = sysRoleService.queryPage(params);
 		return Result.success(result);

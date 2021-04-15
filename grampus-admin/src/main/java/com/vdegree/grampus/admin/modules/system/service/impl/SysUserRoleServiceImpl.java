@@ -10,6 +10,7 @@ import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.weekend.WeekendSqls;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 用户角色关联表(SysUserRole)表服务实现类
@@ -30,5 +31,14 @@ public class SysUserRoleServiceImpl extends BaseServiceImpl<SysUserRoleDao, SysU
 		return sysUserRoleDao.selectByExample(Example.builder(SysUserRole.class)
 				.where(WeekendSqls.<SysUserRole>custom()
 						.andEqualTo(SysUserRole::getUserId, userId)).build());
+	}
+
+	@Override
+	public List<Long> getRoleIdList(Long userId) {
+		List<SysUserRole> result = sysUserRoleDao.selectByExample(Example.builder(SysUserRole.class)
+				.select("roleId")
+				.where(WeekendSqls.<SysUserRole>custom()
+						.andEqualTo(SysUserRole::getUserId, userId)).build());
+		return result.stream().map(SysUserRole::getRoleId).distinct().collect(Collectors.toList());
 	}
 }

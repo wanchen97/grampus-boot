@@ -18,9 +18,6 @@ import java.util.Date;
  * @since 2020-12-09 19:50:57
  */
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "sys_user")
 public class SysUser extends BaseEntity {

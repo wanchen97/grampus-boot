@@ -1,7 +1,8 @@
 package com.vdegree.grampus.admin.modules.system.service;
 
-import com.vdegree.grampus.common.mybatis.service.BaseService;
+import com.vdegree.grampus.admin.modules.system.dto.SysUserDTO;
 import com.vdegree.grampus.admin.modules.system.entity.SysUser;
+import com.vdegree.grampus.common.mybatis.service.EnhancedBaseService;
 
 /**
  * 用户表(SysUser)表服务接口
@@ -9,7 +10,7 @@ import com.vdegree.grampus.admin.modules.system.entity.SysUser;
  * @author Beck
  * @since 2020-12-09 19:50:58
  */
-public interface SysUserService extends BaseService<SysUser> {
+public interface SysUserService extends EnhancedBaseService<SysUser, SysUserDTO> {
 
 	/**
 	 * 根据会员号获取会员数据
@@ -18,4 +19,12 @@ public interface SysUserService extends BaseService<SysUser> {
 	 * @return 会员实体
 	 */
 	SysUser getSysUserByUserNo(String userNo);
+
+	/**
+	 * 修改用户代码
+	 *
+	 * @param userId      用户ID
+	 * @param newPassword 新密码
+	 */
+	void updatePassword(Long userId, String newPassword);
 }

@@ -67,5 +67,12 @@ public interface ErrorCode {
 	 */
 	String MEMBER_DELETED_ERROR = "MEMBER_DELETED_ERROR";
 
+	/**
+	 * 存在子菜单异常
+	 */
 	String SUB_MENU_EXIST = "SUB_MENU_EXIST";
+	/**
+	 * 用户密码错误异常
+	 */
+	String USER_PASSWORD_ERROR = "USER_PASSWORD_ERROR";
 }
