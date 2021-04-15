@@ -1,11 +1,8 @@
 package com.vdegree.grampus.admin.modules.system.entity;
 
 import com.vdegree.grampus.common.mybatis.entity.BaseEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import tk.mybatis.mapper.annotation.LogicDelete;
 
 import javax.persistence.Table;
