@@ -27,27 +27,27 @@ import java.util.Collections;
 @EnableKnife4j
 public class SwaggerConfig {
 
-    @Bean
-    public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .select()
-                //加了ApiOperation注解的类，才生成接口文档
-                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
-                //包下的类，才生成接口文档
-                //.apis(RequestHandlerSelectors.basePackage("com.vdegree.grampus.modules.system.controller"))
-                .paths(PathSelectors.any())
-                .build()
-                .directModelSubstitute(java.util.Date.class, String.class)
-                .securitySchemes(Collections.singletonList(new ApiKey("Authorization", "Authorization", "header")));
-    }
+	@Bean
+	public Docket createRestApi() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.apiInfo(apiInfo())
+				.select()
+				//加了ApiOperation注解的类，才生成接口文档
+				.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+				//包下的类，才生成接口文档
+				//.apis(RequestHandlerSelectors.basePackage("com.vdegree.grampus.modules.system.controller"))
+				.paths(PathSelectors.any())
+				.build()
+				.directModelSubstitute(java.util.Date.class, String.class)
+				.securitySchemes(Collections.singletonList(new ApiKey("Authorization", "Authorization", "header")));
+	}
 
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("Grampus")
-                .description("接口文档")
-                .termsOfServiceUrl("https://v-degree.com/")
-                .version("1.0.0")
-                .build();
-    }
+	private ApiInfo apiInfo() {
+		return new ApiInfoBuilder()
+				.title("Grampus")
+				.description("接口文档")
+				.termsOfServiceUrl("https://v-degree.com/")
+				.version("1.0.0")
+				.build();
+	}
 }
