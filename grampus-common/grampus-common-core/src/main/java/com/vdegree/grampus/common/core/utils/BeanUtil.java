@@ -245,7 +245,7 @@ public class BeanUtil extends org.springframework.beans.BeanUtils {
 			return;
 		}
 		EnhancedBeanCopier copier = EnhancedBeanCopier
-			.create(source.getClass(), targetBean.getClass(), false);
+				.create(source.getClass(), targetBean.getClass(), false);
 
 		copier.copy(source, targetBean, null);
 	}
@@ -265,7 +265,7 @@ public class BeanUtil extends org.springframework.beans.BeanUtils {
 			return;
 		}
 		EnhancedBeanCopier copier = EnhancedBeanCopier
-			.create(source.getClass(), targetBean.getClass(), false, true);
+				.create(source.getClass(), targetBean.getClass(), false, true);
 
 		copier.copy(source, targetBean, null);
 	}

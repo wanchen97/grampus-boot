@@ -90,7 +90,7 @@ public class EnumToStringConverter implements ConditionalGenericConverter {
 
 	@Nullable
 	private static Object invoke(Class<?> clazz, AccessibleObject accessibleObject, Object source, Class<?> targetClazz)
-		throws IllegalAccessException, InvocationTargetException {
+			throws IllegalAccessException, InvocationTargetException {
 		Object value = null;
 		if (accessibleObject instanceof Field) {
 			Field field = (Field) accessibleObject;

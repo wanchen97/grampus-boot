@@ -17,7 +17,7 @@ import java.util.Set;
 public class BeanDiff {
 	/**
 	 * 变更字段
- 	 */
+	 */
 	@JsonIgnore
 	private transient Set<String> fields = new HashSet<>();
 	/**

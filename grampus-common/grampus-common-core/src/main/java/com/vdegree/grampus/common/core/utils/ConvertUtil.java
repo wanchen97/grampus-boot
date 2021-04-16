@@ -18,12 +18,13 @@ public class ConvertUtil {
 	/**
 	 * Convenience operation for converting a source object to the specified targetType.
 	 * {@link TypeDescriptor#forObject(Object)}.
-	 * @param source the source object
+	 *
+	 * @param source     the source object
 	 * @param targetType the target type
-	 * @param <T> 泛型标记
+	 * @param <T>        泛型标记
 	 * @return the converted value
 	 * @throws IllegalArgumentException if targetType is {@code null},
-	 * or sourceType is {@code null} but source is not {@code null}
+	 *                                  or sourceType is {@code null} but source is not {@code null}
 	 */
 	@Nullable
 	public static <T> T convert(@Nullable Object source, Class<T> targetType) {
@@ -41,13 +42,14 @@ public class ConvertUtil {
 	 * Convenience operation for converting a source object to the specified targetType,
 	 * where the target type is a descriptor that provides additional conversion context.
 	 * {@link TypeDescriptor#forObject(Object)}.
-	 * @param source the source object
+	 *
+	 * @param source     the source object
 	 * @param sourceType the source type
 	 * @param targetType the target type
-	 * @param <T> 泛型标记
+	 * @param <T>        泛型标记
 	 * @return the converted value
 	 * @throws IllegalArgumentException if targetType is {@code null},
-	 * or sourceType is {@code null} but source is not {@code null}
+	 *                                  or sourceType is {@code null} but source is not {@code null}
 	 */
 	@Nullable
 	public static <T> T convert(@Nullable Object source, TypeDescriptor sourceType, TypeDescriptor targetType) {
@@ -64,12 +66,13 @@ public class ConvertUtil {
 	 * Simply delegates to {@link #convert(Object, TypeDescriptor, TypeDescriptor)} and
 	 * encapsulates the construction of the source type descriptor using
 	 * {@link TypeDescriptor#forObject(Object)}.
-	 * @param source the source object
+	 *
+	 * @param source     the source object
 	 * @param targetType the target type
-	 * @param <T> 泛型标记
+	 * @param <T>        泛型标记
 	 * @return the converted value
 	 * @throws IllegalArgumentException if targetType is {@code null},
-	 * or sourceType is {@code null} but source is not {@code null}
+	 *                                  or sourceType is {@code null} but source is not {@code null}
 	 */
 	@Nullable
 	public static <T> T convert(@Nullable Object source, TypeDescriptor targetType) {

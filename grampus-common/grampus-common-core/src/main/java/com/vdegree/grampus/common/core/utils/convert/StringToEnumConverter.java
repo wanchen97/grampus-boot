@@ -82,13 +82,13 @@ public class StringToEnumConverter implements ConditionalGenericConverter {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static <T extends Enum<T>> T valueOf(Class<?> clazz, String value){
+	private static <T extends Enum<T>> T valueOf(Class<?> clazz, String value) {
 		return Enum.valueOf((Class<T>) clazz, value);
 	}
 
 	@Nullable
 	private static Object invoke(Class<?> clazz, AccessibleObject accessibleObject, String value)
-		throws IllegalAccessException, InvocationTargetException, InstantiationException {
+			throws IllegalAccessException, InvocationTargetException, InstantiationException {
 		if (accessibleObject instanceof Constructor) {
 			Constructor constructor = (Constructor) accessibleObject;
 			Class<?> paramType = constructor.getParameterTypes()[0];
