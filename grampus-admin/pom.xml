@@ -38,10 +38,10 @@
 			<groupId>com.vdegree</groupId>
 			<artifactId>grampus-common-core</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>com.vdegree</groupId>
-            <artifactId>grampus-common-swagger</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>com.vdegree</groupId>
+			<artifactId>grampus-common-swagger</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.vdegree</groupId>
 			<artifactId>grampus-common-mybatis</artifactId>
