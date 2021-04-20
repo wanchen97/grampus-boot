@@ -5,11 +5,12 @@ import com.vdegree.grampus.common.sequence.exception.IdGenException;
 /**
  * Snowflake算法是带有时间戳的全局唯一ID生成算法。它有一套固定的ID格式，如下：
  *
- * <p>41位的时间序列（精确到毫秒，41位的长度可以使用69年） 10位的机器标识（10位的长度最多支持部署1024个节点）
+ * <p>41位的时间序列（精确到毫秒，41位的长度可以使用69年） 10位的机器标识（10位的长度最多支持部署1024个节点。前5位数据中心ID，后5位机器ID）
  * 12位的Sequence序列号（12位的Sequence序列号支持每个节点每毫秒产生4096个ID序号）
  *
  * <p>结构如下(每部分用-分开):<br>
  * 0 - 0000000000 0000000000 0000000000 0000000000 0 - 00000 - 00000 - 000000000000 <br>
+ * 0 - 时间戳（41位） - 数据中心ID（5位） - 机器ID（5位） - 序列号（12位） <br>
  * 优点是：整体上按照时间自增排序，且整个分布式系统内不会产生ID碰撞(由数据中心ID和机器ID作区分) <br>
  *
  * @author Beck
@@ -20,6 +21,7 @@ public class SnowflakeIdWorker {
 	 * 开始时间截 (从2021-01-01起)
 	 */
 	private static final long START_TIME = 1609430400000L;
+
 	/**
 	 * 机器ID所占位数
 	 */
@@ -29,17 +31,10 @@ public class SnowflakeIdWorker {
 	 */
 	private static final long DATA_CENTER_ID_BITS = 5L;
 	/**
-	 * 机器ID最大值31 (此移位算法可很快计算出n位二进制数所能表示的最大十进制数)
-	 */
-	private static final long MAX_ID = ~(-1L << ID_BITS);
-	/**
-	 * 数据中心ID最大值31
-	 */
-	private static final long MAX_DATA_CENTER_ID = ~(-1L << DATA_CENTER_ID_BITS);
-	/**
 	 * Sequence所占位数
 	 */
 	private static final long SEQUENCE_BITS = 12L;
+
 	/**
 	 * 机器ID偏移量12
 	 */
@@ -52,10 +47,20 @@ public class SnowflakeIdWorker {
 	 * 时间戳的偏移量12+5+5=22
 	 */
 	private static final long TIMESTAMP_LEFT_SHIFT_BITS = SEQUENCE_BITS + ID_BITS + DATA_CENTER_ID_BITS;
+
+	/**
+	 * 机器ID最大值31 (此移位算法可很快计算出n位二进制数所能表示的最大十进制数)
+	 */
+	private static final long MAX_ID = ~(-1L << ID_BITS);
+	/**
+	 * 数据中心ID最大值31
+	 */
+	private static final long MAX_DATA_CENTER_ID = ~(-1L << DATA_CENTER_ID_BITS);
 	/**
 	 * Sequence掩码4095
 	 */
 	private static final long SEQUENCE_MASK = ~(-1L << SEQUENCE_BITS);
+
 	/**
 	 * 上一毫秒数
 	 */
