@@ -18,7 +18,7 @@ spring:
     database: 0
     host: 127.0.0.1
     port: 6379
-    #    password:
+#    password:
     timeout: 6000ms
     lettuce:
       pool:
@@ -32,7 +32,7 @@ distributed:
     wait-time: 3000
     lease-time: 30000
     retry-interval: 100
-    primary-executor: com.vdegree.grampus.common.lock.strategy.RedissonLockStrategy
+    primary-executor: com.vdegree.grampus.common.lock.strategy.RedisTemplateLockStrategy
 
 grampus:
   security:
