@@ -64,7 +64,7 @@ public class PageData<T> {
 		this.setPageNum(pageInfo.getPageNum());
 		this.setPageSize(pageInfo.getPageSize());
 		this.setPages(pageInfo.getPages());
-		this.setTotal(new Long(pageInfo.getTotal()).intValue());
+		this.setTotal((int) pageInfo.getTotal());
 		this.setLastPage(pageInfo.isIsLastPage());
 		this.setList(pageInfo.getList());
 	}
