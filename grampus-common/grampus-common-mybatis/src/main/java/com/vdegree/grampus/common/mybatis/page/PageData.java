@@ -41,7 +41,7 @@ public class PageData<T> {
 	 * 总记录数
 	 */
 	@ApiModelProperty("总记录数")
-	private long total;
+	private int total;
 	/**
 	 * 列表数据
 	 */
@@ -64,7 +64,7 @@ public class PageData<T> {
 		this.setPageNum(pageInfo.getPageNum());
 		this.setPageSize(pageInfo.getPageSize());
 		this.setPages(pageInfo.getPages());
-		this.setTotal(pageInfo.getTotal());
+		this.setTotal(new Long(pageInfo.getTotal()).intValue());
 		this.setLastPage(pageInfo.isIsLastPage());
 		this.setList(pageInfo.getList());
 	}
