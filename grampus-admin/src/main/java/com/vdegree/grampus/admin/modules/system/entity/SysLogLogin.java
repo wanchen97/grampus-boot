@@ -18,45 +18,36 @@ import java.util.Date;
 @Table(name = "sys_log_login")
 public class SysLogLogin extends BaseEntity {
 	private static final long serialVersionUID = -94189723127366413L;
-
 	/**
 	 * 用户ID
 	 */
 	private Long userId;
-
 	/**
 	 * 用户号
 	 */
 	private String userNo;
-
 	/**
 	 * 浏览器信息
 	 */
 	private String userAgent;
-
 	/**
 	 * 用户操作(1登录 2退登 3关闭应用)
 	 */
 	private String operation;
-
 	/**
 	 * 操作IP
 	 */
 	private String operateIp;
-
 	/**
 	 * 状态(0失败 1成功)
 	 */
 	private Integer status;
-
 	/**
 	 * 创建者
 	 */
 	private Long createBy;
-
 	/**
 	 * 创建时间
 	 */
 	private Date createDate;
-
 }

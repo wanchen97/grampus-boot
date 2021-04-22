@@ -16,49 +16,41 @@ import lombok.Data;
 @ApiModel("系统菜单")
 public class SysMenuDTO extends TreeNode<SysMenuDTO> {
 	private static final long serialVersionUID = 5330634077811336459L;
-
 	/**
 	 * 数据ID
 	 */
 	@ApiModelProperty("数据ID")
 	private Long id;
-
 	/**
 	 * 父级菜单ID
 	 */
 	@ApiModelProperty("父菜单ID")
 	private Long parentId;
-
 	/**
 	 * 菜单类型(0菜单 1按钮)
 	 */
 	@ApiModelProperty("菜单类型(0菜单 1按钮)")
 	private Integer type;
-
 	/**
 	 * 菜单名
 	 */
 	@ApiModelProperty("菜单名")
 	private String menuName;
-
 	/**
 	 * 权限标识
 	 */
 	@ApiModelProperty("权限标识")
 	private String permission;
-
 	/**
 	 * 菜单路径
 	 */
 	@ApiModelProperty("菜单路径")
 	private String path;
-
 	/**
 	 * 图标
 	 */
 	@ApiModelProperty("图标")
 	private String icon;
-
 	/**
 	 * 排序
 	 */

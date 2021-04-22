@@ -18,35 +18,28 @@ import java.util.Date;
 @Table(name = "sys_dict")
 public class SysDict extends BaseEntity {
 	private static final long serialVersionUID = 136388614256596989L;
-
 	/**
 	 * 字典类型
 	 */
 	private String dictType;
-
 	/**
 	 * 字典名称
 	 */
 	private String dictName;
-
 	/**
 	 * 备注
 	 */
 	private String remark;
-
 	/**
 	 * 排序
 	 */
 	private Integer sort;
-
 	/**
 	 * 创建者
 	 */
 	private Long createBy;
-
 	/**
 	 * 创建日期
 	 */
 	private Date createDate;
-
 }

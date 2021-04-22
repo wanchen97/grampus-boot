@@ -19,41 +19,33 @@ import java.util.Date;
 @Table(name = "sys_role")
 public class SysRole extends BaseEntity {
 	private static final long serialVersionUID = 748889808530861432L;
-
 	/**
 	 * 角色名
 	 */
 	private String roleName;
-
 	/**
 	 * 角色编号
 	 */
 	private String roleCode;
-
 	/**
 	 * 创建者
 	 */
 	private Long createBy;
-
 	/**
 	 * 创建日期
 	 */
 	private Date createDate;
-
 	/**
 	 * 更新者
 	 */
 	private Long updateBy;
-
 	/**
 	 * 更新日期
 	 */
 	private Date updateDate;
-
 	/**
 	 * 删除标识(0正常 1删除)
 	 */
 	@LogicDelete
 	private Integer delFlag;
-
 }

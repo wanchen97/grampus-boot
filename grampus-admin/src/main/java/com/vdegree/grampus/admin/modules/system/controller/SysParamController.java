@@ -50,7 +50,7 @@ public class SysParamController {
 			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean"),
 			@ApiImplicitParam(name = "code", value = "参数编码", paramType = "query", dataType = "String")
 	})
-	@PreAuthorize("hasAuthority('sys:params:list')")
+	@PreAuthorize("hasAuthority('sys:param:list')")
 	public Result<PageData<SysParamDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
 		PageData<SysParamDTO> result = sysParamService.queryPage(params);
 		return Result.success(result);
@@ -58,7 +58,7 @@ public class SysParamController {
 
 	@ApiOperation("参数信息")
 	@GetMapping("{id}")
-	@PreAuthorize("hasAuthority('sys:params:info')")
+	@PreAuthorize("hasAuthority('sys:param:info')")
 	public Result<SysParamDTO> get(@PathVariable("id") Long id) {
 		SysParamDTO result = sysParamService.queryById(id);
 		return Result.success(result);
@@ -66,7 +66,7 @@ public class SysParamController {
 
 	@ApiOperation("保存参数")
 	@PostMapping
-	@PreAuthorize("hasAuthority('sys:params:save')")
+	@PreAuthorize("hasAuthority('sys:param:save')")
 	public Result<Void> save(@RequestBody SysParamDTO dto) {
 		sysParamService.save(dto);
 		return Result.success();
@@ -74,7 +74,7 @@ public class SysParamController {
 
 	@ApiOperation("修改参数")
 	@PutMapping
-	@PreAuthorize("hasAuthority('sys:params:update')")
+	@PreAuthorize("hasAuthority('sys:param:update')")
 	public Result<Void> update(@RequestBody SysParamDTO dto) {
 		sysParamService.modifyById(dto);
 		return Result.success();
@@ -82,7 +82,7 @@ public class SysParamController {
 
 	@ApiOperation("删除参数")
 	@DeleteMapping
-	@PreAuthorize("hasAuthority('sys:params:delete')")
+	@PreAuthorize("hasAuthority('sys:param:delete')")
 	public Result<Void> delete(@RequestBody Long[] ids) {
 		sysParamService.deleteBatchIds(Arrays.asList(ids));
 		return Result.success();
