@@ -2,8 +2,12 @@ package com.vdegree.grampus.admin.modules.system.controller;
 
 import com.vdegree.grampus.admin.modules.system.dto.SysDictItemDTO;
 import com.vdegree.grampus.admin.modules.system.service.SysDictItemService;
+import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.result.Result;
+import com.vdegree.grampus.common.mybatis.page.PageData;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,9 +18,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.Arrays;
+import java.util.Map;
 
 /**
  * Title: 字典数据项接口
@@ -32,6 +39,24 @@ import java.util.Arrays;
 public class SysDictItemController {
 
 	private final SysDictItemService sysDictItemService;
+
+	@ApiOperation("字典详细分页查询")
+	@GetMapping("page")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = Constant.PAGE_NUM, value = "当前页码，从1开始", paramType = "query", required = true, dataType = "int"),
+			@ApiImplicitParam(name = Constant.PAGE_SIZE, value = "每页显示记录数", paramType = "query", required = true, dataType = "int"),
+			@ApiImplicitParam(name = Constant.ORDER_FIELD, value = "排序字段", paramType = "query", dataType = "String"),
+			@ApiImplicitParam(name = Constant.ORDER, value = "排序方式，可选值(asc、desc)", paramType = "query", dataType = "String"),
+			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean"),
+			@ApiImplicitParam(name = "dictId", value = "字典ID", paramType = "query", dataType = "String"),
+			@ApiImplicitParam(name = "dictLabel", value = "字典标签", paramType = "query", dataType = "String"),
+			@ApiImplicitParam(name = "dictValue", value = "字典值", paramType = "query", dataType = "String")
+	})
+	@PreAuthorize("hasAuthority('sys:dict:list')")
+	public Result<PageData<SysDictItemDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
+		PageData<SysDictItemDTO> page = sysDictItemService.queryPage(params);
+		return Result.success(page);
+	}
 
 	@ApiOperation("字典详细")
 	@GetMapping("{id}")
