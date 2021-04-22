@@ -21,6 +21,11 @@ import java.util.List;
 public class SysUserDTO implements Serializable {
 	private static final long serialVersionUID = -2668695231780758833L;
 	/**
+	 * 数据ID
+	 */
+	@ApiModelProperty("数据ID")
+	private Long id;
+	/**
 	 * 员工号
 	 */
 	@ApiModelProperty("员工号")
