@@ -51,7 +51,7 @@ public class SysDeptController {
 	}
 
 	@ApiOperation("保存部门")
-	@PostMapping("/save")
+	@PostMapping()
 	@PreAuthorize("hasAuthority('sys:dept:save')")
 	public Result<Void> save(@RequestBody SysDeptDTO sysDeptDTO) {
 		sysDeptService.save(sysDeptDTO);
@@ -59,7 +59,7 @@ public class SysDeptController {
 	}
 
 	@ApiOperation("更新部门")
-	@PutMapping("/update")
+	@PutMapping()
 	@PreAuthorize("hasAuthority('sys:dept:update')")
 	public Result<Void> update(@RequestBody SysDeptDTO sysDeptDTO) {
 		sysDeptService.modifyById(sysDeptDTO);
