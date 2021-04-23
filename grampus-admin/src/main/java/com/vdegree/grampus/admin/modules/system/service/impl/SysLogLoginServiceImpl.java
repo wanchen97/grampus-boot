@@ -7,7 +7,7 @@ import com.vdegree.grampus.admin.modules.system.service.SysLogLoginService;
 import org.springframework.stereotype.Service;
 
 /**
- * 用户登陆日志表(SysLogLogin)表服务实现类
+ * 用户登陆日志表 服务实现类
  *
  * @author Beck
  * @since 2020-12-09 19:49:00

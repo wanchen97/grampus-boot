@@ -10,7 +10,7 @@ import com.vdegree.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
- * 公共参数表(SysParam)表服务实现类
+ * 公共参数表 服务实现类
  *
  * @author Beck
  * @since 2020-12-09 19:49:55

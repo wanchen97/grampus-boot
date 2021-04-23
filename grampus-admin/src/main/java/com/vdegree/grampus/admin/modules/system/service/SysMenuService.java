@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 菜单表(SysMenu)表服务接口
+ * 菜单表 服务接口
  *
  * @author Beck
  * @since 2020-12-09 19:49:30

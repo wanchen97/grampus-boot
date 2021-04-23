@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 角色菜单表(SysRoleMenu)表服务实现类
+ * 角色菜单表 服务实现类
  *
  * @author Beck
  * @since 2020-12-09 19:50:44

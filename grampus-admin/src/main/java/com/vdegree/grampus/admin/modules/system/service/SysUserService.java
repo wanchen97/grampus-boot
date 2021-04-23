@@ -5,7 +5,7 @@ import com.vdegree.grampus.admin.modules.system.entity.SysUser;
 import com.vdegree.grampus.common.mybatis.service.EnhancedBaseService;
 
 /**
- * 用户表(SysUser)表服务接口
+ * 用户表 服务接口
  *
  * @author Beck
  * @since 2020-12-09 19:50:58

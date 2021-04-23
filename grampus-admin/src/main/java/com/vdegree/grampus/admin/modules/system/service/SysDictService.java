@@ -7,7 +7,7 @@ import com.vdegree.grampus.common.mybatis.service.EnhancedBaseService;
 import java.util.List;
 
 /**
- * 字典表(SysDict)表服务接口
+ * 字典表 服务接口
  *
  * @author Beck
  * @since 2020-12-09 19:47:47

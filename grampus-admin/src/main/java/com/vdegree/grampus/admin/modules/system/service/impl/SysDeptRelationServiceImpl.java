@@ -7,7 +7,7 @@ import com.vdegree.grampus.common.mybatis.service.impl.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
- * 部门关系表(SysDeptRelation)表服务实现类
+ * 部门关系表 服务实现类
  *
  * @author Beck
  * @since 2020-12-09 19:47:18

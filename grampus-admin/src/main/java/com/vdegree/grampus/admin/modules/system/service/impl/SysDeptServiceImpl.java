@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * 部门表(SysDept)表服务实现类
+ * 部门表 服务实现类
  *
  * @author Beck
  * @since 2020-12-03 20:06:59

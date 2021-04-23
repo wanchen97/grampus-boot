@@ -20,7 +20,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * 菜单表(SysMenu)表服务实现类
+ * 菜单表 服务实现类
  *
  * @author Beck
  * @since 2020-12-09 19:49:31

@@ -8,7 +8,7 @@ import com.vdegree.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
- * 字典数据表(SysDictItem)表服务实现类
+ * 字典数据表 服务实现类
  *
  * @author Beck
  * @since 2020-12-09 19:48:32

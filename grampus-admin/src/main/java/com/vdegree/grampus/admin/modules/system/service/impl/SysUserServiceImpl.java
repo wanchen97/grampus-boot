@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
- * 用户表(SysUser)表服务实现类
+ * 用户表 服务实现类
  *
  * @author Beck
  * @since 2020-12-09 19:50:59

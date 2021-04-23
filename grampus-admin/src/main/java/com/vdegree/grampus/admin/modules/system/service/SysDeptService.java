@@ -5,7 +5,7 @@ import com.vdegree.grampus.admin.modules.system.entity.SysDept;
 import com.vdegree.grampus.common.mybatis.service.EnhancedBaseService;
 
 /**
- * 部门表(SysDept)表服务接口
+ * 部门表 服务接口
  *
  * @author Beck
  * @since 2020-12-03 20:06:59
