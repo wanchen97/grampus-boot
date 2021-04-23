@@ -42,7 +42,7 @@ public class LoginController {
 	private final PasswordEncoder passwordEncoder;
 	private final JwtTokenManager jwtTokenManager;
 
-	@ApiOperation("/注册接口")
+	@ApiOperation("注册接口")
 	@PostMapping("/register")
 	public Result<Void> register(@RequestBody RegisterReq params) {
 		String userNo = params.getUserNo();
@@ -63,7 +63,7 @@ public class LoginController {
 		return Result.success();
 	}
 
-	@ApiOperation("/登录接口")
+	@ApiOperation("登录接口")
 	@PostMapping("/login")
 	public Result<Map<String, Object>> login(@RequestBody LoginReq params) {
 		String username = params.getUserNo();
