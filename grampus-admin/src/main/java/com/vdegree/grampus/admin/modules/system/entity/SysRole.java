@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * 角色表(SysRole)实体类
+ * 角色表 实体类
  *
  * @author Beck
  * @since 2020-12-09 19:50:15

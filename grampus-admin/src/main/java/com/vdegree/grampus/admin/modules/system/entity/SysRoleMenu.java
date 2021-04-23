@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.Table;
 
 /**
- * 角色菜单表(SysRoleMenu)实体类
+ * 角色菜单表 实体类
  *
  * @author Beck
  * @since 2020-12-09 19:50:42

@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * 菜单表(SysMenu)表数据库访问层
+ * 菜单表 数据库访问层
  *
  * @author Beck
  * @since 2020-12-09 19:49:29

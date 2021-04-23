@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * 用户登陆日志表(SysLogLogin)实体类
+ * 用户登陆日志表 实体类
  *
  * @author Beck
  * @since 2020-12-09 19:48:58

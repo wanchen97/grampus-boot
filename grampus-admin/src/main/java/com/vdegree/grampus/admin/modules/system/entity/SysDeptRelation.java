@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.Table;
 
 /**
- * 部门关系表(SysDeptRelation)实体类
+ * 部门关系表 实体类
  *
  * @author Beck
  * @since 2020-12-09 19:47:16

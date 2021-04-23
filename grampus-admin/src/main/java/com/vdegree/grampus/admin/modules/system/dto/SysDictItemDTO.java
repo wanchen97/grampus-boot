@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Title: 字典详情
+ * Title: 字典详情DTO
  * Company: v-degree
  *
  * @author Beck

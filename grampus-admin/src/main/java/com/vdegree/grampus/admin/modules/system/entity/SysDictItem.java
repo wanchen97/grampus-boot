@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * 字典数据表(SysDictItem)实体类
+ * 字典数据表 实体类
  *
  * @author Beck
  * @since 2020-12-09 19:48:30

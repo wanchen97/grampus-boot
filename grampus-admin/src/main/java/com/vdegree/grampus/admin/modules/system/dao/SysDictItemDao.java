@@ -5,7 +5,7 @@ import com.vdegree.grampus.common.mybatis.annotation.MyBatisMapper;
 import com.vdegree.grampus.common.mybatis.mapper.BaseMapper;
 
 /**
- * 字典数据表(SysDictItem)表数据库访问层
+ * 字典数据表 数据库访问层
  *
  * @author Beck
  * @since 2020-12-09 19:48:31

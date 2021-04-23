@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * 部门表(SysDept)实体类
+ * 部门表 实体类
  *
  * @author Beck
  * @since 2020-12-03 20:06:54

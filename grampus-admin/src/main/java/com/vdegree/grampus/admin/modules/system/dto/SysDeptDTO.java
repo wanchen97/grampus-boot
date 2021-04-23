@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * 系统部门
+ * 系统部门DTO
  *
  * @author Beck
  * @since 2020-12-03 20:06:54

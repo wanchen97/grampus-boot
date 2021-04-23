@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.Table;
 
 /**
- * 用户角色关联表(SysUserRole)实体类
+ * 用户角色关联表 实体类
  *
  * @author Beck
  * @since 2020-12-09 19:51:16

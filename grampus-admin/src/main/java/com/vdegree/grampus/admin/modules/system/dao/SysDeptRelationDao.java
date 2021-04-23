@@ -5,7 +5,7 @@ import com.vdegree.grampus.common.mybatis.annotation.MyBatisMapper;
 import com.vdegree.grampus.common.mybatis.mapper.BaseMapper;
 
 /**
- * 部门关系表(SysDeptRelation)表数据库访问层
+ * 部门关系表 数据库访问层
  *
  * @author Beck
  * @since 2020-12-09 19:47:17

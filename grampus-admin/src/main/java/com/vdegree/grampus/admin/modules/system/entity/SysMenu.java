@@ -8,7 +8,7 @@ import tk.mybatis.mapper.annotation.LogicDelete;
 import javax.persistence.Table;
 
 /**
- * 菜单表(SysMenu)实体类
+ * 菜单表 实体类
  *
  * @author Beck
  * @since 2020-12-09 19:49:29

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * 用户表(SysUser)实体类
+ * 用户表 实体类
  *
  * @author Beck
  * @since 2020-12-09 19:50:57

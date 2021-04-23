@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * 公共参数表(SysParam)实体类
+ * 公共参数表 实体类
  *
  * @author Beck
  * @since 2020-12-09 19:49:53
