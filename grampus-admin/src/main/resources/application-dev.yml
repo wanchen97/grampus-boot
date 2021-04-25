@@ -34,10 +34,11 @@ distributed:
     retry-interval: 100
     primary-executor: com.vdegree.grampus.common.lock.strategy.RedisTemplateLockStrategy
 
+#grampus:
+  #  security:
+  #    token:
+  #      secret-key: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
 grampus:
-  security:
-    token:
-      secret-key: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
   auth:
     token:
       secret:
