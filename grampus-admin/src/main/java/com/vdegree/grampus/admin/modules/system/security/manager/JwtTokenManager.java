@@ -1,6 +1,6 @@
 package com.vdegree.grampus.admin.modules.system.security.manager;
 
-import com.vdegree.grampus.admin.modules.system.security.properties.AuthProperties;
+import com.vdegree.grampus.admin.modules.system.security.properties.AuthTokenProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -31,7 +31,7 @@ public class JwtTokenManager {
 
 	private static final String AUTHORITIES_KEY = "perms";
 
-	private final AuthProperties authProperties;
+	private final AuthTokenProperties authProperties;
 
 	/**
 	 * Create token.

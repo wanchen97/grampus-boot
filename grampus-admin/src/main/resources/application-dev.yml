@@ -48,7 +48,22 @@ grampus:
     system:
       type: system
       ignoreUrls:
-        - /register/**
+        - "/favicon.ico"
+        - "/error"
+        - "/static/**"
+        - "/webjars*"
+        - "/webjars/**"
+        - "/auth/captcha"
+        - "/auth/public-key"
+        - "/upload/**"
+        - "/swagger-resources/**"
+        - "/v2/api-docs"
+        - "/v3/api-docs"
+        - "/doc.html"
+        - "/register/**"
+        - "/login"
+        - "/demo/**"
+
 #    datasource:
 #      names: master,slave0
 #      master:

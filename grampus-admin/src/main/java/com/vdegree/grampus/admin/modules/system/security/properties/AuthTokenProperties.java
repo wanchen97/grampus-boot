@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Auth related configurations.
@@ -19,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @Configuration
-public class AuthProperties implements Serializable {
+public class AuthTokenProperties implements Serializable {
 	private static final long serialVersionUID = 6026069450967381841L;
 
 	/**
@@ -33,15 +32,6 @@ public class AuthProperties implements Serializable {
 	 */
 	@Value("${grampus.auth.token.expire.seconds:1800}")
 	private long tokenValidityInSeconds;
-
-	/**
-	 * Which auth system is in use.
-	 */
-	@Value("${grampus.auth.system.type:}")
-	private String authSystemType;
-
-	@Value("${grampus.auth.system.ignoreUrls:}")
-	private List<String> ignoreUrls;
 
 	/**
 	 * secret key byte array.

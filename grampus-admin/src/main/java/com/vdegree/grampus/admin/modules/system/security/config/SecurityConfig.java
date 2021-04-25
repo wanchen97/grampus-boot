@@ -1,9 +1,12 @@
 package com.vdegree.grampus.admin.modules.system.security.config;
 
 import com.vdegree.grampus.admin.modules.system.security.filter.JwtAuthenticationTokenFilter;
+import com.vdegree.grampus.admin.modules.system.security.properties.AuthSystemProperties;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetailsService;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -24,8 +27,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * @author Beck
  * @date 2020-12-15
  */
+@Slf4j
 @AllArgsConstructor
 @Configuration(proxyBeanMethods = false)
+@EnableConfigurationProperties(AuthSystemProperties.class)
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	/**
@@ -36,6 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private final JwtAuthenticationTokenFilter jwtAuthenticationFilter;
 
 	private final PasswordEncoder passwordEncoder;
+
+	private final AuthSystemProperties authSystemProperties;
 
 	/**
 	 * anyRequest          |   匹配所有请求路径
@@ -83,26 +90,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) {
+		String[] ignoreUrls = authSystemProperties.getIgnoreUrls().toArray(new String[0]);
 		// @formatter:off
 		web.ignoring()
 			.antMatchers(HttpMethod.OPTIONS, "/**")
-			.antMatchers(
-				"/favicon.ico",
-				"/error",
-				"/static/**",
-				"/webjars*",
-				"/webjars/**",
-				"/auth/captcha",
-				"/auth/public-key",
-				"/upload/**",
-				"/swagger-resources/**",
-				"/v2/api-docs",
-				"/v3/api-docs",
-				"/doc.html",
-				"/register/**",
-				"/login",
-				"/demo/**"
-			);
+			.antMatchers(ignoreUrls);
 		// @formatter:on
 	}
 
