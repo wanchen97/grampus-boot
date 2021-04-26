@@ -4,6 +4,7 @@ import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.common.mybatis.annotation.FieldFill;
 import com.vdegree.grampus.common.mybatis.annotation.TableField;
 import com.vdegree.grampus.common.mybatis.handler.FieldFillHandler;
+import com.vdegree.grampus.common.mybatis.interceptor.FieldFillInterceptor;
 import org.apache.ibatis.mapping.SqlCommandType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +25,11 @@ public class MybatisConfig {
 	private final static String CREATE_DATE = "createDate";
 	private final static String UPDATE_BY = "updateBy";
 	private final static String UPDATE_DATE = "updateDate";
+
+	@Bean
+	public FieldFillInterceptor fieldFillInterceptor(FieldFillHandler fieldFillHandler) {
+		return new FieldFillInterceptor(fieldFillHandler);
+	}
 
 	@Bean
 	public FieldFillHandler fieldFillHandler() {
