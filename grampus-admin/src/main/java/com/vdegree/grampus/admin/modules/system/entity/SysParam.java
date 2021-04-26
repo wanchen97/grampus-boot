@@ -1,5 +1,7 @@
 package com.vdegree.grampus.admin.modules.system.entity;
 
+import com.vdegree.grampus.common.mybatis.annotation.FieldFill;
+import com.vdegree.grampus.common.mybatis.annotation.TableField;
 import com.vdegree.grampus.common.mybatis.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -34,18 +36,22 @@ public class SysParam extends BaseEntity {
 	/**
 	 * 创建者
 	 */
+	@TableField(fill = FieldFill.INSERT)
 	private Long createBy;
 	/**
 	 * 创建日期
 	 */
+	@TableField(fill = FieldFill.INSERT)
 	private Date createDate;
 	/**
 	 * 更新者
 	 */
+	@TableField(fill = FieldFill.INSERT_UPDATE)
 	private Long updateBy;
 	/**
 	 * 更新日期
 	 */
+	@TableField(fill = FieldFill.INSERT_UPDATE)
 	private Date updateDate;
 	/**
 	 * 删除标识(0正常 1删除)
