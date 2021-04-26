@@ -22,5 +22,5 @@ public interface FieldFillHandler {
 	 * @param fields         查询参数中标有TableField注解的字段
 	 * @param paramObj       查询参数实体
 	 */
-	void fill(SqlCommandType sqlCommandType, List<Field> fields, Object paramObj) throws IllegalAccessException;
+	void fill(SqlCommandType sqlCommandType, List<Field> fields, Object paramObj);
 }

@@ -1,6 +1,7 @@
 package com.vdegree.grampus.admin.modules.system.handler;
 
 import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
+import com.vdegree.grampus.common.core.utils.ReflectUtil;
 import com.vdegree.grampus.common.mybatis.annotation.FieldFill;
 import com.vdegree.grampus.common.mybatis.annotation.TableField;
 import com.vdegree.grampus.common.mybatis.handler.FieldFillHandler;
@@ -27,7 +28,7 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 	private final static String UPDATE_DATE = "updateDate";
 
 	@Override
-	public void fill(SqlCommandType sqlCommandType, List<Field> fields, Object paramObj) throws IllegalAccessException {
+	public void fill(SqlCommandType sqlCommandType, List<Field> fields, Object paramObj) {
 		Long currentUserId = Objects.requireNonNull(SecurityUtils.getUserDetails()).getId();
 		Date currentDate = new Date();
 		for (Field field : fields) {
@@ -38,13 +39,13 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 				if (FieldFill.INSERT.equals(tableField.fill())
 						|| FieldFill.INSERT_UPDATE.equals(tableField.fill())) {
 					if (CREATE_BY.equals(field.getName())) {
-						field.set(paramObj, currentUserId);
+						ReflectUtil.setField(field, paramObj, currentUserId);
 					} else if (CREATE_DATE.equals(field.getName())) {
-						field.set(paramObj, currentDate);
+						ReflectUtil.setField(field, paramObj, currentDate);
 					} else if (UPDATE_BY.equals(field.getName())) {
-						field.set(paramObj, currentUserId);
+						ReflectUtil.setField(field, paramObj, currentUserId);
 					} else if (UPDATE_DATE.equals(field.getName())) {
-						field.set(paramObj, currentDate);
+						ReflectUtil.setField(field, paramObj, currentDate);
 					}
 				}
 			} else if (SqlCommandType.UPDATE.equals(sqlCommandType)) {
@@ -52,9 +53,9 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 				if (FieldFill.UPDATE.equals(tableField.fill())
 						|| FieldFill.INSERT_UPDATE.equals(tableField.fill())) {
 					if (UPDATE_BY.equals(field.getName())) {
-						field.set(paramObj, currentUserId);
+						ReflectUtil.setField(field, paramObj, currentUserId);
 					} else if (UPDATE_DATE.equals(field.getName())) {
-						field.set(paramObj, currentDate);
+						ReflectUtil.setField(field, paramObj, currentDate);
 					}
 				}
 			}
