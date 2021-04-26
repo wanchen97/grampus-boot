@@ -27,7 +27,7 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 	private final static String UPDATE_DATE = "updateDate";
 
 	@Override
-	public void fillField(SqlCommandType sqlCommandType, List<Field> fields, Object paramObj) throws IllegalAccessException {
+	public void fill(SqlCommandType sqlCommandType, List<Field> fields, Object paramObj) throws IllegalAccessException {
 		Long currentUserId = Objects.requireNonNull(SecurityUtils.getUserDetails()).getId();
 		Date currentDate = new Date();
 		for (Field field : fields) {
