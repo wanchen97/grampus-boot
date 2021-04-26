@@ -11,6 +11,7 @@ import org.apache.ibatis.plugin.*;
 
 import java.lang.reflect.Field;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Title: 字段填充插件
@@ -32,15 +33,13 @@ public class FieldFillInterceptor implements Interceptor {
 		SqlCommandType sqlCommandType = mappedStatement.getSqlCommandType();
 		// 获取 查询的参数的实体对象
 		Object paramObj = invocation.getArgs()[1];
-		// 获取实体类的所有私有变量
+		// 获取 实体类的所有私有变量
 		List<Field> declaredFields = ReflectionKit.getFieldList(paramObj.getClass());
-		for (Field field : declaredFields) {
-			if (field.isAnnotationPresent(TableField.class)) {
-				field.setAccessible(true);
-				TableField tableField = field.getAnnotation(TableField.class);
-				fieldFillHandler.fillField(sqlCommandType, tableField, paramObj, field);
-			}
-		}
+		// 获取 标注TableField的所有私有变量
+		List<Field> tableFields = declaredFields.stream()
+				.filter(field -> field.isAnnotationPresent(TableField.class))
+				.collect(Collectors.toList());
+		fieldFillHandler.fillField(sqlCommandType, tableFields, paramObj);
 		return invocation.proceed();
 	}
 

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import java.lang.reflect.Field;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -33,31 +34,35 @@ public class MybatisConfig {
 
 	@Bean
 	public FieldFillHandler fieldFillHandler() {
-		return (SqlCommandType sqlCommandType, TableField tableField, Object paramObj, Field field) -> {
+		return (SqlCommandType sqlCommandType, List<Field> fields, Object paramObj) -> {
 			Long currentUserId = Objects.requireNonNull(SecurityUtils.getUserDetails()).getId();
 			Date currentDate = new Date();
-			if (SqlCommandType.INSERT.equals(sqlCommandType)) {
-				// INSERT SQL
-				if (FieldFill.INSERT.equals(tableField.fill())
-						|| FieldFill.INSERT_UPDATE.equals(tableField.fill())) {
-					if (CREATE_BY.equals(field.getName())) {
-						field.set(paramObj, currentUserId);
-					} else if (CREATE_DATE.equals(field.getName())) {
-						field.set(paramObj, currentDate);
-					} else if (UPDATE_BY.equals(field.getName())) {
-						field.set(paramObj, currentUserId);
-					} else if (UPDATE_DATE.equals(field.getName())) {
-						field.set(paramObj, currentDate);
+			for (Field field : fields) {
+				field.setAccessible(true);
+				TableField tableField = field.getAnnotation(TableField.class);
+				if (SqlCommandType.INSERT.equals(sqlCommandType)) {
+					// INSERT SQL
+					if (FieldFill.INSERT.equals(tableField.fill())
+							|| FieldFill.INSERT_UPDATE.equals(tableField.fill())) {
+						if (CREATE_BY.equals(field.getName())) {
+							field.set(paramObj, currentUserId);
+						} else if (CREATE_DATE.equals(field.getName())) {
+							field.set(paramObj, currentDate);
+						} else if (UPDATE_BY.equals(field.getName())) {
+							field.set(paramObj, currentUserId);
+						} else if (UPDATE_DATE.equals(field.getName())) {
+							field.set(paramObj, currentDate);
+						}
 					}
-				}
-			} else if (SqlCommandType.UPDATE.equals(sqlCommandType)) {
-				// UPDATE SQL
-				if (FieldFill.UPDATE.equals(tableField.fill())
-						|| FieldFill.INSERT_UPDATE.equals(tableField.fill())) {
-					if (UPDATE_BY.equals(field.getName())) {
-						field.set(paramObj, currentUserId);
-					} else if (UPDATE_DATE.equals(field.getName())) {
-						field.set(paramObj, currentDate);
+				} else if (SqlCommandType.UPDATE.equals(sqlCommandType)) {
+					// UPDATE SQL
+					if (FieldFill.UPDATE.equals(tableField.fill())
+							|| FieldFill.INSERT_UPDATE.equals(tableField.fill())) {
+						if (UPDATE_BY.equals(field.getName())) {
+							field.set(paramObj, currentUserId);
+						} else if (UPDATE_DATE.equals(field.getName())) {
+							field.set(paramObj, currentDate);
+						}
 					}
 				}
 			}
