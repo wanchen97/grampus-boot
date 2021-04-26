@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Title: 字段填充处理器
+ * Title: Mybatis配置类
  * Company: v-degree
  *
  * @author Beck
