@@ -1,4 +1,4 @@
-package com.vdegree.grampus.admin.modules.system.security.config;
+package com.vdegree.grampus.admin.modules.system.config;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

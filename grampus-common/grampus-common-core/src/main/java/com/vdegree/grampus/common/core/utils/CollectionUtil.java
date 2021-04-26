@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.RandomAccess;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -27,6 +28,8 @@ import java.util.stream.Collectors;
 @UtilityClass
 @SuppressWarnings("unchecked")
 public class CollectionUtil extends org.springframework.util.CollectionUtils {
+
+	private static final int MAX_POWER_OF_TWO = 1 << (Integer.SIZE - 2);
 
 	/**
 	 * Return {@code true} if the supplied Collection is not {@code null} or empty.
@@ -89,6 +92,27 @@ public class CollectionUtil extends org.springframework.util.CollectionUtils {
 		System.arraycopy(one, 0, target, 0, one.length);
 		System.arraycopy(other, 0, target, one.length, other.length);
 		return target;
+	}
+
+	/**
+	 * Concatenates 2 arrays
+	 *
+	 * @param one   数组1
+	 * @param other 数组2
+	 * @return 新数组
+	 */
+	public static <T> T[] concat(T[] one, T[]... other) {
+		int totalLength = one.length;
+		for (T[] array : other) {
+			totalLength += array.length;
+		}
+		T[] result = Arrays.copyOf(one, totalLength);
+		int offset = one.length;
+		for (T[] array : other) {
+			System.arraycopy(array, 0, result, offset, array.length);
+			offset += array.length;
+		}
+		return result;
 	}
 
 	/**
@@ -155,6 +179,77 @@ public class CollectionUtil extends org.springframework.util.CollectionUtils {
 			keyValueMap.put((K) key, (V) value);
 		}
 		return keyValueMap;
+	}
+
+	/**
+	 * 创建默认HashMap
+	 *
+	 * @param <K> K
+	 * @param <V> V
+	 * @return HashMap
+	 * @see com.google.common.collect.Maps#newHashMap()
+	 * @since 3.4.0
+	 */
+	public static <K, V> HashMap<K, V> newHashMap() {
+		return new HashMap<>();
+	}
+
+	/**
+	 * 根据预期大小创建HashMap.
+	 *
+	 * @param expectedSize 预期大小
+	 * @param <K>          K
+	 * @param <V>          V
+	 * @return HashMap
+	 * @see com.google.common.collect.Maps#newHashMapWithExpectedSize
+	 * @since 3.4.0
+	 */
+	public static <K, V> HashMap<K, V> newHashMapWithExpectedSize(int expectedSize) {
+		return new HashMap<>(capacity(expectedSize));
+	}
+
+	/**
+	 * 用来过渡下Jdk1.8下ConcurrentHashMap的性能bug
+	 * https://bugs.openjdk.java.net/browse/JDK-8161372
+	 *
+	 * @param concurrentHashMap ConcurrentHashMap 没限制类型了，非ConcurrentHashMap就别调用这方法了
+	 * @param key               key
+	 * @param mappingFunction   function
+	 * @param <K>               k
+	 * @param <V>               v
+	 * @return V
+	 * @since 3.4.0
+	 */
+	public static <K, V> V computeIfAbsent(Map<K, V> concurrentHashMap, K key, Function<? super K, ? extends V> mappingFunction) {
+		V v = concurrentHashMap.get(key);
+		if (v != null) {
+			return v;
+		}
+		return concurrentHashMap.computeIfAbsent(key, mappingFunction);
+	}
+
+	/**
+	 * Returns a capacity that is sufficient to keep the map from being resized as
+	 * long as it grows no larger than expectedSize and the load factor is >= its
+	 * default (0.75).
+	 *
+	 * @see com.google.common.collect.Maps#capacity(int)
+	 * @since 3.4.0
+	 */
+	private static int capacity(int expectedSize) {
+		if (expectedSize < 3) {
+			if (expectedSize < 0) {
+				throw new IllegalArgumentException("expectedSize cannot be negative but was: " + expectedSize);
+			}
+			return expectedSize + 1;
+		}
+		if (expectedSize < MAX_POWER_OF_TWO) {
+			// This is the calculation used in JDK8 to resize when a putAll
+			// happens; it seems to be the most conservative calculation we
+			// can make.  0.75 is the default load factor.
+			return (int) ((float) expectedSize / 0.75F + 1.0F);
+		}
+		return Integer.MAX_VALUE; // any large value
 	}
 
 	/**
