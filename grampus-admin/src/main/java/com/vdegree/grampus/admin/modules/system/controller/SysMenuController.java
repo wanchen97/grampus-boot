@@ -33,7 +33,7 @@ import java.util.Set;
 @Api(tags = "菜单模块")
 @RestController
 @AllArgsConstructor
-@RequestMapping("/menu")
+@RequestMapping("/system/menu")
 public class SysMenuController {
 
 	private final SysMenuService sysMenuService;

@@ -37,7 +37,7 @@ import java.util.Map;
 @Api(tags = "系统角色管理")
 @RestController
 @AllArgsConstructor
-@RequestMapping("/role")
+@RequestMapping("/system/role")
 public class SysRoleController {
 
 	private final SysRoleService sysRoleService;

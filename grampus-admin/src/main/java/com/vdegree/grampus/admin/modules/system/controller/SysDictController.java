@@ -38,7 +38,7 @@ import java.util.Map;
 @Api(tags = "字典管理")
 @RestController
 @AllArgsConstructor
-@RequestMapping("/dict")
+@RequestMapping("/system/dict")
 public class SysDictController {
 
 	private final SysDictService sysDictService;

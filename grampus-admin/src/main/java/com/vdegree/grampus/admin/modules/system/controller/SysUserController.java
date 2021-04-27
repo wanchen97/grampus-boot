@@ -43,7 +43,7 @@ import java.util.Map;
 @Api(tags = "用户管理")
 @AllArgsConstructor
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/system/user")
 public class SysUserController {
 	private final SysUserService sysUserService;
 	private final SysUserRoleService sysUserRoleService;

@@ -35,7 +35,7 @@ import java.util.Map;
 @Api(tags = "系统参数管理")
 @RestController
 @AllArgsConstructor
-@RequestMapping("/param")
+@RequestMapping("/system/param")
 public class SysParamController {
 
 	private final SysParamService sysParamService;
