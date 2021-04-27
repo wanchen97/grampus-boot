@@ -10,6 +10,7 @@ import com.vdegree.grampus.common.core.utils.StringUtil;
 import com.vdegree.grampus.common.mybatis.mapper.BaseMapper;
 import com.vdegree.grampus.common.mybatis.page.PageData;
 import com.vdegree.grampus.common.mybatis.service.BaseService;
+import com.vdegree.grampus.common.mybatis.utils.SqlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -152,7 +153,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<
 	@Override
 	public PageData<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount, String orderField, String order) {
 		Page<T> page = PageHelper.startPage(pageNum, pageSize, withCount);
-		if (StringUtil.isNotBlank(orderField)) {
+		if (StringUtil.isNotBlank(orderField) && SqlUtil.isValidOrderBySql(orderField)) {
 			page.setOrderBy(orderField + " " + (Constant.DESC.equalsIgnoreCase(order) ? Constant.DESC : Constant.ASC));
 		}
 		return new PageData<>(page.doSelectPageInfo(() -> baseMapper.select(entity)));

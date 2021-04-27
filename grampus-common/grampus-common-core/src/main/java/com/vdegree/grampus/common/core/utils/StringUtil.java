@@ -904,6 +904,21 @@ public class StringUtil extends StringUtils {
 	}
 
 	/**
+	 * 是否包含特定字符，忽略大小写，如果给定两个参数都为{@code null}，返回true
+	 *
+	 * @param str     被检测字符串
+	 * @param testStr 被测试是否包含的字符串
+	 * @return 是否包含
+	 */
+	public static boolean containsIgnoreCase(CharSequence str, CharSequence testStr) {
+		if (null == str) {
+			return null == testStr;
+		} else {
+			return str.toString().toLowerCase().contains(testStr.toString().toLowerCase());
+		}
+	}
+
+	/**
 	 * 判断是否 http 地址
 	 *
 	 * @param text 文本
