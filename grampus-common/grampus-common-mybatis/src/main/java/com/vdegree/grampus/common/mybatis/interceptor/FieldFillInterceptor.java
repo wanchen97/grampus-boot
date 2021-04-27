@@ -39,7 +39,7 @@ public class FieldFillInterceptor implements Interceptor {
 		List<Field> tableFields = declaredFields.stream()
 				.filter(field -> field.isAnnotationPresent(TableField.class))
 				.collect(Collectors.toList());
-		fieldFillHandler.fill(sqlCommandType, tableFields, paramObj);
+		fieldFillHandler.fill(new TableFieldObject(sqlCommandType, tableFields, paramObj));
 		return invocation.proceed();
 	}
 

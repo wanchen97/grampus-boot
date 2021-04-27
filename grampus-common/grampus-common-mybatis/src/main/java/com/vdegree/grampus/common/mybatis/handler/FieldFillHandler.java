@@ -1,9 +1,6 @@
 package com.vdegree.grampus.common.mybatis.handler;
 
-import org.apache.ibatis.mapping.SqlCommandType;
-
-import java.lang.reflect.Field;
-import java.util.List;
+import com.vdegree.grampus.common.mybatis.interceptor.TableFieldObject;
 
 /**
  * Title: 字段填充处理器
@@ -18,9 +15,7 @@ public interface FieldFillHandler {
 	/**
 	 * 填充字段
 	 *
-	 * @param sqlCommandType SQL类型(INSERT UPDATE DELETE...)
-	 * @param fields         查询参数中标有TableField注解的字段
-	 * @param paramObj       查询参数实体
+	 * @param tableFieldObject TableField注解标注的实体对象信息
 	 */
-	void fill(SqlCommandType sqlCommandType, List<Field> fields, Object paramObj);
+	void fill(TableFieldObject tableFieldObject);
 }

@@ -5,6 +5,7 @@ import com.vdegree.grampus.common.core.utils.ReflectUtil;
 import com.vdegree.grampus.common.mybatis.annotation.FieldFill;
 import com.vdegree.grampus.common.mybatis.annotation.TableField;
 import com.vdegree.grampus.common.mybatis.handler.FieldFillHandler;
+import com.vdegree.grampus.common.mybatis.interceptor.TableFieldObject;
 import org.apache.ibatis.mapping.SqlCommandType;
 import org.springframework.stereotype.Component;
 
@@ -28,14 +29,21 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 	private final static String UPDATE_DATE = "updateDate";
 
 	@Override
-	public void fill(SqlCommandType sqlCommandType, List<Field> fields, Object paramObj) {
+	public void fill(TableFieldObject tableFieldObject) {
 		Long currentUserId = Objects.requireNonNull(SecurityUtils.getUserDetails()).getId();
 		Date currentDate = new Date();
-		for (Field field : fields) {
-			field.setAccessible(true);
-			TableField tableField = field.getAnnotation(TableField.class);
-			if (SqlCommandType.INSERT.equals(sqlCommandType)) {
-				// INSERT SQL
+
+		SqlCommandType sqlCommandType = tableFieldObject.getSqlCommandType();
+		List<Field> fields = tableFieldObject.getFields();
+		Object paramObj = tableFieldObject.getParamObj();
+
+		if (SqlCommandType.INSERT.equals(sqlCommandType)) {
+			// INSERT SQL TODO 没有设置值才自动填充
+			for (Field field : fields) {
+				field.setAccessible(true);
+				TableField tableField = field.getAnnotation(TableField.class);
+
+				// INSERT SQL TODO 没有设置值才自动填充
 				if (FieldFill.INSERT.equals(tableField.fill())
 						|| FieldFill.INSERT_UPDATE.equals(tableField.fill())) {
 					if (CREATE_BY.equals(field.getName())) {
@@ -48,7 +56,14 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 						ReflectUtil.setField(field, paramObj, currentDate);
 					}
 				}
-			} else if (SqlCommandType.UPDATE.equals(sqlCommandType)) {
+			}
+
+		} else if (SqlCommandType.UPDATE.equals(sqlCommandType)) {
+			// UPDATE SQL
+			for (Field field : fields) {
+				field.setAccessible(true);
+				TableField tableField = field.getAnnotation(TableField.class);
+
 				// UPDATE SQL
 				if (FieldFill.UPDATE.equals(tableField.fill())
 						|| FieldFill.INSERT_UPDATE.equals(tableField.fill())) {
@@ -59,6 +74,11 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 					}
 				}
 			}
+
 		}
+	}
+
+	private void insertFillIfNull(Object paramObj, Field field, Object value) {
+
 	}
 }
