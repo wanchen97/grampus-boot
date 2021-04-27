@@ -60,8 +60,8 @@ grampus:
         - "/v2/api-docs"
         - "/v3/api-docs"
         - "/doc.html"
-        - "/register/**"
-        - "/login"
+        - "/system/register/**"
+        - "/system/login"
         - "/demo/**"
 
 #    datasource:
