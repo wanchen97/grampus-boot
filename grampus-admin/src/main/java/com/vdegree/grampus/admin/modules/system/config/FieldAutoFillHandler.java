@@ -1,6 +1,5 @@
 package com.vdegree.grampus.admin.modules.system.config;
 
-import com.google.common.collect.Maps;
 import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.common.core.utils.ReflectUtil;
 import com.vdegree.grampus.common.mybatis.annotation.FieldFill;
@@ -15,7 +14,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -50,20 +48,19 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 			boolean withInsertFill = FieldFill.INSERT.equals(fill) || FieldFill.INSERT_UPDATE.equals(fill);
 			boolean withUpdateFill = FieldFill.UPDATE.equals(fill) || FieldFill.INSERT_UPDATE.equals(fill);
 			for (Field field : fillFieldEntry.getValue()) {
-				field.setAccessible(true);
 				if (isInsertSql && withInsertFill) {
-					// INSERT SQL TODO 没有设置值才自动填充
-					this.insertFillIfNull(fill, paramObj, field, currentUserId, currentDate);
+					// INSERT SQL
+					this.insertFillIfNull(paramObj, field, currentUserId, currentDate);
 				} else if (isUpdateSql && withUpdateFill) {
 					// UPDATE SQL
-					this.updateFillIfNull(fill, paramObj, field, currentUserId, currentDate);
+					this.updateFillIfNull(paramObj, field, currentUserId, currentDate);
 				}
 			}
 		}
 	}
 
-	private void insertFillIfNull(FieldFill fill, Object paramObj, Field field, Long currentUserId, Date currentDate) {
-		if (!FieldFill.INSERT.equals(fill) && !FieldFill.INSERT_UPDATE.equals(fill)) {
+	private void insertFillIfNull(Object paramObj, Field field, Object currentUserId, Date currentDate) {
+		if (Objects.isNull(ReflectUtil.getField(field, paramObj))) {
 			return;
 		}
 		if (CREATE_BY.equals(field.getName()) || UPDATE_BY.equals(field.getName())) {
@@ -73,8 +70,8 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 		}
 	}
 
-	private void updateFillIfNull(FieldFill fill, Object paramObj, Field field, Long currentUserId, Date currentDate) {
-		if (!FieldFill.UPDATE.equals(fill) && !FieldFill.INSERT_UPDATE.equals(fill)) {
+	private void updateFillIfNull(Object paramObj, Field field, Long currentUserId, Date currentDate) {
+		if (Objects.isNull(ReflectUtil.getField(field, paramObj))) {
 			return;
 		}
 		if (UPDATE_BY.equals(field.getName())) {
