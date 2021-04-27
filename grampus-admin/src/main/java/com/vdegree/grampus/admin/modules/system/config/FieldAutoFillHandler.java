@@ -60,7 +60,7 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 	}
 
 	private void insertFillIfNull(Object paramObj, Field field, Object currentUserId, Date currentDate) {
-		if (Objects.isNull(ReflectUtil.getField(field, paramObj))) {
+		if (Objects.nonNull(ReflectUtil.getField(field, paramObj))) {
 			return;
 		}
 		if (CREATE_BY.equals(field.getName()) || UPDATE_BY.equals(field.getName())) {
@@ -71,7 +71,7 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 	}
 
 	private void updateFillIfNull(Object paramObj, Field field, Long currentUserId, Date currentDate) {
-		if (Objects.isNull(ReflectUtil.getField(field, paramObj))) {
+		if (Objects.nonNull(ReflectUtil.getField(field, paramObj))) {
 			return;
 		}
 		if (UPDATE_BY.equals(field.getName())) {
