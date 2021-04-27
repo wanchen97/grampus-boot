@@ -32,7 +32,7 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 
 	@Override
 	public void fill(TableFieldObject tableFieldObject) {
-		Long currentUserId = Objects.requireNonNull(SecurityUtils.getUserDetails()).getId();
+		String currentUserNo = Objects.requireNonNull(SecurityUtils.getUserDetails()).getUserNo();
 		Date currentDate = new Date();
 
 		SqlCommandType sqlCommandType = tableFieldObject.getSqlCommandType();
@@ -50,32 +50,32 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 			for (Field field : fillFieldEntry.getValue()) {
 				if (isInsertSql && withInsertFill) {
 					// INSERT SQL
-					this.insertFillIfNull(paramObj, field, currentUserId, currentDate);
+					this.insertFillIfNull(paramObj, field, currentUserNo, currentDate);
 				} else if (isUpdateSql && withUpdateFill) {
 					// UPDATE SQL
-					this.updateFillIfNull(paramObj, field, currentUserId, currentDate);
+					this.updateFillIfNull(paramObj, field, currentUserNo, currentDate);
 				}
 			}
 		}
 	}
 
-	private void insertFillIfNull(Object paramObj, Field field, Object currentUserId, Date currentDate) {
+	private void insertFillIfNull(Object paramObj, Field field, String currentUserNo, Date currentDate) {
 		if (Objects.nonNull(ReflectUtil.getField(field, paramObj))) {
 			return;
 		}
 		if (CREATE_BY.equals(field.getName()) || UPDATE_BY.equals(field.getName())) {
-			ReflectUtil.setField(field, paramObj, currentUserId);
+			ReflectUtil.setField(field, paramObj, currentUserNo);
 		} else if (CREATE_DATE.equals(field.getName()) || UPDATE_DATE.equals(field.getName())) {
 			ReflectUtil.setField(field, paramObj, currentDate);
 		}
 	}
 
-	private void updateFillIfNull(Object paramObj, Field field, Long currentUserId, Date currentDate) {
+	private void updateFillIfNull(Object paramObj, Field field, String currentUserNo, Date currentDate) {
 		if (Objects.nonNull(ReflectUtil.getField(field, paramObj))) {
 			return;
 		}
 		if (UPDATE_BY.equals(field.getName())) {
-			ReflectUtil.setField(field, paramObj, currentUserId);
+			ReflectUtil.setField(field, paramObj, currentUserNo);
 		} else if (UPDATE_DATE.equals(field.getName())) {
 			ReflectUtil.setField(field, paramObj, currentDate);
 		}
