@@ -1,4 +1,4 @@
-package com.vdegree.grampus.admin.modules.system.handler;
+package com.vdegree.grampus.admin.modules.system.config;
 
 import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.common.core.utils.ReflectUtil;
