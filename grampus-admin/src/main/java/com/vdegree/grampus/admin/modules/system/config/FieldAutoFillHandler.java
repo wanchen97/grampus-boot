@@ -1,5 +1,6 @@
 package com.vdegree.grampus.admin.modules.system.config;
 
+import com.google.common.collect.Maps;
 import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.common.core.utils.ReflectUtil;
 import com.vdegree.grampus.common.mybatis.annotation.FieldFill;
@@ -12,7 +13,10 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Field;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * Title: 字段自动填充处理器
@@ -34,51 +38,49 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 		Date currentDate = new Date();
 
 		SqlCommandType sqlCommandType = tableFieldObject.getSqlCommandType();
-		List<Field> fields = tableFieldObject.getFields();
 		Object paramObj = tableFieldObject.getParamObj();
+		List<Field> fields = tableFieldObject.getFields();
+		Map<FieldFill, List<Field>> fillFieldMap = fields.stream()
+				.collect(Collectors.groupingBy(field -> field.getAnnotation(TableField.class).fill()));
 
-		if (SqlCommandType.INSERT.equals(sqlCommandType)) {
-			// INSERT SQL TODO 没有设置值才自动填充
-			for (Field field : fields) {
+		boolean isInsertSql = SqlCommandType.INSERT.equals(sqlCommandType);
+		boolean isUpdateSql = SqlCommandType.UPDATE.equals(sqlCommandType);
+		for (Map.Entry<FieldFill, List<Field>> fillFieldEntry : fillFieldMap.entrySet()) {
+			FieldFill fill = fillFieldEntry.getKey();
+			boolean withInsertFill = FieldFill.INSERT.equals(fill) || FieldFill.INSERT_UPDATE.equals(fill);
+			boolean withUpdateFill = FieldFill.UPDATE.equals(fill) || FieldFill.INSERT_UPDATE.equals(fill);
+			for (Field field : fillFieldEntry.getValue()) {
 				field.setAccessible(true);
-				TableField tableField = field.getAnnotation(TableField.class);
-
-				// INSERT SQL TODO 没有设置值才自动填充
-				if (FieldFill.INSERT.equals(tableField.fill())
-						|| FieldFill.INSERT_UPDATE.equals(tableField.fill())) {
-					if (CREATE_BY.equals(field.getName())) {
-						ReflectUtil.setField(field, paramObj, currentUserId);
-					} else if (CREATE_DATE.equals(field.getName())) {
-						ReflectUtil.setField(field, paramObj, currentDate);
-					} else if (UPDATE_BY.equals(field.getName())) {
-						ReflectUtil.setField(field, paramObj, currentUserId);
-					} else if (UPDATE_DATE.equals(field.getName())) {
-						ReflectUtil.setField(field, paramObj, currentDate);
-					}
+				if (isInsertSql && withInsertFill) {
+					// INSERT SQL TODO 没有设置值才自动填充
+					this.insertFillIfNull(fill, paramObj, field, currentUserId, currentDate);
+				} else if (isUpdateSql && withUpdateFill) {
+					// UPDATE SQL
+					this.updateFillIfNull(fill, paramObj, field, currentUserId, currentDate);
 				}
 			}
-
-		} else if (SqlCommandType.UPDATE.equals(sqlCommandType)) {
-			// UPDATE SQL
-			for (Field field : fields) {
-				field.setAccessible(true);
-				TableField tableField = field.getAnnotation(TableField.class);
-
-				// UPDATE SQL
-				if (FieldFill.UPDATE.equals(tableField.fill())
-						|| FieldFill.INSERT_UPDATE.equals(tableField.fill())) {
-					if (UPDATE_BY.equals(field.getName())) {
-						ReflectUtil.setField(field, paramObj, currentUserId);
-					} else if (UPDATE_DATE.equals(field.getName())) {
-						ReflectUtil.setField(field, paramObj, currentDate);
-					}
-				}
-			}
-
 		}
 	}
 
-	private void insertFillIfNull(Object paramObj, Field field, Object value) {
+	private void insertFillIfNull(FieldFill fill, Object paramObj, Field field, Long currentUserId, Date currentDate) {
+		if (!FieldFill.INSERT.equals(fill) && !FieldFill.INSERT_UPDATE.equals(fill)) {
+			return;
+		}
+		if (CREATE_BY.equals(field.getName()) || UPDATE_BY.equals(field.getName())) {
+			ReflectUtil.setField(field, paramObj, currentUserId);
+		} else if (CREATE_DATE.equals(field.getName()) || UPDATE_DATE.equals(field.getName())) {
+			ReflectUtil.setField(field, paramObj, currentDate);
+		}
+	}
 
+	private void updateFillIfNull(FieldFill fill, Object paramObj, Field field, Long currentUserId, Date currentDate) {
+		if (!FieldFill.UPDATE.equals(fill) && !FieldFill.INSERT_UPDATE.equals(fill)) {
+			return;
+		}
+		if (UPDATE_BY.equals(field.getName())) {
+			ReflectUtil.setField(field, paramObj, currentUserId);
+		} else if (UPDATE_DATE.equals(field.getName())) {
+			ReflectUtil.setField(field, paramObj, currentDate);
+		}
 	}
 }

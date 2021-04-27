@@ -1,5 +1,6 @@
 package com.vdegree.grampus.common.mybatis.interceptor;
 
+import com.vdegree.grampus.common.core.utils.CollectionUtil;
 import com.vdegree.grampus.common.mybatis.annotation.TableField;
 import com.vdegree.grampus.common.mybatis.handler.FieldFillHandler;
 import com.vdegree.grampus.common.mybatis.utils.ReflectionKit;
@@ -39,7 +40,10 @@ public class FieldFillInterceptor implements Interceptor {
 		List<Field> tableFields = declaredFields.stream()
 				.filter(field -> field.isAnnotationPresent(TableField.class))
 				.collect(Collectors.toList());
-		fieldFillHandler.fill(new TableFieldObject(sqlCommandType, tableFields, paramObj));
+		// tableFields非空，则自动填充
+		if (CollectionUtil.isNotEmpty(tableFields)) {
+			fieldFillHandler.fill(new TableFieldObject(sqlCommandType, tableFields, paramObj));
+		}
 		return invocation.proceed();
 	}
 
