@@ -33,7 +33,7 @@ public class SysRole extends BaseEntity {
 	 * 创建者
 	 */
 	@TableField(fill = FieldFill.INSERT)
-	private Long createBy;
+	private String createBy;
 	/**
 	 * 创建日期
 	 */
@@ -43,7 +43,7 @@ public class SysRole extends BaseEntity {
 	 * 更新者
 	 */
 	@TableField(fill = FieldFill.INSERT_UPDATE)
-	private Long updateBy;
+	private String updateBy;
 	/**
 	 * 更新日期
 	 */

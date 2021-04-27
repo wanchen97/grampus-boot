@@ -47,7 +47,7 @@ public class SysDictDTO implements Serializable {
 	 * 创建者
 	 */
 	@ApiModelProperty("创建者")
-	private Long createBy;
+	private String createBy;
 	/**
 	 * 创建日期
 	 */

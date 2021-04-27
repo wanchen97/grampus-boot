@@ -70,7 +70,7 @@ public class SysUserDTO implements Serializable {
 	 * 创建者
 	 */
 	@ApiModelProperty("创建者")
-	private Long createBy;
+	private String createBy;
 	/**
 	 * 创建时间
 	 */
@@ -80,7 +80,7 @@ public class SysUserDTO implements Serializable {
 	 * 更新者
 	 */
 	@ApiModelProperty("更新者")
-	private Long updateBy;
+	private String updateBy;
 	/**
 	 * 更新时间
 	 */

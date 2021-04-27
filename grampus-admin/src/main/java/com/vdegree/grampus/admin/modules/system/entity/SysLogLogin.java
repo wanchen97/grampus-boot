@@ -48,7 +48,7 @@ public class SysLogLogin extends BaseEntity {
 	 * 创建者
 	 */
 	@TableField(fill = FieldFill.INSERT)
-	private Long createBy;
+	private String createBy;
 	/**
 	 * 创建时间
 	 */
