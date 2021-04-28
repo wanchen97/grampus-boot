@@ -1,8 +1,8 @@
 package com.vdegree.grampus.admin.modules.system.config;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.springframework.context.annotation.Bean;
@@ -13,13 +13,11 @@ import org.springframework.http.converter.ResourceHttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import java.text.SimpleDateFormat;
+import java.io.IOException;
+import java.time.*;
 import java.util.List;
-import java.util.TimeZone;
 
 /**
  * Title: SpringMVC响应数据处理（Long类型转换为String类型、时间统一为时间戳）
@@ -49,12 +47,75 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		// 统一时间戳,忽略未知属性
 		objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		// Long类型转换为String类型(兼容JS长整数精度丢失问题)
-		SimpleModule simpleModule = new SimpleModule();
-		simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
-		simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
-		objectMapper.registerModule(simpleModule);
+		objectMapper.registerModule(buildSimpleModule());
 		jackson2HttpMessageConverter.setObjectMapper(objectMapper);
 		return jackson2HttpMessageConverter;
+	}
+
+	public static SimpleModule buildSimpleModule() {
+		SimpleModule simpleModule = new SimpleModule();
+
+		// ======================= Long类型序列化规则 ===============================
+		// Long类型转换为String类型(兼容JS长整数精度丢失问题)
+		simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
+		simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
+
+		// ======================= 时间序列化规则 ===============================
+		// yyyy-MM-dd HH:mm:ss
+		simpleModule.addSerializer(LocalDateTime.class, new LocalDateTimeToTimestampSerializer());
+		// yyyy-MM-dd
+		simpleModule.addSerializer(LocalDate.class, new LocalDateToTimestampSerializer());
+
+		// ======================= 时间反序列化规则 ==============================
+		// yyyy-MM-dd HH:mm:ss
+		simpleModule.addDeserializer(LocalDateTime.class, new LocalDateTimeToTimestampDeserializer());
+		// yyyy-MM-dd
+		simpleModule.addDeserializer(LocalDate.class, new LocalDateToTimestampDeserializer());
+
+		return simpleModule;
+	}
+
+	public static class LocalDateTimeToTimestampSerializer extends JsonSerializer<LocalDateTime> {
+		@Override
+		public void serialize(LocalDateTime value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+			if (value != null) {
+				long timestamp = value.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+				gen.writeNumber(timestamp);
+			}
+		}
+	}
+
+	public static class LocalDateToTimestampSerializer extends JsonSerializer<LocalDate> {
+		@Override
+		public void serialize(LocalDate value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+			if (value != null) {
+				long timestamp = value.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+				gen.writeNumber(timestamp);
+			}
+		}
+	}
+
+	public static class LocalDateTimeToTimestampDeserializer extends JsonDeserializer<LocalDateTime> {
+		@Override
+		public LocalDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+			long timestamp = p.getValueAsLong();
+			if (timestamp > 0) {
+				return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault());
+			} else {
+				return null;
+			}
+		}
+	}
+
+	public static class LocalDateToTimestampDeserializer extends JsonDeserializer<LocalDate> {
+		@Override
+		public LocalDate deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+			long timestamp = p.getValueAsLong();
+			if (timestamp > 0) {
+				return LocalDate.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault());
+			} else {
+				return null;
+			}
+		}
 	}
 }
