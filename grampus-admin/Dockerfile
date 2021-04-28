@@ -1,5 +1,5 @@
 # 构建镜像，执行命令：【docker build -t grampus-admin:1.0.0】
-FROM openjdk:8u212-jre
+FROM openjdk:11.0.11-jre
 
 MAINTAINER Beck
 
