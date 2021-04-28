@@ -58,7 +58,7 @@ public class SysUser extends BaseEntity {
 	 * 创建时间
 	 */
 	@TableField(fill = FieldFill.INSERT)
-	private Date createDate;
+	private LocalDateTimecreateDate;
 	/**
 	 * 更新者
 	 */
@@ -68,7 +68,7 @@ public class SysUser extends BaseEntity {
 	 * 更新时间
 	 */
 	@TableField(fill = FieldFill.INSERT_UPDATE)
-	private Date updateDate;
+	private LocalDateTimeupdateDate;
 	/**
 	 * 删除标记(0正常 1删除)
 	 */

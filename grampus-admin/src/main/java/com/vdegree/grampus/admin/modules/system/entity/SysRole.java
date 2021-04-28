@@ -38,7 +38,7 @@ public class SysRole extends BaseEntity {
 	 * 创建日期
 	 */
 	@TableField(fill = FieldFill.INSERT)
-	private Date createDate;
+	private LocalDateTimecreateDate;
 	/**
 	 * 更新者
 	 */
@@ -48,7 +48,7 @@ public class SysRole extends BaseEntity {
 	 * 更新日期
 	 */
 	@TableField(fill = FieldFill.INSERT_UPDATE)
-	private Date updateDate;
+	private LocalDateTimeupdateDate;
 	/**
 	 * 删除标识(0正常 1删除)
 	 */

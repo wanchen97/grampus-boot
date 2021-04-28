@@ -52,7 +52,7 @@ public class SysDictItemDTO implements Serializable {
 	 * 创建时间
 	 */
 	@ApiModelProperty("创建时间")
-	private Date createDate;
+	private LocalDateTimecreateDate;
 	/**
 	 * 更新者
 	 */
@@ -62,5 +62,5 @@ public class SysDictItemDTO implements Serializable {
 	 * 更新时间
 	 */
 	@ApiModelProperty("更新时间")
-	private Date updateDate;
+	private LocalDateTimeupdateDate;
 }

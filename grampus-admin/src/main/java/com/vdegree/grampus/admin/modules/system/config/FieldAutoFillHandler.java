@@ -10,7 +10,7 @@ import org.apache.ibatis.mapping.SqlCommandType;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -33,7 +33,7 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 	@Override
 	public void fill(TableFieldObject tableFieldObject) {
 		String currentUserNo = Objects.requireNonNull(SecurityUtils.getUserDetails()).getUserNo();
-		Date currentDate = new Date();
+		LocalDateTime currentDate = LocalDateTime.now();
 
 		SqlCommandType sqlCommandType = tableFieldObject.getSqlCommandType();
 		Object paramObj = tableFieldObject.getParamObj();
@@ -59,7 +59,7 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 		}
 	}
 
-	private void insertFillIfNull(Object paramObj, Field field, String currentUserNo, Date currentDate) {
+	private void insertFillIfNull(Object paramObj, Field field, String currentUserNo, LocalDateTime currentDate) {
 		if (Objects.nonNull(ReflectUtil.getField(field, paramObj))) {
 			return;
 		}
@@ -70,7 +70,7 @@ public class FieldAutoFillHandler implements FieldFillHandler {
 		}
 	}
 
-	private void updateFillIfNull(Object paramObj, Field field, String currentUserNo, Date currentDate) {
+	private void updateFillIfNull(Object paramObj, Field field, String currentUserNo, LocalDateTime currentDate) {
 		if (Objects.nonNull(ReflectUtil.getField(field, paramObj))) {
 			return;
 		}

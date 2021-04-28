@@ -1,6 +1,7 @@
 package com.vdegree.grampus.admin.modules.system.security.controller;
 
 import com.google.common.collect.Maps;
+import com.vdegree.grampus.admin.modules.system.dto.SysUserDTO;
 import com.vdegree.grampus.admin.modules.system.entity.SysUser;
 import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
 import com.vdegree.grampus.admin.modules.system.security.pojo.LoginReq;
@@ -55,13 +56,11 @@ public class LoginController {
 			throw new IllegalArgumentException("userNo or password is null!");
 		}
 
-		SysUser sysUser = new SysUser();
-		sysUser.setUserNo(userNo);
-		sysUser.setPassword(passwordEncoder.encode(password));
-		sysUser.setName(name);
-		sysUser.setCreateDate(new Date());
-		sysUser.setUpdateDate(new Date());
-		sysUserService.insert(sysUser);
+		SysUserDTO userDTO = new SysUserDTO();
+		userDTO.setUserNo(userNo);
+		userDTO.setPassword(passwordEncoder.encode(password));
+		userDTO.setName(name);
+		sysUserService.save(userDTO);
 		return Result.success();
 	}
 

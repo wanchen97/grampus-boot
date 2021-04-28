@@ -45,5 +45,5 @@ public class SysDict extends BaseEntity {
 	 * 创建日期
 	 */
 	@TableField(fill = FieldFill.INSERT)
-	private Date createDate;
+	private LocalDateTimecreateDate;
 }

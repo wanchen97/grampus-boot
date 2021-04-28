@@ -53,5 +53,5 @@ public class SysLogLogin extends BaseEntity {
 	 * 创建时间
 	 */
 	@TableField(fill = FieldFill.INSERT)
-	private Date createDate;
+	private LocalDateTimecreateDate;
 }

@@ -52,5 +52,5 @@ public class SysDictDTO implements Serializable {
 	 * 创建日期
 	 */
 	@ApiModelProperty("创建日期")
-	private Date createDate;
+	private LocalDateTimecreateDate;
 }

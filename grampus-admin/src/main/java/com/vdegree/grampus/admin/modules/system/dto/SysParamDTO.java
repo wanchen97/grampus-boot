@@ -47,7 +47,7 @@ public class SysParamDTO implements Serializable {
 	 * 创建日期
 	 */
 	@ApiModelProperty("创建日期")
-	private Date createDate;
+	private LocalDateTimecreateDate;
 	/**
 	 * 更新者
 	 */
@@ -57,5 +57,5 @@ public class SysParamDTO implements Serializable {
 	 * 更新日期
 	 */
 	@ApiModelProperty("更新日期")
-	private Date updateDate;
+	private LocalDateTimeupdateDate;
 }

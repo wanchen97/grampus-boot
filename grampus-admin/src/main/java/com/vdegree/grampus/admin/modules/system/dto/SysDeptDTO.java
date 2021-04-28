@@ -41,5 +41,5 @@ public class SysDeptDTO extends TreeNode<SysDeptDTO> {
 	 * 创建时间
 	 */
 	@ApiModelProperty("创建时间")
-	private Date createDate;
+	private LocalDateTimecreateDate;
 }
