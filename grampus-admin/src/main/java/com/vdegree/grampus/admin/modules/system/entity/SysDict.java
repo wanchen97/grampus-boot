@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 字典表 实体类
@@ -45,5 +45,5 @@ public class SysDict extends BaseEntity {
 	 * 创建日期
 	 */
 	@TableField(fill = FieldFill.INSERT)
-	private LocalDateTimecreateDate;
+	private LocalDateTime createDate;
 }

@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * Title: 系统参数DTO
@@ -47,7 +47,7 @@ public class SysParamDTO implements Serializable {
 	 * 创建日期
 	 */
 	@ApiModelProperty("创建日期")
-	private LocalDateTimecreateDate;
+	private LocalDateTime createDate;
 	/**
 	 * 更新者
 	 */
@@ -57,5 +57,5 @@ public class SysParamDTO implements Serializable {
 	 * 更新日期
 	 */
 	@ApiModelProperty("更新日期")
-	private LocalDateTimeupdateDate;
+	private LocalDateTime updateDate;
 }

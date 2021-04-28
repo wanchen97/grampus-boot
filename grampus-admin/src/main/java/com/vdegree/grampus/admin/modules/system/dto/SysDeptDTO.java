@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 系统部门DTO
@@ -41,5 +41,5 @@ public class SysDeptDTO extends TreeNode<SysDeptDTO> {
 	 * 创建时间
 	 */
 	@ApiModelProperty("创建时间")
-	private LocalDateTimecreateDate;
+	private LocalDateTime createDate;
 }

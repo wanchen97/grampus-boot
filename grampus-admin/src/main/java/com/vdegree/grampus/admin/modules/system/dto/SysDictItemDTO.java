@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * Title: 字典详情DTO
@@ -52,7 +52,7 @@ public class SysDictItemDTO implements Serializable {
 	 * 创建时间
 	 */
 	@ApiModelProperty("创建时间")
-	private LocalDateTimecreateDate;
+	private LocalDateTime createDate;
 	/**
 	 * 更新者
 	 */
@@ -62,5 +62,5 @@ public class SysDictItemDTO implements Serializable {
 	 * 更新时间
 	 */
 	@ApiModelProperty("更新时间")
-	private LocalDateTimeupdateDate;
+	private LocalDateTime updateDate;
 }

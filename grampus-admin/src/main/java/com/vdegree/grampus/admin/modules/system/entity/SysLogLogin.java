@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 用户登陆日志表 实体类
@@ -53,5 +53,5 @@ public class SysLogLogin extends BaseEntity {
 	 * 创建时间
 	 */
 	@TableField(fill = FieldFill.INSERT)
-	private LocalDateTimecreateDate;
+	private LocalDateTime createDate;
 }

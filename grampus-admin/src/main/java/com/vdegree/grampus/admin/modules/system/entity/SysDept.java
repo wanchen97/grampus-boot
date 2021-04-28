@@ -9,7 +9,6 @@ import tk.mybatis.mapper.annotation.LogicDelete;
 
 import javax.persistence.Table;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * 部门表 实体类

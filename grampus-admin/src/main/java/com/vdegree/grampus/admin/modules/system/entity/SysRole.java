@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 import tk.mybatis.mapper.annotation.LogicDelete;
 
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 角色表 实体类
@@ -38,7 +38,7 @@ public class SysRole extends BaseEntity {
 	 * 创建日期
 	 */
 	@TableField(fill = FieldFill.INSERT)
-	private LocalDateTimecreateDate;
+	private LocalDateTime createDate;
 	/**
 	 * 更新者
 	 */
@@ -48,7 +48,7 @@ public class SysRole extends BaseEntity {
 	 * 更新日期
 	 */
 	@TableField(fill = FieldFill.INSERT_UPDATE)
-	private LocalDateTimeupdateDate;
+	private LocalDateTime updateDate;
 	/**
 	 * 删除标识(0正常 1删除)
 	 */
