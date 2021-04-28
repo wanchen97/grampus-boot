@@ -61,15 +61,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
 
 		// ======================= 时间序列化规则 ===============================
-		// yyyy-MM-dd HH:mm:ss
 		simpleModule.addSerializer(LocalDateTime.class, new LocalDateTimeToTimestampSerializer());
-		// yyyy-MM-dd
 		simpleModule.addSerializer(LocalDate.class, new LocalDateToTimestampSerializer());
 
 		// ======================= 时间反序列化规则 ==============================
-		// yyyy-MM-dd HH:mm:ss
 		simpleModule.addDeserializer(LocalDateTime.class, new LocalDateTimeToTimestampDeserializer());
-		// yyyy-MM-dd
 		simpleModule.addDeserializer(LocalDate.class, new LocalDateToTimestampDeserializer());
 
 		return simpleModule;
