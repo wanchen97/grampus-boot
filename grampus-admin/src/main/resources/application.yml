@@ -1,7 +1,5 @@
 server:
   port: 28080
-#  servlet:
-#    context-path: /admin
 
 spring:
   profiles:
