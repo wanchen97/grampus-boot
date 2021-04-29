@@ -1,4 +1,5 @@
 # 构建镜像，执行命令：【docker build -t grampus-admin:1.0.0】
+# 启动镜像，执行指令：【docker run --name grampus-admin -d -p 28080:28080 -v /data:/data grampus-admin:1.0.0】
 FROM openjdk:11.0.11-jre
 
 MAINTAINER Beck
