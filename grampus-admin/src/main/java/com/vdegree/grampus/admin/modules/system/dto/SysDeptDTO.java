@@ -1,6 +1,6 @@
 package com.vdegree.grampus.admin.modules.system.dto;
 
-import com.vdegree.grampus.admin.modules.system.utils.TreeNode;
+import com.vdegree.grampus.common.core.utils.tree.TreeNode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

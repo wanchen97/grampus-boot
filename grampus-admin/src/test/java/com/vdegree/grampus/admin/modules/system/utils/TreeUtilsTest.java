@@ -1,14 +1,12 @@
 package com.vdegree.grampus.admin.modules.system.utils;
 
 import com.google.common.collect.Lists;
-import com.vdegree.grampus.admin.modules.system.entity.SysMenu;
-import lombok.AllArgsConstructor;
+import com.vdegree.grampus.common.core.utils.tree.TreeNode;
+import com.vdegree.grampus.common.core.utils.tree.TreeUtils;
 import lombok.Builder;
 import lombok.Data;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import tk.mybatis.mapper.annotation.LogicDelete;
 
 import java.io.Serializable;
 import java.util.List;

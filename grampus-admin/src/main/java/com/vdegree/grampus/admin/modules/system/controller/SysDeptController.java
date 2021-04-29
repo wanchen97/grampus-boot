@@ -3,7 +3,7 @@ package com.vdegree.grampus.admin.modules.system.controller;
 import com.vdegree.grampus.admin.modules.system.dto.SysDeptDTO;
 import com.vdegree.grampus.admin.modules.system.service.SysDeptService;
 import com.vdegree.grampus.common.core.result.Result;
-import com.vdegree.grampus.admin.modules.system.utils.TreeUtils;
+import com.vdegree.grampus.common.core.utils.tree.TreeUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;

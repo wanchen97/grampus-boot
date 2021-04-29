@@ -3,7 +3,7 @@ package com.vdegree.grampus.admin.modules.system.controller;
 import com.vdegree.grampus.admin.modules.system.dto.SysMenuDTO;
 import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.admin.modules.system.service.SysMenuService;
-import com.vdegree.grampus.admin.modules.system.utils.TreeUtils;
+import com.vdegree.grampus.common.core.utils.tree.TreeUtils;
 import com.vdegree.grampus.common.core.result.ErrorCode;
 import com.vdegree.grampus.common.core.result.Result;
 import io.swagger.annotations.Api;

@@ -1,4 +1,4 @@
-package com.vdegree.grampus.admin.modules.system.utils;
+package com.vdegree.grampus.common.core.utils.tree;
 
 import lombok.Getter;
 import lombok.Setter;

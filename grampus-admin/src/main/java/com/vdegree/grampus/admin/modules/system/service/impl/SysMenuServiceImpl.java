@@ -4,7 +4,7 @@ import com.vdegree.grampus.admin.modules.system.dto.SysMenuDTO;
 import com.vdegree.grampus.admin.modules.system.enums.MenuTypeEnum;
 import com.vdegree.grampus.admin.modules.system.security.enums.SuperAdminEnum;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
-import com.vdegree.grampus.admin.modules.system.utils.TreeUtils;
+import com.vdegree.grampus.common.core.utils.tree.TreeUtils;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.admin.modules.system.dao.SysMenuDao;
 import com.vdegree.grampus.admin.modules.system.entity.SysMenu;
