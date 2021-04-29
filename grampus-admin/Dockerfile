@@ -13,7 +13,7 @@ RUN mkdir -p /grampus-admin
 
 WORKDIR /grampus-admin
 
-EXPOSE 4000
+EXPOSE 28080
 
 ADD ./target/grampus-admin.jar ./
 
