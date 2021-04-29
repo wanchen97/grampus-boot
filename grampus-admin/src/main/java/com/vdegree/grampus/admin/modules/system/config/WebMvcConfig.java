@@ -55,16 +55,16 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	public static SimpleModule buildSimpleModule() {
 		SimpleModule simpleModule = new SimpleModule();
 
-		// ======================= Long类型序列化规则 ===============================
+		// ~ ======================= Long类型序列化规则 ===============================
 		// Long类型转换为String类型(兼容JS长整数精度丢失问题)
 		simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
 		simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
 
-		// ======================= 时间序列化规则 ===============================
+		// ~ ======================= 时间序列化规则 ===============================
 		simpleModule.addSerializer(LocalDateTime.class, new LocalDateTimeToTimestampSerializer());
 		simpleModule.addSerializer(LocalDate.class, new LocalDateToTimestampSerializer());
 
-		// ======================= 时间反序列化规则 ==============================
+		// ~ ======================= 时间反序列化规则 ==============================
 		simpleModule.addDeserializer(LocalDateTime.class, new LocalDateTimeToTimestampDeserializer());
 		simpleModule.addDeserializer(LocalDate.class, new LocalDateToTimestampDeserializer());
 
