@@ -12,7 +12,7 @@ import java.util.Collection;
  * system user details
  *
  * @author Beck
- * @date 2020-12-15
+ * @since 2020-12-15
  */
 @Data
 public class SystemUserDetails implements UserDetails {

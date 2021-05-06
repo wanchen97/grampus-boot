@@ -10,7 +10,7 @@ import java.io.Serializable;
  * 分页查询参数
  *
  * @author Beck
- * @date 2021-04-12
+ * @since 2021-04-12
  */
 @ApiModel("分页查询参数")
 @Data

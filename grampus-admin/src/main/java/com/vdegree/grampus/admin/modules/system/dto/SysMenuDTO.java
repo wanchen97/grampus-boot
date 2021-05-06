@@ -9,7 +9,7 @@ import lombok.Data;
  * 系统菜单DTO
  *
  * @author Beck
- * @date 2021-04-01
+ * @since 2021-04-01
  */
 @Data
 @ApiModel("系统菜单")

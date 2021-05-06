@@ -32,7 +32,7 @@ import java.util.Map;
  * 字典管理
  *
  * @author Beck
- * @date 2021-01-21
+ * @since 2021-01-21
  */
 @Api(tags = "字典管理")
 @RestController

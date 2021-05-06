@@ -14,7 +14,7 @@ import java.util.Map;
  * 增强的基础服务类，简化Entity与DTO的转换
  *
  * @author Beck
- * @date 2021-04-12
+ * @since 2021-04-12
  */
 public class EnhancedBaseServiceImpl<M extends BaseMapper<T>, T, D> extends BaseServiceImpl<M, T> implements EnhancedBaseService<T, D> {
 

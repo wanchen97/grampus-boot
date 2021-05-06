@@ -10,7 +10,7 @@ import lombok.Setter;
  * Snowflake ID生成器Builder
  *
  * @author Beck
- * @date 2020-12-03
+ * @since 2020-12-03
  */
 @Getter
 @Setter

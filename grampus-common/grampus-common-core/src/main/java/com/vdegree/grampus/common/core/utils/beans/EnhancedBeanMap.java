@@ -12,7 +12,7 @@ import java.security.ProtectionDomain;
  * Project: zeta
  *
  * @author Beck
- * @date 2021-01-25
+ * @since 2021-01-25
  */
 public abstract class EnhancedBeanMap extends BeanMap {
 	protected EnhancedBeanMap() {

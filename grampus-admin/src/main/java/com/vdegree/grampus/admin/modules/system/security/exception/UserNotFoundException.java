@@ -6,7 +6,7 @@ import com.vdegree.grampus.common.core.exception.BaseException;
  * 用户不存在异常
  *
  * @author Beck
- * @date 2020-12-16
+ * @since 2020-12-16
  */
 public class UserNotFoundException extends BaseException {
 	private static final long serialVersionUID = 5186572331502903237L;

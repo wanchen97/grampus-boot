@@ -6,7 +6,7 @@ import java.io.Serializable;
  * ID生成器异常
  *
  * @author Beck
- * @date 2020-12-03
+ * @since 2020-12-03
  */
 public class IdGenException extends RuntimeException implements Serializable {
 

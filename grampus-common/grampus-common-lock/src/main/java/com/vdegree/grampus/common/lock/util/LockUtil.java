@@ -9,7 +9,7 @@ import java.util.UUID;
  * 分布式锁工具类
  *
  * @author Beck
- * @date 2021-01-29
+ * @since 2021-01-29
  */
 public class LockUtil {
 

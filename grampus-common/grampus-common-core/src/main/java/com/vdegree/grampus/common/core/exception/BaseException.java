@@ -4,7 +4,7 @@ package com.vdegree.grampus.common.core.exception;
  * BaseException
  *
  * @author Beck
- * @date 2020-12-9
+ * @since 2020-12-9
  */
 public class BaseException extends RuntimeException {
 	private static final long serialVersionUID = 1525116257471128717L;

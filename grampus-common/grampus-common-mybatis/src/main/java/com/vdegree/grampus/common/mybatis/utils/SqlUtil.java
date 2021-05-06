@@ -6,7 +6,7 @@ import com.vdegree.grampus.common.core.utils.StringUtil;
  * SQL 工具类
  *
  * @author Beck
- * @date 2020-12-15
+ * @since 2020-12-15
  */
 public class SqlUtil {
 

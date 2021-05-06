@@ -5,7 +5,7 @@ package com.vdegree.grampus.common.redis.constant;
  * Project: zeta
  *
  * @author Beck
- * @date 2020-05-11
+ * @since 2020-05-11
  */
 public interface CacheTime {
 

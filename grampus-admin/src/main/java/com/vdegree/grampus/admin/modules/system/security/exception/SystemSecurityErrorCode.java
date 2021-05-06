@@ -4,7 +4,7 @@ package com.vdegree.grampus.admin.modules.system.security.exception;
  * 用户认证错误码
  *
  * @author Beck
- * @date 2020-12-16
+ * @since 2020-12-16
  */
 public interface SystemSecurityErrorCode {
 

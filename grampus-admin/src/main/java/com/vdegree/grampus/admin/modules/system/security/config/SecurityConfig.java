@@ -24,7 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * Spring Security Config
  *
  * @author Beck
- * @date 2020-12-15
+ * @since 2020-12-15
  */
 @Slf4j
 @AllArgsConstructor

@@ -6,7 +6,7 @@ import java.lang.annotation.*;
  * 表数据自动填充注解
  *
  * @author Beck
- * @date 2021-01-21
+ * @since 2021-01-21
  */
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)

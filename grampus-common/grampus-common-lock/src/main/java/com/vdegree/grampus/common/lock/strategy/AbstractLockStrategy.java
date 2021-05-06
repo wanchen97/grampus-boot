@@ -4,7 +4,7 @@ package com.vdegree.grampus.common.lock.strategy;
  * 抽象分布式锁策略
  *
  * @author Beck
- * @date 2021-01-29
+ * @since 2021-01-29
  */
 public abstract class AbstractLockStrategy<T> {
 

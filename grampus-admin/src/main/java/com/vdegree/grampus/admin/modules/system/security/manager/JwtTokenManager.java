@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * JWT token manager.
  *
  * @author Beck
- * @date 2020-12-5
+ * @since 2020-12-5
  */
 @AllArgsConstructor
 @Component

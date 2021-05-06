@@ -35,7 +35,7 @@ import java.util.concurrent.ConcurrentMap;
  * Project: zeta
  *
  * @author Beck
- * @date 2021-01-25
+ * @since 2021-01-25
  */
 public abstract class EnhancedBeanCopier {
 	private static final Type CONVERTER = TypeUtils.parseType(Converter.class.getName());

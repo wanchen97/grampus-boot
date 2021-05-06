@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * IdGeneratorAutoConfiguration
  *
  * @author Beck
- * @date 2020-12-03
+ * @since 2020-12-03
  */
 @Configuration
 @ComponentScan("com.vdegree.grampus.common.sequence")

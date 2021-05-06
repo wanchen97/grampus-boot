@@ -4,7 +4,7 @@ package com.vdegree.grampus.common.core.constant;
  * 常量
  *
  * @author Beck
- * @date 2021-01-21
+ * @since 2021-01-21
  */
 public interface Constant {
 	/**

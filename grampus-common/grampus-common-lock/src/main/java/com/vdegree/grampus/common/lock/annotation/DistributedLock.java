@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * 分布式锁注解
  *
  * @author Beck
- * @date 2021-01-29
+ * @since 2021-01-29
  */
 @Target(value = {ElementType.METHOD})
 @Retention(value = RetentionPolicy.RUNTIME)

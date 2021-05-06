@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * 分布式锁j配置
  *
  * @author Beck
- * @date 2021-01-29
+ * @since 2021-01-29
  */
 @Getter
 @Setter

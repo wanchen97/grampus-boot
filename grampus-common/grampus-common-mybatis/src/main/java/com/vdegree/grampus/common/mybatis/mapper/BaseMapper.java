@@ -11,7 +11,7 @@ import tk.mybatis.mapper.common.special.InsertListMapper;
  * Project: grampus
  *
  * @author Beck
- * @date 2020-12-02
+ * @since 2020-12-02
  */
 public interface BaseMapper<T> extends Mapper<T>, IdsMapper<T>, ConditionMapper<T> {
 

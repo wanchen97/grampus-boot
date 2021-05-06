@@ -6,7 +6,7 @@ import com.vdegree.grampus.common.mybatis.interceptor.TableFieldObject;
  * 字段填充处理器
  *
  * @author Beck
- * @date 2021-04-26
+ * @since 2021-04-26
  */
 @FunctionalInterface
 public interface FieldFillHandler {

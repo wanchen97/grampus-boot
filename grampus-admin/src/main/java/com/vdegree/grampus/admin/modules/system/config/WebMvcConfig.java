@@ -23,7 +23,7 @@ import java.util.List;
  * SpringMVC响应数据处理（Long类型转换为String类型、时间统一为时间戳）
  *
  * @author Beck
- * @date 2021-04-20
+ * @since 2021-04-20
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {

@@ -19,7 +19,7 @@ import java.util.Collections;
  * Swagger配置
  *
  * @author Beck
- * @date 2020-4-7
+ * @since 2020-4-7
  */
 @Configuration
 @EnableSwagger2

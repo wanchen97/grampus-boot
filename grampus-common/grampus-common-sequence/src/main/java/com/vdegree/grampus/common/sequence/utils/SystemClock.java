@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * 利用ScheduledExecutorService实现高并发场景下System.currentTimeMillis()的性能问题的优化.
  *
  * @author Beck
- * @date 2020-12-31
+ * @since 2020-12-31
  */
 public enum SystemClock {
 

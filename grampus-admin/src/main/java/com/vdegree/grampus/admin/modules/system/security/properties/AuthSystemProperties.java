@@ -11,7 +11,7 @@ import java.util.List;
  * Auth related configurations.
  *
  * @author Beck
- * @date 2020-12-9
+ * @since 2020-12-9
  */
 @Getter
 @Setter

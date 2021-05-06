@@ -4,7 +4,7 @@ package com.vdegree.grampus.admin.modules.system.redis;
  * SysUser Redis Cache.
  *
  * @author Beck
- * @date 2021-04-02
+ * @since 2021-04-02
  */
 public class SysUserRedis {
 }

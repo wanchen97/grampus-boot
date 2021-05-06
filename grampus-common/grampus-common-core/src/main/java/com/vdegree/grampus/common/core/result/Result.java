@@ -14,7 +14,7 @@ import java.io.Serializable;
  * 响应实体工具类
  *
  * @author Beck
- * @date 2020-12-9
+ * @since 2020-12-9
  */
 @Getter
 @Setter

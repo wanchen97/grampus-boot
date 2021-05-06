@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  * Project: grampus
  *
  * @author Beck
- * @date 2020-12-02
+ * @since 2020-12-02
  */
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

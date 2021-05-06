@@ -4,7 +4,7 @@ package com.vdegree.grampus.common.lock.exception;
  * 加锁失败异常
  *
  * @author Beck
- * @date 2021-01-29
+ * @since 2021-01-29
  */
 public class LockFailureException extends LockException {
 

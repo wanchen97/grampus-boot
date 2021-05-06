@@ -4,7 +4,7 @@ package com.vdegree.grampus.common.core.result;
  * 错误编码，由5位数字组成，前2位为模块编码，后3位为业务编码
  *
  * @author Beck
- * @date 2020-12-5
+ * @since 2020-12-5
  */
 public interface ErrorCode {
 	/**

@@ -11,7 +11,7 @@ import java.nio.charset.Charset;
  * Redis 自定义序列化
  *
  * @author Beck
- * @date 2021-04-02
+ * @since 2021-04-02
  */
 public class JsonRedisSerializer<T> implements RedisSerializer<T> {
 

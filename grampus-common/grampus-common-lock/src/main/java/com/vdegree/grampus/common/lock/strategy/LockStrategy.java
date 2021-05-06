@@ -4,7 +4,7 @@ package com.vdegree.grampus.common.lock.strategy;
  * 分布式锁策略接口
  *
  * @author Beck
- * @date 2021-01-29
+ * @since 2021-01-29
  */
 public interface LockStrategy<T> {
 

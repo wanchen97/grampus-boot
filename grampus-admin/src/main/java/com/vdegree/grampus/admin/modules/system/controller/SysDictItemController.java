@@ -29,7 +29,7 @@ import java.util.Map;
  * 字典数据项接口
  *
  * @author Beck
- * @date 2021-04-09
+ * @since 2021-04-09
  */
 @Api(tags = "字典详情管理")
 @RestController

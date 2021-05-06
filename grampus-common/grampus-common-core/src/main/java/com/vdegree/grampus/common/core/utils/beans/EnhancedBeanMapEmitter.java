@@ -23,7 +23,7 @@ import java.util.Map;
  * EnhancedBeanMapEmitter
  *
  * @author Beck
- * @date 2021-01-25
+ * @since 2021-01-25
  */
 class EnhancedBeanMapEmitter extends ClassEmitter {
 	private static final Type BEAN_MAP = TypeUtils.parseType(EnhancedBeanMap.class.getName());

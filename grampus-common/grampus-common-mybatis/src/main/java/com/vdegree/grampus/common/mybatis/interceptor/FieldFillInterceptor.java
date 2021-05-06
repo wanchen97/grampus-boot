@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * 字段填充插件
  *
  * @author Beck
- * @date 2021-04-26
+ * @since 2021-04-26
  */
 @AllArgsConstructor
 @Intercepts(@Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class}))

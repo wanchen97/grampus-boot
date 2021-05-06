@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
  * Snowflake ID生成器
  *
  * @author Beck
- * @date 2020-12-03
+ * @since 2020-12-03
  */
 @AllArgsConstructor
 public class SnowflakeIdGenerator implements IdGenerator {

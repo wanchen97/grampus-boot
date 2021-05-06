@@ -6,7 +6,7 @@ import com.vdegree.grampus.common.sequence.generator.IdGenerator;
  * ID生成器Builder
  *
  * @author Beck
- * @date 2020-12-03
+ * @since 2020-12-03
  */
 public interface IdGeneratorBuilder {
 

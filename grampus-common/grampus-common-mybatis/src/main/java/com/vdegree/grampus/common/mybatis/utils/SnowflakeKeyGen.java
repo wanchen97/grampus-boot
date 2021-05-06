@@ -8,7 +8,7 @@ import tk.mybatis.mapper.genid.GenId;
  * Project: grampus
  *
  * @author Beck
- * @date 2020-12-02
+ * @since 2020-12-02
  */
 public class SnowflakeKeyGen implements GenId<Long> {
 

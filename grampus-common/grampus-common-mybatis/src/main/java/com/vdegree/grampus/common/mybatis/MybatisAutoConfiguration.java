@@ -14,7 +14,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * Project: grampus
  *
  * @author Beck
- * @date 2020-12-02
+ * @since 2020-12-02
  */
 @Configuration
 @ComponentScan(basePackages = {"com.vdegree.grampus.common.mybatis"})

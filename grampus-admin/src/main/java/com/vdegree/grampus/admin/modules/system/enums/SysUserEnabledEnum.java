@@ -7,7 +7,7 @@ import lombok.Getter;
  * 系统用户启用状态枚举
  *
  * @author Beck
- * @date 2020-12-15
+ * @since 2020-12-15
  */
 @AllArgsConstructor
 public enum SysUserEnabledEnum {

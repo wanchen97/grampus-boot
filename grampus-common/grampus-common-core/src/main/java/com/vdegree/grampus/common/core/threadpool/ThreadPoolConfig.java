@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * 线程池配置
  *
  * @author Beck
- * @date 2020-12-5
+ * @since 2020-12-5
  */
 @Configuration
 public class ThreadPoolConfig {

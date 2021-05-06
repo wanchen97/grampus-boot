@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * 系统参数DTO
  *
  * @author Beck
- * @date 2021-04-13
+ * @since 2021-04-13
  */
 @Data
 @ApiModel("系统参数")

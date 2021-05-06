@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * Security util.
  *
  * @author Beck
- * @date 2020-12-5
+ * @since 2020-12-5
  */
 public class SecurityUtils {
 	/**

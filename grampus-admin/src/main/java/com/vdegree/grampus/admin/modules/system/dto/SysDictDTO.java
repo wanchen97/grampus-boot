@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * 字典类型DTO
  *
  * @author Beck
- * @date 2021-04-12
+ * @since 2021-04-12
  */
 @Data
 @ApiModel("字典类型")

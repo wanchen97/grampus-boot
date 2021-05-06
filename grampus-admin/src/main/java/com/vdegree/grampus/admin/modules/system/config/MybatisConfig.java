@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  * Mybatis配置类
  *
  * @author Beck
- * @date 2021-04-26
+ * @since 2021-04-26
  */
 @Configuration
 public class MybatisConfig {

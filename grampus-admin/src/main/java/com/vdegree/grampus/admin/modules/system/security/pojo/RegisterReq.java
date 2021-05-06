@@ -10,7 +10,7 @@ import java.io.Serializable;
  * 注册接口入参
  *
  * @author Beck
- * @date 2021-04-09
+ * @since 2021-04-09
  */
 @Data
 @ApiModel("注册接口入参")

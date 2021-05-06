@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Snowflake ID生成器配置
  *
  * @author Beck
- * @date 2020-12-03
+ * @since 2020-12-03
  */
 @Data
 @Component

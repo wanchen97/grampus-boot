@@ -14,7 +14,7 @@ import com.vdegree.grampus.common.sequence.exception.IdGenException;
  * 优点是：整体上按照时间自增排序，且整个分布式系统内不会产生ID碰撞(由数据中心ID和机器ID作区分) <br>
  *
  * @author Beck
- * @date 2020-12-03
+ * @since 2020-12-03
  */
 public class SnowflakeIdWorker {
 	/**

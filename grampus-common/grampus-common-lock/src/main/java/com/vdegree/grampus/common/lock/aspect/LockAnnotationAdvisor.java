@@ -14,7 +14,7 @@ import org.springframework.beans.factory.BeanFactoryAware;
  * 分布式锁AOP通知
  *
  * @author Beck
- * @date 2021-01-29
+ * @since 2021-01-29
  */
 public class LockAnnotationAdvisor extends AbstractPointcutAdvisor implements BeanFactoryAware {
 	private static final long serialVersionUID = 5197456013415866635L;

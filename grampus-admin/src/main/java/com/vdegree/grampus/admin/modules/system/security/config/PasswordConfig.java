@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * Password Config
  *
  * @author Beck
- * @date 2021-04-15
+ * @since 2021-04-15
  */
 @Configuration
 public class PasswordConfig {

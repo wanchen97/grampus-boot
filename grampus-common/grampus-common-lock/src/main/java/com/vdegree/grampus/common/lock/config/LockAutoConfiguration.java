@@ -30,7 +30,7 @@ import java.util.List;
  * LockAutoConfiguration
  *
  * @author Beck
- * @date 2021-01-29
+ * @since 2021-01-29
  */
 @Configuration
 @EnableConfigurationProperties(DistributedLockProperties.class)

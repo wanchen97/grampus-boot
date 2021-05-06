@@ -17,7 +17,7 @@ import java.util.Map;
  * RedisCacheAutoConfiguration
  *
  * @author Beck
- * @date 2021-04-02
+ * @since 2021-04-02
  */
 @Configuration
 public class RedisCacheAutoConfiguration {
