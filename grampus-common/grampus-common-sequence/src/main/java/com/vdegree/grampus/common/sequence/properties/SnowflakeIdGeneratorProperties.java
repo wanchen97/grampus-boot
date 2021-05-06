@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 import java.io.Serializable;
 
 /**
- * Title: Snowflake ID生成器配置
- * Company: v-degree
+ * Snowflake ID生成器配置
  *
  * @author Beck
  * @date 2020-12-03

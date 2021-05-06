@@ -10,8 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Title: IdGeneratorAutoConfiguration
- * Company: v-degree
+ * IdGeneratorAutoConfiguration
  *
  * @author Beck
  * @date 2020-12-03

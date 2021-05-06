@@ -2,7 +2,6 @@ package com.vdegree.grampus.common.lock.strategy;
 
 /**
  * 分布式锁策略接口
- * Company: v-degree
  *
  * @author Beck
  * @date 2021-01-29

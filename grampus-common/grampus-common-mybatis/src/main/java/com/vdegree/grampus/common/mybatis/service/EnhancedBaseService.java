@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Title: 增强的基础服务类，简化Entity与DTO的转换
- * Company: v-degree
+ * 增强的基础服务类，简化Entity与DTO的转换
  *
  * @author Beck
  * @date 2021-04-12

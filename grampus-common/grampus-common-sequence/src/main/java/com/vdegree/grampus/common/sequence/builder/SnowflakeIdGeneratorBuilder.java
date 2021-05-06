@@ -7,8 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Title: Snowflake ID生成器Builder
- * Company: v-degree
+ * Snowflake ID生成器Builder
  *
  * @author Beck
  * @date 2020-12-03

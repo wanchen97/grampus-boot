@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Title: CopyProperty
+ * CopyProperty
  * Project: zeta
  *
  * @author Beck

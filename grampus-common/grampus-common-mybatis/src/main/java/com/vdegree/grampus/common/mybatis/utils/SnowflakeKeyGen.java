@@ -4,7 +4,7 @@ import com.vdegree.grampus.common.sequence.generator.IdGenerator;
 import tk.mybatis.mapper.genid.GenId;
 
 /**
- * Title: Snowflake ID生成器
+ * Snowflake ID生成器
  * Project: grampus
  *
  * @author Beck

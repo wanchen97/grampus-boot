@@ -15,7 +15,6 @@ import java.util.List;
 
 /**
  * 分布式锁Key生成器
- * Company: v-degree
  *
  * @author Beck
  * @date 2021-01-29

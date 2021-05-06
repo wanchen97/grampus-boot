@@ -31,7 +31,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * Title: EnhancedBeanCopier (support list,map)
+ * EnhancedBeanCopier (support list,map)
  * Project: zeta
  *
  * @author Beck

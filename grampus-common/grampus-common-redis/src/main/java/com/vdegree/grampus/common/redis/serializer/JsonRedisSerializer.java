@@ -8,8 +8,7 @@ import org.springframework.data.redis.serializer.SerializationException;
 import java.nio.charset.Charset;
 
 /**
- * Title: Redis 自定义序列化
- * Company: v-degree
+ * Redis 自定义序列化
  *
  * @author Beck
  * @date 2021-04-02

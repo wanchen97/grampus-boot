@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * Title:
- * Company: v-degree
  *
  * @author Beck
  * @date 2020-12-09

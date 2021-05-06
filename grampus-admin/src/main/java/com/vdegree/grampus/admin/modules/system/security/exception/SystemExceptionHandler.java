@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
- * Title: 全局异常处理器
- * Company: v-degree
+ * 全局异常处理器
  *
  * @author Beck
  * @date 2020-12-16

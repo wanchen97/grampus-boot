@@ -1,8 +1,7 @@
 package com.vdegree.grampus.common.core.exception;
 
 /**
- * Title: BaseException
- * Company: v-degree
+ * BaseException
  *
  * @author Beck
  * @date 2020-12-9

@@ -7,7 +7,6 @@ import java.util.UUID;
 
 /**
  * 分布式锁工具类
- * Company: v-degree
  *
  * @author Beck
  * @date 2021-01-29

@@ -6,8 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.Set;
 
 /**
- * Title: system role dao
- * Company: v-degree
+ * system role dao
  *
  * @author Beck
  * @date 2020-12-18

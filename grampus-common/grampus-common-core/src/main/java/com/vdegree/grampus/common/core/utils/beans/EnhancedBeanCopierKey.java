@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 /**
- * Title: EnhancedBeanCopierKey
+ * EnhancedBeanCopierKey
  * Project: zeta
  *
  * @author Beck

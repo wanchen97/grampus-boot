@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * Title: 基础实体类，所有实体都需要继承
+ * 基础实体类，所有实体都需要继承
  * Project: grampus
  *
  * @author Beck

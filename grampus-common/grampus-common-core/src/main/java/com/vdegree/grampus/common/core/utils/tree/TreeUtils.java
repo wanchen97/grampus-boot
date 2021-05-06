@@ -10,8 +10,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * Title: Tree构建工具
- * Company: v-degree
+ * Tree构建工具
  *
  * @author Beck
  * @date 2021-03-31

@@ -13,7 +13,6 @@ import java.util.List;
 
 /**
  * Title:
- * Company: v-degree
  *
  * @author Beck
  * @date 2021-03-31

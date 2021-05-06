@@ -11,7 +11,6 @@ import org.aopalliance.intercept.MethodInvocation;
 
 /**
  * 分布式锁AOP处理器
- * Company: v-degree
  *
  * @author Beck
  * @date 2021-01-29

@@ -9,8 +9,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 /**
- * Title: Spring Context 工具类
- * Company: v-degree
+ * Spring Context 工具类
  *
  * @author Beck
  * @date 2020-12-5

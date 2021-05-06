@@ -10,8 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * Title: 系统用户DTO
- * Company: v-degree
+ * 系统用户DTO
  *
  * @author Beck
  * @date 2021-04-14

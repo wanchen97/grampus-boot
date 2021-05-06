@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.AllArgsConstructor;
 
 /**
- * Title: EnhancedBeanMapKey
+ * EnhancedBeanMapKey
  * Project: zeta
  *
  * @author Beck

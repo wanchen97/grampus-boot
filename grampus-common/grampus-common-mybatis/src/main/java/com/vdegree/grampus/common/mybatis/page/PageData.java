@@ -8,8 +8,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * Title: 分页数据结构
- * Company: v-degree
+ * 分页数据结构
  *
  * @author Beck
  * @date 2021-04-12

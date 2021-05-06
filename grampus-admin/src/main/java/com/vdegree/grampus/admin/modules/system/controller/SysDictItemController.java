@@ -26,8 +26,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 /**
- * Title: 字典数据项接口
- * Company: v-degree
+ * 字典数据项接口
  *
  * @author Beck
  * @date 2021-04-09

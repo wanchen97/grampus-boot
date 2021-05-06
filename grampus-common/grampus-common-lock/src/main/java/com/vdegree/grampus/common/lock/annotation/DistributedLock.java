@@ -9,7 +9,6 @@ import java.lang.annotation.Target;
 
 /**
  * 分布式锁注解
- * Company: v-degree
  *
  * @author Beck
  * @date 2021-01-29

@@ -3,8 +3,7 @@ package com.vdegree.grampus.common.mybatis.utils;
 import com.vdegree.grampus.common.core.utils.StringUtil;
 
 /**
- * Title: SQL 工具类
- * Company: v-degree
+ * SQL 工具类
  *
  * @author Beck
  * @date 2020-12-15

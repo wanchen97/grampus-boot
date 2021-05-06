@@ -2,7 +2,6 @@ package com.vdegree.grampus.common.core.constant;
 
 /**
  * 常量
- * Company: v-degree
  *
  * @author Beck
  * @date 2021-01-21

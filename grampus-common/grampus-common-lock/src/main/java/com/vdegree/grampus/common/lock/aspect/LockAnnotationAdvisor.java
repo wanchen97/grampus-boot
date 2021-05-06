@@ -12,7 +12,6 @@ import org.springframework.beans.factory.BeanFactoryAware;
 
 /**
  * 分布式锁AOP通知
- * Company: v-degree
  *
  * @author Beck
  * @date 2021-01-29

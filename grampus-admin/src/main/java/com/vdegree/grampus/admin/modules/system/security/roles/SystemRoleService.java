@@ -11,8 +11,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Title: system role service
- * Company: v-degree
+ * system role service
  *
  * @author Beck
  * @date 2020-12-15

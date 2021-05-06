@@ -6,8 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * Title: 系统菜单DTO
- * Company: v-degree
+ * 系统菜单DTO
  *
  * @author Beck
  * @date 2021-04-01

@@ -2,7 +2,6 @@ package com.vdegree.grampus.common.lock;
 
 /**
  * 加锁失败策略
- * Company: v-degree
  *
  * @author Beck
  * @date 2021-01-29

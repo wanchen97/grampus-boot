@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * DefaultLockFailureStrategy
- * Company: v-degree
  *
  * @author Beck
  * @date 2021-01-29

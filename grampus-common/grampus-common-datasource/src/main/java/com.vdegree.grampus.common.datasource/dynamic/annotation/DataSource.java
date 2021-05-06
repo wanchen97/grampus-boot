@@ -10,7 +10,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Title: 多数据源注解
+ * 多数据源注解
  * Project: grampus
  *
  * @author Beck

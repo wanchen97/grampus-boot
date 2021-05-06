@@ -1,8 +1,7 @@
 package com.vdegree.grampus.common.sequence.generator;
 
 /**
- * Title: ID生成器
- * Company: v-degree
+ * ID生成器
  *
  * @author Beck
  * @date 2020-12-03

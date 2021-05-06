@@ -9,8 +9,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Title: Security util.
- * Company: v-degree
+ * Security util.
  *
  * @author Beck
  * @date 2020-12-5

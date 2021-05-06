@@ -28,7 +28,6 @@ import java.util.List;
 
 /**
  * LockAutoConfiguration
- * Company: v-degree
  *
  * @author Beck
  * @date 2021-01-29

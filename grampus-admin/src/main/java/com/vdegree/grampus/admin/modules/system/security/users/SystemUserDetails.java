@@ -9,8 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 /**
- * Title: system user details
- * Company: v-degree
+ * system user details
  *
  * @author Beck
  * @date 2020-12-15

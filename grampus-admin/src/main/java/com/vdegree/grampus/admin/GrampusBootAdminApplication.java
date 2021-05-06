@@ -4,8 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Title: GrampusBoot后台通用权限管理系统
- * Company: v-degree
+ * GrampusBoot后台通用权限管理系统
  *
  * @author Beck
  * @date 2020-11-26

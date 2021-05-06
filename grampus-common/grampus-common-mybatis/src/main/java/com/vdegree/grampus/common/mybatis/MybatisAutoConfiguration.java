@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
- * Title: TK.Mybatis配置
+ * TK.Mybatis配置
  * Project: grampus
  *
  * @author Beck

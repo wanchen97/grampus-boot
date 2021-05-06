@@ -26,8 +26,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 /**
- * Title: 系统参数管理
- * Company: v-degree
+ * 系统参数管理
  *
  * @author Beck
  * @date 2021-01-21

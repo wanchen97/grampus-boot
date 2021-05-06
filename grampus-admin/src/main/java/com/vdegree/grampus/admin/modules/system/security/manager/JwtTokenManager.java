@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 
 /**
  * JWT token manager.
- * Company: v-degree
  *
  * @author Beck
  * @date 2020-12-5

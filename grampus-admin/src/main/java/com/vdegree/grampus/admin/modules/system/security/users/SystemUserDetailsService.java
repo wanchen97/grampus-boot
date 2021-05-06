@@ -15,8 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
- * Title: system user details service
- * Company: v-degree
+ * system user details service
  *
  * @author Beck
  * @date 2020-12-15

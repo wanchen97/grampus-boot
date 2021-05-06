@@ -3,8 +3,7 @@ package com.vdegree.grampus.common.sequence.exception;
 import java.io.Serializable;
 
 /**
- * Title: ID生成器异常
- * Company: v-degree
+ * ID生成器异常
  *
  * @author Beck
  * @date 2020-12-03

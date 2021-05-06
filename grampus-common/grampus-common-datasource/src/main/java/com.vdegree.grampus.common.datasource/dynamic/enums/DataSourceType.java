@@ -3,7 +3,7 @@ package com.vdegree.grampus.common.datasource.dynamic.enums;
 import lombok.Getter;
 
 /**
- * Title: 数据源枚举类
+ * 数据源枚举类
  * Project: grampus
  *
  * @author Beck

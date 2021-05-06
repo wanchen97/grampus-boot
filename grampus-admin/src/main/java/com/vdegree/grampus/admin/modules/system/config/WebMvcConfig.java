@@ -20,8 +20,7 @@ import java.time.*;
 import java.util.List;
 
 /**
- * Title: SpringMVC响应数据处理（Long类型转换为String类型、时间统一为时间戳）
- * Company: v-degree
+ * SpringMVC响应数据处理（Long类型转换为String类型、时间统一为时间戳）
  *
  * @author Beck
  * @date 2021-04-20

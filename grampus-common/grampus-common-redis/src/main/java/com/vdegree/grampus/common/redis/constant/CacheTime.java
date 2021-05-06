@@ -1,7 +1,7 @@
 package com.vdegree.grampus.common.redis.constant;
 
 /**
- * Title: 缓存时间常量
+ * 缓存时间常量
  * Project: zeta
  *
  * @author Beck

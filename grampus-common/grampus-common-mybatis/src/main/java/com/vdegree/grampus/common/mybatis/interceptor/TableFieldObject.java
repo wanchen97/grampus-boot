@@ -11,8 +11,7 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 /**
- * Title: TableField注解标注的实体对象
- * Company: v-degree
+ * TableField注解标注的实体对象
  *
  * @author Beck
  * @date 2021-04-27

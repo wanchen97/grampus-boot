@@ -14,8 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 /**
- * Title: RedisCacheAutoConfiguration
- * Company: v-degree
+ * RedisCacheAutoConfiguration
  *
  * @author Beck
  * @date 2021-04-02

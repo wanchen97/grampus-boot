@@ -3,8 +3,7 @@ package com.vdegree.grampus.admin.modules.system.security.enums;
 import lombok.Getter;
 
 /**
- * Title: 超级管理员枚举
- * Company: v-degree
+ * 超级管理员枚举
  *
  * @author Beck
  * @date 2021-04-09

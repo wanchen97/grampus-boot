@@ -9,8 +9,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * Title: 线程池配置
- * Company: v-degree
+ * 线程池配置
  *
  * @author Beck
  * @date 2020-12-5

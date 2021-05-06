@@ -21,8 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
- * Title: Spring Security Config
- * Company: v-degree
+ * Spring Security Config
  *
  * @author Beck
  * @date 2020-12-15

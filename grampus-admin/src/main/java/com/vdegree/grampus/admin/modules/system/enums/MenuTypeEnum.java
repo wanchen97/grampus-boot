@@ -3,8 +3,7 @@ package com.vdegree.grampus.admin.modules.system.enums;
 import lombok.Getter;
 
 /**
- * Title: 菜单类型枚举
- * Company: v-degree
+ * 菜单类型枚举
  *
  * @author Beck
  * @date 2021-04-09

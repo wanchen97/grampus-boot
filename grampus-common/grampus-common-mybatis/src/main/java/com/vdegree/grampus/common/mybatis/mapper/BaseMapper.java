@@ -7,7 +7,7 @@ import tk.mybatis.mapper.common.MySqlMapper;
 import tk.mybatis.mapper.common.special.InsertListMapper;
 
 /**
- * Title: CRUD基类(Mapper继承该接口后，无需编写mapper.xml文件，即可获得CRUD功能)
+ * CRUD基类(Mapper继承该接口后，无需编写mapper.xml文件，即可获得CRUD功能)
  * Project: grampus
  *
  * @author Beck

@@ -8,7 +8,7 @@ import org.springframework.cglib.core.ReflectUtils;
 import java.security.ProtectionDomain;
 
 /**
- * Title: EnhancedBeanMap
+ * EnhancedBeanMap
  * Project: zeta
  *
  * @author Beck

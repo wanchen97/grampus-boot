@@ -7,7 +7,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * 分布式锁j配置
- * Company: v-degree
  *
  * @author Beck
  * @date 2021-01-29

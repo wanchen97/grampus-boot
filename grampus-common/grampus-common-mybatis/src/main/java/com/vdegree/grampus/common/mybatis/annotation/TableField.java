@@ -3,8 +3,7 @@ package com.vdegree.grampus.common.mybatis.annotation;
 import java.lang.annotation.*;
 
 /**
- * Title: 表数据自动填充注解
- * Company: v-degree
+ * 表数据自动填充注解
  *
  * @author Beck
  * @date 2021-01-21

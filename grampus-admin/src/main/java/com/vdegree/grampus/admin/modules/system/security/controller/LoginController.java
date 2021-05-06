@@ -26,8 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 /**
- * Title: 登陆控制器
- * Company: v-degree
+ * 登陆控制器
  *
  * @author Beck
  * @date 2020-12-15

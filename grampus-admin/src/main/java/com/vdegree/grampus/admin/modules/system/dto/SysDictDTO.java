@@ -8,8 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * Title: 字典类型DTO
- * Company: v-degree
+ * 字典类型DTO
  *
  * @author Beck
  * @date 2021-04-12

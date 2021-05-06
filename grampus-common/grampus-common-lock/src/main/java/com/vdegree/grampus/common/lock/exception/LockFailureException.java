@@ -2,7 +2,6 @@ package com.vdegree.grampus.common.lock.exception;
 
 /**
  * 加锁失败异常
- * Company: v-degree
  *
  * @author Beck
  * @date 2021-01-29

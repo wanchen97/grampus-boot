@@ -8,8 +8,7 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 
 /**
- * Title: Token store.
- * Company: v-degree
+ * Token store.
  *
  * @author Beck
  * @date 2021-04-02

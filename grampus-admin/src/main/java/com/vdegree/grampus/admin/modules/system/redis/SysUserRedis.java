@@ -1,8 +1,7 @@
 package com.vdegree.grampus.admin.modules.system.redis;
 
 /**
- * Title: SysUser Redis Cache.
- * Company: v-degree
+ * SysUser Redis Cache.
  *
  * @author Beck
  * @date 2021-04-02

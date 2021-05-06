@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * Auth related configurations.
- * Company: v-degree
  *
  * @author Beck
  * @date 2020-12-9

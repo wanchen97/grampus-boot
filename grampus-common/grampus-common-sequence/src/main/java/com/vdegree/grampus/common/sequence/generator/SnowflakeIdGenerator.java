@@ -4,8 +4,7 @@ import com.vdegree.grampus.common.sequence.utils.SnowflakeIdWorker;
 import lombok.AllArgsConstructor;
 
 /**
- * Title: Snowflake ID生成器
- * Company: v-degree
+ * Snowflake ID生成器
  *
  * @author Beck
  * @date 2020-12-03

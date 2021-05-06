@@ -7,8 +7,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * Title: 注册接口入参
- * Company: v-degree
+ * 注册接口入参
  *
  * @author Beck
  * @date 2021-04-09

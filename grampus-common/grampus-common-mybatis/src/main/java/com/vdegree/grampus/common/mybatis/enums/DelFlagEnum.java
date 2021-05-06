@@ -3,7 +3,7 @@ package com.vdegree.grampus.common.mybatis.enums;
 import lombok.Getter;
 
 /**
- * Title: 删除标识枚举
+ * 删除标识枚举
  * Project: grampus
  *
  * @author Beck

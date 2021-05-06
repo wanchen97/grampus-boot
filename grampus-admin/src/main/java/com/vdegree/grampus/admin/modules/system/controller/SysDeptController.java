@@ -20,8 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * Title: 部门管理
- * Company: v-degree
+ * 部门管理
  *
  * @author Beck
  * @date 2021-01-21

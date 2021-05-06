@@ -3,8 +3,7 @@ package com.vdegree.grampus.common.mybatis.handler;
 import com.vdegree.grampus.common.mybatis.interceptor.TableFieldObject;
 
 /**
- * Title: 字段填充处理器
- * Company: v-degree
+ * 字段填充处理器
  *
  * @author Beck
  * @date 2021-04-26

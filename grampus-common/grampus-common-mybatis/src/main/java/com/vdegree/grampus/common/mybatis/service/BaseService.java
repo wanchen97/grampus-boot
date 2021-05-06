@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Title: 基础服务接口，所有Service接口都要继承(继承后即可获得BaseMapper的CRUD功能)
+ * 基础服务接口，所有Service接口都要继承(继承后即可获得BaseMapper的CRUD功能)
  * Project: grampus
  *
  * @author Beck

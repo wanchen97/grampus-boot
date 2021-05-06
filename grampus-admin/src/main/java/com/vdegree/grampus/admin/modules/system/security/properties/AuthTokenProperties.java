@@ -10,7 +10,6 @@ import java.io.Serializable;
 
 /**
  * Auth related configurations.
- * Company: v-degree
  *
  * @author Beck
  * @date 2020-12-9

@@ -11,8 +11,7 @@ import lombok.ToString;
 import java.io.Serializable;
 
 /**
- * Title: 响应实体工具类
- * Company: v-degree
+ * 响应实体工具类
  *
  * @author Beck
  * @date 2020-12-9

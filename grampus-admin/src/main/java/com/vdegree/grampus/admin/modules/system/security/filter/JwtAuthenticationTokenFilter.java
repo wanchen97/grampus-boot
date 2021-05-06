@@ -20,7 +20,6 @@ import java.io.IOException;
 
 /**
  * Token过滤器
- * Company: v-degree
  *
  * @author Beck
  * @date 2020-12-15

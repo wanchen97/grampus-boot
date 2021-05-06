@@ -6,8 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * Title: Password Config
- * Company: v-degree
+ * Password Config
  *
  * @author Beck
  * @date 2021-04-15

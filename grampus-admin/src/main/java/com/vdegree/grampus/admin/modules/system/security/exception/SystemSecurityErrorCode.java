@@ -1,8 +1,7 @@
 package com.vdegree.grampus.admin.modules.system.security.exception;
 
 /**
- * Title: 用户认证错误码
- * Company: v-degree
+ * 用户认证错误码
  *
  * @author Beck
  * @date 2020-12-16

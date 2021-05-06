@@ -10,8 +10,7 @@ import java.text.MessageFormat;
 import java.time.Duration;
 
 /**
- * Title: 会员详细信息缓存
- * Company: v-degree
+ * 会员详细信息缓存
  *
  * @author Beck
  * @date 2021-04-02

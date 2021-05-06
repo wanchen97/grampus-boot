@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * Title: 系统用户启用状态枚举
- * Company: v-degree
+ * 系统用户启用状态枚举
  *
  * @author Beck
  * @date 2020-12-15

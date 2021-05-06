@@ -18,8 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Title: Jwt token tool.
- * Company: v-degree
+ * Jwt token tool.
  *
  * @author Beck
  * @date 2020-12-5

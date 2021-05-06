@@ -20,8 +20,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * Title: Mybatis配置类
- * Company: v-degree
+ * Mybatis配置类
  *
  * @author Beck
  * @date 2021-04-26

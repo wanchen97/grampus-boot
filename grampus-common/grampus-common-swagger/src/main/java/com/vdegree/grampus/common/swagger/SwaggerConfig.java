@@ -17,7 +17,6 @@ import java.util.Collections;
 
 /**
  * Swagger配置
- * Company: v-degree
  *
  * @author Beck
  * @date 2020-4-7
