@@ -77,33 +77,29 @@ public interface ErrorCode {
 	enum System {
 		// ~ ============================ 登录认证相关 01 ============================
 		/**
-		 * 登录失败异常
-		 */
-		LOGIN_FAILURE("121201B001", "LOGIN_FAILURE"),
-		/**
 		 * 用户密码错误异常
 		 */
-		USER_PASSWORD_ERROR("121201B002", "USER_PASSWORD_ERROR"),
+		USER_PASSWORD_ERROR("121201B001", "USER_PASSWORD_ERROR"),
 		/**
 		 * 会员不存在异常
 		 */
-		USER_NOT_EXISTED("121201B003", "USER_NOT_EXISTED"),
+		USER_NOT_EXISTED("121201B002", "USER_NOT_EXISTED"),
 		/**
 		 * 用户账号禁用异常
 		 */
-		USER_DISABLE_ERROR("121201B004", "USER_DISABLE_ERROR"),
+		USER_DISABLE_ERROR("121201B003", "USER_DISABLE_ERROR"),
 		/**
 		 * 用户访问权限异常
 		 */
-		USER_ACCESS_DENIED_ERROR("121201B005", "USER_ACCESS_DENIED_ERROR"),
+		USER_ACCESS_DENIED_ERROR("121201B004", "USER_ACCESS_DENIED_ERROR"),
 		/**
 		 * token失效异常
 		 */
-		TOKEN_EXPIRED_ERROR("121201B006", "TOKEN_EXPIRED_ERROR"),
+		TOKEN_EXPIRED_ERROR("121201B005", "TOKEN_EXPIRED_ERROR"),
 		/**
 		 * token解析失败异常
  		 */
-		TOKEN_PARSED_ERROR("121201B007", "TOKEN_PARSED_ERROR"),
+		TOKEN_PARSED_ERROR("121201B006", "TOKEN_PARSED_ERROR"),
 
 		// ~ ============================ 通用权限管理相关 02 ============================
 		/**
