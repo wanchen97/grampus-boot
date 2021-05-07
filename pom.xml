@@ -23,7 +23,7 @@
 		<spring.checkstyle.version>0.0.23</spring.checkstyle.version>
 		<git.commit.version>2.2.5</git.commit.version>
 		<docker.registry>harbor.cn:80</docker.registry>
-		<docker.host>http://192.168.2.110:2375</docker.host>
+		<docker.host>http://192.168.8.110:2375</docker.host>
 		<docker.namespace>library</docker.namespace>
 		<docker.username>admin</docker.username>
 		<docker.password>root</docker.password>
