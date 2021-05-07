@@ -12,11 +12,6 @@ import lombok.Getter;
 public interface ErrorCode {
 
 	/**
-	 * 未知异常错误码
-	 */
-	String UNKNOWN_ERROR_CODE = "-1";
-
-	/**
 	 * 0：成功
 	 * -1：未知异常
 	 *
@@ -62,13 +57,27 @@ public interface ErrorCode {
 	 */
 
 	/**
+	 * 全局通用错误码
+	 */
+	@AllArgsConstructor
+	enum Global {
+		/**
+		 * 未知异常错误码
+		 */
+		UNKNOWN_ERROR_CODE("-1", "UNKNOWN_ERROR_CODE");
+
+		@Getter String code;
+		@Getter String msg;
+	}
+
+	/**
 	 * 系统服务相关 1212
 	 */
 	@AllArgsConstructor
 	enum System {
 		// ~ ============================ 登录认证相关 01 ============================
 		/**
-		 * 登录失败异常码
+		 * 登录失败异常
 		 */
 		LOGIN_FAILURE("121201B001", "LOGIN_FAILURE"),
 		/**
