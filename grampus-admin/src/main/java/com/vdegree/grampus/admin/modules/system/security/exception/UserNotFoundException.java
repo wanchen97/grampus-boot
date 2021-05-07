@@ -1,5 +1,6 @@
 package com.vdegree.grampus.admin.modules.system.security.exception;
 
+import com.vdegree.grampus.admin.modules.system.code.ErrorCode;
 import com.vdegree.grampus.common.core.exception.BaseException;
 
 /**
@@ -12,6 +13,6 @@ public class UserNotFoundException extends BaseException {
 	private static final long serialVersionUID = 5186572331502903237L;
 
 	public UserNotFoundException() {
-		super(SystemSecurityErrorCode.USER_NOT_EXISTED);
+		super(ErrorCode.System.USER_NOT_EXISTED.getCode());
 	}
 }

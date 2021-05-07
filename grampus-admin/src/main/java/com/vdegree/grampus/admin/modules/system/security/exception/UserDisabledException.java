@@ -1,5 +1,6 @@
 package com.vdegree.grampus.admin.modules.system.security.exception;
 
+import com.vdegree.grampus.admin.modules.system.code.ErrorCode;
 import com.vdegree.grampus.common.core.exception.BaseException;
 
 /**
@@ -12,6 +13,6 @@ public class UserDisabledException extends BaseException {
 	private static final long serialVersionUID = 1791940330757308184L;
 
 	public UserDisabledException() {
-		super(SystemSecurityErrorCode.USER_DISABLE_ERROR);
+		super(ErrorCode.System.USER_DISABLE_ERROR.getCode());
 	}
 }

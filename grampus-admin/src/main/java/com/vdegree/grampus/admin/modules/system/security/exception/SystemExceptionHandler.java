@@ -1,5 +1,6 @@
 package com.vdegree.grampus.admin.modules.system.security.exception;
 
+import com.vdegree.grampus.admin.modules.system.code.ErrorCode;
 import com.vdegree.grampus.common.core.exception.BaseException;
 import com.vdegree.grampus.common.core.result.Result;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +30,7 @@ public class SystemExceptionHandler {
 			Result.error(ex.getCode(), null);
 		}
 		log.error(e.getMessage(), e);
-		return Result.error(SystemSecurityErrorCode.BASE_ERROR_CODE, null);
+		return Result.error(ErrorCode.UNKNOWN_ERROR_CODE, null);
 	}
 
 	/**
@@ -42,7 +43,7 @@ public class SystemExceptionHandler {
 			BaseException ex = (BaseException) e.getCause();
 			return Result.error(ex.getCode(), null);
 		}
-		return Result.error(SystemSecurityErrorCode.USER_PASSWORD_ERROR, null);
+		return Result.error(ErrorCode.System.USER_PASSWORD_ERROR.getCode(), null);
 	}
 
 	/**
@@ -51,7 +52,7 @@ public class SystemExceptionHandler {
 	@ExceptionHandler(BadCredentialsException.class)
 	public Result<Object> handleBadCredentialsException(BadCredentialsException e) {
 		log.error(e.getMessage());
-		return Result.error(SystemSecurityErrorCode.USER_PASSWORD_ERROR, null);
+		return Result.error(ErrorCode.System.USER_PASSWORD_ERROR.getCode(), null);
 	}
 
 	/**
@@ -60,6 +61,6 @@ public class SystemExceptionHandler {
 	@ExceptionHandler(AccessDeniedException.class)
 	public Result<Object> handleAccessDeniedException(AccessDeniedException e) {
 		log.error(e.getMessage());
-		return Result.error(SystemSecurityErrorCode.USER_ACCESS_DENIED_ERROR, null);
+		return Result.error(ErrorCode.System.USER_ACCESS_DENIED_ERROR.getCode(), null);
 	}
 }

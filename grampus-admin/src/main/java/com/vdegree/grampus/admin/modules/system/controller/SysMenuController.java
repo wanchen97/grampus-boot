@@ -1,10 +1,10 @@
 package com.vdegree.grampus.admin.modules.system.controller;
 
+import com.vdegree.grampus.admin.modules.system.code.ErrorCode;
 import com.vdegree.grampus.admin.modules.system.dto.SysMenuDTO;
 import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.admin.modules.system.service.SysMenuService;
 import com.vdegree.grampus.common.core.utils.tree.TreeUtils;
-import com.vdegree.grampus.common.core.result.ErrorCode;
 import com.vdegree.grampus.common.core.result.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -101,7 +101,7 @@ public class SysMenuController {
 		//判断是否有子菜单或按钮
 		List<SysMenuDTO> list = sysMenuService.getListByPid(id);
 		if (list.size() > 0) {
-			return Result.error(ErrorCode.SUB_MENU_EXIST);
+			return Result.error(ErrorCode.System.SUB_MENU_EXIST.getCode());
 		}
 		sysMenuService.deleteById(id);
 		return Result.success();

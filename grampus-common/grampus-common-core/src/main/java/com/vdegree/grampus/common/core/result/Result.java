@@ -26,8 +26,11 @@ public class Result<T> implements Serializable {
 	private static final String DEFAULT_SUCCESS_PHRASE = "Success";
 	private static final String DEFAULT_ERROR_PHRASE = "Failure";
 	private static final String DEFAULT_ERROR_CODE = "0";
+	private static final String BASE_ERROR_CODE = "-1";
 	private static final int SUCCESS_STATUS_CODE = 200;
 	private static final int ERROR_STATUS_CODE = 500;
+	private static final int UNAUTHORIZED = 401;
+	private static final int FORBIDDEN = 403;
 
 	/**
 	 * 消息
@@ -67,12 +70,12 @@ public class Result<T> implements Serializable {
 
 	public static <T> Result<T> error() {
 		String msg = defaultMessage(ERROR_STATUS_CODE, null);
-		return restResult(ERROR_STATUS_CODE, null, ErrorCode.BASE_ERROR_CODE, msg);
+		return restResult(ERROR_STATUS_CODE, null, BASE_ERROR_CODE, msg);
 	}
 
 	public static <T> Result<T> error(String msg) {
 		msg = defaultMessage(ERROR_STATUS_CODE, msg);
-		return restResult(ERROR_STATUS_CODE, null, ErrorCode.BASE_ERROR_CODE, msg);
+		return restResult(ERROR_STATUS_CODE, null, BASE_ERROR_CODE, msg);
 	}
 
 	public static <T> Result<T> error(String errorCode, String msg) {
@@ -82,17 +85,17 @@ public class Result<T> implements Serializable {
 
 	public static <T> Result<T> error(int status, String msg) {
 		msg = defaultMessage(ERROR_STATUS_CODE, msg);
-		return restResult(status, null, ErrorCode.BASE_ERROR_CODE, msg);
+		return restResult(status, null, BASE_ERROR_CODE, msg);
 	}
 
 	public static <T> Result<T> error(T data) {
 		String msg = defaultMessage(ERROR_STATUS_CODE, null);
-		return restResult(ERROR_STATUS_CODE, data, ErrorCode.BASE_ERROR_CODE, msg);
+		return restResult(ERROR_STATUS_CODE, data, BASE_ERROR_CODE, msg);
 	}
 
 	public static <T> Result<T> error(T data, String msg) {
 		msg = defaultMessage(ERROR_STATUS_CODE, msg);
-		return restResult(ERROR_STATUS_CODE, data, ErrorCode.BASE_ERROR_CODE, msg);
+		return restResult(ERROR_STATUS_CODE, data, BASE_ERROR_CODE, msg);
 	}
 
 	private static <T> Result<T> restResult(int status, T data, String errorCode, String message) {

@@ -1,5 +1,6 @@
 package com.vdegree.grampus.admin.modules.system.controller;
 
+import com.vdegree.grampus.admin.modules.system.code.ErrorCode;
 import com.vdegree.grampus.admin.modules.system.dto.PasswordDTO;
 import com.vdegree.grampus.admin.modules.system.dto.SysUserDTO;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
@@ -7,7 +8,6 @@ import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.admin.modules.system.service.SysUserRoleService;
 import com.vdegree.grampus.admin.modules.system.service.SysUserService;
 import com.vdegree.grampus.common.core.constant.Constant;
-import com.vdegree.grampus.common.core.result.ErrorCode;
 import com.vdegree.grampus.common.core.result.Result;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.mybatis.page.PageData;
@@ -104,7 +104,7 @@ public class SysUserController {
 	public Result<Void> password(@RequestBody PasswordDTO dto) {
 		SystemUserDetails user = SecurityUtils.getUserDetails();
 		if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
-			return Result.error(ErrorCode.USER_PASSWORD_ERROR);
+			return Result.error(ErrorCode.System.USER_PASSWORD_ERROR.getCode());
 		}
 		sysUserService.updatePassword(user.getId(), dto.getNewPassword());
 		return Result.success();
