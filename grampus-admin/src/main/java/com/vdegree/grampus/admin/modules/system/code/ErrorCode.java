@@ -96,6 +96,14 @@ public interface ErrorCode {
 		 * 用户访问权限异常
 		 */
 		USER_ACCESS_DENIED_ERROR("121201B005", "USER_ACCESS_DENIED_ERROR"),
+		/**
+		 * token失效异常
+		 */
+		TOKEN_EXPIRED_ERROR("121201B006", "TOKEN_EXPIRED_ERROR"),
+		/**
+		 * token解析失败异常
+ 		 */
+		TOKEN_PARSED_ERROR("121201B007", "TOKEN_PARSED_ERROR"),
 
 		// ~ ============================ 通用权限管理相关 02 ============================
 		/**

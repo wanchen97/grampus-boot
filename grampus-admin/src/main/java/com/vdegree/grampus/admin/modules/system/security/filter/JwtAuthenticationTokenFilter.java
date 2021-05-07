@@ -1,10 +1,18 @@
 package com.vdegree.grampus.admin.modules.system.security.filter;
 
+import com.vdegree.grampus.admin.modules.system.code.ErrorCode;
+import com.vdegree.grampus.admin.modules.system.security.exception.TokenExpiredException;
+import com.vdegree.grampus.admin.modules.system.security.exception.TokenParsedException;
 import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
 import com.vdegree.grampus.common.core.constant.Constant;
+import com.vdegree.grampus.common.core.exception.BaseException;
+import com.vdegree.grampus.common.core.result.Result;
+import com.vdegree.grampus.common.core.utils.JSONUtil;
 import com.vdegree.grampus.common.core.utils.StringUtil;
+import io.jsonwebtoken.ExpiredJwtException;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,6 +25,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Token过滤器
@@ -36,7 +45,15 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		String jwt = resolveToken(request);
 		if (StringUtil.isNotBlank(jwt) && SecurityContextHolder.getContext().getAuthentication() == null) {
-			this.tokenManager.validateToken(jwt);
+			try {
+				tokenManager.validateToken(jwt);
+			} catch (ExpiredJwtException e) {
+				handleAuthenticationFailure(response, new TokenExpiredException("token expired."));
+				return;
+			} catch (Exception e) {
+				handleAuthenticationFailure(response, new TokenParsedException("token invalid."));
+				return;
+			}
 			String subject = tokenManager.getSubject(jwt);
 			SystemUserDetails userDetails = (SystemUserDetails) userDetailsService.loadUserByUsername(subject);
 			UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
@@ -56,5 +73,27 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 			return bearerToken.substring(7);
 		}
 		return bearerToken;
+	}
+
+	/**
+	 * Handle Authentication Failure.
+	 */
+	@SneakyThrows
+	private void handleAuthenticationFailure(HttpServletResponse response, BaseException e) {
+		String code, msg;
+		if (e instanceof TokenExpiredException) {
+			TokenExpiredException ex = (TokenExpiredException) e;
+			code = ex.getCode();
+			msg = ex.getMessage();
+		} else if (e instanceof TokenParsedException) {
+			TokenParsedException ex = (TokenParsedException) e;
+			code = ex.getCode();
+			msg = ex.getMessage();
+		} else {
+			code = ErrorCode.Global.UNKNOWN_ERROR_CODE.getCode();
+			msg = ErrorCode.Global.UNKNOWN_ERROR_CODE.getMsg();
+		}
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().write(Objects.requireNonNull(JSONUtil.writeValueAsString(Result.error(code, msg))));
 	}
 }

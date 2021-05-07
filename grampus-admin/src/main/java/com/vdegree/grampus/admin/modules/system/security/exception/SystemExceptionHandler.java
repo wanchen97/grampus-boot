@@ -30,7 +30,7 @@ public class SystemExceptionHandler {
 			Result.error(ex.getCode(), null);
 		}
 		log.error(e.getMessage(), e);
-		return Result.error(ErrorCode.Global.UNKNOWN_ERROR_CODE, null);
+		return Result.error(ErrorCode.Global.UNKNOWN_ERROR_CODE, ErrorCode.Global.UNKNOWN_ERROR_CODE.getMsg());
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class SystemExceptionHandler {
 			BaseException ex = (BaseException) e.getCause();
 			return Result.error(ex.getCode(), null);
 		}
-		return Result.error(ErrorCode.System.USER_PASSWORD_ERROR.getCode(), null);
+		return Result.error(ErrorCode.System.USER_PASSWORD_ERROR.getCode(), ErrorCode.System.USER_PASSWORD_ERROR.getMsg());
 	}
 
 	/**
@@ -52,7 +52,7 @@ public class SystemExceptionHandler {
 	@ExceptionHandler(BadCredentialsException.class)
 	public Result<Object> handleBadCredentialsException(BadCredentialsException e) {
 		log.error(e.getMessage());
-		return Result.error(ErrorCode.System.USER_PASSWORD_ERROR.getCode(), null);
+		return Result.error(ErrorCode.System.USER_PASSWORD_ERROR.getCode(), ErrorCode.System.USER_PASSWORD_ERROR.getMsg());
 	}
 
 	/**
@@ -61,6 +61,6 @@ public class SystemExceptionHandler {
 	@ExceptionHandler(AccessDeniedException.class)
 	public Result<Object> handleAccessDeniedException(AccessDeniedException e) {
 		log.error(e.getMessage());
-		return Result.error(ErrorCode.System.USER_ACCESS_DENIED_ERROR.getCode(), null);
+		return Result.error(ErrorCode.System.USER_ACCESS_DENIED_ERROR.getCode(), ErrorCode.System.USER_ACCESS_DENIED_ERROR.getMsg());
 	}
 }
