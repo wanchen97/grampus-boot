@@ -18,4 +18,4 @@ EXPOSE 28080
 
 ADD ./target/grampus-admin.jar ./
 
-CMD sleep 60;java $JAVA_OPTS -jar grampus-admin.jar
+CMD java $JAVA_OPTS -jar grampus-admin.jar
