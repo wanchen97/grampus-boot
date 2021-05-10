@@ -36,7 +36,6 @@ public class SystemUserDetails implements UserDetails {
 	/**
 	 * 密码
 	 */
-	@JsonIgnore
 	private String password;
 
 	/**
@@ -72,7 +71,6 @@ public class SystemUserDetails implements UserDetails {
 		return AuthorityUtils.commaSeparatedStringToAuthorityList(permissions);
 	}
 
-	@JsonIgnore
 	@Override
 	public String getPassword() {
 		return this.password;
@@ -83,25 +81,21 @@ public class SystemUserDetails implements UserDetails {
 		return this.getUserNo();
 	}
 
-	@JsonIgnore
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
 
-	@JsonIgnore
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
 
-	@JsonIgnore
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
 
-	@JsonIgnore
 	@Override
 	public boolean isEnabled() {
 		return true;

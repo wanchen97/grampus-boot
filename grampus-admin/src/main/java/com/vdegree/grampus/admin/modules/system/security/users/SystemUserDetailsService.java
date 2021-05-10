@@ -5,9 +5,11 @@ import com.vdegree.grampus.admin.modules.system.security.enums.SuperAdminEnum;
 import com.vdegree.grampus.admin.modules.system.enums.SysUserEnabledEnum;
 import com.vdegree.grampus.admin.modules.system.security.exception.UserDisabledException;
 import com.vdegree.grampus.admin.modules.system.security.exception.UserNotFoundException;
+import com.vdegree.grampus.admin.modules.system.security.redis.SystemUserDetailsRedis;
 import com.vdegree.grampus.admin.modules.system.security.roles.SystemRoleService;
 import com.vdegree.grampus.admin.modules.system.service.SysUserService;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
+import com.vdegree.grampus.common.core.utils.StringUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -26,10 +28,15 @@ public class SystemUserDetailsService implements UserDetailsService {
 
 	private final SysUserService sysUserService;
 	private final SystemRoleService systemRoleService;
+	private final SystemUserDetailsRedis systemUserDetailsRedis;
 
 	@Override
 	public UserDetails loadUserByUsername(String userNo) throws UsernameNotFoundException {
-		// TODO use cache
+		// 查询用户详情
+		SystemUserDetails userDetails = systemUserDetailsRedis.getSystemUserDetails(userNo);
+		if (userDetails != null && StringUtil.isNotBlank(userDetails.getUserNo())) {
+			return userDetails;
+		}
 		SysUser user = sysUserService.getSysUserByUserNo(userNo);
 
 		// 用户不存在
@@ -42,11 +49,16 @@ public class SystemUserDetailsService implements UserDetailsService {
 			throw new UserDisabledException();
 		}
 
-		return buildUserDetails(user);
+		// 缓存系统用户详情
+		userDetails = buildUserDetails(user);
+		systemUserDetailsRedis.saveSystemUserDetails(userDetails);
+		return userDetails;
 	}
 
-	public UserDetails buildUserDetails(SysUser user) {
+	public SystemUserDetails buildUserDetails(SysUser user) {
 		SystemUserDetails systemUserDetails = BeanUtil.copy(user, SystemUserDetails.class);
+		// TODO 无法copy enabled字段
+		systemUserDetails.setEnabled(user.getEnabled());
 		boolean isSuperAdmin = SuperAdminEnum.TRUE.getValue().equals(systemUserDetails.getSuperAdmin());
 		if (Boolean.TRUE.equals(isSuperAdmin)) {
 			systemUserDetails.setPermissions(systemRoleService.getAllPermissions());

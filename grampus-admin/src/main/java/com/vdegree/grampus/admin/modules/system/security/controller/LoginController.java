@@ -2,12 +2,16 @@ package com.vdegree.grampus.admin.modules.system.security.controller;
 
 import com.google.common.collect.Maps;
 import com.vdegree.grampus.admin.modules.system.dto.SysUserDTO;
+import com.vdegree.grampus.admin.modules.system.dto.SysUserDetailsDTO;
 import com.vdegree.grampus.admin.modules.system.entity.SysUser;
 import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
 import com.vdegree.grampus.admin.modules.system.security.pojo.LoginReq;
 import com.vdegree.grampus.admin.modules.system.security.pojo.RegisterReq;
+import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
+import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.admin.modules.system.service.SysUserService;
 import com.vdegree.grampus.common.core.result.Result;
+import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.core.utils.StringUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -69,12 +73,13 @@ public class LoginController {
 		String password = params.getPassword();
 		Authentication authentication =
 				authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		SystemUserDetails userDetails = SecurityUtils.getUserDetails();
+		SysUserDetailsDTO sysUserDetails = BeanUtil.copy(userDetails, SysUserDetailsDTO.class);
 
 		String token = jwtTokenManager.createToken(authentication);
 
 		Map<String, Object> result = Maps.newHashMap();
-		result.put("userDetails", userDetails);
+		result.put("userDetails", sysUserDetails);
 		result.put("token", token);
 		return Result.success(result);
 	}

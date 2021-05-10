@@ -41,4 +41,9 @@ public class TokenStoreRedis {
 		String realToken = redisCache.get(MessageFormat.format(SYSTEM_USER_TOKEN_KEY, subject));
 		return realToken != null && realToken.equals(token);
 	}
+
+	public void deleteToken(String subject) {
+		String key = MessageFormat.format(SYSTEM_USER_TOKEN_KEY, subject);
+		redisCache.del(key);
+	}
 }
