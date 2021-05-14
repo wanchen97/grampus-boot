@@ -40,6 +40,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.vdegree</groupId>
+			<artifactId>grampus-common-excel</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.vdegree</groupId>
 			<artifactId>grampus-common-swagger</artifactId>
 		</dependency>
 		<dependency>

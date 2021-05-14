@@ -39,6 +39,11 @@
 			</dependency>
 			<dependency>
 				<groupId>com.vdegree</groupId>
+				<artifactId>grampus-common-excel</artifactId>
+				<version>${grampus-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.vdegree</groupId>
 				<artifactId>grampus-common-swagger</artifactId>
 				<version>${grampus-boot.version}</version>
 			</dependency>

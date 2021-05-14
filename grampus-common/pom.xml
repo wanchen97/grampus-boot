@@ -14,6 +14,7 @@
 	<modules>
 		<module>grampus-common-dependencies</module>
 		<module>grampus-common-core</module>
+		<module>grampus-common-excel</module>
 		<module>grampus-common-swagger</module>
 		<module>grampus-common-mybatis</module>
 		<module>grampus-common-datasource</module>
@@ -23,8 +24,5 @@
 		<module>grampus-common-delayqueue</module>
 		<module>grampus-common-rabbitmq</module>
 		<module>grampus-common-redis</module>
-		<module>grampus-common-excel</module>
 	</modules>
-
-
 </project>
