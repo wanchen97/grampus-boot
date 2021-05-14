@@ -1,9 +1,11 @@
 package com.vdegree.grampus.admin.modules.system.controller;
 
 import com.vdegree.grampus.admin.modules.system.dto.SysParamDTO;
+import com.vdegree.grampus.admin.modules.system.excel.SysParamExcel;
 import com.vdegree.grampus.admin.modules.system.service.SysParamService;
 import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.result.Result;
+import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.excel.annotation.ResponseExcel;
 import com.vdegree.grampus.common.mybatis.page.PageData;
 import io.swagger.annotations.Api;
@@ -94,7 +96,8 @@ public class SysParamController {
 	@ResponseExcel(name = "系统参数")
 	@PreAuthorize("hasAuthority('sys:param:export')")
 	@ApiImplicitParam(name = "code", value = "参数编码", paramType = "query", dataType = "String")
-	public List<SysParamDTO> export(@ApiIgnore @RequestParam Map<String, Object> params) {
-		return sysParamService.queryList(params);
+	public List<SysParamExcel> export(@ApiIgnore @RequestParam Map<String, Object> params) {
+		List<SysParamDTO> list = sysParamService.queryList(params);
+		return BeanUtil.copyList(list, SysParamExcel.class);
 	}
 }
