@@ -1,4 +1,4 @@
-package com.vdegree.grampus.common.excel.kit;
+package com.vdegree.grampus.common.excel.exception;
 
 /**
  * @author Beck
