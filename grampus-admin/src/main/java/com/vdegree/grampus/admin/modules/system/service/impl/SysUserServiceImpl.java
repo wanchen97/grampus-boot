@@ -4,6 +4,7 @@ import com.vdegree.grampus.admin.modules.system.dto.SysUserDTO;
 import com.vdegree.grampus.admin.modules.system.security.enums.SuperAdminEnum;
 import com.vdegree.grampus.admin.modules.system.service.SysUserRoleService;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
+import com.vdegree.grampus.common.core.utils.StringUtil;
 import com.vdegree.grampus.common.mybatis.enums.DelFlagEnum;
 import com.vdegree.grampus.admin.modules.system.dao.SysUserDao;
 import com.vdegree.grampus.admin.modules.system.entity.SysUser;
@@ -47,7 +48,11 @@ public class SysUserServiceImpl extends EnhancedBaseServiceImpl<SysUserDao, SysU
 	@Transactional(rollbackFor = Exception.class)
 	public void save(SysUserDTO dto) {
 		SysUser entity = BeanUtil.copy(dto, SysUser.class);
-		entity.setPassword(passwordEncoder.encode(entity.getPassword()));
+		String plainPwd = entity.getPassword();
+		// 新建账号支持空密码
+		if (StringUtil.isNotBlank(plainPwd)) {
+			entity.setPassword(passwordEncoder.encode(plainPwd));
+		}
 		entity.setSuperAdmin(SuperAdminEnum.FALSE.getValue());
 		baseMapper.insert(entity);
 		sysUserRoleService.saveOrUpdate(entity.getId(), dto.getRoleIdList());
