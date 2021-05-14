@@ -3,12 +3,10 @@ package com.vdegree.grampus.admin.modules.system.security.controller;
 import com.google.common.collect.Maps;
 import com.vdegree.grampus.admin.modules.system.dto.SysUserDTO;
 import com.vdegree.grampus.admin.modules.system.dto.SysUserDetailsDTO;
-import com.vdegree.grampus.admin.modules.system.entity.SysUser;
 import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
 import com.vdegree.grampus.admin.modules.system.security.pojo.LoginReq;
 import com.vdegree.grampus.admin.modules.system.security.pojo.RegisterReq;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
-import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.admin.modules.system.service.SysUserService;
 import com.vdegree.grampus.common.core.result.Result;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
@@ -20,7 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -73,7 +70,7 @@ public class LoginController {
 		String password = params.getPassword();
 		Authentication authentication =
 				authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-		SystemUserDetails userDetails = SecurityUtils.getUserDetails();
+		SystemUserDetails userDetails = (SystemUserDetails) authentication.getPrincipal();
 		SysUserDetailsDTO sysUserDetails = BeanUtil.copy(userDetails, SysUserDetailsDTO.class);
 
 		String token = jwtTokenManager.createToken(authentication);
