@@ -28,4 +28,12 @@ public interface SysUserRoleService extends BaseService<SysUserRole> {
 	 * @return 用户角色ID列表
 	 */
 	List<Long> getRoleIdList(Long userId);
+
+	/**
+	 * 保存或更新角色对应的菜单列表
+	 *
+	 * @param userId     用户ID
+	 * @param roleIdList 角色ID列表
+	 */
+	void saveOrUpdate(Long userId, List<Long> roleIdList);
 }

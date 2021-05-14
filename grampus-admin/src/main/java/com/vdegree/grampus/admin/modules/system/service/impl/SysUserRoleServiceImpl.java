@@ -6,7 +6,9 @@ import com.vdegree.grampus.admin.modules.system.entity.SysUserRole;
 import com.vdegree.grampus.admin.modules.system.service.SysUserRoleService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.util.Sqls;
 import tk.mybatis.mapper.weekend.WeekendSqls;
 
 import java.util.List;
@@ -40,5 +42,19 @@ public class SysUserRoleServiceImpl extends BaseServiceImpl<SysUserRoleDao, SysU
 				.where(WeekendSqls.<SysUserRole>custom()
 						.andEqualTo(SysUserRole::getUserId, userId)).build());
 		return result.stream().map(SysUserRole::getRoleId).distinct().collect(Collectors.toList());
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public void saveOrUpdate(Long userId, List<Long> roleIdList) {
+		baseMapper.deleteByExample(Example.builder(SysUserRole.class)
+				.where(Sqls.custom().andEqualTo("userId", userId))
+				.build());
+		roleIdList.forEach(roleId -> {
+			SysUserRole entity = new SysUserRole();
+			entity.setUserId(userId);
+			entity.setRoleId(roleId);
+			baseMapper.insertSelective(entity);
+		});
 	}
 }
