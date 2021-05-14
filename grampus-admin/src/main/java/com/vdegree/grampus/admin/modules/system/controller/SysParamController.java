@@ -4,6 +4,7 @@ import com.vdegree.grampus.admin.modules.system.dto.SysParamDTO;
 import com.vdegree.grampus.admin.modules.system.service.SysParamService;
 import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.result.Result;
+import com.vdegree.grampus.common.excel.annotation.ResponseExcel;
 import com.vdegree.grampus.common.mybatis.page.PageData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -85,5 +87,14 @@ public class SysParamController {
 	public Result<Void> delete(@RequestBody Long[] ids) {
 		sysParamService.deleteBatchIds(Arrays.asList(ids));
 		return Result.success();
+	}
+
+	@ApiOperation("Excel导出")
+	@GetMapping("export")
+	@ResponseExcel(name = "系统参数")
+	@PreAuthorize("hasAuthority('sys:param:export')")
+	@ApiImplicitParam(name = "code", value = "参数编码", paramType = "query", dataType = "String")
+	public List<SysParamDTO> export(@ApiIgnore @RequestParam Map<String, Object> params) {
+		return sysParamService.queryList(params);
 	}
 }
