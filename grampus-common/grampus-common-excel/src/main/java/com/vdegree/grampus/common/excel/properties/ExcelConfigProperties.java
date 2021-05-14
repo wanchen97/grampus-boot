@@ -1,4 +1,4 @@
-package com.vdegree.grampus.common.excel.config;
+package com.vdegree.grampus.common.excel.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

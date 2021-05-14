@@ -5,7 +5,7 @@ import com.alibaba.excel.converters.Converter;
 import com.alibaba.excel.write.builder.ExcelWriterBuilder;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.vdegree.grampus.common.excel.annotation.ResponseExcel;
-import com.vdegree.grampus.common.excel.config.ExcelConfigProperties;
+import com.vdegree.grampus.common.excel.properties.ExcelConfigProperties;
 import com.vdegree.grampus.common.excel.kit.ExcelException;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;

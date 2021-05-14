@@ -1,8 +1,8 @@
-package com.vdegree.grampus.common.excel;
+package com.vdegree.grampus.common.excel.config;
 
 import com.alibaba.excel.converters.Converter;
 import com.vdegree.grampus.common.excel.aop.ResponseExcelReturnValueHandler;
-import com.vdegree.grampus.common.excel.config.ExcelConfigProperties;
+import com.vdegree.grampus.common.excel.properties.ExcelConfigProperties;
 import com.vdegree.grampus.common.excel.handler.ManySheetWriteHandler;
 import com.vdegree.grampus.common.excel.handler.SheetWriteHandler;
 import com.vdegree.grampus.common.excel.handler.SingleSheetWriteHandler;

@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.vdegree.grampus.common.excel.ResponseExcelAutoConfiguration
+  com.vdegree.grampus.common.excel.config.ResponseExcelAutoConfiguration
