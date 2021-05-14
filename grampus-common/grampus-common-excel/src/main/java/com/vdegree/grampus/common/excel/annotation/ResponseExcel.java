@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * `@ResponseExcel 注解`
+ * 导出excel
  *
  * @author Beck
  * @since 2021-5-14
