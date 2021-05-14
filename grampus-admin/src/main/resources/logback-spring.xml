@@ -86,6 +86,9 @@
 	<logger name="org.springframework.context.annotation.AnnotationConfigApplicationContext" level="ERROR">
 		<appender-ref ref="ERROR"/>
 	</logger>
+	<logger name="springfox.documentation.swagger.readers.operation.OperationImplicitParameterReader" level="ERROR">
+		<appender-ref ref="ERROR"/>
+	</logger>
 	<logger name="de.codecentric.boot" level="OFF">
 		<appender-ref ref="ERROR"/>
 	</logger>
