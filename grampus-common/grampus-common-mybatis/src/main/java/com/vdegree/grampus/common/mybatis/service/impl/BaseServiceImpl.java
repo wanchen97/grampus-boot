@@ -114,6 +114,12 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<
 	}
 
 	@Override
+	public List<T> selectList(Map<String, Object> params, Class<T> clazz) {
+		T entity = BeanUtil.toBean(params, clazz);
+		return this.selectList(entity);
+	}
+
+	@Override
 	public List<T> selectAll() {
 		return baseMapper.selectAll();
 	}

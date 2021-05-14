@@ -82,6 +82,16 @@ public interface EnhancedBaseService<T, D> extends BaseService<T> {
 
 	/**
 	 * <p>
+	 * 条件查询
+	 * </p>
+	 *
+	 * @param params 参数
+	 * @return 查询结果
+	 */
+	List<D> queryList(Map<String, Object> params);
+
+	/**
+	 * <p>
 	 * 查询所有
 	 * </p>
 	 *

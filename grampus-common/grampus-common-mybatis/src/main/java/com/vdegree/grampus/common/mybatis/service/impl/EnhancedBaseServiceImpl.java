@@ -73,6 +73,12 @@ public class EnhancedBaseServiceImpl<M extends BaseMapper<T>, T, D> extends Base
 	}
 
 	@Override
+	public List<D> queryList(Map<String, Object> params) {
+		List<T> result = selectList(params, getCurrentEntityClass());
+		return BeanUtil.copyList(result, getCurrentDtoClass());
+	}
+
+	@Override
 	public List<D> queryAll() {
 		List<T> result = selectAll();
 		return BeanUtil.copyList(result, getCurrentDtoClass());

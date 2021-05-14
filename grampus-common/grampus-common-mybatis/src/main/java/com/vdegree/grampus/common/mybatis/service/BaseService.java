@@ -114,6 +114,17 @@ public interface BaseService<T> {
 
 	/**
 	 * <p>
+	 * 条件查询
+	 * </p>
+	 *
+	 * @param params 参数
+	 * @param clazz  查询条件映射实体的类名
+	 * @return 查询结果
+	 */
+	List<T> selectList(Map<String, Object> params, Class<T> clazz);
+
+	/**
+	 * <p>
 	 * 查询所有
 	 * </p>
 	 *
