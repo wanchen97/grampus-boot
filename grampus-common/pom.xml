@@ -23,6 +23,7 @@
 		<module>grampus-common-delayqueue</module>
 		<module>grampus-common-rabbitmq</module>
 		<module>grampus-common-redis</module>
+		<module>grampus-common-excel</module>
 	</modules>
 
 
