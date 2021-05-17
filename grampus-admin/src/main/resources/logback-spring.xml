@@ -30,95 +30,57 @@
 		</filter>
 	</appender>
 
-	<appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${FILE_LOG_PATTERN}/${project.artifactId}-error.log</file>
-		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>${FILE_LOG_PATTERN}/%d{yyyy-MM}/${project.artifactId}-error.%d{yyyy-MM-dd}.%i.log.gz
-			</fileNamePattern>
-			<maxFileSize>100MB</maxFileSize>
-			<maxHistory>30</maxHistory>
-		</rollingPolicy>
-		<encoder>
-			<pattern>%date [%thread] %-5level [%logger{50}] %file:%line - %msg%n</pattern>
-		</encoder>
-		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>ERROR</level>
-		</filter>
-	</appender>
-
-	<appender name="CALL_LINK" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${FILE_LOG_PATTERN}/${project.artifactId}-link.log</file>
-		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>${FILE_LOG_PATTERN}/%d{yyyy-MM}/${project.artifactId}-link.%d{yyyy-MM-dd}.%i.log.gz
-			</fileNamePattern>
-			<maxFileSize>100MB</maxFileSize>
-			<maxHistory>30</maxHistory>
-		</rollingPolicy>
-		<encoder>
-			<pattern>%date [%thread] %-5level [%logger{50}] %file:%line - %msg%n</pattern>
-		</encoder>
-		<filter class="ch.qos.logback.classic.filter.LevelFilter">
-			<level>TRACE</level>
-			<onMatch>ACCEPT</onMatch>
-			<onMismatch>DENY</onMismatch>
-		</filter>
-	</appender>
-	<logger name="com.vdegree.cloud.gray.NacosWeightRule" level="TRACE">
-		<appender-ref ref="CALL_LINK"/>
-	</logger>
-
 	<logger name="com.vdegree" level="DEBUG" additivity="false">
 		<appender-ref ref="CONSOLE"/>
 		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="org.springframework" level="WARN">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="org.apache.shardingsphere" level="WARN">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="com.alibaba.nacos" level="OFF">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="org.apache.dubbo.rpc.protocol.dubbo.LazyConnectExchangeClient" level="ERROR">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="org.springframework.context.annotation.AnnotationConfigApplicationContext" level="ERROR">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="springfox.documentation.swagger.readers.operation.OperationImplicitParameterReader" level="ERROR">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="de.codecentric.boot" level="OFF">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="com.vdegree.gateway.manager.dao.SysRouteConfDao" level="ERROR">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="org.apache.catalina.startup.DigesterFactory" level="ERROR">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="org.apache.catalina.util.LifecycleBase" level="ERROR">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="org.apache.coyote.http11.Http11NioProtocol" level="WARN">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="org.apache.sshd.common.util.SecurityUtils" level="WARN">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="org.apache.tomcat.util.net.NioSelectorPool" level="WARN">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="org.eclipse.jetty.util.component.AbstractLifeCycle" level="ERROR">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<logger name="org.hibernate.validator.internal.util.Version" level="WARN">
-		<appender-ref ref="ERROR"/>
+		<appender-ref ref="STDOUT"/>
 	</logger>
 	<root level="INFO">
 		<appender-ref ref="CONSOLE"/>
 		<appender-ref ref="STDOUT"/>
-		<appender-ref ref="ERROR"/>
 	</root>
 </configuration>
