@@ -58,5 +58,4 @@ public class ResponseExcelReturnValueHandler implements HandlerMethodReturnValue
 		sheetWriteHandlerList.stream().filter(handler -> handler.support(o)).findFirst()
 				.ifPresent(handler -> handler.export(o, response, responseExcel));
 	}
-
 }

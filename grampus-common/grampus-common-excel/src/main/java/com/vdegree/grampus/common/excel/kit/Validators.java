@@ -36,5 +36,4 @@ public class Validators {
 	public static <T> Set<ConstraintViolation<T>> validate(T object) {
 		return validator.validate(object);
 	}
-
 }

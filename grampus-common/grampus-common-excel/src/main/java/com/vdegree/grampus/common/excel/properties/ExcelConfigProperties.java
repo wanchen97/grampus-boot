@@ -17,5 +17,4 @@ public class ExcelConfigProperties {
 	 * 模板路径
 	 */
 	private String templatePath = "excel";
-
 }

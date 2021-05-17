@@ -28,5 +28,4 @@ public abstract class ListAnalysisEventListener<T> extends AnalysisEventListener
 	 * @return 集合
 	 */
 	public abstract Map<Long, Set<ConstraintViolation<T>>> getErrors();
-
 }

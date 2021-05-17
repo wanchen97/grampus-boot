@@ -66,5 +66,4 @@ public class ManySheetWriteHandler extends AbstractSheetWriteHandler {
 	public void registerCustomConverter(ExcelWriterBuilder builder) {
 		converterProvider.ifAvailable(converters -> converters.forEach(builder::registerConverter));
 	}
-
 }

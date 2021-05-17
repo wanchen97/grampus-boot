@@ -85,5 +85,4 @@ public class ResponseExcelAutoConfiguration {
 		resolverList.addAll(argumentResolvers);
 		requestMappingHandlerAdapter.setArgumentResolvers(resolverList);
 	}
-
 }

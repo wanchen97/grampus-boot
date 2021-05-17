@@ -44,5 +44,4 @@ public interface SheetWriteHandler {
 	 * @param responseExcel 注解
 	 */
 	void write(Object o, HttpServletResponse response, ResponseExcel responseExcel);
-
 }

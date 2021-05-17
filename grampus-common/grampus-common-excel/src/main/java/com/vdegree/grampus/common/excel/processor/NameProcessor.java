@@ -17,5 +17,4 @@ public interface NameProcessor {
 	 * @return
 	 */
 	String doDetermineName(Object[] args, Method method, String key);
-
 }

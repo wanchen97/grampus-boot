@@ -56,5 +56,4 @@ public enum LocalDateStringConverter implements Converter<LocalDate> {
 		}
 		return new CellData<>(value.format(formatter));
 	}
-
 }

@@ -21,5 +21,4 @@ public interface HeadGenerator {
 	 * @return List<List < String>> Head头信息
 	 */
 	List<List<String>> head(Class<?> clazz);
-
 }

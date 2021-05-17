@@ -56,5 +56,4 @@ public class ExcelHandlerConfiguration {
 			List<SheetWriteHandler> sheetWriteHandlerList) {
 		return new ResponseExcelReturnValueHandler(sheetWriteHandlerList);
 	}
-
 }

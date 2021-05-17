@@ -36,5 +36,4 @@ public class NameSpelExpressionProcessor implements NameProcessor {
 		final Object value = PARSER.parseExpression(key).getValue(context);
 		return value == null ? null : value.toString();
 	}
-
 }

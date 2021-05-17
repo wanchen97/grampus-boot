@@ -27,15 +27,11 @@ public @interface RequestExcel {
 
 	/**
 	 * 读取的监听器类
-	 *
-	 * @return readListener
 	 */
 	Class<? extends ListAnalysisEventListener<?>> readListener() default DefaultAnalysisEventListener.class;
 
 	/**
 	 * 是否跳过空行
-	 *
-	 * @return 默认跳过
 	 */
 	boolean ignoreEmptyRow() default false;
 

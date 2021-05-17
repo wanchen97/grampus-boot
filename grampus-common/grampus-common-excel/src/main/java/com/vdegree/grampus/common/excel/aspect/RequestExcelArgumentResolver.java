@@ -78,5 +78,4 @@ public class RequestExcelArgumentResolver implements HandlerMethodArgumentResolv
 
 		return readListener.getList();
 	}
-
 }

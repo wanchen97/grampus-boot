@@ -52,5 +52,4 @@ public class DefaultAnalysisEventListener extends ListAnalysisEventListener<Obje
 	public Map<Long, Set<ConstraintViolation<Object>>> getErrors() {
 		return errors;
 	}
-
 }

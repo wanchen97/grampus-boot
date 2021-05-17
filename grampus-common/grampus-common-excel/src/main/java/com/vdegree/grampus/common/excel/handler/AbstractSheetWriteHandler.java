@@ -150,5 +150,4 @@ public abstract class AbstractSheetWriteHandler implements SheetWriteHandler {
 
 		return excelWriterSheetBuilder.build();
 	}
-
 }
