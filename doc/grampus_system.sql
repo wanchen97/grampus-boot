@@ -41,22 +41,6 @@ CREATE TABLE `sys_dept`
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for sys_dept_relation
--- ----------------------------
-DROP TABLE IF EXISTS `sys_dept_relation`;
-CREATE TABLE `sys_dept_relation`
-(
-    `id`            bigint(20) NOT NULL AUTO_INCREMENT COMMENT '数据ID',
-    `dept_id`       bigint(20) NULL DEFAULT NULL COMMENT '部门ID',
-    `child_dept_id` bigint(20) NULL DEFAULT NULL COMMENT '所有子部门ID',
-    PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '部门关系表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of sys_dept_relation
--- ----------------------------
-
--- ----------------------------
 -- Table structure for sys_dict
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict`;
