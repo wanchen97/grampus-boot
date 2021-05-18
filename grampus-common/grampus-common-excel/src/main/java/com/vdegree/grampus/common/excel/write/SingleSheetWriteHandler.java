@@ -1,4 +1,4 @@
-package com.vdegree.grampus.common.excel.handler;
+package com.vdegree.grampus.common.excel.write;
 
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.converters.Converter;
@@ -15,18 +15,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
+ * 处理单sheet 页面
+ * <p>
  * @author Beck
  * @since 2021-5-14
  */
 @RequiredArgsConstructor
-public class ManySheetWriteHandler extends AbstractSheetWriteHandler {
+public class SingleSheetWriteHandler extends AbstractSheetWriteHandler {
 
 	private final ExcelConfigProperties configProperties;
 
 	private final ObjectProvider<List<Converter<?>>> converterProvider;
 
 	/**
-	 * 当且仅当List不为空且List中的元素也是List 才返回true
+	 * obj 是List 且list不为空同时list中的元素不是是List 才返回true
 	 *
 	 * @param obj 返回对象
 	 * @return
@@ -35,7 +37,7 @@ public class ManySheetWriteHandler extends AbstractSheetWriteHandler {
 	public boolean support(Object obj) {
 		if (obj instanceof List) {
 			List objList = (List) obj;
-			return !objList.isEmpty() && objList.get(0) instanceof List;
+			return !objList.isEmpty() && !(objList.get(0) instanceof List);
 		} else {
 			throw new ExcelException("@ResponseExcel 返回值必须为List类型");
 		}
@@ -44,21 +46,14 @@ public class ManySheetWriteHandler extends AbstractSheetWriteHandler {
 	@Override
 	@SneakyThrows
 	public void write(Object obj, HttpServletResponse response, ResponseExcel responseExcel) {
-		List objList = (List) obj;
+		List list = (List) obj;
 		ExcelWriter excelWriter = getExcelWriter(response, responseExcel, configProperties.getTemplatePath());
 
-		String[] sheets = responseExcel.sheet();
-		WriteSheet sheet;
-		for (int i = 0; i < sheets.length; i++) {
-			List eleList = (List) objList.get(i);
-			Class<?> dataClass = eleList.get(0).getClass();
-
-			// 创建sheet
-			sheet = this.sheet(i, responseExcel.sheet()[i], dataClass, responseExcel.template(),
-					responseExcel.headGenerator());
-			// 写入sheet
-			excelWriter.write((List) objList.get(i), sheet);
-		}
+		// 有模板则不指定sheet名
+		Class<?> dataClass = list.get(0).getClass();
+		WriteSheet sheet = this.sheet(null, responseExcel.sheet()[0], dataClass, responseExcel.template(),
+				responseExcel.headGenerator());
+		excelWriter.write(list, sheet);
 		excelWriter.finish();
 	}
 
