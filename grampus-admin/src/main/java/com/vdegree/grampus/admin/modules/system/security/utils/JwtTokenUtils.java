@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Jwt token tool.
+ * Jwt token工具
  *
  * @author Beck
  * @since 2020-12-5

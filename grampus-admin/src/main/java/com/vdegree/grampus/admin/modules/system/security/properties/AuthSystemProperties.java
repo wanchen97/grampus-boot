@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.util.List;
 
 /**
- * Auth related configurations.
+ * 认证相关的配置
  *
  * @author Beck
  * @since 2020-12-9

@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * Token过滤器
+ * Jwt认证过滤器
  *
  * @author Beck
  * @since 2020-12-15

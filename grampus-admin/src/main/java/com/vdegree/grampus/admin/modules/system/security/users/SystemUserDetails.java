@@ -1,6 +1,5 @@
 package com.vdegree.grampus.admin.modules.system.security.users;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -9,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 /**
- * system user details
+ * 系统用户详情
  *
  * @author Beck
  * @since 2020-12-15

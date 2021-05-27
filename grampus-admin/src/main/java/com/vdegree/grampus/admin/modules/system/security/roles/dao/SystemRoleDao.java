@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.Set;
 
 /**
- * system role dao
+ * 系统角色
  *
  * @author Beck
  * @since 2020-12-18

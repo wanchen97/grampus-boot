@@ -10,7 +10,7 @@ import java.text.MessageFormat;
 import java.time.Duration;
 
 /**
- * 会员详细信息缓存
+ * 会员详细信息 Redis操作
  *
  * @author Beck
  * @since 2021-04-02

@@ -17,7 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
- * system user details service
+ * 系统用户详情
  *
  * @author Beck
  * @since 2020-12-15

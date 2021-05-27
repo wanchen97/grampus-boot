@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import java.io.Serializable;
 
 /**
- * Auth related configurations.
+ * 认证相关的配置
  *
  * @author Beck
  * @since 2020-12-9

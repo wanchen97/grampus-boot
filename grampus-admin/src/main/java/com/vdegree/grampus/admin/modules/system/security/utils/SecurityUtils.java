@@ -9,7 +9,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Security util.
+ * Security工具.
  *
  * @author Beck
  * @since 2020-12-5

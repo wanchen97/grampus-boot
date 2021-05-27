@@ -9,7 +9,7 @@ import java.text.MessageFormat;
 import java.time.Duration;
 
 /**
- * Token store.
+ * Token存储 Redis操作
  *
  * @author Beck
  * @since 2021-04-02

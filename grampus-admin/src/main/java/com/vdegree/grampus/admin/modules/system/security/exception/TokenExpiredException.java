@@ -4,7 +4,7 @@ import com.vdegree.grampus.admin.modules.system.code.ErrorCode;
 import com.vdegree.grampus.common.core.exception.BaseException;
 
 /**
- * TokenExpiredException
+ * Token过期异常
  *
  * @author Beck
  * @since 2021-05-07
