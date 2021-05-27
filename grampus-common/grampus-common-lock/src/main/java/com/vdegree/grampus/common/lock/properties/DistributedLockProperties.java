@@ -6,7 +6,7 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * 分布式锁j配置
+ * 分布式锁配置
  *
  * @author Beck
  * @since 2021-01-29
