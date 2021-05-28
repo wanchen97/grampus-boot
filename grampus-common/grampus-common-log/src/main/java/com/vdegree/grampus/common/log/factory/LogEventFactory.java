@@ -39,14 +39,10 @@ public class LogEventFactory {
 		String requestUri = request.getRequestURI();
 		event.setRequestMethod(requestMethod);
 		event.setRequestUri(requestUri);
-		// 请求信息 GET /api/test/xx
-		String requestInfo = requestMethod + StringPool.SPACE + requestUri;
 		// paramMap
 		Map<String, String[]> paraMap = request.getParameterMap();
-		if (ObjectUtil.isEmpty(paraMap)) {
-			event.setRequestParam(requestInfo);
-		} else {
-			StringBuilder builder = new StringBuilder(requestInfo).append(CharPool.QUESTION_MARK);
+		if (ObjectUtil.isNotEmpty(paraMap)) {
+			StringBuilder builder = new StringBuilder();
 			paraMap.forEach((key, values) -> {
 				builder.append(key).append(CharPool.EQUALS);
 				if ("password".equalsIgnoreCase(key)) {
