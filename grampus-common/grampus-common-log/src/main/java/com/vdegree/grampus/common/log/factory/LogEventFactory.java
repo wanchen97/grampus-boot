@@ -1,5 +1,6 @@
 package com.vdegree.grampus.common.log.factory;
 
+import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.core.utils.ClassUtil;
 import com.vdegree.grampus.common.core.utils.JSONUtil;
 import com.vdegree.grampus.common.core.utils.ObjectUtil;
@@ -76,6 +77,10 @@ public class LogEventFactory {
 				requestBodyValue = args[i];
 				break;
 			}
+		}
+		Map<String, Object> requestBodyMap = BeanUtil.toMap(requestBodyValue);
+		if (requestBodyMap.containsKey("password")) {
+			requestBodyMap.put("password", "******");
 		}
 		return requestBodyValue == null ? null : JSONUtil.writeValueAsString(requestBodyValue);
 	}
