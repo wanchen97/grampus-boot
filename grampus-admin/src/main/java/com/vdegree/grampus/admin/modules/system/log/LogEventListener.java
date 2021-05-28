@@ -1,10 +1,11 @@
-package com.vdegree.grampus.common.log.listener;
+package com.vdegree.grampus.admin.modules.system.log;
 
 import com.vdegree.grampus.common.log.event.LogEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 
 /**
  * SysLogEventListener
@@ -13,6 +14,7 @@ import org.springframework.scheduling.annotation.Async;
  * @since 2021-05-28
  */
 @Slf4j
+@Component
 public class LogEventListener {
 
 	@Async

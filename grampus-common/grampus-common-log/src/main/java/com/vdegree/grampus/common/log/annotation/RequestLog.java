@@ -16,13 +16,7 @@ import java.lang.annotation.Target;
 public @interface RequestLog {
 
 	/**
-	 * @return 业务模块
-	 */
-	String module() default "";
-
-	/**
 	 * @return 描述
 	 */
 	String value();
-
 }

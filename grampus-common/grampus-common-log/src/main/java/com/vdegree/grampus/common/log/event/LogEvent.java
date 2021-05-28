@@ -23,25 +23,25 @@ public class LogEvent implements Serializable {
 	 */
 	private String module;
 	/**
-	 * Header Authorization
-	 */
-	private String authorization;
-	/**
 	 * 描述
 	 */
 	private String description;
 	/**
 	 * Request Method
 	 */
-	private String method;
+	private String requestMethod;
+	/**
+	 * Request Uri
+	 */
+	private String requestUri;
 	/**
 	 * Request Param
 	 */
-	private String params;
+	private String requestParam;
 	/**
 	 * Request Body
 	 */
-	private String data;
+	private String requestBody;
 	/**
 	 * 是否成功(0失败,1成功)
 	 */
@@ -54,10 +54,6 @@ public class LogEvent implements Serializable {
 	 * 异常信息
 	 */
 	private String exceptionDetail;
-	/**
-	 * 请求uri
-	 */
-	private String requestUri;
 	/**
 	 * 请求ip
 	 */
@@ -74,6 +70,10 @@ public class LogEvent implements Serializable {
 	 * 请求耗时
 	 */
 	private Long costTime;
+	/**
+	 * Header Authorization
+	 */
+	private String authorization;
 	/**
 	 * ua 信息
 	 */

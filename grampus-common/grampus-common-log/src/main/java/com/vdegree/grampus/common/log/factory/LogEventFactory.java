@@ -1,5 +1,6 @@
 package com.vdegree.grampus.common.log.factory;
 
+import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.core.utils.ClassUtil;
 import com.vdegree.grampus.common.core.utils.JSONUtil;
@@ -34,13 +35,16 @@ public class LogEventFactory {
 	public static LogEvent buildLogEvent(MethodInvocation invocation) {
 		LogEvent event = new LogEvent();
 		HttpServletRequest request = WebUtil.getRequest();
-		String method = request.getMethod();
+		String requestMethod = request.getMethod();
+		String requestUri = request.getRequestURI();
+		event.setRequestMethod(requestMethod);
+		event.setRequestUri(requestUri);
 		// 请求信息 GET /api/test/xx
-		String requestInfo = method + StringPool.SPACE + request.getRequestURI();
+		String requestInfo = requestMethod + StringPool.SPACE + requestUri;
 		// paramMap
 		Map<String, String[]> paraMap = request.getParameterMap();
 		if (ObjectUtil.isEmpty(paraMap)) {
-			event.setParams(requestInfo);
+			event.setRequestParam(requestInfo);
 		} else {
 			StringBuilder builder = new StringBuilder(requestInfo).append(CharPool.QUESTION_MARK);
 			paraMap.forEach((key, values) -> {
@@ -53,13 +57,14 @@ public class LogEventFactory {
 				builder.append(CharPool.AMPERSAND);
 			});
 			builder.deleteCharAt(builder.length() - 1);
-			event.setParams(builder.toString());
+			event.setRequestParam(builder.toString());
 		}
 		// 获取请求 ip 和 ua
 		event.setRequestIp(WebUtil.getIP());
+		event.setAuthorization(request.getHeader(Constant.AUTHORIZATION_HEADER));
 		event.setUserAgent(request.getHeader(HttpHeaders.USER_AGENT));
 		// 设置post json数据
-		event.setData(getPostJson(invocation));
+		event.setRequestBody(getPostJson(invocation));
 		return event;
 	}
 

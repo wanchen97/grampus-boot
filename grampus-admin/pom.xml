@@ -60,6 +60,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.vdegree</groupId>
+			<artifactId>grampus-common-log</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.vdegree</groupId>
 			<artifactId>grampus-common-security</artifactId>
 		</dependency>
 	</dependencies>

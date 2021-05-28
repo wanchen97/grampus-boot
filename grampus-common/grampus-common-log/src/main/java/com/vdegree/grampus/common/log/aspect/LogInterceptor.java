@@ -35,7 +35,6 @@ public class LogInterceptor implements MethodInterceptor {
 		RequestLog requestLog = invocation.getMethod().getAnnotation(RequestLog.class);
 		String strClassName = invocation.getThis().getClass().getName();
 		String strMethodName = invocation.getMethod().getName();
-		log.info("[class]:{},[method]:{}", strClassName, strMethodName);
 		LogEvent event = LogEventFactory.buildLogEvent(invocation);
 		event.setModule(applicationName);
 		event.setDescription(requestLog.value());
