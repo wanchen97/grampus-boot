@@ -27,23 +27,19 @@ public class LogEvent implements Serializable {
 	 */
 	private String subject;
 	/**
-	 * 日志类别
-	 */
-	private String logLevel;
-	/**
 	 * 描述
 	 */
 	private String description;
 	/**
-	 * 操作方式
+	 * Request Method
 	 */
 	private String method;
 	/**
-	 * 请求参数
+	 * Request Param
 	 */
 	private String params;
 	/**
-	 * post data
+	 * Request Body
 	 */
 	private String data;
 	/**
