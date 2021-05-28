@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
  * @since 2020-12-5
  */
 @Lazy(false)
-@Component
 public class SpringContextHolder implements ApplicationContextAware, DisposableBean {
 	private static ApplicationContext applicationContext = null;
 
