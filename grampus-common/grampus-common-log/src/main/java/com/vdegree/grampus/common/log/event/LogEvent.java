@@ -23,9 +23,9 @@ public class LogEvent implements Serializable {
 	 */
 	private String module;
 	/**
-	 * 操作对象
+	 * Header Authorization
 	 */
-	private String subject;
+	private String authorization;
 	/**
 	 * 描述
 	 */
