@@ -12,6 +12,7 @@ import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -39,11 +40,13 @@ public class LogInterceptor implements MethodInterceptor {
 		event.setModule(applicationName);
 		event.setDescription(requestLog.value());
 		event.setClassMethod(strClassName + StringPool.HASH + strMethodName);
+		event.setRequestStartTime(LocalDateTime.now());
 		// 执行时间
 		long startNs = System.nanoTime();
 		try {
 			Object result = invocation.proceed();
 			// 耗时
+			event.setRequestEndTime(LocalDateTime.now());
 			event.setCostTime(TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNs));
 			event.setSuccessful(Boolean.TRUE);
 			// 发送异步日志事件
@@ -51,6 +54,7 @@ public class LogInterceptor implements MethodInterceptor {
 			return result;
 		} catch (Throwable e) {
 			// 耗时
+			event.setRequestEndTime(LocalDateTime.now());
 			event.setCostTime(TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNs));
 			// 异常详情
 			event.setExceptionDetail(Exceptions.getStackTraceAsString(e));
