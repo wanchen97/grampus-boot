@@ -18,10 +18,6 @@ import javax.persistence.Table;
 public class LogOperation extends BaseEntity {
 	private static final long serialVersionUID = -64891032904391963L;
 	/**
-	 * 数据ID
-	 */
-	private Long id;
-	/**
 	 * 所属模块
 	 */
 	private String module;
