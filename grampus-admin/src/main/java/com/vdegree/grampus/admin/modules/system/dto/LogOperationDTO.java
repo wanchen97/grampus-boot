@@ -93,11 +93,6 @@ public class LogOperationDTO implements Serializable {
 	@ApiModelProperty("请求耗时")
 	private Long costTime;
 	/**
-	 * 请求令牌
-	 */
-	@ApiModelProperty("请求令牌")
-	private String authorization;
-	/**
 	 * UA信息
 	 */
 	@ApiModelProperty("UA信息")
