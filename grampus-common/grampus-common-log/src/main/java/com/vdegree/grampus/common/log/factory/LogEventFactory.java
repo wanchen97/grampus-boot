@@ -52,7 +52,7 @@ public class LogEventFactory {
 
 	private static String buildGetParams(HttpServletRequest request) {
 		Map<String, String[]> paraMap = request.getParameterMap();
-		if (ObjectUtil.isNotEmpty(paraMap)) {
+		if (ObjectUtil.isEmpty(paraMap)) {
 			return null;
 		}
 		StringBuilder builder = new StringBuilder();
