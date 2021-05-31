@@ -45,7 +45,7 @@ public class LogOperationController {
 			@ApiImplicitParam(name = "successful", value = "是否成功", paramType = "query", dataType = "Boolean")
 	})
 	@GetMapping("page")
-	@PreAuthorize("hasAuthority('log:operation:page')")
+	@PreAuthorize("hasAuthority('log:operation:list')")
 	public Result<PageData<LogOperationDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
 		PageData<LogOperationDTO> page = logOperationService.queryPage(params);
 		return Result.success(page);
