@@ -10,7 +10,6 @@ import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,10 +25,10 @@ import java.util.Map;
  * @author Beck
  * @since 2021-05-31 16:43:11
  */
-@Api(tags = "操作日志表")
+@Api(tags = "日志管理")
 @RestController
 @AllArgsConstructor
-@RequestMapping("logOperation")
+@RequestMapping("/system/log/operation")
 public class LogOperationController {
 
 	private final LogOperationService logOperationService;
