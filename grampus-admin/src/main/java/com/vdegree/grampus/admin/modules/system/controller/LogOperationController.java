@@ -50,12 +50,4 @@ public class LogOperationController {
 		PageData<LogOperationDTO> page = logOperationService.queryPage(params);
 		return Result.success(page);
 	}
-
-	@ApiOperation("查询操作日志")
-	@GetMapping("{id}")
-	@PreAuthorize("hasAuthority('log:operation:info')")
-	public Result<LogOperationDTO> get(@PathVariable("id") Long id) {
-		LogOperationDTO result = logOperationService.queryById(id);
-		return Result.success(result);
-	}
 }
