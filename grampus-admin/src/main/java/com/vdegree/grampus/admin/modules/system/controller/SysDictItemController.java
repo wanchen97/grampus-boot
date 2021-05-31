@@ -4,6 +4,7 @@ import com.vdegree.grampus.admin.modules.system.dto.SysDictItemDTO;
 import com.vdegree.grampus.admin.modules.system.service.SysDictItemService;
 import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.result.Result;
+import com.vdegree.grampus.common.log.annotation.RequestLog;
 import com.vdegree.grampus.common.mybatis.page.PageData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -65,6 +66,7 @@ public class SysDictItemController {
 		return Result.success(sysDictItemDTO);
 	}
 
+	@RequestLog("保存字典详细")
 	@ApiOperation("保存字典详细")
 	@PostMapping
 	@PreAuthorize("hasAuthority('sys:dict:save')")
@@ -73,6 +75,7 @@ public class SysDictItemController {
 		return Result.success();
 	}
 
+	@RequestLog("更新字典详情")
 	@ApiOperation("更新字典详情")
 	@PutMapping
 	@PreAuthorize("hasAuthority('sys:dict:update')")
@@ -81,6 +84,7 @@ public class SysDictItemController {
 		return Result.success();
 	}
 
+	@RequestLog("删除字典详情")
 	@ApiOperation("删除字典详情")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:dict:delete')")

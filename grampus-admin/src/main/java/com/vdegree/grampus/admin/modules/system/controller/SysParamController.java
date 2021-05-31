@@ -7,6 +7,7 @@ import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.result.Result;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.excel.annotation.ResponseExcel;
+import com.vdegree.grampus.common.log.annotation.RequestLog;
 import com.vdegree.grampus.common.mybatis.page.PageData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -67,6 +68,7 @@ public class SysParamController {
 		return Result.success(result);
 	}
 
+	@RequestLog("保存参数")
 	@ApiOperation("保存参数")
 	@PostMapping
 	@PreAuthorize("hasAuthority('sys:param:save')")
@@ -75,6 +77,7 @@ public class SysParamController {
 		return Result.success();
 	}
 
+	@RequestLog("修改参数")
 	@ApiOperation("修改参数")
 	@PutMapping
 	@PreAuthorize("hasAuthority('sys:param:update')")
@@ -83,6 +86,7 @@ public class SysParamController {
 		return Result.success();
 	}
 
+	@RequestLog("删除参数")
 	@ApiOperation("删除参数")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:param:delete')")
@@ -91,6 +95,7 @@ public class SysParamController {
 		return Result.success();
 	}
 
+	@RequestLog("导出系统参数Excel")
 	@ApiOperation("Excel导出")
 	@GetMapping("export")
 	@ResponseExcel(name = "系统参数")

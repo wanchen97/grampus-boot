@@ -4,6 +4,7 @@ import com.vdegree.grampus.admin.modules.system.dto.SysDeptDTO;
 import com.vdegree.grampus.admin.modules.system.service.SysDeptService;
 import com.vdegree.grampus.common.core.result.Result;
 import com.vdegree.grampus.common.core.utils.tree.TreeUtils;
+import com.vdegree.grampus.common.log.annotation.RequestLog;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
@@ -49,6 +50,7 @@ public class SysDeptController {
 		return Result.success(result);
 	}
 
+	@RequestLog("保存部门")
 	@ApiOperation("保存部门")
 	@PostMapping()
 	@PreAuthorize("hasAuthority('sys:dept:save')")
@@ -57,6 +59,7 @@ public class SysDeptController {
 		return Result.success();
 	}
 
+	@RequestLog("更新部门")
 	@ApiOperation("更新部门")
 	@PutMapping()
 	@PreAuthorize("hasAuthority('sys:dept:update')")
@@ -65,6 +68,7 @@ public class SysDeptController {
 		return Result.success();
 	}
 
+	@RequestLog("删除部门")
 	@ApiOperation("删除部门")
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasAuthority('sys:dept:delete')")

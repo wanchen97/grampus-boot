@@ -5,6 +5,7 @@ import com.vdegree.grampus.admin.modules.system.service.SysRoleMenuService;
 import com.vdegree.grampus.admin.modules.system.service.SysRoleService;
 import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.result.Result;
+import com.vdegree.grampus.common.log.annotation.RequestLog;
 import com.vdegree.grampus.common.mybatis.page.PageData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -76,6 +77,7 @@ public class SysRoleController {
 		return Result.success(result);
 	}
 
+	@RequestLog("保存角色")
 	@ApiOperation("保存角色")
 	@PostMapping
 	@PreAuthorize("hasAuthority('sys:role:save')")
@@ -84,6 +86,7 @@ public class SysRoleController {
 		return Result.success();
 	}
 
+	@RequestLog("修改角色")
 	@ApiOperation("修改角色")
 	@PutMapping
 	@PreAuthorize("hasAuthority('sys:role:update')")
@@ -92,6 +95,7 @@ public class SysRoleController {
 		return Result.success();
 	}
 
+	@RequestLog("删除角色")
 	@ApiOperation("删除角色")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:role:delete')")

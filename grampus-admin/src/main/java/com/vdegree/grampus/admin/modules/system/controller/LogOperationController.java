@@ -9,12 +9,8 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,50 +34,28 @@ public class LogOperationController {
 
 	private final LogOperationService logOperationService;
 
-	@ApiOperation("分页查询数据")
+	@ApiOperation("分页查询操作日志")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = Constant.PAGE_NUM, value = "当前页码，从1开始", paramType = "query", required = true, dataType = "int"),
 			@ApiImplicitParam(name = Constant.PAGE_SIZE, value = "每页显示记录数", paramType = "query", required = true, dataType = "int"),
 			@ApiImplicitParam(name = Constant.ORDER_FIELD, value = "排序字段", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = Constant.ORDER, value = "排序方式，可选值(asc、desc)", paramType = "query", dataType = "String"),
-			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean")
+			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean"),
+			@ApiImplicitParam(name = "module", value = "所属模块", paramType = "query", dataType = "String"),
+			@ApiImplicitParam(name = "successful", value = "是否成功", paramType = "query", dataType = "Boolean")
 	})
 	@GetMapping("page")
-	@PreAuthorize("hasAuthority('log_operation:page')")
+	@PreAuthorize("hasAuthority('log:operation:page')")
 	public Result<PageData<LogOperationDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
 		PageData<LogOperationDTO> page = logOperationService.queryPage(params);
 		return Result.success(page);
 	}
 
-	@ApiOperation("查询数据")
+	@ApiOperation("查询操作日志")
 	@GetMapping("{id}")
-	@PreAuthorize("hasAuthority('log_operation:info')")
+	@PreAuthorize("hasAuthority('log:operation:info')")
 	public Result<LogOperationDTO> get(@PathVariable("id") Long id) {
 		LogOperationDTO result = logOperationService.queryById(id);
 		return Result.success(result);
-	}
-
-	@ApiOperation("新增数据")
-	@PostMapping
-	@PreAuthorize("hasAuthority('log_operation:save')")
-	public Result<Void> save(@RequestBody LogOperationDTO params) {
-		logOperationService.save(params);
-		return Result.success();
-	}
-
-	@ApiOperation("修改数据")
-	@PutMapping
-	@PreAuthorize("hasAuthority('log_operation:update')")
-	public Result<Void> update(@RequestBody LogOperationDTO params) {
-		logOperationService.modifyById(params);
-		return Result.success();
-	}
-
-	@ApiOperation("删除数据")
-	@DeleteMapping("/{id}")
-	@PreAuthorize("hasAuthority('log_operation:delete')")
-	public Result<Void> delete(@PathVariable Long id) {
-		logOperationService.deleteById(id);
-		return Result.success();
 	}
 }

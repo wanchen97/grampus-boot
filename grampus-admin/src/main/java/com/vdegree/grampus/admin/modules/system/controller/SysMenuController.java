@@ -6,6 +6,7 @@ import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.admin.modules.system.service.SysMenuService;
 import com.vdegree.grampus.common.core.utils.tree.TreeUtils;
 import com.vdegree.grampus.common.core.result.Result;
+import com.vdegree.grampus.common.log.annotation.RequestLog;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -78,6 +79,7 @@ public class SysMenuController {
 		return Result.success(data);
 	}
 
+	@RequestLog("保存菜单")
 	@ApiOperation("保存菜单")
 	@PostMapping
 	@PreAuthorize("hasAuthority('sys:menu:save')")
@@ -86,6 +88,7 @@ public class SysMenuController {
 		return Result.success();
 	}
 
+	@RequestLog("更新菜单")
 	@ApiOperation("更新菜单")
 	@PutMapping
 	@PreAuthorize("hasAuthority('sys:menu:update')")
@@ -94,6 +97,7 @@ public class SysMenuController {
 		return Result.success();
 	}
 
+	@RequestLog("删除菜单")
 	@ApiOperation("删除菜单")
 	@DeleteMapping("{id}")
 	@PreAuthorize("hasAuthority('sys:menu:delete')")

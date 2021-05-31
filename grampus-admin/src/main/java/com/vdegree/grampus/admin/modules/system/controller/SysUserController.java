@@ -10,6 +10,7 @@ import com.vdegree.grampus.admin.modules.system.service.SysUserService;
 import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.result.Result;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
+import com.vdegree.grampus.common.log.annotation.RequestLog;
 import com.vdegree.grampus.common.mybatis.page.PageData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -83,7 +84,8 @@ public class SysUserController {
 		return Result.success(result);
 	}
 
-	@ApiOperation("保存")
+	@RequestLog("保存用户")
+	@ApiOperation("保存用户")
 	@PostMapping
 	@PreAuthorize("hasAuthority('sys:user:save')")
 	public Result<Void> save(@RequestBody SysUserDTO dto) {
@@ -91,7 +93,8 @@ public class SysUserController {
 		return Result.success();
 	}
 
-	@ApiOperation("修改")
+	@RequestLog("修改用户信息")
+	@ApiOperation("修改用户信息")
 	@PutMapping
 	@PreAuthorize("hasAuthority('sys:user:update')")
 	public Result<Void> update(@RequestBody SysUserDTO dto) {
@@ -99,7 +102,8 @@ public class SysUserController {
 		return Result.success();
 	}
 
-	@ApiOperation("修改密码")
+	@RequestLog("修改用户密码")
+	@ApiOperation("修改用户密码")
 	@PutMapping("password")
 	public Result<Void> password(@RequestBody PasswordDTO dto) {
 		SystemUserDetails user = SecurityUtils.getUserDetails();
@@ -110,7 +114,8 @@ public class SysUserController {
 		return Result.success();
 	}
 
-	@ApiOperation("删除")
+	@RequestLog("删除用户")
+	@ApiOperation("删除用户")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:user:delete')")
 	public Result<Void> delete(@RequestBody Long[] ids) {
