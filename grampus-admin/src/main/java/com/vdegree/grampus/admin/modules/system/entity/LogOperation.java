@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 /**
  * 操作日志表(LogOperation) 表实体类
@@ -48,7 +49,7 @@ public class LogOperation extends BaseEntity {
 	/**
 	 * 是否成功(0失败 1成功)
 	 */
-	private Integer successful;
+	private Boolean successful;
 	/**
 	 * 类方法
 	 */
@@ -64,11 +65,11 @@ public class LogOperation extends BaseEntity {
 	/**
 	 * 请求开始时间
 	 */
-	private Object requestStartTime;
+	private LocalDateTime requestStartTime;
 	/**
 	 * 请求结束时间
 	 */
-	private Object requestEndTime;
+	private LocalDateTime requestEndTime;
 	/**
 	 * 请求耗时
 	 */

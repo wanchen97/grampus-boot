@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * 操作日志表(LogOperation) 表数据传输对象
@@ -60,7 +61,7 @@ public class LogOperationDTO implements Serializable {
 	 * 是否成功(0失败 1成功)
 	 */
 	@ApiModelProperty("是否成功(0失败 1成功)")
-	private Integer successful;
+	private Boolean successful;
 	/**
 	 * 类方法
 	 */
@@ -80,12 +81,12 @@ public class LogOperationDTO implements Serializable {
 	 * 请求开始时间
 	 */
 	@ApiModelProperty("请求开始时间")
-	private Object requestStartTime;
+	private LocalDateTime requestStartTime;
 	/**
 	 * 请求结束时间
 	 */
 	@ApiModelProperty("请求结束时间")
-	private Object requestEndTime;
+	private LocalDateTime requestEndTime;
 	/**
 	 * 请求耗时
 	 */
