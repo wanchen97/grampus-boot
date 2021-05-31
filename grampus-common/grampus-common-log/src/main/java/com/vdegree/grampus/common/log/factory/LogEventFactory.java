@@ -40,31 +40,36 @@ public class LogEventFactory {
 		event.setRequestMethod(requestMethod);
 		event.setRequestUri(requestUri);
 		// paramMap
-		Map<String, String[]> paraMap = request.getParameterMap();
-		if (ObjectUtil.isNotEmpty(paraMap)) {
-			StringBuilder builder = new StringBuilder();
-			paraMap.forEach((key, values) -> {
-				builder.append(key).append(CharPool.EQUALS);
-				if ("password".equalsIgnoreCase(key)) {
-					builder.append("******");
-				} else {
-					builder.append(StringUtil.join(values));
-				}
-				builder.append(CharPool.AMPERSAND);
-			});
-			builder.deleteCharAt(builder.length() - 1);
-			event.setRequestParam(builder.toString());
-		}
+		event.setRequestParam(buildGetParams(request));
 		// 获取请求 ip 和 ua
 		event.setRequestIp(WebUtil.getIP());
 		event.setAuthorization(request.getHeader(Constant.AUTHORIZATION_HEADER));
 		event.setUserAgent(request.getHeader(HttpHeaders.USER_AGENT));
 		// 设置post json数据
-		event.setRequestBody(getPostJson(invocation));
+		event.setRequestBody(buildPostJson(invocation));
 		return event;
 	}
 
-	private static String getPostJson(MethodInvocation invocation) {
+	private static String buildGetParams(HttpServletRequest request) {
+		Map<String, String[]> paraMap = request.getParameterMap();
+		if (ObjectUtil.isNotEmpty(paraMap)) {
+			return null;
+		}
+		StringBuilder builder = new StringBuilder();
+		paraMap.forEach((key, values) -> {
+			builder.append(key).append(CharPool.EQUALS);
+			if ("password".equalsIgnoreCase(key)) {
+				builder.append("******");
+			} else {
+				builder.append(StringUtil.join(values));
+			}
+			builder.append(CharPool.AMPERSAND);
+		});
+		builder.deleteCharAt(builder.length() - 1);
+		return builder.toString();
+	}
+
+	private static String buildPostJson(MethodInvocation invocation) {
 		Object[] args = invocation.getArguments();
 		Method method = invocation.getMethod();
 		// 一次请求只能有一个 request body
