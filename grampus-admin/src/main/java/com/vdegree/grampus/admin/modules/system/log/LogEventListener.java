@@ -1,6 +1,8 @@
 package com.vdegree.grampus.admin.modules.system.log;
 
 import com.vdegree.grampus.admin.modules.system.entity.LogOperation;
+import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
+import com.vdegree.grampus.admin.modules.system.security.utils.JwtTokenUtils;
 import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.admin.modules.system.service.LogOperationService;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
@@ -24,13 +26,14 @@ import org.springframework.stereotype.Component;
 public class LogEventListener {
 
 	private final LogOperationService logOperationService;
+	private final JwtTokenManager jwtTokenManager;
 
 	@Async
 	@Order
 	@EventListener(LogEvent.class)
 	public void onApplicationEvent(LogEvent event) {
 		LogOperation logOperation = BeanUtil.copy(event, LogOperation.class);
-		logOperation.setSubject(SecurityUtils.getUserName());
+		logOperation.setSubject(jwtTokenManager.getSubject(event.getAuthorization()));
 		logOperationService.insert(logOperation);
 	}
 }
