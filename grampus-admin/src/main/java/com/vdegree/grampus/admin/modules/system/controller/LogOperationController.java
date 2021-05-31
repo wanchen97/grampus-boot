@@ -41,7 +41,7 @@ public class LogOperationController {
 			@ApiImplicitParam(name = Constant.ORDER, value = "排序方式，可选值(asc、desc)", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean"),
 			@ApiImplicitParam(name = "module", value = "所属模块", paramType = "query", dataType = "String"),
-			@ApiImplicitParam(name = "successful", value = "是否成功", paramType = "query", dataType = "Boolean")
+			@ApiImplicitParam(name = "successful", value = "是否成功(true、false)", paramType = "query", dataType = "Boolean")
 	})
 	@GetMapping("page")
 	@PreAuthorize("hasAuthority('log:operation:list')")
