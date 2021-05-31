@@ -3,12 +3,12 @@ package com.vdegree.grampus.common.log.factory;
 import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.core.utils.ClassUtil;
+import com.vdegree.grampus.common.core.utils.CollectionUtil;
 import com.vdegree.grampus.common.core.utils.JSONUtil;
 import com.vdegree.grampus.common.core.utils.ObjectUtil;
 import com.vdegree.grampus.common.core.utils.StringUtil;
 import com.vdegree.grampus.common.core.utils.WebUtil;
 import com.vdegree.grampus.common.core.utils.chars.CharPool;
-import com.vdegree.grampus.common.core.utils.chars.StringPool;
 import com.vdegree.grampus.common.log.event.LogEvent;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.core.MethodParameter;
@@ -88,6 +88,6 @@ public class LogEventFactory {
 		if (requestBodyMap.containsKey("password")) {
 			requestBodyMap.put("password", "******");
 		}
-		return requestBodyValue == null ? null : JSONUtil.writeValueAsString(requestBodyValue);
+		return CollectionUtil.isEmpty(requestBodyMap) ? null : JSONUtil.writeValueAsString(requestBodyMap);
 	}
 }
