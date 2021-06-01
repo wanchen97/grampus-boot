@@ -160,7 +160,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<
 	public PageData<T> selectPage(T entity, int pageNum, int pageSize, boolean withCount, String orderField, String order) {
 		Page<T> page = PageHelper.startPage(pageNum, pageSize, withCount);
 		if (StringUtil.isNotBlank(orderField) && SqlUtil.isValidOrderBySql(orderField)) {
-			page.setOrderBy(orderField + " " + (Constant.DESC.equalsIgnoreCase(order) ? Constant.DESC : Constant.ASC));
+			page.setOrderBy(SqlUtil.camelToUnderline(orderField) + " " + (Constant.DESC.equalsIgnoreCase(order) ? Constant.DESC : Constant.ASC));
 		}
 		return new PageData<>(page.doSelectPageInfo(() -> baseMapper.select(entity)));
 	}
