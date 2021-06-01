@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
+ * Excel配置
+ *
  * @author Beck
  * @since 2021-5-14
  */
