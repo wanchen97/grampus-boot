@@ -3,6 +3,7 @@ package com.vdegree.grampus.admin.modules.system.controller;
 import com.vdegree.grampus.admin.modules.system.code.ErrorCode;
 import com.vdegree.grampus.admin.modules.system.dto.PasswordDTO;
 import com.vdegree.grampus.admin.modules.system.dto.SysUserDTO;
+import com.vdegree.grampus.admin.modules.system.dto.SysUserReqDTO;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
 import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.admin.modules.system.service.SysUserRoleService;
@@ -88,7 +89,8 @@ public class SysUserController {
 	@ApiOperation("保存用户")
 	@PostMapping
 	@PreAuthorize("hasAuthority('sys:user:save')")
-	public Result<Void> save(@RequestBody SysUserDTO dto) {
+	public Result<Void> save(@RequestBody SysUserReqDTO reqDTO) {
+		SysUserDTO dto = BeanUtil.copy(reqDTO, SysUserDTO.class);
 		sysUserService.save(dto);
 		return Result.success();
 	}
@@ -97,7 +99,8 @@ public class SysUserController {
 	@ApiOperation("修改用户信息")
 	@PutMapping
 	@PreAuthorize("hasAuthority('sys:user:update')")
-	public Result<Void> update(@RequestBody SysUserDTO dto) {
+	public Result<Void> update(@RequestBody SysUserReqDTO reqDTO) {
+		SysUserDTO dto = BeanUtil.copy(reqDTO, SysUserDTO.class);
 		sysUserService.modifyById(dto);
 		return Result.success();
 	}

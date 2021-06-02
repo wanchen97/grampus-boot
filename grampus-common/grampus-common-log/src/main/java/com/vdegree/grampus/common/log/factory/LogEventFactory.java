@@ -84,7 +84,8 @@ public class LogEventFactory {
 				break;
 			}
 		}
-		Map<String, Object> requestBodyMap = BeanUtil.toMap(requestBodyValue);
+		// 若使用BeanUtil.toMap对requestBodyValue转Map会导致原入参的值被修改
+		Map<String, Object> requestBodyMap = BeanUtil.toNewMap(requestBodyValue);
 		if (requestBodyMap.containsKey("password")) {
 			requestBodyMap.put("password", "******");
 		}
