@@ -24,11 +24,11 @@ public class XxlJobProperties implements Serializable {
 	/**
 	 * 调度中心配置
 	 */
-	private AdminProperties adminProperties;
+	private AdminProperties admin;
 	/**
 	 * 执行器配置
 	 */
-	private ExecutorProperties executorProperties;
+	private ExecutorProperties executor;
 
 	@Getter
 	@Setter

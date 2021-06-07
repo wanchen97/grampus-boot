@@ -66,6 +66,10 @@
 			<groupId>com.vdegree</groupId>
 			<artifactId>grampus-common-security</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.vdegree</groupId>
+			<artifactId>grampus-common-xxl-job</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

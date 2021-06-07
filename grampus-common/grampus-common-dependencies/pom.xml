@@ -83,6 +83,11 @@
 				<artifactId>grampus-common-log</artifactId>
 				<version>${grampus-boot.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.vdegree</groupId>
+				<artifactId>grampus-common-xxl-job</artifactId>
+				<version>${grampus-boot.version}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>org.projectlombok</groupId>

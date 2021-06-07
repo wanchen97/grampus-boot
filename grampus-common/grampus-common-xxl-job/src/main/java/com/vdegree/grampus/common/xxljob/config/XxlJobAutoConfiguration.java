@@ -23,13 +23,13 @@ public class XxlJobAutoConfiguration {
 	public XxlJobSpringExecutor xxlJobExecutor(XxlJobProperties properties, Environment environment) {
 		log.info(">>>>>>>>>>> xxl-job config init.");
 		XxlJobSpringExecutor xxlJobSpringExecutor = new XxlJobSpringExecutor();
-		xxlJobSpringExecutor.setAdminAddresses(properties.getAdminProperties().getAddresses());
-		xxlJobSpringExecutor.setAppname(environment.getProperty("spring.application.name"));
-		xxlJobSpringExecutor.setIp(properties.getExecutorProperties().getIp());
-		xxlJobSpringExecutor.setPort(properties.getExecutorProperties().getPort());
+		xxlJobSpringExecutor.setAdminAddresses(properties.getAdmin().getAddresses());
+		xxlJobSpringExecutor.setAppname(properties.getExecutor().getAppname());
+		xxlJobSpringExecutor.setIp(properties.getExecutor().getIp());
+		xxlJobSpringExecutor.setPort(properties.getExecutor().getPort());
 		xxlJobSpringExecutor.setAccessToken(properties.getAccessToken());
-		xxlJobSpringExecutor.setLogPath(properties.getExecutorProperties().getLogpath());
-		xxlJobSpringExecutor.setLogRetentionDays(properties.getExecutorProperties().getLogretentiondays());
+		xxlJobSpringExecutor.setLogPath(properties.getExecutor().getLogpath());
+		xxlJobSpringExecutor.setLogRetentionDays(properties.getExecutor().getLogretentiondays());
 		return xxlJobSpringExecutor;
 	}
 }
