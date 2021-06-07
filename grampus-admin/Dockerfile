@@ -5,7 +5,6 @@ FROM openjdk:11.0.11-jre
 MAINTAINER Beck
 
 ENV TIME_ZONE=UTC
-ENV JAVA_OPTS="-server -Xms512m -Xmx1024m -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=UTF-8 -XX:+HeapDumpOnOutOfMemoryError"
 
 # 时区问题
 RUN ln -sf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /etc/timezone
@@ -18,4 +17,4 @@ EXPOSE 28080
 
 ADD ./target/grampus-admin.jar ./
 
-CMD java $JAVA_OPTS -jar grampus-admin.jar
+ENTRYPOINT ["java", "-server", "-Xms512M", "-Xmx1024m", "-Djava.security.egd=file:/dev/./urandom", "-Dfile.encoding=UTF-8", "-XX:+HeapDumpOnOutOfMemoryError", "-jar", "grampus-admin.jar"]
