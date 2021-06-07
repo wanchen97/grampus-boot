@@ -52,15 +52,15 @@ public class SysMenuController {
 		return Result.success(permissions);
 	}
 
-	/**
-	 * TODO 待定
-	 */
-	@ApiOperation("当前用户角色菜单列表")
-	@GetMapping("userMenus")
-	public Result<List<SysMenuDTO>> userMenus() {
-		List<SysMenuDTO> result = sysMenuService.getUserMenuList(SecurityUtils.getUserDetails(), null);
-		return Result.success(result);
-	}
+//	/**
+//	 * TODO 待定
+//	 */
+//	@ApiOperation("当前用户角色菜单列表")
+//	@GetMapping("userMenus")
+//	public Result<List<SysMenuDTO>> userMenus() {
+//		List<SysMenuDTO> result = sysMenuService.getUserMenuList(SecurityUtils.getUserDetails(), null);
+//		return Result.success(result);
+//	}
 
 	@ApiOperation("菜单列表")
 	@ApiImplicitParam(name = "type", value = "菜单类型 0：菜单 1：按钮 null：全部", paramType = "query", dataType = "int")
