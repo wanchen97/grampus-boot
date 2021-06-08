@@ -1,5 +1,23 @@
 # TkMapperPlus
-1. 将以下配置添加到EasyCode的Template Setting即可生成对应数据库表的代码.
+## 一、配置Type Mapper
+
+```
+# 修改 datetime,timestamp 映射类型为 LocalDateTime
+datetime	java.time.LocalDateTime
+timestamp	java.time.LocalDateTime
+
+# 新增以下
+bigint(\(\d+\)) unsigned	java.lang.Long
+bigint unsigned	            java.lang.Long
+tinyint unsigned	        java.lang.Integer
+datetime(\(\d+\))?	        java.time.LocalDateTime
+tinyint(1) unsigned	        java.lang.Boolean
+tinyint(4) unsigned	        java.lang.Integer
+```
+
+## 二、配置Template Setting
+
+- 将以下配置添加到EasyCode的Template Setting即可生成对应数据库表的代码.
 
 ### entity
 ```
