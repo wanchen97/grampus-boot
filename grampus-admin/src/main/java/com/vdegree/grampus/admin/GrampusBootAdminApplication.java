@@ -1,5 +1,6 @@
 package com.vdegree.grampus.admin;
 
+import com.vdegree.grampus.common.xxljob.annotation.EnableGrampusXxlJob;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Beck
  * @since 2020-11-26
  */
+//@EnableGrampusXxlJob
 @SpringBootApplication
 public class GrampusBootAdminApplication {
 
