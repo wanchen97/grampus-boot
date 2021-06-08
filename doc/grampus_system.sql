@@ -234,15 +234,15 @@ CREATE TABLE `sys_user_role`
 DROP TABLE IF EXISTS `sys_language`;
 CREATE TABLE `sys_language`
 (
-    `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '数据ID',
-    `table_name` varchar(64) NOT NULL COMMENT '表名',
-    `table_id` bigint(20) NOT NULL COMMENT '表数据ID',
-    `field_name` varchar(64) NOT NULL COMMENT '字段名',
-    `field_value` varchar(512) NOT NULL COMMENT '字段值',
-    `language` varchar(16) NOT NULL COMMENT '语言',
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '数据ID',
+    `table_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '表名',
+    `table_id` bigint NOT NULL COMMENT '表数据ID',
+    `field_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '字段名',
+    `field_value` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '字段值',
+    `language` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '语言',
     PRIMARY KEY (`id`) USING BTREE,
-    UNIQUE INDEX `uk_sys_language_tname_tid_fname_language` (`table_name`, `table_id`, `field_name`, `language`)
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = COMMENT='系统语言表' ROW_FORMAT = Dynamic;
+    UNIQUE INDEX `uk_sys_language_tname_tid_fname_language`(`table_name`, `table_id`, `field_name`, `language`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统语言表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_language
