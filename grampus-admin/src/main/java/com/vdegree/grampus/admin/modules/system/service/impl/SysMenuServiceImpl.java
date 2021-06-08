@@ -4,6 +4,9 @@ import com.vdegree.grampus.admin.modules.system.dto.SysMenuDTO;
 import com.vdegree.grampus.admin.modules.system.enums.MenuTypeEnum;
 import com.vdegree.grampus.admin.modules.system.security.enums.SuperAdminEnum;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
+import com.vdegree.grampus.admin.modules.system.service.SysLanguageService;
+import com.vdegree.grampus.common.core.utils.CollectionUtil;
+import com.vdegree.grampus.common.core.utils.WebUtil;
 import com.vdegree.grampus.common.core.utils.tree.TreeUtils;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.admin.modules.system.dao.SysMenuDao;
@@ -11,12 +14,10 @@ import com.vdegree.grampus.admin.modules.system.entity.SysMenu;
 import com.vdegree.grampus.admin.modules.system.service.SysMenuService;
 import com.vdegree.grampus.common.core.utils.StringUtil;
 import com.vdegree.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -25,15 +26,19 @@ import java.util.stream.Collectors;
  * @author Beck
  * @since 2020-12-09 19:49:31
  */
+@AllArgsConstructor
 @Service("sysMenuService")
 public class SysMenuServiceImpl extends EnhancedBaseServiceImpl<SysMenuDao, SysMenu, SysMenuDTO> implements SysMenuService {
+
+	private final SysLanguageService sysLanguageService;
 
 	@Override
 	public List<SysMenuDTO> getMenuList(Integer type) {
 		SysMenu param = new SysMenu();
 		param.setType(type);
-		List<SysMenu> list = baseMapper.select(param);
-		return BeanUtil.copyList(list, SysMenuDTO.class);
+		List<SysMenu> menuList = baseMapper.select(param);
+		convertLanguage(menuList);
+		return BeanUtil.copyList(menuList, SysMenuDTO.class);
 	}
 
 	@Override
@@ -44,6 +49,7 @@ public class SysMenuServiceImpl extends EnhancedBaseServiceImpl<SysMenuDao, SysM
 			sysMenuList = this.getMenuList(type);
 		} else {
 			List<SysMenu> menuList = baseMapper.queryUserMenuList(userDetail.getId(), type);
+			convertLanguage(menuList);
 			sysMenuList = BeanUtil.copyList(menuList, SysMenuDTO.class);
 		}
 		return TreeUtils.build(sysMenuList);
@@ -72,7 +78,26 @@ public class SysMenuServiceImpl extends EnhancedBaseServiceImpl<SysMenuDao, SysM
 	public List<SysMenuDTO> getListByPid(Long pid) {
 		SysMenu sysMenu = new SysMenu();
 		sysMenu.setParentId(pid);
-		List<SysMenu> sysMenus = baseMapper.select(sysMenu);
-		return BeanUtil.copyList(sysMenus, SysMenuDTO.class);
+		List<SysMenu> menuList = baseMapper.select(sysMenu);
+		convertLanguage(menuList);
+		return BeanUtil.copyList(menuList, SysMenuDTO.class);
+	}
+
+	/**
+	 * SysMenu的menu_name字段适配多语言 TODO 多语言转换代码统一封装
+	 *
+	 * @param list 需要转换语言的SysMenu
+	 */
+	private void convertLanguage(List<SysMenu> list) {
+		List<Long> ids = list.stream().map(SysMenu::getId).distinct().collect(Collectors.toList());
+		Map<Long, String> fieldValueMap = sysLanguageService.convertFieldValue("sys_menu", ids, "menu_name", WebUtil.getAcceptLanguage());
+		if (CollectionUtil.isNotEmpty(fieldValueMap)) {
+			for (SysMenu sysMenu : list) {
+				String menuName = fieldValueMap.get(sysMenu.getId());
+				if (StringUtil.isNotBlank(menuName)) {
+					sysMenu.setMenuName(menuName);
+				}
+			}
+		}
 	}
 }

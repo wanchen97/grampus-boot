@@ -4,9 +4,11 @@ import com.vdegree.grampus.common.core.utils.chars.Charsets;
 import com.vdegree.grampus.common.core.utils.chars.StringPool;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.method.HandlerMethod;
@@ -164,6 +166,19 @@ public class WebUtil extends org.springframework.web.util.WebUtils {
 			ip = request.getRemoteAddr();
 		}
 		return StringUtil.isBlank(ip) ? null : StringUtil.splitTrim(ip, StringPool.COMMA)[0];
+	}
+
+	/**
+	 * 获取Accept-Language
+	 *
+	 * @return Accept-Language
+	 */
+	public static String getAcceptLanguage() {
+		HttpServletRequest request = WebUtil.getRequest();
+		if(request == null){
+			return "zh-CN";
+		}
+		return request.getHeader(HttpHeaders.ACCEPT_LANGUAGE);
 	}
 
 	/**
