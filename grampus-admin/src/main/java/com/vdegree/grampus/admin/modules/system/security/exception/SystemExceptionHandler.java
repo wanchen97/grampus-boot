@@ -38,11 +38,11 @@ public class SystemExceptionHandler {
 	 */
 	@ExceptionHandler(InternalAuthenticationServiceException.class)
 	public Result<Object> handleInternalAuthenticationServiceException(InternalAuthenticationServiceException e) {
-		log.error(e.getMessage());
 		if (e.getCause() instanceof BaseException) {
 			BaseException ex = (BaseException) e.getCause();
 			return Result.error(ex.getCode(), null);
 		}
+		log.error(e.getMessage(), e);
 		return Result.error(ErrorCode.System.USER_PASSWORD_ERROR.getCode(), ErrorCode.System.USER_PASSWORD_ERROR.getMsg());
 	}
 
@@ -51,7 +51,7 @@ public class SystemExceptionHandler {
 	 */
 	@ExceptionHandler(BadCredentialsException.class)
 	public Result<Object> handleBadCredentialsException(BadCredentialsException e) {
-		log.error(e.getMessage());
+		log.error(e.getMessage(), e);
 		return Result.error(ErrorCode.System.USER_PASSWORD_ERROR.getCode(), ErrorCode.System.USER_PASSWORD_ERROR.getMsg());
 	}
 
@@ -60,7 +60,7 @@ public class SystemExceptionHandler {
 	 */
 	@ExceptionHandler(AccessDeniedException.class)
 	public Result<Object> handleAccessDeniedException(AccessDeniedException e) {
-		log.error(e.getMessage());
+		log.error(e.getMessage(), e);
 		return Result.error(ErrorCode.System.USER_ACCESS_DENIED_ERROR.getCode(), ErrorCode.System.USER_ACCESS_DENIED_ERROR.getMsg());
 	}
 }

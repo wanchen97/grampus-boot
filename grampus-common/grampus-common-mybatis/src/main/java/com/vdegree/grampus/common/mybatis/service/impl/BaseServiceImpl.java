@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.core.utils.StringUtil;
+import com.vdegree.grampus.common.core.utils.chars.StringPool;
 import com.vdegree.grampus.common.mybatis.mapper.BaseMapper;
 import com.vdegree.grampus.common.mybatis.page.PageData;
 import com.vdegree.grampus.common.mybatis.service.BaseService;
@@ -172,6 +173,6 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<
 
 	@Override
 	public void deleteBatchIds(Collection<? extends Serializable> idList) {
-		baseMapper.deleteByIds(Joiner.on(",").join(idList));
+		baseMapper.deleteByIds(Joiner.on(StringPool.COMMA).join(idList));
 	}
 }

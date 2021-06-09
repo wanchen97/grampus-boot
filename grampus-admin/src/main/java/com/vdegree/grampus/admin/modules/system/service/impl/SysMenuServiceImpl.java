@@ -7,6 +7,7 @@ import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails
 import com.vdegree.grampus.admin.modules.system.service.SysLanguageService;
 import com.vdegree.grampus.common.core.utils.CollectionUtil;
 import com.vdegree.grampus.common.core.utils.WebUtil;
+import com.vdegree.grampus.common.core.utils.chars.StringPool;
 import com.vdegree.grampus.common.core.utils.tree.TreeUtils;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.admin.modules.system.dao.SysMenuDao;
@@ -65,10 +66,10 @@ public class SysMenuServiceImpl extends EnhancedBaseServiceImpl<SysMenuDao, SysM
 //		List<SysMenu> menuNavList =  baseMapper.queryUserMenuList(userDetail.getId(), null);
 //		return menuNavList.stream()
 //				.filter(sysMenu -> StringUtil.isNotBlank(sysMenu.getPermission()))
-//				.map(sysMenu -> sysMenu.getPermission().trim().split(","))
+//				.map(sysMenu -> sysMenu.getPermission().trim().split(StringPool.COMMA))
 //				.flatMap(Arrays::stream)
 //				.collect(Collectors.toSet());
-		return Arrays.stream(userDetail.getPermissions().trim().split(","))
+		return Arrays.stream(userDetail.getPermissions().trim().split(StringPool.COMMA))
 				.filter(permission -> Objects.nonNull(permission)
 						&& StringUtil.isNotBlank(permission))
 				.collect(Collectors.toSet());

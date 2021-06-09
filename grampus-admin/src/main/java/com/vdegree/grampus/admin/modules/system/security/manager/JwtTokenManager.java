@@ -1,6 +1,7 @@
 package com.vdegree.grampus.admin.modules.system.security.manager;
 
 import com.vdegree.grampus.admin.modules.system.security.properties.AuthTokenProperties;
+import com.vdegree.grampus.common.core.utils.chars.StringPool;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -72,7 +73,7 @@ public class JwtTokenManager {
 
 		Date validity = new Date(now + authProperties.getTokenValidityInSeconds() * 1000L);
 
-		String permissions = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(","));
+		String permissions = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(StringPool.COMMA));
 		Claims claims = Jwts.claims().setSubject(userNo);
 		claims.put(AUTHORITIES_KEY, permissions);
 		return Jwts.builder().setClaims(claims).setExpiration(validity)
