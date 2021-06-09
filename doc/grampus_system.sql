@@ -284,7 +284,7 @@ INSERT INTO `sys_language` VALUES (35, 'sys_menu', 35784994493317120, 'menu_name
 INSERT INTO `sys_language` VALUES (36, 'sys_menu', 35784996384948224, 'menu_name', '字典删除', 'zh-CN');
 INSERT INTO `sys_language` VALUES (37, 'sys_menu', 35784998272385024, 'menu_name', '字典导出', 'zh-CN');
 INSERT INTO `sys_language` VALUES (38, 'sys_menu', 35784998272390241, 'menu_name', '日志管理', 'zh-CN');
-INSERT INTO `sys_language` VALUES (39, 'sys_menu', 35784998273492243, 'menu_name', '操作日志', 'zh-CN');
+INSERT INTO `sys_language` VALUES (39, 'sys_menu', 35784998273492243, 'menu_name', '日志查询', 'zh-CN');
 INSERT INTO `sys_language` VALUES (40, 'sys_menu', 35782761320038400, 'menu_name', 'System Management', 'en-US');
 INSERT INTO `sys_language` VALUES (41, 'sys_menu', 35783059505692672, 'menu_name', 'User Management', 'en-US');
 INSERT INTO `sys_language` VALUES (42, 'sys_menu', 35783467523391488, 'menu_name', 'User Query', 'en-US');
@@ -323,7 +323,7 @@ INSERT INTO `sys_language` VALUES (74, 'sys_menu', 35784994493317120, 'menu_name
 INSERT INTO `sys_language` VALUES (75, 'sys_menu', 35784996384948224, 'menu_name', 'Dict Delete', 'en-US');
 INSERT INTO `sys_language` VALUES (76, 'sys_menu', 35784998272385024, 'menu_name', 'Dict Export', 'en-US');
 INSERT INTO `sys_language` VALUES (77, 'sys_menu', 35784998272390241, 'menu_name', 'Log Management', 'en-US');
-INSERT INTO `sys_language` VALUES (78, 'sys_menu', 35784998273492243, 'menu_name', 'Operation Log', 'en-US');
+INSERT INTO `sys_language` VALUES (78, 'sys_menu', 35784998273492243, 'menu_name', 'Log Query', 'en-US');
 
 -- ----------------------------
 -- Records of sys_menu
