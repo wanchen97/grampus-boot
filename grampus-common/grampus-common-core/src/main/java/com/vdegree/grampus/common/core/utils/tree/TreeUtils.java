@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -56,7 +57,7 @@ public class TreeUtils {
 		List<T> result = new ArrayList<>();
 		// list转map
 		Map<Long, T> nodeMap = treeNodes.stream()
-				.collect(Collectors.toMap(T::getId, Function.identity()));
+				.collect(Collectors.toMap(T::getId, Function.identity(), (x, y) -> y, LinkedHashMap::new));
 		for (T node : nodeMap.values()) {
 			T parent = nodeMap.get(node.getParentId());
 			if (parent != null && !(node.getId().equals(parent.getId()))) {

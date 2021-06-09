@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -28,5 +28,5 @@ public class TreeNode<T> implements Serializable {
 	/**
 	 * 子节点列表
 	 */
-	private List<T> children = new ArrayList<>();
+	private List<T> children = new LinkedList<>();
 }
