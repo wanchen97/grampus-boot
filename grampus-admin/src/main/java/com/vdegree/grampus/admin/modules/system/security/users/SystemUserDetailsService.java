@@ -5,6 +5,7 @@ import com.vdegree.grampus.admin.modules.system.security.enums.SuperAdminEnum;
 import com.vdegree.grampus.admin.modules.system.enums.SysUserEnabledEnum;
 import com.vdegree.grampus.admin.modules.system.security.exception.UserDisabledException;
 import com.vdegree.grampus.admin.modules.system.security.exception.UserNotFoundException;
+import com.vdegree.grampus.admin.modules.system.security.redis.SystemRolePermRedis;
 import com.vdegree.grampus.admin.modules.system.security.redis.SystemUserDetailsRedis;
 import com.vdegree.grampus.admin.modules.system.security.roles.SystemRoleService;
 import com.vdegree.grampus.admin.modules.system.service.SysUserService;
@@ -15,6 +16,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 系统用户详情
@@ -29,12 +32,20 @@ public class SystemUserDetailsService implements UserDetailsService {
 	private final SysUserService sysUserService;
 	private final SystemRoleService systemRoleService;
 	private final SystemUserDetailsRedis systemUserDetailsRedis;
+	private final SystemRolePermRedis systemRolePermRedis;
 
 	@Override
 	public UserDetails loadUserByUsername(String userNo) throws UsernameNotFoundException {
 		// 查询用户详情
 		SystemUserDetails userDetails = systemUserDetailsRedis.getSystemUserDetails(userNo);
 		if (userDetails != null && StringUtil.isNotBlank(userDetails.getUserNo())) {
+			// 查询用户权限标识
+			if (SuperAdminEnum.TRUE.getValue().equals(userDetails.getSuperAdmin())) {
+				userDetails.setPermissions(systemRoleService.getAllPermissions());
+			} else {
+				String permissions = systemRoleService.getPermissionsByRoleIds(userDetails.getRoleIds());
+				userDetails.setPermissions(permissions);
+			}
 			return userDetails;
 		}
 		SysUser user = sysUserService.getSysUserByUserNo(userNo);
@@ -57,9 +68,11 @@ public class SystemUserDetailsService implements UserDetailsService {
 
 	public SystemUserDetails buildUserDetails(SysUser user) {
 		SystemUserDetails systemUserDetails = BeanUtil.copy(user, SystemUserDetails.class);
+		List<Long> roleIds = systemRoleService.getRoleIds(user.getId());
 		// TODO 无法copy enabled字段
 		systemUserDetails.setEnabled(user.getEnabled());
 		boolean isSuperAdmin = SuperAdminEnum.TRUE.getValue().equals(systemUserDetails.getSuperAdmin());
+		systemUserDetails.setRoleIds(roleIds);
 		if (Boolean.TRUE.equals(isSuperAdmin)) {
 			systemUserDetails.setPermissions(systemRoleService.getAllPermissions());
 		} else {

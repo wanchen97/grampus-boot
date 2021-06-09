@@ -3,6 +3,7 @@ package com.vdegree.grampus.admin.modules.system.service.impl;
 import com.vdegree.grampus.admin.modules.system.dto.SysRoleDTO;
 import com.vdegree.grampus.admin.modules.system.dao.SysRoleDao;
 import com.vdegree.grampus.admin.modules.system.entity.SysRole;
+import com.vdegree.grampus.admin.modules.system.security.redis.SystemRolePermRedis;
 import com.vdegree.grampus.admin.modules.system.service.SysRoleMenuService;
 import com.vdegree.grampus.admin.modules.system.service.SysRoleService;
 import com.vdegree.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
@@ -24,6 +25,7 @@ import java.util.Collection;
 public class SysRoleServiceImpl extends EnhancedBaseServiceImpl<SysRoleDao, SysRole, SysRoleDTO> implements SysRoleService {
 
 	private final SysRoleMenuService sysRoleMenuService;
+	private final SystemRolePermRedis systemRolePermRedis;
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
@@ -37,6 +39,7 @@ public class SysRoleServiceImpl extends EnhancedBaseServiceImpl<SysRoleDao, SysR
 	public void modifyById(SysRoleDTO dto) {
 		super.modifyById(dto);
 		sysRoleMenuService.saveOrUpdate(dto.getId(), dto.getMenuIdList());
+		systemRolePermRedis.removeSystemRolePerms(dto.getId());
 	}
 
 	@Override
@@ -44,5 +47,6 @@ public class SysRoleServiceImpl extends EnhancedBaseServiceImpl<SysRoleDao, SysR
 	public void deleteBatchIds(Collection<? extends Serializable> idList) {
 		super.deleteBatchIds(idList);
 		sysRoleMenuService.deleteByRoleIds(idList);
+		idList.forEach(roleId -> systemRolePermRedis.removeSystemRolePerms((Long) roleId));
 	}
 }

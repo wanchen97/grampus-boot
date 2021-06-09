@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -39,5 +41,13 @@ public class SysTestController {
 	public Result<String> get(@RequestBody Long tableId) {
 		String result = sysLanguageService.convertFieldValue("sys_menu", tableId, "menu_name", "en-US");
 		return Result.success(result);
+	}
+
+	@PostMapping("/location")
+	@ApiOperation("测试重定向")
+	@PreAuthorize("hasAuthority('sys:user:info')")
+	public void test(HttpServletResponse response) throws IOException {
+		response.sendRedirect("https://host-test.zetarapp.cn/zt/#/login");
+//		response.sendRedirect("https://www.baidu.com");
 	}
 }

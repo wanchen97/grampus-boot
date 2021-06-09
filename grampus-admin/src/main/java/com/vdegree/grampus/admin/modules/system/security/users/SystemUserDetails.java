@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * 系统用户详情
@@ -41,6 +42,11 @@ public class SystemUserDetails implements UserDetails {
 	 * 性别
 	 */
 	private Integer gender;
+
+	/**
+	 * 所属角色ID
+	 */
+	private List<Long> roleIds;
 
 	/**
 	 * 所属部门ID
