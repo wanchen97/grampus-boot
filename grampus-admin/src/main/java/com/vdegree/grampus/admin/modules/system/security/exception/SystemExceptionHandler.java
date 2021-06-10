@@ -30,7 +30,7 @@ public class SystemExceptionHandler {
 			Result.error(ex.getCode(), null);
 		}
 		log.error(e.getMessage(), e);
-		return Result.error(ErrorCode.Global.UNKNOWN_ERROR_CODE, ErrorCode.Global.UNKNOWN_ERROR_CODE.getMsg());
+		return Result.error(ErrorCode.Global.UNKNOWN_ERROR_CODE.getCode(), ErrorCode.Global.UNKNOWN_ERROR_CODE.getMsg());
 	}
 
 	/**
