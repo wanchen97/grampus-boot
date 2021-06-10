@@ -6,6 +6,7 @@ import com.vdegree.grampus.admin.modules.system.security.enums.SuperAdminEnum;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
 import com.vdegree.grampus.admin.modules.system.service.SysLanguageService;
 import com.vdegree.grampus.common.core.utils.CollectionUtil;
+import com.vdegree.grampus.common.core.utils.ObjectUtil;
 import com.vdegree.grampus.common.core.utils.WebUtil;
 import com.vdegree.grampus.common.core.utils.chars.StringPool;
 import com.vdegree.grampus.common.core.utils.tree.TreeUtils;
@@ -17,6 +18,8 @@ import com.vdegree.grampus.common.core.utils.StringUtil;
 import com.vdegree.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.weekend.WeekendSqls;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -35,9 +38,11 @@ public class SysMenuServiceImpl extends EnhancedBaseServiceImpl<SysMenuDao, SysM
 
 	@Override
 	public List<SysMenuDTO> getMenuList(Integer type) {
-		SysMenu param = new SysMenu();
-		param.setType(type);
-		List<SysMenu> menuList = baseMapper.select(param);
+		Example.Builder exampleBuilder = Example.builder(SysMenu.class).orderBy("sort", "id");
+		if (ObjectUtil.isNotEmpty(type)) {
+			exampleBuilder = exampleBuilder.where(WeekendSqls.<SysMenu>custom().andEqualTo(SysMenu::getType, type));
+		}
+		List<SysMenu> menuList = baseMapper.selectByExample(exampleBuilder.build());
 		convertLanguage(menuList);
 		return BeanUtil.copyList(menuList, SysMenuDTO.class);
 	}
