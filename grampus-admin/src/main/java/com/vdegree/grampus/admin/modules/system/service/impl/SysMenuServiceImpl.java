@@ -68,12 +68,6 @@ public class SysMenuServiceImpl extends EnhancedBaseServiceImpl<SysMenuDao, SysM
 
 	@Override
 	public Set<String> getUserPermissions(SystemUserDetails userDetail) {
-//		List<SysMenu> menuNavList =  baseMapper.queryUserMenuList(userDetail.getId(), null);
-//		return menuNavList.stream()
-//				.filter(sysMenu -> StringUtil.isNotBlank(sysMenu.getPermission()))
-//				.map(sysMenu -> sysMenu.getPermission().trim().split(StringPool.COMMA))
-//				.flatMap(Arrays::stream)
-//				.collect(Collectors.toSet());
 		return Arrays.stream(userDetail.getPermissions().trim().split(StringPool.COMMA))
 				.filter(permission -> Objects.nonNull(permission)
 						&& StringUtil.isNotBlank(permission))
