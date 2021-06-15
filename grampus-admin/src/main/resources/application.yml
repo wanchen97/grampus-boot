@@ -7,6 +7,9 @@ spring:
   application:
     name: @artifactId@
 
+grampus:
+  version: "1.0.0"
+
 mybatis:
   configuration:
     # 下划线转驼峰
