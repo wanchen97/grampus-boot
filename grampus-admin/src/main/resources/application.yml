@@ -3,9 +3,9 @@ server:
 
 spring:
   profiles:
-    active: @profiles.active@
+    active: "@profiles.active@"
   application:
-    name: @artifactId@
+    name: "@artifactId@"
 
 mybatis:
   configuration:
