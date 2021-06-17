@@ -17,4 +17,4 @@ EXPOSE 28080
 
 ADD ./target/grampus-admin.jar ./
 
-ENTRYPOINT ["java", "-server", "-Xms512M", "-Xmx1024m", "-Djava.security.egd=file:/dev/./urandom", "-Dfile.encoding=UTF-8", "-XX:+HeapDumpOnOutOfMemoryError", "-jar", "grampus-admin.jar"]
+ENTRYPOINT ["java", "-server", "-Xss256k", "-Xms512m", "-Xmx2880m", "-XX:MaxDirectMemorySize=1024m", "-XX:ReservedCodeCacheSize=256m", "-XX:MetaspaceSize=128m", "-XX:MaxMetaspaceSize=512m", "-XX:+AlwaysPreTouch", "-XX:+UseConcMarkSweepGC", "-XX:CMSInitiatingOccupancyFraction=75", "-XX:+UseCMSInitiatingOccupancyOnly", "-XX:MaxTenuringThreshold=3", "-XX:+ExplicitGCInvokesConcurrent", "-XX:+ParallelRefProcEnabled", "-XX:+HeapDumpOnOutOfMemoryError", "-XX:-UseBiasedLocking", "-XX:AutoBoxCacheMax=20000", "-Djava.security.egd=file:/dev/./urandom", "-Djava.net.preferIPv4Stack=true", "-Dfile.encoding=UTF-8", "-jar", "grampus-admin.jar"]
