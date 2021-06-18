@@ -28,6 +28,11 @@ public class SysDictItemDTO implements Serializable {
 	@ApiModelProperty("字典ID")
 	private Long dictId;
 	/**
+	 * 字典类型
+	 */
+	@ApiModelProperty("字典类型")
+	private String dictType;
+	/**
 	 * 字典标签
 	 */
 	@ApiModelProperty("字典标签")

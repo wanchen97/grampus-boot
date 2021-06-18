@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -99,8 +98,8 @@ public class SysRoleController {
 	@ApiOperation("删除角色")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:role:delete')")
-	public Result<Void> delete(@RequestBody Long[] ids) {
-		sysRoleService.deleteBatchIds(Arrays.asList(ids));
+	public Result<Void> delete(@RequestBody List<Long> ids) {
+		sysRoleService.deleteBatchIds(ids);
 		return Result.success();
 	}
 }

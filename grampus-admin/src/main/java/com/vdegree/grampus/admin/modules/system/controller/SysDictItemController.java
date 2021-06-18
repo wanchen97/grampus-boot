@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,6 +49,7 @@ public class SysDictItemController {
 			@ApiImplicitParam(name = Constant.ORDER, value = "排序方式，可选值(asc、desc)", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean"),
 			@ApiImplicitParam(name = "dictId", value = "字典ID", paramType = "query", dataType = "String"),
+			@ApiImplicitParam(name = "dictType", value = "字典类型(字典ID与类型二选一即可)", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = "dictLabel", value = "字典标签", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = "dictValue", value = "字典值", paramType = "query", dataType = "String")
 	})
@@ -88,8 +89,8 @@ public class SysDictItemController {
 	@ApiOperation("删除字典详情")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:dict:delete')")
-	public Result<Void> delete(@RequestBody Long[] ids) {
-		sysDictItemService.deleteBatchIds(Arrays.asList(ids));
+	public Result<Void> delete(@RequestBody List<Long> ids) {
+		sysDictItemService.deleteBatchIds(ids);
 		return Result.success();
 	}
 }
