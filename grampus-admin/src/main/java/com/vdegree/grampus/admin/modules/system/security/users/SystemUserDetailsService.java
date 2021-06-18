@@ -67,7 +67,7 @@ public class SystemUserDetailsService implements UserDetailsService {
 	}
 
 	public SystemUserDetails buildUserDetails(SysUser user) {
-		SystemUserDetails systemUserDetails = BeanUtil.copy(user, SystemUserDetails.class);
+		SystemUserDetails systemUserDetails = BeanUtil.copyWithConvert(user, SystemUserDetails.class);
 		List<Long> roleIds = systemRoleService.getRoleIds(user.getId());
 		// TODO 无法copy enabled字段
 		systemUserDetails.setEnabled(user.getEnabled());
