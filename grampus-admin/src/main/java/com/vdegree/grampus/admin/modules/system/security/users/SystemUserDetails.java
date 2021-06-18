@@ -59,7 +59,7 @@ public class SystemUserDetails implements UserDetails {
 	private Integer superAdmin;
 
 	/**
-	 * 是否启用(0停用 1启用)
+	 * 是否启用(0停用 1启用)	TODO 待解决BeanUtil.copy无法将SysUser的enabled拷贝到SystemUserDetails
 	 */
 	private Integer enabled;
 

@@ -69,8 +69,6 @@ public class SystemUserDetailsService implements UserDetailsService {
 	public SystemUserDetails buildUserDetails(SysUser user) {
 		SystemUserDetails systemUserDetails = BeanUtil.copyWithConvert(user, SystemUserDetails.class);
 		List<Long> roleIds = systemRoleService.getRoleIds(user.getId());
-		// TODO 无法copy enabled字段
-		systemUserDetails.setEnabled(user.getEnabled());
 		boolean isSuperAdmin = SuperAdminEnum.TRUE.getValue().equals(systemUserDetails.getSuperAdmin());
 		systemUserDetails.setRoleIds(roleIds);
 		if (Boolean.TRUE.equals(isSuperAdmin)) {
