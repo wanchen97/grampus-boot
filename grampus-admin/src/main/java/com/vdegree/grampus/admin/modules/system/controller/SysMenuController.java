@@ -5,8 +5,6 @@ import com.vdegree.grampus.admin.modules.system.dto.SysMenuDTO;
 import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.admin.modules.system.service.SysLanguageService;
 import com.vdegree.grampus.admin.modules.system.service.SysMenuService;
-import com.vdegree.grampus.common.core.utils.ObjectUtil;
-import com.vdegree.grampus.common.core.utils.WebUtil;
 import com.vdegree.grampus.common.core.utils.tree.TreeUtils;
 import com.vdegree.grampus.common.core.result.Result;
 import com.vdegree.grampus.common.log.annotation.RequestLog;
@@ -80,10 +78,10 @@ public class SysMenuController {
 	@PreAuthorize("hasAuthority('sys:menu:info')")
 	public Result<SysMenuDTO> get(@PathVariable("id") Long id) {
 		SysMenuDTO data = sysMenuService.queryById(id);
-		if (ObjectUtil.isNotNull(data) && ObjectUtil.isNotNull(data.getId())) {
-			String menuName = sysLanguageService.convertFieldValue("sys_menu", data.getId(), "menu_name", WebUtil.getAcceptLanguage());
-			data.setMenuName(menuName);
-		}
+//		if (ObjectUtil.isNotNull(data) && ObjectUtil.isNotNull(data.getId())) {
+//			String menuName = sysLanguageService.convertFieldValue("sys_menu", data.getId(), "menu_name", WebUtil.getAcceptLanguage());
+//			data.setMenuName(menuName);
+//		}
 		return Result.success(data);
 	}
 
