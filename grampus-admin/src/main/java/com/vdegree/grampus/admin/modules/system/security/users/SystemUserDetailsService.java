@@ -32,7 +32,6 @@ public class SystemUserDetailsService implements UserDetailsService {
 	private final SysUserService sysUserService;
 	private final SystemRoleService systemRoleService;
 	private final SystemUserDetailsRedis systemUserDetailsRedis;
-	private final SystemRolePermRedis systemRolePermRedis;
 
 	@Override
 	public UserDetails loadUserByUsername(String userNo) throws UsernameNotFoundException {
