@@ -94,17 +94,17 @@ public class SysDictController {
 		return Result.success();
 	}
 
-	@ApiOperation("所有字典数据")
-	@GetMapping("all")
-	public Result<List<SysDictDTO>> all() {
-		List<SysDictDTO> result = sysDictService.queryAll();
-		return Result.success(result);
-	}
-
-	@ApiOperation("字典列表")
-	@GetMapping("list")
-	public Result<List<SysDictDTO>> list() {
-		List<SysDict> list = sysDictService.getSysDictList();
-		return Result.success(BeanUtil.copyList(list, SysDictDTO.class));
-	}
+//	@ApiOperation("所有字典数据")
+//	@GetMapping("all")
+//	public Result<List<SysDictDTO>> all() {
+//		List<SysDictDTO> result = sysDictService.queryAll();
+//		return Result.success(result);
+//	}
+//
+//	@ApiOperation("字典列表")
+//	@GetMapping("list")
+//	public Result<List<SysDictDTO>> list() {
+//		List<SysDict> list = sysDictService.getSysDictList();
+//		return Result.success(BeanUtil.copyList(list, SysDictDTO.class));
+//	}
 }
