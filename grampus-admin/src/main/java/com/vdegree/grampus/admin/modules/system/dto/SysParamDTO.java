@@ -25,12 +25,12 @@ public class SysParamDTO implements Serializable {
 	/**
 	 * 参数编码
 	 */
-	@ApiModelProperty("参数编码")
+	@ApiModelProperty(value = "参数编码", required = true)
 	private String code;
 	/**
 	 * 参数值
 	 */
-	@ApiModelProperty("参数值")
+	@ApiModelProperty(value = "参数值", required = true)
 	private String value;
 	/**
 	 * 备注

@@ -25,22 +25,22 @@ public class SysDictItemDTO implements Serializable {
 	/**
 	 * 字典ID
 	 */
-	@ApiModelProperty("字典ID")
+	@ApiModelProperty(value = "字典ID", required = true)
 	private Long dictId;
 	/**
 	 * 字典类型
 	 */
-	@ApiModelProperty("字典类型")
+	@ApiModelProperty(value = "字典类型", example = "入参不需要传入,后台自动根据dictId所属字段类型填充")
 	private String dictType;
 	/**
 	 * 字典标签
 	 */
-	@ApiModelProperty("字典标签")
+	@ApiModelProperty(value = "字典标签", required = true)
 	private String dictLabel;
 	/**
 	 * 字典值
 	 */
-	@ApiModelProperty("字典值")
+	@ApiModelProperty(value = "字典值", required = true)
 	private String dictValue;
 	/**
 	 * 排序

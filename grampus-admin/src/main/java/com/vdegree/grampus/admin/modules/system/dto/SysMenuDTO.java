@@ -23,27 +23,27 @@ public class SysMenuDTO extends TreeNode<SysMenuDTO> {
 	/**
 	 * 父级菜单ID
 	 */
-	@ApiModelProperty("父菜单ID")
+	@ApiModelProperty(value = "父菜单ID", example = "顶级结点则不传或传入0")
 	private Long parentId;
 	/**
 	 * 菜单类型(0菜单 1按钮)
 	 */
-	@ApiModelProperty("菜单类型(0菜单 1按钮)")
+	@ApiModelProperty(value = "菜单类型(0菜单 1按钮)", required = true)
 	private Integer type;
 	/**
 	 * 菜单名
 	 */
-	@ApiModelProperty("菜单名")
+	@ApiModelProperty(value = "菜单名", required = true)
 	private String menuName;
 	/**
 	 * 权限标识
 	 */
-	@ApiModelProperty("权限标识")
+	@ApiModelProperty(value = "权限标识", example = "只有按钮类型才需要传入")
 	private String permission;
 	/**
 	 * 菜单路径
 	 */
-	@ApiModelProperty("菜单路径")
+	@ApiModelProperty(value = "菜单路径", example = "只有菜单类型才需要传入")
 	private String path;
 	/**
 	 * 图标
