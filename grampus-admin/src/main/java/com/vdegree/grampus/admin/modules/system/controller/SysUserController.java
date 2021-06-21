@@ -57,8 +57,8 @@ public class SysUserController {
 			@ApiImplicitParam(name = Constant.ORDER_FIELD, value = "排序字段", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = Constant.ORDER, value = "排序方式，可选值(asc、desc)", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean"),
-			@ApiImplicitParam(name = "username", value = "用户名", paramType = "query", dataType = "String"),
-			@ApiImplicitParam(name = "postId", value = "岗位ID", paramType = "query", dataType = "String")
+			@ApiImplicitParam(name = "userNo", value = "用户编号", paramType = "query", dataType = "String"),
+			@ApiImplicitParam(name = "name", value = "用户名", paramType = "query", dataType = "String")
 	})
 	@PreAuthorize("hasAuthority('sys:user:list')")
 	public Result<PageData<SysUserDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
