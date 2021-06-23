@@ -107,6 +107,7 @@ public class SysUserController {
 	@RequestLog("修改用户密码")
 	@ApiOperation("修改用户密码")
 	@PutMapping("password")
+	@PreAuthorize("hasAuthority('sys:user:update')")
 	public Result<Void> password(@RequestBody PasswordDTO dto) {
 		SystemUserDetails user = SecurityUtils.getUserDetails();
 		if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
