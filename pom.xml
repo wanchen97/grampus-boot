@@ -21,7 +21,7 @@
 		<maven.compiler.version>3.8.1</maven.compiler.version>
 		<spring.checkstyle.version>0.0.23</spring.checkstyle.version>
 		<git.commit.version>2.2.5</git.commit.version>
-		<docker.registry>harbor.cn:80</docker.registry>
+		<docker.registry>192.168.8.110:80</docker.registry>
 		<docker.host>http://192.168.8.110:2375</docker.host>
 		<docker.namespace>library</docker.namespace>
 		<docker.username>admin</docker.username>
