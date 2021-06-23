@@ -40,6 +40,7 @@ public class SystemUserDetailsService implements UserDetailsService {
 		if (userDetails != null && StringUtil.isNotBlank(userDetails.getUserNo())) {
 			// 查询用户权限标识
 			if (SuperAdminEnum.TRUE.getValue().equals(userDetails.getSuperAdmin())) {
+				// TODO 考虑是否需要优化超管的权限标识获取
 				userDetails.setPermissions(systemRoleService.getAllPermissions());
 			} else {
 				String permissions = systemRoleService.getPermissionsByRoleIds(userDetails.getRoleIds());
