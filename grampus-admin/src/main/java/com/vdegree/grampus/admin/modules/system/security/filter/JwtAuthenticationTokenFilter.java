@@ -46,6 +46,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 		String jwt = resolveToken(request);
 		if (StringUtil.isNotBlank(jwt) && SecurityContextHolder.getContext().getAuthentication() == null) {
 			try {
+				// TODO Token失效依赖于JWT，无法强制踢出
 				tokenManager.validateToken(jwt);
 			} catch (ExpiredJwtException e) {
 				handleAuthenticationFailure(response, new TokenExpiredException("token expired."));
