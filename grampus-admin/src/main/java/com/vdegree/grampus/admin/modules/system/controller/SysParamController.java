@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -90,8 +89,8 @@ public class SysParamController {
 	@ApiOperation("删除参数")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:param:delete')")
-	public Result<Void> delete(@RequestBody Long[] ids) {
-		sysParamService.deleteBatchIds(Arrays.asList(ids));
+	public Result<Void> delete(@RequestBody List<Long> ids) {
+		sysParamService.deleteBatchIds(ids);
 		return Result.success();
 	}
 

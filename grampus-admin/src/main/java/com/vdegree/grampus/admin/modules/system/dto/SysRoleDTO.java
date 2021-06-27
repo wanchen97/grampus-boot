@@ -26,12 +26,12 @@ public class SysRoleDTO implements Serializable {
 	/**
 	 * 角色名
 	 */
-	@ApiModelProperty("角色名")
+	@ApiModelProperty(value = "角色名", required = true)
 	private String roleName;
 	/**
 	 * 角色编号
 	 */
-	@ApiModelProperty("角色编号")
+	@ApiModelProperty(value = "角色编号", required = true)
 	private String roleCode;
 	/**
 	 * 角色菜单ID列表

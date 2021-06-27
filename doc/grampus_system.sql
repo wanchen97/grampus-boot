@@ -66,18 +66,20 @@ CREATE TABLE `sys_dict`
 DROP TABLE IF EXISTS `sys_dict_item`;
 CREATE TABLE `sys_dict_item`
 (
-    `id`          bigint(20) NOT NULL AUTO_INCREMENT COMMENT '数据ID',
-    `dict_id`     bigint(20) NULL DEFAULT NULL COMMENT '字典ID',
-    `dict_label`  varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '字典标签',
-    `dict_value`  varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '字典值',
-    `sort`        int(11) NULL DEFAULT NULL COMMENT '排序',
-    `create_by`   bigint(20) NULL DEFAULT NULL COMMENT '创建者',
-    `create_date` datetime(3) NULL DEFAULT NULL COMMENT '创建时间',
-    `update_by`   bigint(20) NULL DEFAULT NULL COMMENT '更新者',
-    `update_date` datetime(3) NULL DEFAULT NULL COMMENT '更新时间',
-    `del_flag`    tinyint(4) NULL DEFAULT NULL COMMENT '删除标识(0正常 1删除)',
-    PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
+    `id`          bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '数据ID',
+    `dict_id`     bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '字典ID',
+    `dict_type`   varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '字典类型',
+    `dict_label`  varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '字典标签',
+    `dict_value`  varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '字典值',
+    `sort`        int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '排序',
+    `create_by`   varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '创建者',
+    `create_date` datetime(3) NOT NULL DEFAULT '1000-01-01 00:00:00.000' COMMENT '创建时间',
+    `update_by`   varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '更新者',
+    `update_date` datetime(3) NOT NULL DEFAULT '1000-01-01 00:00:00.000' COMMENT '更新时间',
+    `del_flag`    tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '删除标识(0正常 1删除)',
+    PRIMARY KEY (`id`) USING BTREE,
+    INDEX `idx_dict_type`(`dict_type`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典数据表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dict_item

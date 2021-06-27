@@ -25,12 +25,12 @@ public class SysDeptDTO extends TreeNode<SysDeptDTO> {
 	/**
 	 * 父级部门ID
 	 */
-	@ApiModelProperty("父级部门ID")
+	@ApiModelProperty(value = "父级部门ID", example = "顶级结点则不传或传入0")
 	private Long parentId;
 	/**
 	 * 部门名称
 	 */
-	@ApiModelProperty("部门名称")
+	@ApiModelProperty(value = "部门名称", required = true)
 	private String deptName;
 	/**
 	 * 排序

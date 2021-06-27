@@ -25,12 +25,12 @@ public class SysDictDTO implements Serializable {
 	/**
 	 * 字典类型
 	 */
-	@ApiModelProperty("字典类型")
+	@ApiModelProperty(value = "字典类型", required = true)
 	private String dictType;
 	/**
 	 * 字典名称
 	 */
-	@ApiModelProperty("字典名称")
+	@ApiModelProperty(value = "字典名称", required = true)
 	private String dictName;
 	/**
 	 * 备注

@@ -19,11 +19,11 @@ public class PasswordDTO implements Serializable {
 	/**
 	 * 原密码
 	 */
-	@ApiModelProperty(value = "原密码")
+	@ApiModelProperty(value = "原密码", required = true)
 	private String password;
 	/**
 	 * 新密码
 	 */
-	@ApiModelProperty(value = "新密码")
+	@ApiModelProperty(value = "新密码", required = true)
 	private String newPassword;
 }

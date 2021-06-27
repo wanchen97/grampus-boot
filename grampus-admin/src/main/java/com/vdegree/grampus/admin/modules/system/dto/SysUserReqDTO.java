@@ -25,36 +25,36 @@ public class SysUserReqDTO implements Serializable {
 	/**
 	 * 员工号
 	 */
-	@ApiModelProperty("员工号")
+	@ApiModelProperty(value = "员工号", required = true)
 	private String userNo;
 	/**
 	 * 姓名
 	 */
-	@ApiModelProperty("姓名")
+	@ApiModelProperty(value = "姓名", required = true)
 	private String name;
 	/**
 	 * 密码
 	 */
-	@ApiModelProperty("密码")
+	@ApiModelProperty(value = "密码", required = true)
 	private String password;
 	/**
 	 * 性别
 	 */
-	@ApiModelProperty("性别")
+	@ApiModelProperty(value = "性别", required = true)
 	private Integer gender;
 	/**
 	 * 所属部门ID
 	 */
-	@ApiModelProperty("所属部门ID")
+	@ApiModelProperty(value = "所属部门ID", required = true)
 	private Long deptId;
 	/**
 	 * 是否启用(0停用 1启用)
 	 */
-	@ApiModelProperty("是否启用(0停用 1启用)")
+	@ApiModelProperty(value = "是否启用(0停用 1启用)", required = true)
 	private Integer enabled;
 	/**
 	 * 用户所属角色列表
 	 */
-	@ApiModelProperty("用户所属角色列表")
+	@ApiModelProperty(value = "用户所属角色列表", required = true)
 	private List<Long> roleIdList;
 }

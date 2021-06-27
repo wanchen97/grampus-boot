@@ -37,7 +37,7 @@ CREATE TABLE `log_operation`  (
   `request_start_time` datetime(3) NOT NULL DEFAULT '1000-01-01 00:00:00.000' COMMENT '请求开始时间',
   `request_end_time` datetime(3) NOT NULL DEFAULT '1000-01-01 00:00:00.000' COMMENT '请求结束时间',
   `cost_time` bigint UNSIGNED NOT NULL DEFAULT 0 COMMENT '请求耗时',
-  `authorization` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '请求令牌',
+  `authorization` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '请求令牌',
   `user_agent` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'UA信息',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志表' ROW_FORMAT = Dynamic;

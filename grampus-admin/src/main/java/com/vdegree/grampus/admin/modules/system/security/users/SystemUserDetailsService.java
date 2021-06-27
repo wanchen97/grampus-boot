@@ -32,7 +32,6 @@ public class SystemUserDetailsService implements UserDetailsService {
 	private final SysUserService sysUserService;
 	private final SystemRoleService systemRoleService;
 	private final SystemUserDetailsRedis systemUserDetailsRedis;
-	private final SystemRolePermRedis systemRolePermRedis;
 
 	@Override
 	public UserDetails loadUserByUsername(String userNo) throws UsernameNotFoundException {
@@ -41,6 +40,7 @@ public class SystemUserDetailsService implements UserDetailsService {
 		if (userDetails != null && StringUtil.isNotBlank(userDetails.getUserNo())) {
 			// 查询用户权限标识
 			if (SuperAdminEnum.TRUE.getValue().equals(userDetails.getSuperAdmin())) {
+				// TODO 考虑是否需要优化超管的权限标识获取
 				userDetails.setPermissions(systemRoleService.getAllPermissions());
 			} else {
 				String permissions = systemRoleService.getPermissionsByRoleIds(userDetails.getRoleIds());
@@ -67,10 +67,8 @@ public class SystemUserDetailsService implements UserDetailsService {
 	}
 
 	public SystemUserDetails buildUserDetails(SysUser user) {
-		SystemUserDetails systemUserDetails = BeanUtil.copy(user, SystemUserDetails.class);
+		SystemUserDetails systemUserDetails = BeanUtil.copyWithConvert(user, SystemUserDetails.class);
 		List<Long> roleIds = systemRoleService.getRoleIds(user.getId());
-		// TODO 无法copy enabled字段
-		systemUserDetails.setEnabled(user.getEnabled());
 		boolean isSuperAdmin = SuperAdminEnum.TRUE.getValue().equals(systemUserDetails.getSuperAdmin());
 		systemUserDetails.setRoleIds(roleIds);
 		if (Boolean.TRUE.equals(isSuperAdmin)) {

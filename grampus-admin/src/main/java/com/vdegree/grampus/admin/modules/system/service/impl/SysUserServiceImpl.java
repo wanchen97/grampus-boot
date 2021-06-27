@@ -3,6 +3,7 @@ package com.vdegree.grampus.admin.modules.system.service.impl;
 import com.vdegree.grampus.admin.modules.system.dto.SysUserDTO;
 import com.vdegree.grampus.admin.modules.system.security.enums.SuperAdminEnum;
 import com.vdegree.grampus.admin.modules.system.security.redis.SystemUserDetailsRedis;
+import com.vdegree.grampus.admin.modules.system.security.utils.SecurityUtils;
 import com.vdegree.grampus.admin.modules.system.service.SysUserRoleService;
 import com.vdegree.grampus.common.core.utils.BeanUtil;
 import com.vdegree.grampus.common.core.utils.CollectionUtil;
@@ -41,9 +42,15 @@ public class SysUserServiceImpl extends EnhancedBaseServiceImpl<SysUserDao, SysU
 
 	@Override
 	public void updatePassword(Long userId, String newPassword) {
+		SysUser sysUser = selectById(userId);
+		// 超管才能修改超管
+		if (SuperAdminEnum.TRUE.getValue().equals(sysUser.getSuperAdmin())
+				&& !SuperAdminEnum.TRUE.getValue().equals(SecurityUtils.getUserDetails().getSuperAdmin())) {
+			return;
+		}
 		SysUser entity = new SysUser();
 		entity.setId(userId);
-		entity.setPassword(passwordEncoder.encode(newPassword));
+		entity.setPassword(StringUtil.isNotBlank(newPassword) ? passwordEncoder.encode(newPassword) : null);
 		baseMapper.updateByPrimaryKeySelective(entity);
 	}
 
@@ -66,13 +73,16 @@ public class SysUserServiceImpl extends EnhancedBaseServiceImpl<SysUserDao, SysU
 	public void modifyById(SysUserDTO dto) {
 		SysUser entity = BeanUtil.copy(dto, SysUser.class);
 		SysUser sysUser = selectById(entity.getId());
+		// 超管才能修改超管
+		if (SuperAdminEnum.TRUE.getValue().equals(sysUser.getSuperAdmin())
+				&& !SuperAdminEnum.TRUE.getValue().equals(SecurityUtils.getUserDetails().getSuperAdmin())) {
+			return;
+		}
 		String userNo = sysUser.getUserNo();
 		String plainPwd = entity.getPassword();
-		// 新建账号支持空密码
-		if (StringUtil.isNotBlank(plainPwd)) {
-			entity.setPassword(passwordEncoder.encode(plainPwd));
-		}
-		entity.setSuperAdmin(SuperAdminEnum.FALSE.getValue());
+		// 输入空密码则不进行更改
+		entity.setPassword(StringUtil.isNotBlank(plainPwd) ? passwordEncoder.encode(plainPwd) : null);
+		entity.setSuperAdmin(null);
 		updateById(entity);
 		if (CollectionUtil.isNotEmpty(dto.getRoleIdList())) {
 			sysUserRoleService.saveOrUpdate(entity.getId(), dto.getRoleIdList());

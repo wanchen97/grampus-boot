@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -51,7 +50,8 @@ public class SysRoleController {
 			@ApiImplicitParam(name = Constant.ORDER_FIELD, value = "排序字段", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = Constant.ORDER, value = "排序方式，可选值(asc、desc)", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean"),
-			@ApiImplicitParam(name = "name", value = "角色名", paramType = "query", dataType = "String")
+			@ApiImplicitParam(name = "roleCode", value = "角色编号", paramType = "query", dataType = "String"),
+			@ApiImplicitParam(name = "roleName", value = "角色名", paramType = "query", dataType = "String")
 	})
 	@PreAuthorize("hasAuthority('sys:role:list')")
 	public Result<PageData<SysRoleDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
@@ -99,8 +99,8 @@ public class SysRoleController {
 	@ApiOperation("删除角色")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:role:delete')")
-	public Result<Void> delete(@RequestBody Long[] ids) {
-		sysRoleService.deleteBatchIds(Arrays.asList(ids));
+	public Result<Void> delete(@RequestBody List<Long> ids) {
+		sysRoleService.deleteBatchIds(ids);
 		return Result.success();
 	}
 }

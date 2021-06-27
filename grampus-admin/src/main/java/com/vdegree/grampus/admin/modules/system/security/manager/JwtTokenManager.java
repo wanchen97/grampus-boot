@@ -34,7 +34,7 @@ public class JwtTokenManager {
 	private final AuthTokenProperties authProperties;
 
 	/**
-	 * Create token.
+	 * Create token. TODO 权限动态修改需要实现有状态的Authorities，JWT写入Authorities无实际意义。
 	 *
 	 * @param authentication auth info
 	 * @return token

@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -90,22 +89,22 @@ public class SysDictController {
 	@ApiOperation("删除字典")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:dict:delete')")
-	public Result<Void> delete(@RequestBody Long[] ids) {
-		sysDictService.deleteBatchIds(Arrays.asList(ids));
+	public Result<Void> delete(@RequestBody List<Long> ids) {
+		sysDictService.deleteBatchIds(ids);
 		return Result.success();
 	}
 
-	@ApiOperation("所有字典数据")
-	@GetMapping("all")
-	public Result<List<SysDictDTO>> all() {
-		List<SysDictDTO> result = sysDictService.queryAll();
-		return Result.success(result);
-	}
-
-	@ApiOperation("字典列表")
-	@GetMapping("list")
-	public Result<List<SysDictDTO>> list() {
-		List<SysDict> list = sysDictService.getSysDictList();
-		return Result.success(BeanUtil.copyList(list, SysDictDTO.class));
-	}
+//	@ApiOperation("所有字典数据")
+//	@GetMapping("all")
+//	public Result<List<SysDictDTO>> all() {
+//		List<SysDictDTO> result = sysDictService.queryAll();
+//		return Result.success(result);
+//	}
+//
+//	@ApiOperation("字典列表")
+//	@GetMapping("list")
+//	public Result<List<SysDictDTO>> list() {
+//		List<SysDict> list = sysDictService.getSysDictList();
+//		return Result.success(BeanUtil.copyList(list, SysDictDTO.class));
+//	}
 }

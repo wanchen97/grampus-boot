@@ -3,6 +3,7 @@ package com.vdegree.grampus.admin.modules.system.service.impl;
 import com.google.common.collect.Maps;
 import com.vdegree.grampus.common.core.utils.CollectionUtil;
 import com.vdegree.grampus.common.core.utils.ObjectUtil;
+import com.vdegree.grampus.common.core.utils.StringUtil;
 import com.vdegree.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
 import com.vdegree.grampus.admin.modules.system.dao.SysLanguageDao;
 import com.vdegree.grampus.admin.modules.system.entity.SysLanguage;
@@ -43,6 +44,9 @@ public class SysLanguageServiceImpl extends EnhancedBaseServiceImpl<SysLanguageD
 		List<Long> tableIdList = tableIds.stream().filter(ObjectUtil::isNotNull).distinct().collect(Collectors.toList());
 		if (CollectionUtil.isEmpty(tableIdList)) {
 			return Maps.newHashMap();
+		}
+		if (StringUtil.isBlank(language)) {
+			language = "zh-CN";
 		}
 		List<SysLanguage> list = baseMapper.selectByExample(Example.builder(SysLanguage.class)
 				.select("tableId", "fieldValue")

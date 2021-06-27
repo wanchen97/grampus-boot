@@ -26,6 +26,10 @@ public class SysDictItem extends BaseEntity {
 	 */
 	private Long dictId;
 	/**
+	 * 字典类型
+	 */
+	private String dictType;
+	/**
 	 * 字典标签
 	 */
 	private String dictLabel;

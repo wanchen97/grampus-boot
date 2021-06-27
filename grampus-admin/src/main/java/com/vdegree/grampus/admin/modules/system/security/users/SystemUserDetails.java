@@ -59,7 +59,7 @@ public class SystemUserDetails implements UserDetails {
 	private Integer superAdmin;
 
 	/**
-	 * 是否启用(0停用 1启用)
+	 * 是否启用(0停用 1启用)	TODO 待解决BeanUtil.copy无法将SysUser的enabled拷贝到SystemUserDetails
 	 */
 	private Integer enabled;
 
@@ -81,28 +81,40 @@ public class SystemUserDetails implements UserDetails {
 		return this.password;
 	}
 
+	/**
+	 * authentication.getName()
+	 * if (this.getPrincipal() instanceof UserDetails) {
+	 *     return ((UserDetails) this.getPrincipal()).getUsername();
+	 * }
+	 */
 	@Override
 	public String getUsername() {
 		return this.getUserNo();
 	}
 
+	/**
+	 * DefaultPreAuthenticationChecks.
+	 * void check(UserDetails user)
+	 */
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
 
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
-
+	/**
+	 * DefaultPostAuthenticationChecks.
+	 * void check(UserDetails user)
+	 */
 	@Override
 	public boolean isCredentialsNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isEnabled() {
 		return true;
 	}
 }

@@ -31,7 +31,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -58,8 +57,8 @@ public class SysUserController {
 			@ApiImplicitParam(name = Constant.ORDER_FIELD, value = "排序字段", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = Constant.ORDER, value = "排序方式，可选值(asc、desc)", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean"),
-			@ApiImplicitParam(name = "username", value = "用户名", paramType = "query", dataType = "String"),
-			@ApiImplicitParam(name = "postId", value = "岗位ID", paramType = "query", dataType = "String")
+			@ApiImplicitParam(name = "userNo", value = "用户编号", paramType = "query", dataType = "String"),
+			@ApiImplicitParam(name = "name", value = "用户名", paramType = "query", dataType = "String")
 	})
 	@PreAuthorize("hasAuthority('sys:user:list')")
 	public Result<PageData<SysUserDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
@@ -108,6 +107,7 @@ public class SysUserController {
 	@RequestLog("修改用户密码")
 	@ApiOperation("修改用户密码")
 	@PutMapping("password")
+	@PreAuthorize("hasAuthority('sys:user:update')")
 	public Result<Void> password(@RequestBody PasswordDTO dto) {
 		SystemUserDetails user = SecurityUtils.getUserDetails();
 		if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
@@ -121,8 +121,8 @@ public class SysUserController {
 	@ApiOperation("删除用户")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:user:delete')")
-	public Result<Void> delete(@RequestBody Long[] ids) {
-		sysUserService.deleteBatchIds(Arrays.asList(ids));
+	public Result<Void> delete(@RequestBody List<Long> ids) {
+		sysUserService.deleteBatchIds(ids);
 		return Result.success();
 	}
 }
