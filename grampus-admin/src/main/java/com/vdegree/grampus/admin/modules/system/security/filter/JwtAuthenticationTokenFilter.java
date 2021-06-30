@@ -6,7 +6,7 @@ import com.vdegree.grampus.admin.modules.system.security.exception.TokenParsedEx
 import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
 import com.vdegree.grampus.admin.modules.system.security.users.SystemUserDetails;
 import com.vdegree.grampus.common.core.constant.Constant;
-import com.vdegree.grampus.common.core.exception.BaseException;
+import com.vdegree.grampus.common.core.exception.ApiException;
 import com.vdegree.grampus.common.core.result.Result;
 import com.vdegree.grampus.common.core.utils.JSONUtil;
 import com.vdegree.grampus.common.core.utils.StringUtil;
@@ -80,7 +80,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 	 * Handle Authentication Failure.
 	 */
 	@SneakyThrows
-	private void handleAuthenticationFailure(HttpServletResponse response, BaseException e) {
+	private void handleAuthenticationFailure(HttpServletResponse response, ApiException e) {
 		String code, msg;
 		if (e instanceof TokenExpiredException) {
 			TokenExpiredException ex = (TokenExpiredException) e;

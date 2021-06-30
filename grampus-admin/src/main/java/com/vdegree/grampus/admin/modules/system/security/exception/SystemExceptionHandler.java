@@ -1,7 +1,7 @@
 package com.vdegree.grampus.admin.modules.system.security.exception;
 
 import com.vdegree.grampus.admin.modules.system.code.ErrorCode;
-import com.vdegree.grampus.common.core.exception.BaseException;
+import com.vdegree.grampus.common.core.exception.ApiException;
 import com.vdegree.grampus.common.core.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
@@ -25,8 +25,8 @@ public class SystemExceptionHandler {
 	 */
 	@ExceptionHandler(Exception.class)
 	public Result<Object> handleException(Exception e) {
-		if (e instanceof BaseException) {
-			BaseException ex = (BaseException) e;
+		if (e instanceof ApiException) {
+			ApiException ex = (ApiException) e;
 			Result.error(ex.getCode(), null);
 		}
 		log.error(e.getMessage(), e);
@@ -38,8 +38,8 @@ public class SystemExceptionHandler {
 	 */
 	@ExceptionHandler(InternalAuthenticationServiceException.class)
 	public Result<Object> handleInternalAuthenticationServiceException(InternalAuthenticationServiceException e) {
-		if (e.getCause() instanceof BaseException) {
-			BaseException ex = (BaseException) e.getCause();
+		if (e.getCause() instanceof ApiException) {
+			ApiException ex = (ApiException) e.getCause();
 			return Result.error(ex.getCode(), null);
 		}
 		log.error(e.getMessage(), e);
