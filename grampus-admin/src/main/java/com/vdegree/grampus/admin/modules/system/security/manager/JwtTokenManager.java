@@ -1,6 +1,8 @@
 package com.vdegree.grampus.admin.modules.system.security.manager;
 
+import com.vdegree.grampus.admin.modules.system.enums.RequestPlatformEnum;
 import com.vdegree.grampus.admin.modules.system.security.properties.AuthTokenProperties;
+import com.vdegree.grampus.common.core.utils.CollectionUtil;
 import com.vdegree.grampus.common.core.utils.chars.StringPool;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -30,23 +32,26 @@ import java.util.stream.Collectors;
 public class JwtTokenManager {
 
 	private static final String AUTHORITIES_KEY = "perms";
+	private static final String PLATFORM_KEY = "platform";
 
 	private final AuthTokenProperties authProperties;
 
 	/**
-	 * Create token. TODO 权限动态修改需要实现有状态的Authorities，JWT写入Authorities无实际意义。
+	 * Create token.
 	 *
 	 * @param authentication auth info
+	 * @param platform       request platform
 	 * @return token
 	 */
-	public String createToken(Authentication authentication) {
-		return createToken(authentication.getName(), authentication.getAuthorities());
+	public String createToken(Authentication authentication, RequestPlatformEnum platform) {
+//		return createToken(authentication.getName(), authentication.getAuthorities());
+		return createToken(authentication.getName(), platform.getPlatform(), null);
 	}
 
 	/**
 	 * Create token.
 	 *
-	 * @param userNo auth info
+	 * @param userNo userno
 	 * @return token
 	 */
 	public String createToken(String userNo) {
@@ -62,20 +67,26 @@ public class JwtTokenManager {
 	}
 
 	/**
-	 * Create token with .
+	 * Create token with userNo platform authorities.
 	 *
-	 * @param userNo auth info
+	 * @param userNo      userno
+	 * @param platform    request platform
+	 * @param authorities authorities
 	 * @return token
 	 */
-	public String createToken(String userNo, Collection<? extends GrantedAuthority> authorities) {
+	public String createToken(String userNo, String platform, Collection<? extends GrantedAuthority> authorities) {
 
 		long now = System.currentTimeMillis();
 
 		Date validity = new Date(now + authProperties.getTokenValidityInSeconds() * 1000L);
 
-		String permissions = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(StringPool.COMMA));
 		Claims claims = Jwts.claims().setSubject(userNo);
-		claims.put(AUTHORITIES_KEY, permissions);
+		claims.put(PLATFORM_KEY, platform);
+
+		if (CollectionUtil.isNotEmpty(authorities)) {
+			String permissions = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(StringPool.COMMA));
+			claims.put(AUTHORITIES_KEY, permissions);
+		}
 		return Jwts.builder().setClaims(claims).setExpiration(validity)
 				.signWith(Keys.hmacShaKeyFor(authProperties.getSecretKeyBytes()), SignatureAlgorithm.HS512).compact();
 	}

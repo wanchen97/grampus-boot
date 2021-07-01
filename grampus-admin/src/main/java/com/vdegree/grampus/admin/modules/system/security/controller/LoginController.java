@@ -3,6 +3,7 @@ package com.vdegree.grampus.admin.modules.system.security.controller;
 import com.google.common.collect.Maps;
 import com.vdegree.grampus.admin.modules.system.dto.SysUserDTO;
 import com.vdegree.grampus.admin.modules.system.dto.SysUserDetailsDTO;
+import com.vdegree.grampus.admin.modules.system.enums.RequestPlatformEnum;
 import com.vdegree.grampus.admin.modules.system.security.manager.JwtTokenManager;
 import com.vdegree.grampus.admin.modules.system.security.pojo.LoginReq;
 import com.vdegree.grampus.admin.modules.system.security.pojo.RegisterReq;
@@ -73,7 +74,7 @@ public class LoginController {
 		SystemUserDetails userDetails = (SystemUserDetails) authentication.getPrincipal();
 		SysUserDetailsDTO sysUserDetails = BeanUtil.copy(userDetails, SysUserDetailsDTO.class);
 
-		String token = jwtTokenManager.createToken(authentication);
+		String token = jwtTokenManager.createToken(authentication, RequestPlatformEnum.ADMIN);
 
 		Map<String, Object> result = Maps.newHashMap();
 		result.put("userDetails", sysUserDetails);
