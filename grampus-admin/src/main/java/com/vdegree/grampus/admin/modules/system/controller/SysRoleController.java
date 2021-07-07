@@ -47,8 +47,7 @@ public class SysRoleController {
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = Constant.PAGE_NUM, value = "当前页码，从1开始", paramType = "query", required = true, dataType = "int"),
 			@ApiImplicitParam(name = Constant.PAGE_SIZE, value = "每页显示记录数", paramType = "query", required = true, dataType = "int"),
-			@ApiImplicitParam(name = Constant.ORDER_FIELD, value = "排序字段", paramType = "query", dataType = "String"),
-			@ApiImplicitParam(name = Constant.ORDER, value = "排序方式，可选值(asc、desc)", paramType = "query", dataType = "String"),
+			@ApiImplicitParam(name = Constant.ORDER, value = "排序条件(field1&asc,field2&desc)", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean"),
 			@ApiImplicitParam(name = "roleCode", value = "角色编号", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = "roleName", value = "角色名", paramType = "query", dataType = "String")
