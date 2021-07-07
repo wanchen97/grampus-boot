@@ -46,7 +46,7 @@ public class SysDictController {
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = Constant.PAGE_NUM, value = "当前页码，从1开始", paramType = "query", required = true, dataType = "int"),
 			@ApiImplicitParam(name = Constant.PAGE_SIZE, value = "每页显示记录数", paramType = "query", required = true, dataType = "int"),
-			@ApiImplicitParam(name = Constant.ORDER, value = "排序条件(field1&asc,field2&desc)", paramType = "query", dataType = "String"),
+			@ApiImplicitParam(name = Constant.ORDER, value = "排序条件(field1#asc,field2#desc)", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = Constant.WITH_COUNT, value = "查询数据总量(true、false)", paramType = "query", dataType = "Boolean"),
 			@ApiImplicitParam(name = "dictType", value = "字典类型", paramType = "query", dataType = "String"),
 			@ApiImplicitParam(name = "dictName", value = "字典名称", paramType = "query", dataType = "String")
