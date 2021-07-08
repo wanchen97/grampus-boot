@@ -1,11 +1,10 @@
 package com.vdegree.grampus.admin.modules.system.controller;
 
 import com.vdegree.grampus.admin.modules.system.dto.SysDictDTO;
-import com.vdegree.grampus.admin.modules.system.entity.SysDict;
 import com.vdegree.grampus.admin.modules.system.service.SysDictService;
 import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.result.Result;
-import com.vdegree.grampus.common.core.utils.BeanUtil;
+import com.vdegree.grampus.common.core.utils.StringUtil;
 import com.vdegree.grampus.common.log.annotation.RequestLog;
 import com.vdegree.grampus.common.mybatis.page.PageData;
 import io.swagger.annotations.Api;
@@ -54,6 +53,8 @@ public class SysDictController {
 	@GetMapping("page")
 	@PreAuthorize("hasAuthority('sys:dict:list')")
 	public Result<PageData<SysDictDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
+		String order = (String) params.get(Constant.ORDER);
+		params.put(Constant.ORDER, StringUtil.isNotBlank(order) ? order + "," + "sort#asc" : "sort#asc");
 		PageData<SysDictDTO> page = sysDictService.queryPage(params);
 		return Result.success(page);
 	}

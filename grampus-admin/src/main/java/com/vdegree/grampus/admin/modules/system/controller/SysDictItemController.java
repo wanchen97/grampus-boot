@@ -4,6 +4,7 @@ import com.vdegree.grampus.admin.modules.system.dto.SysDictItemDTO;
 import com.vdegree.grampus.admin.modules.system.service.SysDictItemService;
 import com.vdegree.grampus.common.core.constant.Constant;
 import com.vdegree.grampus.common.core.result.Result;
+import com.vdegree.grampus.common.core.utils.StringUtil;
 import com.vdegree.grampus.common.log.annotation.RequestLog;
 import com.vdegree.grampus.common.mybatis.page.PageData;
 import io.swagger.annotations.Api;
@@ -54,6 +55,8 @@ public class SysDictItemController {
 	})
 	@PreAuthorize("hasAuthority('sys:dict:list')")
 	public Result<PageData<SysDictItemDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params) {
+		String order = (String) params.get(Constant.ORDER);
+		params.put(Constant.ORDER, StringUtil.isNotBlank(order) ? order + "," + "sort#asc" : "sort#asc");
 		PageData<SysDictItemDTO> page = sysDictItemService.queryPage(params);
 		return Result.success(page);
 	}
