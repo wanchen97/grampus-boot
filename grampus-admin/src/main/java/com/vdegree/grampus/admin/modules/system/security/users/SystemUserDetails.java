@@ -61,7 +61,7 @@ public class SystemUserDetails implements UserDetails {
 	/**
 	 * 是否启用(0停用 1启用)	TODO 待解决BeanUtil.copy无法将SysUser的enabled拷贝到SystemUserDetails
 	 */
-	private Integer enabled;
+	private Integer status;
 
 	/**
 	 * 拥有权限
