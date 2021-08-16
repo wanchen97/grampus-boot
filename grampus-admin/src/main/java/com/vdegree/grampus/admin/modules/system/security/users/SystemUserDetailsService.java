@@ -2,10 +2,9 @@ package com.vdegree.grampus.admin.modules.system.security.users;
 
 import com.vdegree.grampus.admin.modules.system.entity.SysUser;
 import com.vdegree.grampus.admin.modules.system.security.enums.SuperAdminEnum;
-import com.vdegree.grampus.admin.modules.system.enums.SysUserEnabledEnum;
+import com.vdegree.grampus.admin.modules.system.enums.SysUserStatusEnum;
 import com.vdegree.grampus.admin.modules.system.security.exception.UserDisabledException;
 import com.vdegree.grampus.admin.modules.system.security.exception.UserNotFoundException;
-import com.vdegree.grampus.admin.modules.system.security.redis.SystemRolePermRedis;
 import com.vdegree.grampus.admin.modules.system.security.redis.SystemUserDetailsRedis;
 import com.vdegree.grampus.admin.modules.system.security.roles.SystemRoleService;
 import com.vdegree.grampus.admin.modules.system.service.SysUserService;
@@ -56,7 +55,7 @@ public class SystemUserDetailsService implements UserDetailsService {
 		}
 
 		// 用户被禁用
-		if (SysUserEnabledEnum.DISABLED.getValue().equals(user.getEnabled())) {
+		if (SysUserStatusEnum.DISABLED.getValue().equals(user.getStatus())) {
 			throw new UserDisabledException();
 		}
 
