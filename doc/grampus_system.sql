@@ -201,7 +201,7 @@ CREATE TABLE `sys_user`
     `gender`      tinyint(4) NULL DEFAULT NULL COMMENT '性别',
     `dept_id`     bigint(20) NULL DEFAULT NULL COMMENT '所属部门ID',
     `super_admin` tinyint(4) NULL DEFAULT NULL COMMENT '是否超级管理员(0普通 1超管)',
-    `enabled`     tinyint(4) NULL DEFAULT NULL COMMENT '是否启用(0停用 1启用)',
+    `status`      tinyint(4) NULL DEFAULT NULL COMMENT '是否启用(0停用 1启用)',
     `create_by`   bigint(20) NULL DEFAULT NULL COMMENT '创建者',
     `create_date` datetime(3) NULL DEFAULT NULL COMMENT '创建时间',
     `update_by`   bigint(20) NULL DEFAULT NULL COMMENT '更新者',
