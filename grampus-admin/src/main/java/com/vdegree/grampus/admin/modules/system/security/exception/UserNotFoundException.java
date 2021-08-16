@@ -13,6 +13,6 @@ public class UserNotFoundException extends ApiException {
 	private static final long serialVersionUID = 5186572331502903237L;
 
 	public UserNotFoundException() {
-		super(ErrorCode.System.USER_NOT_EXISTED.getCode());
+		super(ErrorCode.Auth.USER_NOT_EXISTED.getCode());
 	}
 }

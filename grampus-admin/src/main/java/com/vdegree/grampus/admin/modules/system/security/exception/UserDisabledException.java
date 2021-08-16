@@ -13,6 +13,6 @@ public class UserDisabledException extends ApiException {
 	private static final long serialVersionUID = 1791940330757308184L;
 
 	public UserDisabledException() {
-		super(ErrorCode.System.USER_DISABLE_ERROR.getCode());
+		super(ErrorCode.Auth.USER_DISABLE_ERROR.getCode());
 	}
 }

@@ -13,6 +13,6 @@ public class UserPasswordErrorException extends ApiException {
 	private static final long serialVersionUID = 8127084390337697670L;
 
 	public UserPasswordErrorException() {
-		super(ErrorCode.System.USER_PASSWORD_ERROR.getCode());
+		super(ErrorCode.Auth.USER_PASSWORD_ERROR.getCode());
 	}
 }
