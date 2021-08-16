@@ -78,7 +78,7 @@ public class LoginController {
 
 		Map<String, Object> result = Maps.newHashMap();
 		result.put("userDetails", sysUserDetails);
-		result.put("access_token", token);
+		result.put("token", token);
 		return Result.success(result);
 	}
 }
