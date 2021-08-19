@@ -1,5 +1,5 @@
 server:
-  port: 28080
+  port: 6190
 
 spring:
   profiles:
@@ -12,7 +12,7 @@ mybatis:
     # 下划线转驼峰
     map-underscore-to-camel-case: true
   # 搜索指定包别名
-  typeAliasesPackage: com.vdegree.grampus.*.entity
+  typeAliasesPackage: com.oceancloud.grampus.*.entity
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
   mapperLocations: classpath*:/mapper/**/*.xml
 

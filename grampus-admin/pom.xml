@@ -4,7 +4,7 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<artifactId>grampus-boot</artifactId>
-		<groupId>com.vdegree</groupId>
+		<groupId>com.oceancloud</groupId>
 		<version>1.0.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
@@ -13,39 +13,39 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.vdegree</groupId>
+			<groupId>com.oceancloud</groupId>
 			<artifactId>grampus-framework-boot</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.vdegree</groupId>
+			<groupId>com.oceancloud</groupId>
 			<artifactId>grampus-framework-excel</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.vdegree</groupId>
+			<groupId>com.oceancloud</groupId>
 			<artifactId>grampus-framework-swagger</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.vdegree</groupId>
+			<groupId>com.oceancloud</groupId>
 			<artifactId>grampus-framework-mybatis</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.vdegree</groupId>
+			<groupId>com.oceancloud</groupId>
 			<artifactId>grampus-framework-redis</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.vdegree</groupId>
+			<groupId>com.oceancloud</groupId>
 			<artifactId>grampus-framework-lock</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.vdegree</groupId>
+			<groupId>com.oceancloud</groupId>
 			<artifactId>grampus-framework-log</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.vdegree</groupId>
+			<groupId>com.oceancloud</groupId>
 			<artifactId>grampus-framework-security</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.vdegree</groupId>
+			<groupId>com.oceancloud</groupId>
 			<artifactId>grampus-framework-xxl-job</artifactId>
 		</dependency>
 	</dependencies>

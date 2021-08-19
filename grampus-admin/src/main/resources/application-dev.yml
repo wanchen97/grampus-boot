@@ -32,7 +32,7 @@ distributed:
     wait-time: 3000
     lease-time: 30000
     retry-interval: 100
-    primary-executor: com.vdegree.grampus.common.lock.strategy.RedisTemplateLockStrategy
+    primary-executor: com.oceancloud.grampus.common.lock.strategy.RedisTemplateLockStrategy
 
 #grampus:
   #  security:

@@ -1,7 +1,7 @@
-package com.vdegree.grampus.common.security.test;
+package com.oceancloud.grampus.common.security.test;
 
-import com.vdegree.grampus.admin.GrampusBootAdminApplication;
-import com.vdegree.grampus.common.redis.utils.RedisCache;
+import com.oceancloud.grampus.admin.GrampusBootAdminApplication;
+import com.oceancloud.grampus.common.redis.utils.RedisCache;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
