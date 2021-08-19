@@ -1,8 +1,8 @@
 package com.oceancloud.grampus.admin.modules.system.security.redis;
 
 import com.oceancloud.grampus.admin.modules.system.security.users.SystemUserDetails;
-import com.oceancloud.grampus.common.core.utils.BeanUtil;
-import com.oceancloud.grampus.common.redis.utils.RedisCache;
+import com.oceancloud.grampus.framework.core.utils.BeanUtil;
+import com.oceancloud.grampus.framework.redis.utils.RedisCache;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

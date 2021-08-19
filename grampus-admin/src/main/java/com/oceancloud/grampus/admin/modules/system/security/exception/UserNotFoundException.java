@@ -1,7 +1,7 @@
 package com.oceancloud.grampus.admin.modules.system.security.exception;
 
 import com.oceancloud.grampus.admin.modules.system.code.ErrorCode;
-import com.oceancloud.grampus.common.core.exception.ApiException;
+import com.oceancloud.grampus.framework.core.exception.ApiException;
 
 /**
  * 用户不存在异常

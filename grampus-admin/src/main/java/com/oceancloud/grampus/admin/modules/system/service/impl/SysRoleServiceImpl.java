@@ -6,7 +6,7 @@ import com.oceancloud.grampus.admin.modules.system.entity.SysRole;
 import com.oceancloud.grampus.admin.modules.system.security.redis.SystemRolePermRedis;
 import com.oceancloud.grampus.admin.modules.system.service.SysRoleMenuService;
 import com.oceancloud.grampus.admin.modules.system.service.SysRoleService;
-import com.oceancloud.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
+import com.oceancloud.grampus.framework.mybatis.service.impl.EnhancedBaseServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -5,11 +5,11 @@ import com.oceancloud.grampus.admin.modules.system.security.exception.TokenExpir
 import com.oceancloud.grampus.admin.modules.system.security.exception.TokenParsedException;
 import com.oceancloud.grampus.admin.modules.system.security.manager.JwtTokenManager;
 import com.oceancloud.grampus.admin.modules.system.security.users.SystemUserDetails;
-import com.oceancloud.grampus.common.core.constant.Constant;
-import com.oceancloud.grampus.common.core.exception.ApiException;
-import com.oceancloud.grampus.common.core.result.Result;
-import com.oceancloud.grampus.common.core.utils.JSONUtil;
-import com.oceancloud.grampus.common.core.utils.StringUtil;
+import com.oceancloud.grampus.framework.core.constant.Constant;
+import com.oceancloud.grampus.framework.core.exception.ApiException;
+import com.oceancloud.grampus.framework.core.result.Result;
+import com.oceancloud.grampus.framework.core.utils.JSONUtil;
+import com.oceancloud.grampus.framework.core.utils.StringUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;

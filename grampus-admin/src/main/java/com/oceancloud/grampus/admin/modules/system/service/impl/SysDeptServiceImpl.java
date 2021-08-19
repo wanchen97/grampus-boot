@@ -4,7 +4,7 @@ import com.oceancloud.grampus.admin.modules.system.dao.SysDeptDao;
 import com.oceancloud.grampus.admin.modules.system.dto.SysDeptDTO;
 import com.oceancloud.grampus.admin.modules.system.entity.SysDept;
 import com.oceancloud.grampus.admin.modules.system.service.SysDeptService;
-import com.oceancloud.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
+import com.oceancloud.grampus.framework.mybatis.service.impl.EnhancedBaseServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

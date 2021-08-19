@@ -1,7 +1,7 @@
 package com.oceancloud.grampus.admin.modules.system.controller;
 
 import com.oceancloud.grampus.admin.modules.system.service.SysLanguageService;
-import com.oceancloud.grampus.common.core.result.Result;
+import com.oceancloud.grampus.framework.core.result.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;

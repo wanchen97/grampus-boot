@@ -1,10 +1,10 @@
 package com.oceancloud.grampus.admin.modules.system.security.redis;
 
 import com.google.common.base.Joiner;
-import com.oceancloud.grampus.common.core.utils.BeanUtil;
-import com.oceancloud.grampus.common.core.utils.StringUtil;
-import com.oceancloud.grampus.common.core.utils.chars.StringPool;
-import com.oceancloud.grampus.common.redis.utils.RedisCache;
+import com.oceancloud.grampus.framework.core.utils.BeanUtil;
+import com.oceancloud.grampus.framework.core.utils.StringUtil;
+import com.oceancloud.grampus.framework.core.utils.chars.StringPool;
+import com.oceancloud.grampus.framework.redis.utils.RedisCache;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

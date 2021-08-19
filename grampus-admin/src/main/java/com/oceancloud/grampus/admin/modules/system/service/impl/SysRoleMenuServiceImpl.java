@@ -1,6 +1,6 @@
 package com.oceancloud.grampus.admin.modules.system.service.impl;
 
-import com.oceancloud.grampus.common.mybatis.service.impl.BaseServiceImpl;
+import com.oceancloud.grampus.framework.mybatis.service.impl.BaseServiceImpl;
 import com.oceancloud.grampus.admin.modules.system.dao.SysRoleMenuDao;
 import com.oceancloud.grampus.admin.modules.system.entity.SysRoleMenu;
 import com.oceancloud.grampus.admin.modules.system.service.SysRoleMenuService;

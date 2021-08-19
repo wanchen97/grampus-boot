@@ -2,9 +2,9 @@ package com.oceancloud.grampus.admin.modules.system.controller;
 
 import com.oceancloud.grampus.admin.modules.system.dto.SysDeptDTO;
 import com.oceancloud.grampus.admin.modules.system.service.SysDeptService;
-import com.oceancloud.grampus.common.core.result.Result;
-import com.oceancloud.grampus.common.core.utils.tree.TreeUtils;
-import com.oceancloud.grampus.common.log.annotation.RequestLog;
+import com.oceancloud.grampus.framework.core.result.Result;
+import com.oceancloud.grampus.framework.core.utils.tree.TreeUtils;
+import com.oceancloud.grampus.framework.log.annotation.RequestLog;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;

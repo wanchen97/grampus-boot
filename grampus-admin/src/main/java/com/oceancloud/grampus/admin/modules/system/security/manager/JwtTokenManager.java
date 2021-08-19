@@ -2,8 +2,8 @@ package com.oceancloud.grampus.admin.modules.system.security.manager;
 
 import com.oceancloud.grampus.admin.modules.system.enums.RequestPlatformEnum;
 import com.oceancloud.grampus.admin.modules.system.security.properties.AuthTokenProperties;
-import com.oceancloud.grampus.common.core.utils.CollectionUtil;
-import com.oceancloud.grampus.common.core.utils.chars.StringPool;
+import com.oceancloud.grampus.framework.core.utils.CollectionUtil;
+import com.oceancloud.grampus.framework.core.utils.chars.StringPool;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

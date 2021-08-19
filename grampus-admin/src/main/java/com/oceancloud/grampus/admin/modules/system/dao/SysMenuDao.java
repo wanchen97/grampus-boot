@@ -1,8 +1,8 @@
 package com.oceancloud.grampus.admin.modules.system.dao;
 
 import com.oceancloud.grampus.admin.modules.system.entity.SysMenu;
-import com.oceancloud.grampus.common.mybatis.annotation.MyBatisMapper;
-import com.oceancloud.grampus.common.mybatis.mapper.BaseMapper;
+import com.oceancloud.grampus.framework.mybatis.annotation.MyBatisMapper;
+import com.oceancloud.grampus.framework.mybatis.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

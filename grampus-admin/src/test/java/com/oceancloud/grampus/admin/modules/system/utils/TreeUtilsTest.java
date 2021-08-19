@@ -1,8 +1,8 @@
 package com.oceancloud.grampus.admin.modules.system.utils;
 
 import com.google.common.collect.Lists;
-import com.oceancloud.grampus.common.core.utils.tree.TreeNode;
-import com.oceancloud.grampus.common.core.utils.tree.TreeUtils;
+import com.oceancloud.grampus.framework.core.utils.tree.TreeNode;
+import com.oceancloud.grampus.framework.core.utils.tree.TreeUtils;
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

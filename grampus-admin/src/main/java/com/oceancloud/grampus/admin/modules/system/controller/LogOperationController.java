@@ -1,8 +1,8 @@
 package com.oceancloud.grampus.admin.modules.system.controller;
 
-import com.oceancloud.grampus.common.core.constant.Constant;
-import com.oceancloud.grampus.common.core.result.Result;
-import com.oceancloud.grampus.common.mybatis.page.PageData;
+import com.oceancloud.grampus.framework.core.constant.Constant;
+import com.oceancloud.grampus.framework.core.result.Result;
+import com.oceancloud.grampus.framework.mybatis.page.PageData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

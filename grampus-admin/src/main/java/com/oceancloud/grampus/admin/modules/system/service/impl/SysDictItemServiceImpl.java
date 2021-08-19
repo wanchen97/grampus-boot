@@ -6,8 +6,8 @@ import com.oceancloud.grampus.admin.modules.system.dao.SysDictItemDao;
 import com.oceancloud.grampus.admin.modules.system.entity.SysDict;
 import com.oceancloud.grampus.admin.modules.system.entity.SysDictItem;
 import com.oceancloud.grampus.admin.modules.system.service.SysDictItemService;
-import com.oceancloud.grampus.common.core.utils.BeanUtil;
-import com.oceancloud.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
+import com.oceancloud.grampus.framework.core.utils.BeanUtil;
+import com.oceancloud.grampus.framework.mybatis.service.impl.EnhancedBaseServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

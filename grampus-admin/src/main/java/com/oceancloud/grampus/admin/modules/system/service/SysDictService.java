@@ -2,7 +2,7 @@ package com.oceancloud.grampus.admin.modules.system.service;
 
 import com.oceancloud.grampus.admin.modules.system.dto.SysDictDTO;
 import com.oceancloud.grampus.admin.modules.system.entity.SysDict;
-import com.oceancloud.grampus.common.mybatis.service.EnhancedBaseService;
+import com.oceancloud.grampus.framework.mybatis.service.EnhancedBaseService;
 
 import java.util.List;
 

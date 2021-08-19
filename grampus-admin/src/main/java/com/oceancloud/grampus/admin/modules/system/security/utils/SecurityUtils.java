@@ -1,7 +1,7 @@
 package com.oceancloud.grampus.admin.modules.system.security.utils;
 
 import com.oceancloud.grampus.admin.modules.system.security.users.SystemUserDetails;
-import com.oceancloud.grampus.common.core.utils.WebUtil;
+import com.oceancloud.grampus.framework.core.utils.WebUtil;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;

@@ -1,8 +1,8 @@
 package com.oceancloud.grampus.admin.modules.system.dao;
 
 import com.oceancloud.grampus.admin.modules.system.entity.SysUserRole;
-import com.oceancloud.grampus.common.mybatis.annotation.MyBatisMapper;
-import com.oceancloud.grampus.common.mybatis.mapper.BaseMapper;
+import com.oceancloud.grampus.framework.mybatis.annotation.MyBatisMapper;
+import com.oceancloud.grampus.framework.mybatis.mapper.BaseMapper;
 
 /**
  * 用户角色关联表 数据库访问层

@@ -8,8 +8,8 @@ import com.oceancloud.grampus.admin.modules.system.security.exception.UserNotFou
 import com.oceancloud.grampus.admin.modules.system.security.redis.SystemUserDetailsRedis;
 import com.oceancloud.grampus.admin.modules.system.security.roles.SystemRoleService;
 import com.oceancloud.grampus.admin.modules.system.service.SysUserService;
-import com.oceancloud.grampus.common.core.utils.BeanUtil;
-import com.oceancloud.grampus.common.core.utils.StringUtil;
+import com.oceancloud.grampus.framework.core.utils.BeanUtil;
+import com.oceancloud.grampus.framework.core.utils.StringUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,7 +1,7 @@
 package com.oceancloud.grampus.admin.modules.system.security.redis;
 
 import com.oceancloud.grampus.admin.modules.system.security.manager.JwtTokenManager;
-import com.oceancloud.grampus.common.redis.utils.RedisCache;
+import com.oceancloud.grampus.framework.redis.utils.RedisCache;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

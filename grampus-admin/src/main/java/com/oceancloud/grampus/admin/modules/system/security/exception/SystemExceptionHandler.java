@@ -1,8 +1,8 @@
 package com.oceancloud.grampus.admin.modules.system.security.exception;
 
 import com.oceancloud.grampus.admin.modules.system.code.ErrorCode;
-import com.oceancloud.grampus.common.core.exception.ApiException;
-import com.oceancloud.grampus.common.core.result.Result;
+import com.oceancloud.grampus.framework.core.exception.ApiException;
+import com.oceancloud.grampus.framework.core.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;

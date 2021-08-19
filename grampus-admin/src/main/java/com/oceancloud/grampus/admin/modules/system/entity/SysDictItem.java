@@ -1,8 +1,8 @@
 package com.oceancloud.grampus.admin.modules.system.entity;
 
-import com.oceancloud.grampus.common.mybatis.annotation.FieldFill;
-import com.oceancloud.grampus.common.mybatis.annotation.TableField;
-import com.oceancloud.grampus.common.mybatis.entity.BaseEntity;
+import com.oceancloud.grampus.framework.mybatis.annotation.FieldFill;
+import com.oceancloud.grampus.framework.mybatis.annotation.TableField;
+import com.oceancloud.grampus.framework.mybatis.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import tk.mybatis.mapper.annotation.LogicDelete;

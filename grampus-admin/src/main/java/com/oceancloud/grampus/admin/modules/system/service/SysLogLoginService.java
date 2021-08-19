@@ -1,6 +1,6 @@
 package com.oceancloud.grampus.admin.modules.system.service;
 
-import com.oceancloud.grampus.common.mybatis.service.BaseService;
+import com.oceancloud.grampus.framework.mybatis.service.BaseService;
 import com.oceancloud.grampus.admin.modules.system.entity.SysLogLogin;
 
 /**

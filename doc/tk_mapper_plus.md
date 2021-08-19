@@ -32,7 +32,7 @@ $!define
 
 ##自动导入包（全局变量）
 $!autoImport
-import com.oceancloud.grampus.common.mybatis.entity.BaseEntity;
+import com.oceancloud.grampus.framework.mybatis.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -69,8 +69,8 @@ $!define
 ##包路径（宏定义）
 #setPackageSuffix("dao")
 
-import com.oceancloud.grampus.common.mybatis.annotation.MyBatisMapper;
-import com.oceancloud.grampus.common.mybatis.mapper.BaseMapper;
+import com.oceancloud.grampus.framework.mybatis.annotation.MyBatisMapper;
+import com.oceancloud.grampus.framework.mybatis.mapper.BaseMapper;
 import $!{tableInfo.savePackageName}.entity.$!tableInfo.name;
 
 ##表注释（宏定义）
@@ -95,7 +95,7 @@ $!define
 ##包路径（宏定义）
 #setPackageSuffix("service")
 
-import com.oceancloud.grampus.common.mybatis.service.EnhancedBaseService;
+import com.oceancloud.grampus.framework.mybatis.service.EnhancedBaseService;
 import $!{tableInfo.savePackageName}.entity.$!tableInfo.name;
 import $!{tableInfo.savePackageName}.dto.$!{tableInfo.name}DTO;
 
@@ -120,7 +120,7 @@ $!define
 ##包路径（宏定义）
 #setPackageSuffix("service.impl")
 
-import com.oceancloud.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
+import com.oceancloud.grampus.framework.mybatis.service.impl.EnhancedBaseServiceImpl;
 import $!{tableInfo.savePackageName}.dao.$!{tableInfo.name}Dao;
 import $!{tableInfo.savePackageName}.entity.$!{tableInfo.name};
 import $!{tableInfo.savePackageName}.dto.$!{tableInfo.name}DTO;
@@ -155,9 +155,9 @@ $!define
 ##定义实体对象名
 #set($entityName = $!tool.firstLowerCase($!tableInfo.name))
 
-import com.oceancloud.grampus.common.core.constant.Constant;
-import com.oceancloud.grampus.common.core.result.Result;
-import com.oceancloud.grampus.common.mybatis.page.PageData;
+import com.oceancloud.grampus.framework.core.constant.Constant;
+import com.oceancloud.grampus.framework.core.result.Result;
+import com.oceancloud.grampus.framework.mybatis.page.PageData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

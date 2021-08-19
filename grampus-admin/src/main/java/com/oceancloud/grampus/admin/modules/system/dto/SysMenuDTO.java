@@ -1,6 +1,6 @@
 package com.oceancloud.grampus.admin.modules.system.dto;
 
-import com.oceancloud.grampus.common.core.utils.tree.TreeNode;
+import com.oceancloud.grampus.framework.core.utils.tree.TreeNode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

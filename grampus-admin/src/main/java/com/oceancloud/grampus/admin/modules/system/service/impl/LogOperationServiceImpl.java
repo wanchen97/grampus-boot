@@ -1,6 +1,6 @@
 package com.oceancloud.grampus.admin.modules.system.service.impl;
 
-import com.oceancloud.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
+import com.oceancloud.grampus.framework.mybatis.service.impl.EnhancedBaseServiceImpl;
 import com.oceancloud.grampus.admin.modules.system.dao.LogOperationDao;
 import com.oceancloud.grampus.admin.modules.system.entity.LogOperation;
 import com.oceancloud.grampus.admin.modules.system.dto.LogOperationDTO;

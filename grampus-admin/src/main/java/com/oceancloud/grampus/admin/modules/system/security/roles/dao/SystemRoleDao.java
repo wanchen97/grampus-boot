@@ -1,7 +1,7 @@
 package com.oceancloud.grampus.admin.modules.system.security.roles.dao;
 
 import com.oceancloud.grampus.admin.modules.system.security.roles.dto.SystemRolePermDTO;
-import com.oceancloud.grampus.common.mybatis.annotation.MyBatisMapper;
+import com.oceancloud.grampus.framework.mybatis.annotation.MyBatisMapper;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Param;
 

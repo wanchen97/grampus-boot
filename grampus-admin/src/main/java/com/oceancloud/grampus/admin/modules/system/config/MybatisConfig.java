@@ -1,12 +1,12 @@
 package com.oceancloud.grampus.admin.modules.system.config;
 
 import com.oceancloud.grampus.admin.modules.system.security.utils.SecurityUtils;
-import com.oceancloud.grampus.common.core.utils.ReflectUtil;
-import com.oceancloud.grampus.common.mybatis.annotation.FieldFill;
-import com.oceancloud.grampus.common.mybatis.annotation.TableField;
-import com.oceancloud.grampus.common.mybatis.handler.FieldFillHandler;
-import com.oceancloud.grampus.common.mybatis.interceptor.FieldFillInterceptor;
-import com.oceancloud.grampus.common.mybatis.interceptor.TableFieldObject;
+import com.oceancloud.grampus.framework.core.utils.ReflectUtil;
+import com.oceancloud.grampus.framework.mybatis.annotation.FieldFill;
+import com.oceancloud.grampus.framework.mybatis.annotation.TableField;
+import com.oceancloud.grampus.framework.mybatis.handler.FieldFillHandler;
+import com.oceancloud.grampus.framework.mybatis.interceptor.FieldFillInterceptor;
+import com.oceancloud.grampus.framework.mybatis.interceptor.TableFieldObject;
 import org.apache.ibatis.mapping.SqlCommandType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

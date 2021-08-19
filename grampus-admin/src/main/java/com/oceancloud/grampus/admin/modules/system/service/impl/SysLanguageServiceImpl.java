@@ -1,10 +1,10 @@
 package com.oceancloud.grampus.admin.modules.system.service.impl;
 
 import com.google.common.collect.Maps;
-import com.oceancloud.grampus.common.core.utils.CollectionUtil;
-import com.oceancloud.grampus.common.core.utils.ObjectUtil;
-import com.oceancloud.grampus.common.core.utils.StringUtil;
-import com.oceancloud.grampus.common.mybatis.service.impl.EnhancedBaseServiceImpl;
+import com.oceancloud.grampus.framework.core.utils.CollectionUtil;
+import com.oceancloud.grampus.framework.core.utils.ObjectUtil;
+import com.oceancloud.grampus.framework.core.utils.StringUtil;
+import com.oceancloud.grampus.framework.mybatis.service.impl.EnhancedBaseServiceImpl;
 import com.oceancloud.grampus.admin.modules.system.dao.SysLanguageDao;
 import com.oceancloud.grampus.admin.modules.system.entity.SysLanguage;
 import com.oceancloud.grampus.admin.modules.system.dto.SysLanguageDTO;
