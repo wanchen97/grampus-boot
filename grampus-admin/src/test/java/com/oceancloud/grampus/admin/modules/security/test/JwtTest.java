@@ -1,4 +1,4 @@
-package com.oceancloud.grampus.framework.security.test;
+package com.oceancloud.grampus.admin.modules.security.test;
 
 import com.oceancloud.grampus.admin.GrampusBootAdminApplication;
 import com.oceancloud.grampus.framework.redis.utils.RedisCache;
