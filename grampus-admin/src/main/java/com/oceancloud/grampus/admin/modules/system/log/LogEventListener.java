@@ -1,7 +1,7 @@
 package com.oceancloud.grampus.admin.modules.system.log;
 
 import com.oceancloud.grampus.admin.modules.system.entity.LogOperation;
-import com.oceancloud.grampus.admin.modules.system.security.manager.JwtTokenManager;
+import com.oceancloud.grampus.admin.modules.security.manager.JwtTokenManager;
 import com.oceancloud.grampus.admin.modules.system.service.LogOperationService;
 import com.oceancloud.grampus.framework.core.utils.BeanUtil;
 import com.oceancloud.grampus.framework.log.event.LogEvent;

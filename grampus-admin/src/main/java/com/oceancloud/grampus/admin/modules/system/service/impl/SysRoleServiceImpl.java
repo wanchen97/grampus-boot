@@ -3,7 +3,7 @@ package com.oceancloud.grampus.admin.modules.system.service.impl;
 import com.oceancloud.grampus.admin.modules.system.dto.SysRoleDTO;
 import com.oceancloud.grampus.admin.modules.system.dao.SysRoleDao;
 import com.oceancloud.grampus.admin.modules.system.entity.SysRole;
-import com.oceancloud.grampus.admin.modules.system.security.redis.SystemRolePermRedis;
+import com.oceancloud.grampus.admin.modules.security.redis.SystemRolePermRedis;
 import com.oceancloud.grampus.admin.modules.system.service.SysRoleMenuService;
 import com.oceancloud.grampus.admin.modules.system.service.SysRoleService;
 import com.oceancloud.grampus.framework.mybatis.service.impl.EnhancedBaseServiceImpl;

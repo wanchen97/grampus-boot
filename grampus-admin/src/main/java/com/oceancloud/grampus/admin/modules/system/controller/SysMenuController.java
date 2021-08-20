@@ -1,8 +1,8 @@
 package com.oceancloud.grampus.admin.modules.system.controller;
 
-import com.oceancloud.grampus.admin.modules.system.code.ErrorCode;
+import com.oceancloud.grampus.admin.code.ErrorCode;
 import com.oceancloud.grampus.admin.modules.system.dto.SysMenuDTO;
-import com.oceancloud.grampus.admin.modules.system.security.utils.SecurityUtils;
+import com.oceancloud.grampus.admin.modules.security.utils.SecurityUtils;
 import com.oceancloud.grampus.admin.modules.system.service.SysLanguageService;
 import com.oceancloud.grampus.admin.modules.system.service.SysMenuService;
 import com.oceancloud.grampus.framework.core.utils.tree.TreeUtils;
