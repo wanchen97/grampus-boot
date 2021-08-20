@@ -1,9 +1,9 @@
 package com.oceancloud.grampus.admin.modules.system.service.impl;
 
 import com.oceancloud.grampus.admin.modules.system.dto.SysUserDTO;
-import com.oceancloud.grampus.admin.modules.system.security.enums.SuperAdminEnum;
-import com.oceancloud.grampus.admin.modules.system.security.redis.SystemUserDetailsRedis;
-import com.oceancloud.grampus.admin.modules.system.security.utils.SecurityUtils;
+import com.oceancloud.grampus.admin.modules.security.enums.SuperAdminEnum;
+import com.oceancloud.grampus.admin.modules.security.redis.SystemUserDetailsRedis;
+import com.oceancloud.grampus.admin.modules.security.utils.SecurityUtils;
 import com.oceancloud.grampus.admin.modules.system.service.SysUserRoleService;
 import com.oceancloud.grampus.framework.core.utils.BeanUtil;
 import com.oceancloud.grampus.framework.core.utils.CollectionUtil;

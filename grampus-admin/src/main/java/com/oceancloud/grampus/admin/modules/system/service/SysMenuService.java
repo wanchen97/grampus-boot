@@ -1,7 +1,7 @@
 package com.oceancloud.grampus.admin.modules.system.service;
 
 import com.oceancloud.grampus.admin.modules.system.dto.SysMenuDTO;
-import com.oceancloud.grampus.admin.modules.system.security.users.SystemUserDetails;
+import com.oceancloud.grampus.admin.modules.security.users.SystemUserDetails;
 import com.oceancloud.grampus.admin.modules.system.entity.SysMenu;
 import com.oceancloud.grampus.framework.mybatis.service.EnhancedBaseService;
 
