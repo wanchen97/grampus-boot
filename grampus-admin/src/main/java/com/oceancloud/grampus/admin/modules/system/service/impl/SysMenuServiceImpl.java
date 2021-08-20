@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  * 菜单表 服务实现类
  *
  * @author Beck
- * @since 2020-12-09 19:49:31
+ * @since 2020-12-09
  */
 @AllArgsConstructor
 @Service("sysMenuService")

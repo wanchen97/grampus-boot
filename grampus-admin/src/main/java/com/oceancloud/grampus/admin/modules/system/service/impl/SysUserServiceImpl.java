@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
  * 用户表 服务实现类
  *
  * @author Beck
- * @since 2020-12-09 19:50:59
+ * @since 2020-12-09
  */
 @AllArgsConstructor
 @Service("sysUserService")
