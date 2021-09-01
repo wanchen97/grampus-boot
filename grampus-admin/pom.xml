@@ -22,7 +22,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.oceancloud</groupId>
-			<artifactId>grampus-framework-swagger</artifactId>
+			<artifactId>grampus-framework-knife4j</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.oceancloud</groupId>
