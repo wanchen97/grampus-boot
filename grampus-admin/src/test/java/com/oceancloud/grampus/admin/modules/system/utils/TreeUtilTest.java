@@ -2,7 +2,7 @@ package com.oceancloud.grampus.admin.modules.system.utils;
 
 import com.google.common.collect.Lists;
 import com.oceancloud.grampus.framework.core.utils.tree.TreeNode;
-import com.oceancloud.grampus.framework.core.utils.tree.TreeUtils;
+import com.oceancloud.grampus.framework.core.utils.tree.TreeUtil;
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ import java.util.List;
  * @since 2021-03-31
  */
 @Slf4j
-public class TreeUtilsTest {
+public class TreeUtilTest {
 
 	@Test
 	public void test() {
@@ -44,7 +44,7 @@ public class TreeUtilsTest {
 		list.add(s9);
 		list.add(s10);
 //		List<SysMenuEntity> trees = TreeBuildUtils.buildTree(list, 2L);
-		List<SysMenuEntity> trees2 = TreeUtils.build(list);
+		List<SysMenuEntity> trees2 = TreeUtil.build(list);
 //		log.info("tree:{}", trees);
 		log.info("tree2:{}", trees2);
 	}
