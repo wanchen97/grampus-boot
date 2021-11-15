@@ -8,7 +8,7 @@ import com.oceancloud.grampus.admin.modules.system.service.SysLanguageService;
 import com.oceancloud.grampus.framework.core.utils.CollectionUtil;
 import com.oceancloud.grampus.framework.core.utils.ObjectUtil;
 import com.oceancloud.grampus.framework.core.utils.WebUtil;
-import com.oceancloud.grampus.framework.core.utils.chars.StringPool;
+import com.oceancloud.grampus.framework.core.utils.StringPool;
 import com.oceancloud.grampus.framework.core.utils.tree.TreeUtil;
 import com.oceancloud.grampus.framework.core.utils.BeanUtil;
 import com.oceancloud.grampus.admin.modules.system.dao.SysMenuDao;
