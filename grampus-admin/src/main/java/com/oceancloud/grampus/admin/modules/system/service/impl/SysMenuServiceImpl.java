@@ -1,5 +1,7 @@
 package com.oceancloud.grampus.admin.modules.system.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.oceancloud.grampus.admin.modules.system.dto.SysMenuDTO;
 import com.oceancloud.grampus.admin.modules.system.enums.MenuTypeEnum;
 import com.oceancloud.grampus.admin.modules.security.enums.SuperAdminEnum;
@@ -38,11 +40,13 @@ public class SysMenuServiceImpl extends EnhancedBaseServiceImpl<SysMenuDao, SysM
 
 	@Override
 	public List<SysMenuDTO> getMenuList(Integer type) {
-		Example.Builder exampleBuilder = Example.builder(SysMenu.class).orderBy("sort", "id");
-		if (ObjectUtil.isNotEmpty(type)) {
-			exampleBuilder = exampleBuilder.where(WeekendSqls.<SysMenu>custom().andEqualTo(SysMenu::getType, type));
-		}
-		List<SysMenu> menuList = baseMapper.selectByExample(exampleBuilder.build());
+//		Example.Builder exampleBuilder = Example.builder(SysMenu.class).orderBy("sort", "id");
+//		if (ObjectUtil.isNotEmpty(type)) {
+//			exampleBuilder = exampleBuilder.where(WeekendSqls.<SysMenu>custom().andEqualTo(SysMenu::getType, type));
+//		}
+//		List<SysMenu> menuList = baseMapper.selectByExample(exampleBuilder.build());
+		LambdaQueryWrapper<SysMenu> wrapper = Wrappers.<SysMenu>lambdaQuery().eq(SysMenu::getType, type);
+		List<SysMenu> menuList = baseMapper.selectList(wrapper);
 		convertLanguage(menuList);
 		return BeanUtil.copyList(menuList, SysMenuDTO.class);
 	}
@@ -76,9 +80,10 @@ public class SysMenuServiceImpl extends EnhancedBaseServiceImpl<SysMenuDao, SysM
 
 	@Override
 	public List<SysMenuDTO> getListByPid(Long pid) {
-		SysMenu sysMenu = new SysMenu();
-		sysMenu.setParentId(pid);
-		List<SysMenu> menuList = baseMapper.select(sysMenu);
+//		SysMenu sysMenu = new SysMenu();
+//		sysMenu.setParentId(pid);
+		LambdaQueryWrapper<SysMenu> wrapper = Wrappers.<SysMenu>lambdaQuery().eq(SysMenu::getParentId, pid);
+		List<SysMenu> menuList = baseMapper.selectList(wrapper);
 		convertLanguage(menuList);
 		return BeanUtil.copyList(menuList, SysMenuDTO.class);
 	}
