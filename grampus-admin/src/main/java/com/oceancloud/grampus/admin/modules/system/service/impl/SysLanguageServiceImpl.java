@@ -12,8 +12,6 @@ import com.oceancloud.grampus.admin.modules.system.entity.SysLanguage;
 import com.oceancloud.grampus.admin.modules.system.dto.SysLanguageDTO;
 import com.oceancloud.grampus.admin.modules.system.service.SysLanguageService;
 import org.springframework.stereotype.Service;
-import tk.mybatis.mapper.entity.Example;
-import tk.mybatis.mapper.weekend.WeekendSqls;
 
 import java.util.List;
 import java.util.Map;

@@ -1,11 +1,6 @@
 package com.oceancloud.grampus.admin.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.TableInfo;
-import com.baomidou.mybatisplus.core.metadata.TableInfoHelper;
-import com.baomidou.mybatisplus.core.toolkit.Assert;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.oceancloud.grampus.framework.mybatis.service.impl.BaseServiceImpl;
 import com.oceancloud.grampus.admin.modules.system.dao.SysRoleMenuDao;
@@ -13,16 +8,11 @@ import com.oceancloud.grampus.admin.modules.system.entity.SysRoleMenu;
 import com.oceancloud.grampus.admin.modules.system.service.SysRoleMenuService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tk.mybatis.mapper.entity.Example;
-import tk.mybatis.mapper.util.Sqls;
 
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
-
-import static com.baomidou.mybatisplus.core.toolkit.Wrappers.lambdaQuery;
 
 /**
  * 角色菜单表 服务实现类

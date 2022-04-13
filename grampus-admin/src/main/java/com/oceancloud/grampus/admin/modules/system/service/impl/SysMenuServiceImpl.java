@@ -8,7 +8,6 @@ import com.oceancloud.grampus.admin.modules.security.enums.SuperAdminEnum;
 import com.oceancloud.grampus.admin.modules.security.users.SystemUserDetails;
 import com.oceancloud.grampus.admin.modules.system.service.SysLanguageService;
 import com.oceancloud.grampus.framework.core.utils.CollectionUtil;
-import com.oceancloud.grampus.framework.core.utils.ObjectUtil;
 import com.oceancloud.grampus.framework.core.utils.WebUtil;
 import com.oceancloud.grampus.framework.core.utils.StringPool;
 import com.oceancloud.grampus.framework.core.utils.tree.TreeUtil;
@@ -20,8 +19,6 @@ import com.oceancloud.grampus.framework.core.utils.StringUtil;
 import com.oceancloud.grampus.framework.mybatis.service.impl.EnhancedBaseServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import tk.mybatis.mapper.entity.Example;
-import tk.mybatis.mapper.weekend.WeekendSqls;
 
 import java.util.*;
 import java.util.stream.Collectors;
