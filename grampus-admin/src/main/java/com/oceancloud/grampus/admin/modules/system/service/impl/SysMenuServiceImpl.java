@@ -45,7 +45,7 @@ public class SysMenuServiceImpl extends EnhancedBaseServiceImpl<SysMenuDao, SysM
 //			exampleBuilder = exampleBuilder.where(WeekendSqls.<SysMenu>custom().andEqualTo(SysMenu::getType, type));
 //		}
 //		List<SysMenu> menuList = baseMapper.selectByExample(exampleBuilder.build());
-		LambdaQueryWrapper<SysMenu> wrapper = Wrappers.<SysMenu>lambdaQuery().eq(SysMenu::getType, type);
+		LambdaQueryWrapper<SysMenu> wrapper = Wrappers.<SysMenu>lambdaQuery().eq(type != null, SysMenu::getType, type);
 		List<SysMenu> menuList = baseMapper.selectList(wrapper);
 		convertLanguage(menuList);
 		return BeanUtil.copyList(menuList, SysMenuDTO.class);
