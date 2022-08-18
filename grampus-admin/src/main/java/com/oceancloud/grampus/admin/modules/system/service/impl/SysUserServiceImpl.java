@@ -48,7 +48,7 @@ public class SysUserServiceImpl extends EnhancedBaseServiceImpl<SysUserDao, SysU
 
 	@Override
 	public void updatePassword(Long userId, String newPassword) {
-		SysUser sysUser = selectById(userId);
+		SysUser sysUser = getById(userId);
 		// 超管才能修改超管
 		if (SuperAdminEnum.TRUE.getValue().equals(sysUser.getSuperAdmin())
 				&& !SuperAdminEnum.TRUE.getValue().equals(SecurityUtils.getUserDetails().getSuperAdmin())) {
@@ -62,7 +62,7 @@ public class SysUserServiceImpl extends EnhancedBaseServiceImpl<SysUserDao, SysU
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public void save(SysUserDTO dto) {
+	public void saveOne(SysUserDTO dto) {
 		SysUser entity = BeanUtil.copy(dto, SysUser.class);
 		String plainPwd = entity.getPassword();
 		// 新建账号支持空密码
@@ -78,7 +78,7 @@ public class SysUserServiceImpl extends EnhancedBaseServiceImpl<SysUserDao, SysU
 	@Transactional(rollbackFor = Exception.class)
 	public void modifyById(SysUserDTO dto) {
 		SysUser entity = BeanUtil.copy(dto, SysUser.class);
-		SysUser sysUser = selectById(entity.getId());
+		SysUser sysUser = getById(entity.getId());
 		// 超管才能修改超管
 		if (SuperAdminEnum.TRUE.getValue().equals(sysUser.getSuperAdmin())
 				&& !SuperAdminEnum.TRUE.getValue().equals(SecurityUtils.getUserDetails().getSuperAdmin())) {

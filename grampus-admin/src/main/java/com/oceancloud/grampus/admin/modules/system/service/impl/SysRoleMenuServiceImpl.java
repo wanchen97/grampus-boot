@@ -64,7 +64,7 @@ public class SysRoleMenuServiceImpl extends BaseServiceImpl<SysRoleMenuDao, SysR
 	}
 
 	@Override
-	public void deleteByRoleIds(Collection<? extends Serializable> roleIds) {
+	public void deleteByRoleIds(Collection<?> roleIds) {
 //		baseMapper.deleteByExample(Example.builder(SysRoleMenu.class)
 //				.where(Sqls.custom().andIn("roleId", roleIds))
 //				.build());

@@ -36,5 +36,5 @@ public interface SysRoleMenuService extends BaseService<SysRoleMenu> {
 	 *
 	 * @param roleIds 角色ID
 	 */
-	void deleteByRoleIds(Collection<? extends Serializable> roleIds);
+	void deleteByRoleIds(Collection<?> roleIds);
 }

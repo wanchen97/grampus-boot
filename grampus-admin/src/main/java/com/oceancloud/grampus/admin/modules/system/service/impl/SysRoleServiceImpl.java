@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -29,8 +28,8 @@ public class SysRoleServiceImpl extends EnhancedBaseServiceImpl<SysRoleDao, SysR
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public void save(SysRoleDTO dto) {
-		super.save(dto);
+	public void saveOne(SysRoleDTO dto) {
+		super.saveOne(dto);
 		sysRoleMenuService.saveOrUpdate(dto.getId(), dto.getMenuIdList());
 	}
 
@@ -44,9 +43,11 @@ public class SysRoleServiceImpl extends EnhancedBaseServiceImpl<SysRoleDao, SysR
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public void deleteBatchIds(Collection<? extends Serializable> idList) {
-		super.deleteBatchIds(idList);
+	public boolean removeBatchByIds(Collection<?> idList) {
+		super.removeBatchByIds(idList);
 		sysRoleMenuService.deleteByRoleIds(idList);
 		idList.forEach(roleId -> systemRolePermRedis.removeSystemRolePerms((Long) roleId));
+		// TODO 优化删除结果
+		return true;
 	}
 }

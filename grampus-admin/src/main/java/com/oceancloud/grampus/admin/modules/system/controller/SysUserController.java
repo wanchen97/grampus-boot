@@ -77,7 +77,7 @@ public class SysUserController {
 	@PreAuthorize("hasAuthority('sys:user:save')")
 	public Result<Void> save(@RequestBody SysUserReqDTO reqDTO) {
 		SysUserDTO dto = BeanUtil.copy(reqDTO, SysUserDTO.class);
-		sysUserService.save(dto);
+		sysUserService.saveOne(dto);
 		return Result.success();
 	}
 
@@ -109,7 +109,7 @@ public class SysUserController {
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:user:delete')")
 	public Result<Void> delete(@RequestBody List<Long> ids) {
-		sysUserService.deleteBatchIds(ids);
+		sysUserService.removeBatchByIds(ids);
 		return Result.success();
 	}
 }

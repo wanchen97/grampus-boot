@@ -32,6 +32,6 @@ public class LogEventListener {
 	public void onApplicationEvent(LogEvent event) {
 		LogOperation logOperation = BeanUtil.copy(event, LogOperation.class);
 		logOperation.setSubject(jwtTokenManager.getSubject(event.getAuthorization()));
-		logOperationService.insert(logOperation);
+		logOperationService.save(logOperation);
 	}
 }

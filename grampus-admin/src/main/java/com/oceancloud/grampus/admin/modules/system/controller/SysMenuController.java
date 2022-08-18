@@ -80,7 +80,7 @@ public class SysMenuController {
 	@PostMapping
 	@PreAuthorize("hasAuthority('sys:menu:save')")
 	public Result<Void> save(@RequestBody SysMenuDTO dto) {
-		sysMenuService.save(dto);
+		sysMenuService.saveOne(dto);
 		return Result.success();
 	}
 
@@ -103,7 +103,7 @@ public class SysMenuController {
 		if (list.size() > 0) {
 			return Result.error(ErrorCode.System.SUB_MENU_EXIST.getCode());
 		}
-		sysMenuService.deleteById(id);
+		sysMenuService.removeById(id);
 		return Result.success();
 	}
 }

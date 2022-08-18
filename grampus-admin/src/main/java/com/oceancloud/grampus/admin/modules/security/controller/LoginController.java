@@ -60,7 +60,7 @@ public class LoginController {
 		userDTO.setUserNo(userNo);
 		userDTO.setPassword(passwordEncoder.encode(password));
 		userDTO.setName(name);
-		sysUserService.save(userDTO);
+		sysUserService.saveOne(userDTO);
 		return Result.success();
 	}
 
