@@ -215,7 +215,7 @@ public class $!{tableName} {
     @PostMapping
     @PreAuthorize("hasAuthority('$!tableInfo.obj.name:save')")
     public Result<Void> save(@RequestBody $!{tableInfo.name}DTO params) {
-        $!{serviceName}.save(params);
+        $!{serviceName}.saveOne(params);
         return Result.success();
     }
 
@@ -231,7 +231,7 @@ public class $!{tableName} {
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('$!tableInfo.obj.name:delete')")
     public Result<Void> delete(@PathVariable Long id) {
-        $!{serviceName}.deleteById(id);
+        $!{serviceName}.removeById(id);
         return Result.success();
     }
 }

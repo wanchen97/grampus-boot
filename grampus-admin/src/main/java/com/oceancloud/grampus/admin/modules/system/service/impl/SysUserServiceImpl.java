@@ -1,5 +1,7 @@
 package com.oceancloud.grampus.admin.modules.system.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.oceancloud.grampus.admin.modules.system.dto.SysUserDTO;
 import com.oceancloud.grampus.admin.modules.security.enums.SuperAdminEnum;
 import com.oceancloud.grampus.admin.modules.security.redis.SystemUserDetailsRedis;
@@ -22,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
  * 用户表 服务实现类
  *
  * @author Beck
- * @since 2020-12-09 19:50:59
+ * @since 2020-12-09
  */
 @AllArgsConstructor
 @Service("sysUserService")
@@ -34,15 +36,19 @@ public class SysUserServiceImpl extends EnhancedBaseServiceImpl<SysUserDao, SysU
 
 	@Override
 	public SysUser getSysUserByUserNo(String userNo) {
-		SysUser entity = new SysUser();
-		entity.setUserNo(userNo);
-		entity.setDelFlag(DelFlagEnum.NORMAL.getValue());
-		return baseMapper.selectOne(entity);
+//		SysUser entity = new SysUser();
+//		entity.setUserNo(userNo);
+//		entity.setDelFlag(DelFlagEnum.NORMAL.getValue());
+
+		LambdaQueryWrapper<SysUser> wrapper = Wrappers.<SysUser>lambdaQuery()
+				.eq(SysUser::getUserNo, userNo)
+				.eq(SysUser::getDelFlag, DelFlagEnum.NORMAL.getValue());
+		return baseMapper.selectOne(wrapper);
 	}
 
 	@Override
 	public void updatePassword(Long userId, String newPassword) {
-		SysUser sysUser = selectById(userId);
+		SysUser sysUser = getById(userId);
 		// 超管才能修改超管
 		if (SuperAdminEnum.TRUE.getValue().equals(sysUser.getSuperAdmin())
 				&& !SuperAdminEnum.TRUE.getValue().equals(SecurityUtils.getUserDetails().getSuperAdmin())) {
@@ -51,12 +57,12 @@ public class SysUserServiceImpl extends EnhancedBaseServiceImpl<SysUserDao, SysU
 		SysUser entity = new SysUser();
 		entity.setId(userId);
 		entity.setPassword(StringUtil.isNotBlank(newPassword) ? passwordEncoder.encode(newPassword) : null);
-		baseMapper.updateByPrimaryKeySelective(entity);
+		baseMapper.updateById(entity);
 	}
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public void save(SysUserDTO dto) {
+	public void saveOne(SysUserDTO dto) {
 		SysUser entity = BeanUtil.copy(dto, SysUser.class);
 		String plainPwd = entity.getPassword();
 		// 新建账号支持空密码
@@ -72,7 +78,7 @@ public class SysUserServiceImpl extends EnhancedBaseServiceImpl<SysUserDao, SysU
 	@Transactional(rollbackFor = Exception.class)
 	public void modifyById(SysUserDTO dto) {
 		SysUser entity = BeanUtil.copy(dto, SysUser.class);
-		SysUser sysUser = selectById(entity.getId());
+		SysUser sysUser = getById(entity.getId());
 		// 超管才能修改超管
 		if (SuperAdminEnum.TRUE.getValue().equals(sysUser.getSuperAdmin())
 				&& !SuperAdminEnum.TRUE.getValue().equals(SecurityUtils.getUserDetails().getSuperAdmin())) {

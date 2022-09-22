@@ -12,7 +12,7 @@ import java.util.Set;
  * 菜单表 服务接口
  *
  * @author Beck
- * @since 2020-12-09 19:49:30
+ * @since 2020-12-09
  */
 public interface SysMenuService extends EnhancedBaseService<SysMenu, SysMenuDTO> {
 
