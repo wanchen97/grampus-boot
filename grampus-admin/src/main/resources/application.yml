@@ -9,6 +9,9 @@ spring:
     active: "@profiles.active@"
   application:
     name: "@artifactId@"
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 mybatis:
   configuration:
