@@ -1,5 +1,8 @@
 server:
   port: 28080
+  undertow:
+    threads:
+      worker: 500
 
 spring:
   profiles:
