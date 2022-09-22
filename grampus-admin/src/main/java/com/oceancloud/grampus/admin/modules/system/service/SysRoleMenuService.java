@@ -11,7 +11,7 @@ import java.util.List;
  * 角色菜单表 服务接口
  *
  * @author Beck
- * @since 2020-12-09 19:50:43
+ * @since 2020-12-09
  */
 public interface SysRoleMenuService extends BaseService<SysRoleMenu> {
 
@@ -36,5 +36,5 @@ public interface SysRoleMenuService extends BaseService<SysRoleMenu> {
 	 *
 	 * @param roleIds 角色ID
 	 */
-	void deleteByRoleIds(Collection<? extends Serializable> roleIds);
+	void deleteByRoleIds(Collection<?> roleIds);
 }
