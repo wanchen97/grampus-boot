@@ -11,7 +11,7 @@
 	<resultMap id="systemRolePermResultMap" type="com.oceancloud.grampus.admin.modules.security.roles.dto.SystemRolePermDTO">
 		<result property="roleId" column="role_id" javaType="java.lang.Long"/>
 		<collection property="permission" ofType="java.lang.String" javaType="java.util.HashSet">
-			<result property="permission" column="permission" javaType="java.lang.String"/>
+			<result column="permission" javaType="java.lang.String"/>
 		</collection>
 	</resultMap>
 	<select id="getPermissionsByRoleIds" resultMap="systemRolePermResultMap">

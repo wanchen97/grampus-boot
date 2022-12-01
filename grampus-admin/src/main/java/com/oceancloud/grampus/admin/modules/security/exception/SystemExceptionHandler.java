@@ -27,7 +27,7 @@ public class SystemExceptionHandler {
 	public Result<Object> handleException(Exception e) {
 		if (e instanceof ApiException) {
 			ApiException ex = (ApiException) e;
-			Result.error(ex.getCode(), null);
+			return Result.error(ex.getCode(), null);
 		}
 		log.error(e.getMessage(), e);
 		return Result.error(ErrorCode.Global.UNKNOWN_ERROR_CODE.getCode(), ErrorCode.Global.UNKNOWN_ERROR_CODE.getMsg());

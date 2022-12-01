@@ -1,11 +1,17 @@
 server:
   port: 28080
+  undertow:
+    threads:
+      worker: 500
 
 spring:
   profiles:
     active: "@profiles.active@"
   application:
     name: "@artifactId@"
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 mybatis:
   configuration:
