@@ -58,11 +58,11 @@ public interface ErrorCode {
 		/**
 		 * 未知异常错误码
 		 */
-		UNKNOWN_ERROR_CODE("-1", "UNKNOWN_ERROR_CODE"),
+		UNKNOWN_ERROR_CODE("-1", "未知异常错误码"),
 		/**
 		 * 入参格式异常
 		 */
-		PARAMS_ERROR_CODE("-1", "Transfer data error");
+		PARAMS_ERROR_CODE("-1", "入参格式异常");
 
 		@Getter String code;
 		@Getter String msg;
@@ -77,31 +77,31 @@ public interface ErrorCode {
 		/**
 		 * 认证传参错误异常
 		 */
-		AUTH_PARAMS_ERROR("101101P001", "AUTH_PARAMS_ERROR"),
+		AUTH_PARAMS_ERROR("101101P001", "认证传参错误异常"),
 		/**
 		 * 用户密码错误异常
 		 */
-		USER_PASSWORD_ERROR("101101B001", "USER_PASSWORD_ERROR"),
+		USER_PASSWORD_ERROR("101101B001", "用户密码错误异常"),
 		/**
 		 * 会员不存在异常
 		 */
-		USER_NOT_EXISTED("101101B002", "USER_NOT_EXISTED"),
+		USER_NOT_EXISTED("101101B002", "会员不存在异常"),
 		/**
 		 * 用户账号禁用异常
 		 */
-		USER_DISABLE_ERROR("101101B003", "USER_DISABLE_ERROR"),
+		USER_DISABLE_ERROR("101101B003", "用户账号禁用异常"),
 		/**
 		 * 用户访问权限异常
 		 */
-		USER_ACCESS_DENIED_ERROR("101101B004", "USER_ACCESS_DENIED_ERROR"),
+		USER_ACCESS_DENIED_ERROR("101101B004", "用户访问权限异常"),
 		/**
-		 * token失效异常
+		 * Token失效异常
 		 */
-		TOKEN_EXPIRED_ERROR("101101B005", "TOKEN_EXPIRED_ERROR"),
+		TOKEN_EXPIRED_ERROR("101101B005", "Token失效异常"),
 		/**
-		 * token解析失败异常
+		 * Token解析失败异常
 		 */
-		TOKEN_PARSED_ERROR("101101B006", "TOKEN_PARSED_ERROR");
+		TOKEN_PARSED_ERROR("101101B006", "Token解析失败异常");
 
 		@Getter String code;
 		@Getter String msg;
@@ -116,11 +116,11 @@ public interface ErrorCode {
 		/**
 		 * 存在子菜单异常
 		 */
-		SUB_MENU_EXIST("121201B001", "SUB_MENU_EXIST"),
+		SUB_MENU_EXIST("121201B001", "存在子菜单异常"),
 		/**
 		 * 用户密码错误异常
 		 */
-		USER_PASSWORD_ERROR("121201B002", "USER_PASSWORD_ERROR");
+		USER_PASSWORD_ERROR("121201B002", "用户密码错误异常");
 
 		@Getter String code;
 		@Getter String msg;

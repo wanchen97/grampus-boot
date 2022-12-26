@@ -13,7 +13,7 @@ public class TokenParsedException extends ApiException {
 	private static final long serialVersionUID = 985062659360376840L;
 
 	public TokenParsedException() {
-		super(ErrorCode.Auth.TOKEN_PARSED_ERROR.getCode());
+		super(ErrorCode.Auth.TOKEN_PARSED_ERROR.getCode(), ErrorCode.Auth.TOKEN_PARSED_ERROR.getMsg());
 	}
 
 	public TokenParsedException(String msg) {
