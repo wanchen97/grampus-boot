@@ -35,7 +35,7 @@ public class SystemExceptionHandler {
 	public Result<Object> handleException(Exception e) {
 		if (e instanceof ApiException) {
 			ApiException ex = (ApiException) e;
-			return Result.error(ex.getCode(), null);
+			return Result.error(ex.getCode(), ex.getMessage());
 		}
 		log.error(e.getMessage(), e);
 		return Result.error(ErrorCode.Global.UNKNOWN_ERROR_CODE.getCode(), ErrorCode.Global.UNKNOWN_ERROR_CODE.getMsg());
@@ -48,7 +48,7 @@ public class SystemExceptionHandler {
 	public Result<Object> handleInternalAuthenticationServiceException(InternalAuthenticationServiceException e) {
 		if (e.getCause() instanceof ApiException) {
 			ApiException ex = (ApiException) e.getCause();
-			return Result.error(ex.getCode(), null);
+			return Result.error(ex.getCode(), ex.getMessage());
 		}
 		log.error(e.getMessage(), e);
 		return Result.error(ErrorCode.Auth.USER_PASSWORD_ERROR.getCode(), ErrorCode.Auth.USER_PASSWORD_ERROR.getMsg());
