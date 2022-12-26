@@ -1,6 +1,7 @@
 package com.oceancloud.grampus.admin.modules.security.controller;
 
 import com.google.common.collect.Maps;
+import com.oceancloud.grampus.admin.modules.security.redis.SystemUserDetailsRedis;
 import com.oceancloud.grampus.admin.modules.system.dto.SysUserDTO;
 import com.oceancloud.grampus.admin.modules.system.dto.SysUserDetailsDTO;
 import com.oceancloud.grampus.admin.modules.system.enums.RequestPlatformEnum;
@@ -44,6 +45,7 @@ public class LoginController {
 	private final SysUserService sysUserService;
 	private final PasswordEncoder passwordEncoder;
 	private final JwtTokenManager jwtTokenManager;
+	private final SystemUserDetailsRedis systemUserDetailsRedis;
 
 	@ApiOperation("注册接口")
 	@PostMapping("/register")
@@ -75,6 +77,8 @@ public class LoginController {
 		SysUserDetailsDTO sysUserDetails = BeanUtil.copy(userDetails, SysUserDetailsDTO.class);
 
 		String token = jwtTokenManager.createToken(authentication, RequestPlatformEnum.ADMIN);
+		// TODO 待优化
+		systemUserDetailsRedis.removeSystemUserDetails(userDetails.getUserNo());
 
 		Map<String, Object> result = Maps.newHashMap();
 		result.put("userDetails", sysUserDetails);
