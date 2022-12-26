@@ -3,12 +3,20 @@ package com.oceancloud.grampus.admin.modules.security.exception;
 import com.oceancloud.grampus.admin.code.ErrorCode;
 import com.oceancloud.grampus.framework.core.exception.ApiException;
 import com.oceancloud.grampus.framework.core.result.Result;
+import com.oceancloud.grampus.framework.core.utils.CollectionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import java.util.Set;
 
 /**
  * 全局异常处理器
@@ -62,5 +70,37 @@ public class SystemExceptionHandler {
 	public Result<Object> handleAccessDeniedException(AccessDeniedException e) {
 		log.error(e.getMessage(), e);
 		return Result.error(ErrorCode.Auth.USER_ACCESS_DENIED_ERROR.getCode(), ErrorCode.Auth.USER_ACCESS_DENIED_ERROR.getMsg());
+	}
+
+	/**
+	 * Post请求参数校验异常
+	 */
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public Result<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+		FieldError fieldError = ex.getBindingResult().getFieldError();
+		return Result.error(ErrorCode.Global.PARAMS_ERROR_CODE.getCode(), fieldError.getDefaultMessage());
+	}
+
+	/**
+	 * Get请求参数校验异常
+	 */
+	@ExceptionHandler(ConstraintViolationException.class)
+	public Result<Object> handleConstraintViolationException(ConstraintViolationException ex) {
+		Set<ConstraintViolation<?>> eSet = ex.getConstraintViolations();
+		StringBuilder sb = new StringBuilder();
+		if(!CollectionUtil.isEmpty(eSet)) {
+			for (ConstraintViolation<?> constraintViolation : eSet) {
+				sb.append(constraintViolation.getMessage()).append("::");
+			}
+		}
+		return Result.error(ErrorCode.Global.PARAMS_ERROR_CODE.getCode(), sb.toString());
+	}
+
+	/**
+	 * 方法签名参数错误异常
+	 */
+	@ExceptionHandler(MissingServletRequestParameterException.class)
+	public Result<Object> handleMissingServletRequestParameterException(MissingServletRequestParameterException ex) {
+		return Result.error(ErrorCode.Global.PARAMS_ERROR_CODE.getCode(), ex.getMessage());
 	}
 }
