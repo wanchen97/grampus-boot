@@ -22,6 +22,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.beans.PropertyEditorSupport;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -146,6 +148,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		// Long类型转换为String类型(兼容JS长整数精度丢失问题)
 		simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
 		simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
+		simpleModule.addSerializer(BigInteger.class, ToStringSerializer.instance);
+		simpleModule.addSerializer(BigDecimal.class, ToStringSerializer.instance);
 
 		// ~ ======================= 时间序列化规则 ===============================
 		simpleModule.addSerializer(LocalDateTime.class, new LocalDateTimeToTimestampSerializer());
