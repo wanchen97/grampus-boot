@@ -2,7 +2,7 @@ package com.oceancloud.grampus.admin.config;
 
 import com.oceancloud.grampus.framework.core.utils.date.DatePattern;
 import com.oceancloud.grampus.framework.core.utils.date.DateUtil;
-import com.oceancloud.grampus.framework.core.utils.jackson.convert.EnhancedMappingJackson2HttpMessageConverter;
+import com.oceancloud.grampus.framework.core.utils.jackson.databind.MappingJacksonFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.support.FormattingConversionService;
@@ -10,6 +10,7 @@ import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.ResourceHttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
@@ -117,6 +118,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		converters.add(new ResourceHttpMessageConverter());
 		converters.add(new AllEncompassingFormHttpMessageConverter());
 		converters.add(new StringHttpMessageConverter());
-		converters.add(new EnhancedMappingJackson2HttpMessageConverter());
+		converters.add(new MappingJackson2HttpMessageConverter(MappingJacksonFactory.buildObjectMapper()));
 	}
 }
