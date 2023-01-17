@@ -13,7 +13,7 @@ public class TokenExpiredException extends ApiException {
 	private static final long serialVersionUID = -7284332526504876630L;
 
 	public TokenExpiredException() {
-		super(ErrorCode.Auth.TOKEN_EXPIRED_ERROR.getCode());
+		super(ErrorCode.Auth.TOKEN_EXPIRED_ERROR.getCode(), ErrorCode.Auth.TOKEN_EXPIRED_ERROR.getMsg());
 	}
 
 	public TokenExpiredException(String msg) {

@@ -49,10 +49,10 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 				// TODO Token失效依赖于JWT，无法强制踢出
 				tokenManager.validateToken(jwt);
 			} catch (ExpiredJwtException e) {
-				handleAuthenticationFailure(response, new TokenExpiredException("token expired."));
+				handleAuthenticationFailure(response, new TokenExpiredException());
 				return;
 			} catch (Exception e) {
-				handleAuthenticationFailure(response, new TokenParsedException("token invalid."));
+				handleAuthenticationFailure(response, new TokenParsedException());
 				return;
 			}
 			String subject = tokenManager.getSubject(jwt);
