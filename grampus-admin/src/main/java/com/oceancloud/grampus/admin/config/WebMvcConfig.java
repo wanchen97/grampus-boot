@@ -118,6 +118,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		converters.add(new ResourceHttpMessageConverter());
 		converters.add(new AllEncompassingFormHttpMessageConverter());
 		converters.add(new StringHttpMessageConverter());
-		converters.add(new MappingJackson2HttpMessageConverter(MappingJacksonFactory.buildObjectMapper()));
+		converters.add(jackson2HttpMessageConverter());
+	}
+
+	@Bean
+	public MappingJackson2HttpMessageConverter jackson2HttpMessageConverter() {
+		return new MappingJackson2HttpMessageConverter(MappingJacksonFactory.buildObjectMapper());
 	}
 }
