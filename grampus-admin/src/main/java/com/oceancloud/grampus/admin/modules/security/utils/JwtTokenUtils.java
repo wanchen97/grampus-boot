@@ -23,6 +23,7 @@ import java.util.List;
  * @author Beck
  * @since 2020-12-5
  */
+@Deprecated
 @Slf4j
 @Component
 public class JwtTokenUtils {

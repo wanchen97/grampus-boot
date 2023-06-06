@@ -14,6 +14,7 @@ import java.time.Duration;
  * @author Beck
  * @since 2021-04-02
  */
+@Deprecated
 @Component
 @AllArgsConstructor
 public class TokenStoreRedis {
