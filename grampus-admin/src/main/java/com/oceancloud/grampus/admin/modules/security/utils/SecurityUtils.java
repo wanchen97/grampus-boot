@@ -2,11 +2,11 @@ package com.oceancloud.grampus.admin.modules.security.utils;
 
 import com.oceancloud.grampus.admin.modules.security.users.SystemUserDetails;
 import com.oceancloud.grampus.framework.core.utils.WebUtil;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Security工具.

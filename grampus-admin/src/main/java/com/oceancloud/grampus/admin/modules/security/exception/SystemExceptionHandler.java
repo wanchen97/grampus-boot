@@ -4,6 +4,8 @@ import com.oceancloud.grampus.admin.code.ErrorCode;
 import com.oceancloud.grampus.framework.core.exception.ApiException;
 import com.oceancloud.grampus.framework.core.result.Result;
 import com.oceancloud.grampus.framework.core.utils.CollectionUtil;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -14,8 +16,6 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
 import java.util.Set;
 
 /**

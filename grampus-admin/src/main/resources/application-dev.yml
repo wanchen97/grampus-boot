@@ -14,18 +14,19 @@ spring:
       max-lifetime: 900000
       connection-timeout: 10000
       connection-test-query: SELECT 1
-  redis:
-    database: 0
-    host: 192.168.8.110
-    port: 6379
-    password: root
-    timeout: 6000ms
-    lettuce:
-      pool:
-        max-idle: 300
-        min-idle: 5
-        max-active: 1000
-        max-wait: 20000ms
+  data:
+    redis:
+      database: 0
+      host: 192.168.8.110
+      port: 6379
+      password: root
+      timeout: 6000ms
+      lettuce:
+        pool:
+          max-idle: 300
+          min-idle: 5
+          max-active: 1000
+          max-wait: 20000ms
 
 distributed:
   lock:
@@ -58,7 +59,7 @@ grampus:
         - "/upload/**"
         - "/swagger-resources/**"
         - "/v2/api-docs"
-        - "/v3/api-docs"
+        - "/v3/api-docs/**"
         - "/doc.html"
         - "/system/register/**"
         - "/system/login"
