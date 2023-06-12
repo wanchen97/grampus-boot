@@ -4,8 +4,8 @@ import com.oceancloud.grampus.admin.modules.system.query.LogOperationQuery;
 import com.oceancloud.grampus.framework.core.result.Result;
 import com.oceancloud.grampus.framework.mybatis.page.PageData;
 import com.oceancloud.grampus.framework.mybatis.page.PageQuery;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ import com.oceancloud.grampus.admin.modules.system.service.LogOperationService;
  * @author Beck
  * @since 2021-05-31
  */
-@Api(tags = "日志管理")
+@Tag(name = "日志管理")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/system/log/operation")
@@ -28,7 +28,7 @@ public class LogOperationController {
 
 	private final LogOperationService logOperationService;
 
-	@ApiOperation("操作日志分页查询")
+	@Operation(summary = "操作日志分页查询")
 	@GetMapping("page")
 	@PreAuthorize("hasAuthority('log:operation:list')")
 	public Result<PageData<LogOperationDTO>> page(PageQuery pageQuery, LogOperationQuery params) {

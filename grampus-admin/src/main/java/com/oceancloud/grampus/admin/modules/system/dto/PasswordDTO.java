@@ -1,7 +1,6 @@
 package com.oceancloud.grampus.admin.modules.system.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,17 +12,17 @@ import java.io.Serializable;
  * @since 2021-04-14
  */
 @Data
-@ApiModel(value = "修改密码")
+@Schema(description = "修改密码")
 public class PasswordDTO implements Serializable {
 	private static final long serialVersionUID = -4260149891670265974L;
 	/**
 	 * 原密码
 	 */
-	@ApiModelProperty(value = "原密码", required = true)
+	@Schema(description = "原密码", required = true)
 	private String password;
 	/**
 	 * 新密码
 	 */
-	@ApiModelProperty(value = "新密码", required = true)
+	@Schema(description = "新密码", required = true)
 	private String newPassword;
 }

@@ -10,9 +10,11 @@ import com.oceancloud.grampus.framework.excel.annotation.ResponseExcel;
 import com.oceancloud.grampus.framework.log.annotation.RequestLog;
 import com.oceancloud.grampus.framework.mybatis.page.PageData;
 import com.oceancloud.grampus.framework.mybatis.page.PageQuery;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +29,6 @@ import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * 系统参数管理
@@ -35,7 +36,7 @@ import java.util.Map;
  * @author Beck
  * @since 2021-01-21
  */
-@Api(tags = "系统参数管理")
+@Tag(name = "系统参数管理")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/system/param")
@@ -43,7 +44,7 @@ public class SysParamController {
 
 	private final SysParamService sysParamService;
 
-	@ApiOperation("参数分页查询")
+	@Operation(summary = "参数分页查询")
 	@GetMapping("page")
 	@PreAuthorize("hasAuthority('sys:param:list')")
 	public Result<PageData<SysParamDTO>> page(PageQuery pageQuery, SysParamQuery params) {
@@ -51,7 +52,7 @@ public class SysParamController {
 		return Result.success(result);
 	}
 
-	@ApiOperation("参数信息")
+	@Operation(summary = "参数信息")
 	@GetMapping("{id}")
 	@PreAuthorize("hasAuthority('sys:param:info')")
 	public Result<SysParamDTO> get(@PathVariable("id") Long id) {
@@ -60,7 +61,7 @@ public class SysParamController {
 	}
 
 	@RequestLog("保存参数")
-	@ApiOperation("保存参数")
+	@Operation(summary = "保存参数")
 	@PostMapping
 	@PreAuthorize("hasAuthority('sys:param:save')")
 	public Result<Void> save(@RequestBody SysParamDTO dto) {
@@ -69,7 +70,7 @@ public class SysParamController {
 	}
 
 	@RequestLog("修改参数")
-	@ApiOperation("修改参数")
+	@Operation(summary = "修改参数")
 	@PutMapping
 	@PreAuthorize("hasAuthority('sys:param:update')")
 	public Result<Void> update(@RequestBody SysParamDTO dto) {
@@ -78,7 +79,7 @@ public class SysParamController {
 	}
 
 	@RequestLog("删除参数")
-	@ApiOperation("删除参数")
+	@Operation(summary = "删除参数")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:param:delete')")
 	public Result<Void> delete(@RequestBody List<Long> ids) {
@@ -87,12 +88,12 @@ public class SysParamController {
 	}
 
 	@RequestLog("导出系统参数Excel")
-	@ApiOperation("Excel导出")
+	@Operation(summary = "Excel导出")
 	@GetMapping("export")
 	@ResponseExcel(name = "系统参数")
 	@PreAuthorize("hasAuthority('sys:param:export')")
-	@ApiImplicitParam(name = "code", value = "参数编码", paramType = "query", dataType = "String")
-	public List<SysParamExcel> export(@ApiIgnore @RequestParam SysParamQuery params) {
+	@Parameters(@Parameter(name = "code", description = "参数编码", in = ParameterIn.QUERY))
+	public List<SysParamExcel> export(@Parameter(hidden = true) @RequestParam SysParamQuery params) {
 		List<SysParamDTO> list = sysParamService.queryList(BeanUtil.copy(params, SysParamDTO.class));
 		return BeanUtil.copyList(list, SysParamExcel.class);
 	}

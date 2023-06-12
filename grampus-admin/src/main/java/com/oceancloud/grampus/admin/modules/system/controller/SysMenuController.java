@@ -8,9 +8,9 @@ import com.oceancloud.grampus.admin.modules.system.service.SysMenuService;
 import com.oceancloud.grampus.framework.core.utils.tree.TreeUtil;
 import com.oceancloud.grampus.framework.core.result.Result;
 import com.oceancloud.grampus.framework.log.annotation.RequestLog;
-import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,7 +31,7 @@ import java.util.Set;
  * @author Beck
  * @since 2021-01-21
  */
-@Api(tags = "菜单模块")
+@Tag(name = "菜单模块")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/system/menu")
@@ -40,21 +40,21 @@ public class SysMenuController {
 	private final SysMenuService sysMenuService;
 	private final SysLanguageService sysLanguageService;
 
-	@ApiOperation("导航栏")
+	@Operation(summary = "导航栏")
 	@GetMapping("nav")
 	public Result<List<SysMenuDTO>> nav() {
 		List<SysMenuDTO> list = sysMenuService.getUserMenuNavList(SecurityUtils.getUserDetails());
 		return Result.success(list);
 	}
 
-	@ApiOperation("菜单权限")
+	@Operation(summary = "菜单权限")
 	@GetMapping("permissions")
 	public Result<Set<String>> permissions() {
 		Set<String> permissions = sysMenuService.getUserPermissions(SecurityUtils.getUserDetails());
 		return Result.success(permissions);
 	}
 
-	@ApiOperation("菜单列表")
+	@Operation(summary = "菜单列表")
 	@ApiImplicitParam(name = "type", value = "菜单类型 0：菜单 1：按钮 null：全部", paramType = "query", dataType = "int")
 	@GetMapping("list")
 	@PreAuthorize("hasAuthority('sys:menu:list')")
@@ -63,7 +63,7 @@ public class SysMenuController {
 		return Result.success(TreeUtil.build(list));
 	}
 
-	@ApiOperation("菜单信息")
+	@Operation(summary = "菜单信息")
 	@GetMapping("{id}")
 	@PreAuthorize("hasAuthority('sys:menu:info')")
 	public Result<SysMenuDTO> get(@PathVariable("id") Long id) {
@@ -76,7 +76,7 @@ public class SysMenuController {
 	}
 
 	@RequestLog("保存菜单")
-	@ApiOperation("保存菜单")
+	@Operation(summary = "保存菜单")
 	@PostMapping
 	@PreAuthorize("hasAuthority('sys:menu:save')")
 	public Result<Void> save(@RequestBody SysMenuDTO dto) {
@@ -85,7 +85,7 @@ public class SysMenuController {
 	}
 
 	@RequestLog("更新菜单")
-	@ApiOperation("更新菜单")
+	@Operation(summary = "更新菜单")
 	@PutMapping
 	@PreAuthorize("hasAuthority('sys:menu:update')")
 	public Result<Void> update(@RequestBody SysMenuDTO dto) {
@@ -94,7 +94,7 @@ public class SysMenuController {
 	}
 
 	@RequestLog("删除菜单")
-	@ApiOperation("删除菜单")
+	@Operation(summary = "删除菜单")
 	@DeleteMapping("{id}")
 	@PreAuthorize("hasAuthority('sys:menu:delete')")
 	public Result<Void> delete(@PathVariable("id") Long id) {

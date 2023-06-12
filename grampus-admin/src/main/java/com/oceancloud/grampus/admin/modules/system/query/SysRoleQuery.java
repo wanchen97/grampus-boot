@@ -1,7 +1,6 @@
 package com.oceancloud.grampus.admin.modules.system.query;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,17 +12,17 @@ import java.io.Serializable;
  * @since 2021-08-20
  */
 @Data
-@ApiModel("系统角色")
+@Schema(description = "系统角色")
 public class SysRoleQuery implements Serializable {
 	private static final long serialVersionUID = -2904937768611925344L;
 	/**
 	 * 角色名
 	 */
-	@ApiModelProperty(value = "角色名")
+	@Schema(description = "角色名")
 	private String roleName;
 	/**
 	 * 角色编号
 	 */
-	@ApiModelProperty(value = "角色编号")
+	@Schema(description = "角色编号")
 	private String roleCode;
 }

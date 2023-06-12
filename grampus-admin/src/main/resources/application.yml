@@ -42,3 +42,11 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: "@artifactId@"
+      paths-to-match: '/**'
+      packages-to-scan: com.oceancloud.grampus

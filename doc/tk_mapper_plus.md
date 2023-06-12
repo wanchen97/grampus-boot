@@ -158,10 +158,10 @@ $!define
 import com.oceancloud.grampus.framework.core.constant.Constant;
 import com.oceancloud.grampus.framework.core.result.Result;
 import com.oceancloud.grampus.framework.mybatis.page.PageData;
-import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -181,7 +181,7 @@ import java.util.Map;
 
 ##表注释（宏定义）
 #tableComment(" 表控制层")
-@Api(tags = "$!{tableInfo.comment}")
+@Tag(name = "$!{tableInfo.comment}")
 @RestController
 @AllArgsConstructor
 @RequestMapping("$!tool.firstLowerCase($!tableInfo.name)")
@@ -189,7 +189,7 @@ public class $!{tableName} {
 
     private final $!{tableInfo.name}Service $!{serviceName};
     
-    @ApiOperation("分页查询数据")
+    @Operation(summary = "分页查询数据")
     @ApiImplicitParams({
     @ApiImplicitParam(name = Constant.PAGE_NUM, value = "当前页码，从1开始", paramType = "query", required = true, dataType = "int"),
     @ApiImplicitParam(name = Constant.PAGE_SIZE, value = "每页显示记录数", paramType = "query", required = true, dataType = "int"),
@@ -203,7 +203,7 @@ public class $!{tableName} {
         return Result.success(page);
     }
 
-    @ApiOperation("查询数据")
+    @Operation(summary = "查询数据")
     @GetMapping("{id}")
     @PreAuthorize("hasAuthority('$!tableInfo.obj.name:info')")
     public Result<$!{tableInfo.name}DTO> get(@PathVariable("id") Long id) {
@@ -211,7 +211,7 @@ public class $!{tableName} {
         return Result.success(result);
     }
 
-    @ApiOperation("新增数据")
+    @Operation(summary = "新增数据")
     @PostMapping
     @PreAuthorize("hasAuthority('$!tableInfo.obj.name:save')")
     public Result<Void> save(@RequestBody $!{tableInfo.name}DTO params) {
@@ -219,7 +219,7 @@ public class $!{tableName} {
         return Result.success();
     }
 
-    @ApiOperation("修改数据")
+    @Operation(summary = "修改数据")
     @PutMapping
     @PreAuthorize("hasAuthority('$!tableInfo.obj.name:update')")
     public Result<Void> update(@RequestBody $!{tableInfo.name}DTO params) {
@@ -227,7 +227,7 @@ public class $!{tableName} {
         return Result.success();
     }
 
-    @ApiOperation("删除数据")
+    @Operation(summary = "删除数据")
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('$!tableInfo.obj.name:delete')")
     public Result<Void> delete(@PathVariable Long id) {
@@ -253,7 +253,7 @@ $!define
 
 ##自动导入包（全局变量）
 $!autoImport
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -262,7 +262,7 @@ import java.io.Serializable;
 ##表注释（宏定义）
 #tableComment(" 表数据传输对象")
 @Data
-@ApiModel("$!{tableInfo.comment}")
+@Schema(description = "$!{tableInfo.comment}")
 public class $!{tableInfo.name}DTO implements Serializable {
 private static final long serialVersionUID = $!tool.serial();
 #foreach($column in $tableInfo.fullColumn)
@@ -270,7 +270,7 @@ private static final long serialVersionUID = $!tool.serial();
      * ${column.comment}
      */
 #end
-    @ApiModelProperty("$!{column.comment}")
+    @Schema(description = "$!{column.comment}")
     private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
 #end
 }

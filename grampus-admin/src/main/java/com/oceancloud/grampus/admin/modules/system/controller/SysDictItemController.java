@@ -11,8 +11,8 @@ import com.oceancloud.grampus.framework.core.utils.StringUtil;
 import com.oceancloud.grampus.framework.log.annotation.RequestLog;
 import com.oceancloud.grampus.framework.mybatis.page.PageData;
 import com.oceancloud.grampus.framework.mybatis.page.PageQuery;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
  * @author Beck
  * @since 2021-04-09
  */
-@Api(tags = "字典详情管理")
+@Tag(name = "字典详情管理")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/system/dict/item")
@@ -35,7 +35,7 @@ public class SysDictItemController {
 
 	private final SysDictItemService sysDictItemService;
 
-	@ApiOperation("字典详细分页查询")
+	@Operation(summary = "字典详细分页查询")
 	@GetMapping("page")
 	@PreAuthorize("hasAuthority('sys:dict:list')")
 	public Result<PageData<SysDictItemDTO>> page(PageQuery pageQuery, SysDictItemQuery params) {
@@ -45,7 +45,7 @@ public class SysDictItemController {
 		return Result.success(page);
 	}
 
-	@ApiOperation("字典详细")
+	@Operation(summary = "字典详细")
 	@GetMapping("{id}")
 	@PreAuthorize("hasAuthority('sys:dict:info')")
 	public Result<SysDictItemDTO> get(@PathVariable("id") Long id) {
@@ -53,7 +53,7 @@ public class SysDictItemController {
 		return Result.success(sysDictItemDTO);
 	}
 
-	@ApiOperation("字典详情批量查询")
+	@Operation(summary = "字典详情批量查询")
 	@GetMapping("map")
 	public Result<Map<String, List<SysDictItemDTO>>> map(@RequestParam("types") List<String> types) {
 		List<SysDictItem> itemList = sysDictItemService
@@ -65,7 +65,7 @@ public class SysDictItemController {
 	}
 
 	@RequestLog("保存字典详细")
-	@ApiOperation("保存字典详细")
+	@Operation(summary = "保存字典详细")
 	@PostMapping
 	@PreAuthorize("hasAuthority('sys:dict:save')")
 	public Result<Void> save(@RequestBody SysDictItemDTO dto) {
@@ -74,7 +74,7 @@ public class SysDictItemController {
 	}
 
 	@RequestLog("更新字典详情")
-	@ApiOperation("更新字典详情")
+	@Operation(summary = "更新字典详情")
 	@PutMapping
 	@PreAuthorize("hasAuthority('sys:dict:update')")
 	public Result<Void> update(@RequestBody SysDictItemDTO dto) {
@@ -83,7 +83,7 @@ public class SysDictItemController {
 	}
 
 	@RequestLog("删除字典详情")
-	@ApiOperation("删除字典详情")
+	@Operation(summary = "删除字典详情")
 	@DeleteMapping
 	@PreAuthorize("hasAuthority('sys:dict:delete')")
 	public Result<Void> delete(@RequestBody List<Long> ids) {

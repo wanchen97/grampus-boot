@@ -1,6 +1,6 @@
 package com.oceancloud.grampus.admin.modules.system.dto;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @since 2021-05-07
  */
 @Data
-@ApiModel("系统角色详情")
+@Schema(description = "系统角色详情")
 public class SysUserDetailsDTO implements Serializable {
 	private static final long serialVersionUID = 6809412036525186257L;
 	/**

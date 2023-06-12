@@ -5,8 +5,8 @@ import com.oceancloud.grampus.admin.modules.system.service.SysDeptService;
 import com.oceancloud.grampus.framework.core.result.Result;
 import com.oceancloud.grampus.framework.core.utils.tree.TreeUtil;
 import com.oceancloud.grampus.framework.log.annotation.RequestLog;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,7 +26,7 @@ import java.util.List;
  * @author Beck
  * @since 2021-01-21
  */
-@Api(tags = "部门管理")
+@Tag(name = "部门管理")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/system/dept")
@@ -34,7 +34,7 @@ public class SysDeptController {
 
 	private final SysDeptService sysDeptService;
 
-	@ApiOperation("部门列表")
+	@Operation(summary = "部门列表")
 	@GetMapping("/list")
 	@PreAuthorize("hasAuthority('sys:dept:list')")
 	public Result<List<SysDeptDTO>> list() {
@@ -42,7 +42,7 @@ public class SysDeptController {
 		return Result.success(TreeUtil.build(result));
 	}
 
-	@ApiOperation("部门信息")
+	@Operation(summary = "部门信息")
 	@GetMapping("/{id}")
 	@PreAuthorize("hasAuthority('sys:dept:info')")
 	public Result<SysDeptDTO> get(@PathVariable Long id) {
@@ -51,7 +51,7 @@ public class SysDeptController {
 	}
 
 	@RequestLog("保存部门")
-	@ApiOperation("保存部门")
+	@Operation(summary = "保存部门")
 	@PostMapping()
 	@PreAuthorize("hasAuthority('sys:dept:save')")
 	public Result<Void> save(@RequestBody SysDeptDTO sysDeptDTO) {
@@ -60,7 +60,7 @@ public class SysDeptController {
 	}
 
 	@RequestLog("更新部门")
-	@ApiOperation("更新部门")
+	@Operation(summary = "更新部门")
 	@PutMapping()
 	@PreAuthorize("hasAuthority('sys:dept:update')")
 	public Result<Void> update(@RequestBody SysDeptDTO sysDeptDTO) {
@@ -69,7 +69,7 @@ public class SysDeptController {
 	}
 
 	@RequestLog("删除部门")
-	@ApiOperation("删除部门")
+	@Operation(summary = "删除部门")
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasAuthority('sys:dept:delete')")
 	public Result<Void> delete(@PathVariable Long id) {

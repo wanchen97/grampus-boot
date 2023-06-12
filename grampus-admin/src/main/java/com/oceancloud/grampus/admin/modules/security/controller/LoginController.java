@@ -13,8 +13,8 @@ import com.oceancloud.grampus.admin.modules.system.service.SysUserService;
 import com.oceancloud.grampus.framework.core.result.Result;
 import com.oceancloud.grampus.framework.core.utils.BeanUtil;
 import com.oceancloud.grampus.framework.core.utils.StringUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -34,7 +34,7 @@ import java.util.Map;
  * @author Beck
  * @since 2020-12-15
  */
-@Api(tags = "登陆注册")
+@Tag(name = "登陆注册")
 @Slf4j
 @AllArgsConstructor
 @RestController
@@ -47,7 +47,7 @@ public class LoginController {
 	private final JwtTokenManager jwtTokenManager;
 	private final SystemUserDetailsRedis systemUserDetailsRedis;
 
-	@ApiOperation("注册接口")
+	@Operation(summary = "注册接口")
 	@PostMapping("/register")
 	public Result<Void> register(@RequestBody RegisterReq params) {
 		String userNo = params.getUserNo();
@@ -66,7 +66,7 @@ public class LoginController {
 		return Result.success();
 	}
 
-	@ApiOperation("登录接口")
+	@Operation(summary = "登录接口")
 	@PostMapping("/login")
 	public Result<Map<String, Object>> login(@RequestBody LoginReq params) {
 		String username = params.getUserNo();
