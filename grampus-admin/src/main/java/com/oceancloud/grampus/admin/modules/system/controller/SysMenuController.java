@@ -8,6 +8,9 @@ import com.oceancloud.grampus.admin.modules.system.service.SysMenuService;
 import com.oceancloud.grampus.framework.core.utils.tree.TreeUtil;
 import com.oceancloud.grampus.framework.core.result.Result;
 import com.oceancloud.grampus.framework.log.annotation.RequestLog;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.v3.oas.annotations.Operation;
@@ -55,7 +58,7 @@ public class SysMenuController {
 	}
 
 	@Operation(summary = "菜单列表")
-	@ApiImplicitParam(name = "type", value = "菜单类型 0：菜单 1：按钮 null：全部", paramType = "query", dataType = "int")
+	@Parameters(@Parameter(name = "type", description = "菜单类型 0：菜单 1：按钮 null：全部", in = ParameterIn.QUERY))
 	@GetMapping("list")
 	@PreAuthorize("hasAuthority('sys:menu:list')")
 	public Result<List<SysMenuDTO>> list(Integer type) {
