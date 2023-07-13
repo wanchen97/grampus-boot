@@ -175,7 +175,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import $!{tableInfo.savePackageName}.dto.$!{tableInfo.name}DTO;
 import $!{tableInfo.savePackageName}.service.$!{tableInfo.name}Service;
-import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.Map;
 
