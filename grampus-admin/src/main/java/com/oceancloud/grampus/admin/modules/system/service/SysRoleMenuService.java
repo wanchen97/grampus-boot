@@ -3,7 +3,6 @@ package com.oceancloud.grampus.admin.modules.system.service;
 import com.oceancloud.grampus.framework.mybatis.service.BaseService;
 import com.oceancloud.grampus.admin.modules.system.entity.SysRoleMenu;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 

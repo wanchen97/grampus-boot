@@ -16,7 +16,6 @@ import com.oceancloud.grampus.framework.core.utils.StringUtil;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -35,7 +34,6 @@ import java.util.Map;
  * @since 2020-12-15
  */
 @Tag(name = "登陆注册")
-@Slf4j
 @AllArgsConstructor
 @RestController
 @RequestMapping("/system")

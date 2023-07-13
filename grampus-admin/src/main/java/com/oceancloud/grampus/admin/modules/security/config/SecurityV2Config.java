@@ -4,7 +4,6 @@ import com.oceancloud.grampus.admin.modules.security.filter.JwtAuthenticationTok
 import com.oceancloud.grampus.admin.modules.security.properties.AuthSystemProperties;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +22,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * @author Beck
  * @since 2020-12-15
  */
-@Slf4j
 @AllArgsConstructor
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(AuthSystemProperties.class)

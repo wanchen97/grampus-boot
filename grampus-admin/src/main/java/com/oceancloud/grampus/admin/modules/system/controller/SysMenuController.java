@@ -3,7 +3,6 @@ package com.oceancloud.grampus.admin.modules.system.controller;
 import com.oceancloud.grampus.admin.code.ErrorCode;
 import com.oceancloud.grampus.admin.modules.system.dto.SysMenuDTO;
 import com.oceancloud.grampus.admin.modules.security.utils.SecurityUtils;
-import com.oceancloud.grampus.admin.modules.system.service.SysLanguageService;
 import com.oceancloud.grampus.admin.modules.system.service.SysMenuService;
 import com.oceancloud.grampus.framework.core.utils.tree.TreeUtil;
 import com.oceancloud.grampus.framework.core.result.Result;
@@ -40,7 +39,7 @@ import java.util.Set;
 public class SysMenuController {
 
 	private final SysMenuService sysMenuService;
-	private final SysLanguageService sysLanguageService;
+	// private final SysLanguageService sysLanguageService;
 
 	@Operation(summary = "导航栏")
 	@GetMapping("nav")

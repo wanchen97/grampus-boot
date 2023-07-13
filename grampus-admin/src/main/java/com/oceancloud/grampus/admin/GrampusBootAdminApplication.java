@@ -1,6 +1,6 @@
 package com.oceancloud.grampus.admin;
 
-import com.oceancloud.grampus.framework.xxljob.annotation.EnableGrampusXxlJob;
+// import com.oceancloud.grampus.framework.xxljob.annotation.EnableGrampusXxlJob;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

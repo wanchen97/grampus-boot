@@ -1,6 +1,6 @@
 package com.oceancloud.grampus.admin.modules.security.properties;
 
-import io.jsonwebtoken.io.Decoders;
+// import io.jsonwebtoken.io.Decoders;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,10 +32,10 @@ public class AuthTokenProperties implements Serializable {
 	@Value("${grampus.auth.token.expire.seconds:1800}")
 	private long tokenValidityInSeconds;
 
-	/**
-	 * secret key byte array.
-	 */
-	private byte[] secretKeyBytes;
+	// /**
+	//  * secret key byte array.
+	//  */
+	// private byte[] secretKeyBytes;
 
 	public byte[] getSecretKeyBytes() {
 //		if (secretKeyBytes == null) {
