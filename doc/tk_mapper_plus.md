@@ -253,7 +253,6 @@ $!define
 ##自动导入包（全局变量）
 $!autoImport
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;

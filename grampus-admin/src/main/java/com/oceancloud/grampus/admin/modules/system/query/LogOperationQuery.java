@@ -1,7 +1,6 @@
 package com.oceancloud.grampus.admin.modules.system.query;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
