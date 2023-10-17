@@ -98,7 +98,7 @@ public class SysUserController {
 	public Result<Void> password(@RequestBody PasswordDTO dto) {
 		SystemUserDetails user = SecurityUtils.getUserDetails();
 		if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
-			return Result.error(ErrorCode.System.USER_PASSWORD_ERROR.getCode());
+			return Result.error(ErrorCode.System.USER_PASSWORD_ERROR.getCode(), ErrorCode.System.USER_PASSWORD_ERROR.getMsg());
 		}
 		sysUserService.updatePassword(user.getId(), dto.getNewPassword());
 		return Result.success();
