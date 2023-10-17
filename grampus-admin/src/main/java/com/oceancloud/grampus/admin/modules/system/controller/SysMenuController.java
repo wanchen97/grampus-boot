@@ -4,6 +4,7 @@ import com.oceancloud.grampus.admin.code.ErrorCode;
 import com.oceancloud.grampus.admin.modules.system.dto.SysMenuDTO;
 import com.oceancloud.grampus.admin.modules.security.utils.SecurityUtils;
 import com.oceancloud.grampus.admin.modules.system.service.SysMenuService;
+import com.oceancloud.grampus.framework.core.utils.CollectionUtil;
 import com.oceancloud.grampus.framework.core.utils.tree.TreeUtil;
 import com.oceancloud.grampus.framework.core.result.Result;
 import com.oceancloud.grampus.framework.log.annotation.RequestLog;
@@ -99,10 +100,10 @@ public class SysMenuController {
 	@DeleteMapping("{id}")
 	@PreAuthorize("hasAuthority('sys:menu:delete')")
 	public Result<Void> delete(@PathVariable("id") Long id) {
-		//判断是否有子菜单或按钮
+		// 判断是否有子菜单或按钮
 		List<SysMenuDTO> list = sysMenuService.getListByPid(id);
-		if (list.size() > 0) {
-			return Result.error(ErrorCode.System.SUB_MENU_EXIST.getCode());
+		if (CollectionUtil.isNotEmpty(list)) {
+			return Result.error(ErrorCode.System.SUB_MENU_EXIST.getCode(), ErrorCode.System.SUB_MENU_EXIST.getMsg());
 		}
 		sysMenuService.removeById(id);
 		return Result.success();
