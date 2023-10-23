@@ -95,6 +95,6 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 			msg = ErrorCode.Global.UNKNOWN_ERROR_CODE.getMsg();
 		}
 		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().write(Objects.requireNonNull(JSONUtil.writeValueAsString(Result.error(code, msg))));
+		response.getWriter().write(Objects.requireNonNull(JSONUtil.writeValueAsString(Result.unauthorized(code, msg))));
 	}
 }
