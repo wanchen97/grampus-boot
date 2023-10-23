@@ -92,7 +92,7 @@ public class SysParamController {
 	@ResponseExcel(name = "系统参数")
 	@PreAuthorize("hasAuthority('sys:param:export')")
 	@Parameters(@Parameter(name = "code", description = "参数编码", in = ParameterIn.QUERY))
-	public List<SysParamExcel> export(@Parameter(hidden = true) @RequestParam SysParamQuery params) {
+	public List<SysParamExcel> export(@Parameter(hidden = true) SysParamQuery params) {
 		List<SysParamDTO> list = sysParamService.queryList(BeanUtil.copy(params, SysParamDTO.class));
 		return BeanUtil.copyList(list, SysParamExcel.class);
 	}
