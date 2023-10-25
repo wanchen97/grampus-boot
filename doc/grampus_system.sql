@@ -369,6 +369,7 @@ INSERT INTO `sys_menu` VALUES (35784996384948224, 35784905746038784, 1, '字典�
 INSERT INTO `sys_menu` VALUES (35784998272385024, 35784905746038784, 1, '字典导出', 'sys:dict:export', '', '', 4, 0);
 INSERT INTO `sys_menu` VALUES (35784998272390241, 35782761320038400, 0, '日志管理', '', '/sys/log', 'icon-file', 0, 0);
 INSERT INTO `sys_menu` VALUES (35784998273492243, 35784998272390241, 1, '日志查询', 'log:operation:list,log:operation:info', '', '', 0, 0);
+INSERT INTO `sys_menu` VALUES (35784998273492244, 35784998272390241, 1, '日志导出', 'log:operation:export', '', '', 0, 0);
 
 -- ----------------------------
 -- Records of sys_user
