@@ -9,7 +9,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * 参数管理
+ * 参数管理Excel类
  *
  * @author Beck
  * @since 2021-04-13
