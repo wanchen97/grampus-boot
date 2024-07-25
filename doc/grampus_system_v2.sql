@@ -230,3 +230,140 @@ CREATE TABLE `sys_user_role`  (
   `role_id` bigint UNSIGNED NOT NULL DEFAULT 0 COMMENT '角色ID',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户角色关联表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_language
+-- ----------------------------
+INSERT INTO `sys_language` VALUES (1, 'sys_menu', 35782761320038400, 'menu_name', '系统管理', 'zh-CN');
+INSERT INTO `sys_language` VALUES (2, 'sys_menu', 35783059505692672, 'menu_name', '用户管理', 'zh-CN');
+INSERT INTO `sys_language` VALUES (3, 'sys_menu', 35783467523391488, 'menu_name', '用户查询', 'zh-CN');
+INSERT INTO `sys_language` VALUES (4, 'sys_menu', 35783541309587456, 'menu_name', '用户新增', 'zh-CN');
+INSERT INTO `sys_language` VALUES (5, 'sys_menu', 35783682821210112, 'menu_name', '用户更新', 'zh-CN');
+INSERT INTO `sys_language` VALUES (6, 'sys_menu', 35783727977086976, 'menu_name', '用户删除', 'zh-CN');
+INSERT INTO `sys_language` VALUES (7, 'sys_menu', 35783807568199680, 'menu_name', '用户导出', 'zh-CN');
+INSERT INTO `sys_language` VALUES (8, 'sys_menu', 35783915168874496, 'menu_name', '部门管理', 'zh-CN');
+INSERT INTO `sys_language` VALUES (9, 'sys_menu', 35784093372268544, 'menu_name', '部门查询', 'zh-CN');
+INSERT INTO `sys_language` VALUES (10, 'sys_menu', 35784174175535104, 'menu_name', '部门新增', 'zh-CN');
+INSERT INTO `sys_language` VALUES (11, 'sys_menu', 35784189501521920, 'menu_name', '部门更新', 'zh-CN');
+INSERT INTO `sys_language` VALUES (12, 'sys_menu', 35784195071557632, 'menu_name', '部门删除', 'zh-CN');
+INSERT INTO `sys_language` VALUES (13, 'sys_menu', 35784212310147072, 'menu_name', '部门导出', 'zh-CN');
+INSERT INTO `sys_language` VALUES (14, 'sys_menu', 35784408578408448, 'menu_name', '角色管理', 'zh-CN');
+INSERT INTO `sys_language` VALUES (15, 'sys_menu', 35784473598509056, 'menu_name', '角色查询', 'zh-CN');
+INSERT INTO `sys_language` VALUES (16, 'sys_menu', 35784478723948544, 'menu_name', '角色新增', 'zh-CN');
+INSERT INTO `sys_language` VALUES (17, 'sys_menu', 35784480661716992, 'menu_name', '角色更新', 'zh-CN');
+INSERT INTO `sys_language` VALUES (18, 'sys_menu', 35784482863726592, 'menu_name', '角色删除', 'zh-CN');
+INSERT INTO `sys_language` VALUES (19, 'sys_menu', 35784510512578560, 'menu_name', '角色导出', 'zh-CN');
+INSERT INTO `sys_language` VALUES (20, 'sys_menu', 35784620759859200, 'menu_name', '菜单管理', 'zh-CN');
+INSERT INTO `sys_language` VALUES (21, 'sys_menu', 35784671951339520, 'menu_name', '菜单查询', 'zh-CN');
+INSERT INTO `sys_language` VALUES (22, 'sys_menu', 35784673624866816, 'menu_name', '菜单新增', 'zh-CN');
+INSERT INTO `sys_language` VALUES (23, 'sys_menu', 35784675684270080, 'menu_name', '菜单更新', 'zh-CN');
+INSERT INTO `sys_language` VALUES (24, 'sys_menu', 35784677496209408, 'menu_name', '菜单删除', 'zh-CN');
+INSERT INTO `sys_language` VALUES (25, 'sys_menu', 35784679819853824, 'menu_name', '菜单导出', 'zh-CN');
+INSERT INTO `sys_language` VALUES (26, 'sys_menu', 35784783909896192, 'menu_name', '参数管理', 'zh-CN');
+INSERT INTO `sys_language` VALUES (27, 'sys_menu', 35784842730815488, 'menu_name', '参数查询', 'zh-CN');
+INSERT INTO `sys_language` VALUES (28, 'sys_menu', 35784844320456704, 'menu_name', '参数新增', 'zh-CN');
+INSERT INTO `sys_language` VALUES (29, 'sys_menu', 35784846027538432, 'menu_name', '参数更新', 'zh-CN');
+INSERT INTO `sys_language` VALUES (30, 'sys_menu', 35784847692677120, 'menu_name', '参数删除', 'zh-CN');
+INSERT INTO `sys_language` VALUES (31, 'sys_menu', 35784849408147456, 'menu_name', '参数导出', 'zh-CN');
+INSERT INTO `sys_language` VALUES (32, 'sys_menu', 35784905746038784, 'menu_name', '字典管理', 'zh-CN');
+INSERT INTO `sys_language` VALUES (33, 'sys_menu', 35784991360172032, 'menu_name', '字典查询', 'zh-CN');
+INSERT INTO `sys_language` VALUES (34, 'sys_menu', 35784992954007552, 'menu_name', '字典新增', 'zh-CN');
+INSERT INTO `sys_language` VALUES (35, 'sys_menu', 35784994493317120, 'menu_name', '字典更新', 'zh-CN');
+INSERT INTO `sys_language` VALUES (36, 'sys_menu', 35784996384948224, 'menu_name', '字典删除', 'zh-CN');
+INSERT INTO `sys_language` VALUES (37, 'sys_menu', 35784998272385024, 'menu_name', '字典导出', 'zh-CN');
+INSERT INTO `sys_language` VALUES (38, 'sys_menu', 35784998272390241, 'menu_name', '日志管理', 'zh-CN');
+INSERT INTO `sys_language` VALUES (39, 'sys_menu', 35784998273492243, 'menu_name', '日志查询', 'zh-CN');
+INSERT INTO `sys_language` VALUES (40, 'sys_menu', 35782761320038400, 'menu_name', 'System Management', 'en-US');
+INSERT INTO `sys_language` VALUES (41, 'sys_menu', 35783059505692672, 'menu_name', 'User Management', 'en-US');
+INSERT INTO `sys_language` VALUES (42, 'sys_menu', 35783467523391488, 'menu_name', 'User Query', 'en-US');
+INSERT INTO `sys_language` VALUES (43, 'sys_menu', 35783541309587456, 'menu_name', 'User Save', 'en-US');
+INSERT INTO `sys_language` VALUES (44, 'sys_menu', 35783682821210112, 'menu_name', 'User Update', 'en-US');
+INSERT INTO `sys_language` VALUES (45, 'sys_menu', 35783727977086976, 'menu_name', 'User Delete', 'en-US');
+INSERT INTO `sys_language` VALUES (46, 'sys_menu', 35783807568199680, 'menu_name', 'User Export', 'en-US');
+INSERT INTO `sys_language` VALUES (47, 'sys_menu', 35783915168874496, 'menu_name', 'Department Management', 'en-US');
+INSERT INTO `sys_language` VALUES (48, 'sys_menu', 35784093372268544, 'menu_name', 'Department Query', 'en-US');
+INSERT INTO `sys_language` VALUES (49, 'sys_menu', 35784174175535104, 'menu_name', 'Department Save', 'en-US');
+INSERT INTO `sys_language` VALUES (50, 'sys_menu', 35784189501521920, 'menu_name', 'Department Update', 'en-US');
+INSERT INTO `sys_language` VALUES (51, 'sys_menu', 35784195071557632, 'menu_name', 'Department Delete', 'en-US');
+INSERT INTO `sys_language` VALUES (52, 'sys_menu', 35784212310147072, 'menu_name', 'Department Export', 'en-US');
+INSERT INTO `sys_language` VALUES (53, 'sys_menu', 35784408578408448, 'menu_name', 'Role Management', 'en-US');
+INSERT INTO `sys_language` VALUES (54, 'sys_menu', 35784473598509056, 'menu_name', 'Role Query', 'en-US');
+INSERT INTO `sys_language` VALUES (55, 'sys_menu', 35784478723948544, 'menu_name', 'Role Save', 'en-US');
+INSERT INTO `sys_language` VALUES (56, 'sys_menu', 35784480661716992, 'menu_name', 'Role Update', 'en-US');
+INSERT INTO `sys_language` VALUES (57, 'sys_menu', 35784482863726592, 'menu_name', 'Role Delete', 'en-US');
+INSERT INTO `sys_language` VALUES (58, 'sys_menu', 35784510512578560, 'menu_name', 'Role Export', 'en-US');
+INSERT INTO `sys_language` VALUES (59, 'sys_menu', 35784620759859200, 'menu_name', 'Menu Management', 'en-US');
+INSERT INTO `sys_language` VALUES (60, 'sys_menu', 35784671951339520, 'menu_name', 'Menu Query', 'en-US');
+INSERT INTO `sys_language` VALUES (61, 'sys_menu', 35784673624866816, 'menu_name', 'Menu Save', 'en-US');
+INSERT INTO `sys_language` VALUES (62, 'sys_menu', 35784675684270080, 'menu_name', 'Menu Update', 'en-US');
+INSERT INTO `sys_language` VALUES (63, 'sys_menu', 35784677496209408, 'menu_name', 'Menu Delete', 'en-US');
+INSERT INTO `sys_language` VALUES (64, 'sys_menu', 35784679819853824, 'menu_name', 'Menu Export', 'en-US');
+INSERT INTO `sys_language` VALUES (65, 'sys_menu', 35784783909896192, 'menu_name', 'Parameter Management', 'en-US');
+INSERT INTO `sys_language` VALUES (66, 'sys_menu', 35784842730815488, 'menu_name', 'Parameter Query', 'en-US');
+INSERT INTO `sys_language` VALUES (67, 'sys_menu', 35784844320456704, 'menu_name', 'Parameter Save', 'en-US');
+INSERT INTO `sys_language` VALUES (68, 'sys_menu', 35784846027538432, 'menu_name', 'Parameter Update', 'en-US');
+INSERT INTO `sys_language` VALUES (69, 'sys_menu', 35784847692677120, 'menu_name', 'Parameter Delete', 'en-US');
+INSERT INTO `sys_language` VALUES (70, 'sys_menu', 35784849408147456, 'menu_name', 'Parameter Export', 'en-US');
+INSERT INTO `sys_language` VALUES (71, 'sys_menu', 35784905746038784, 'menu_name', 'Dict Management', 'en-US');
+INSERT INTO `sys_language` VALUES (72, 'sys_menu', 35784991360172032, 'menu_name', 'Dict Query', 'en-US');
+INSERT INTO `sys_language` VALUES (73, 'sys_menu', 35784992954007552, 'menu_name', 'Dict Save', 'en-US');
+INSERT INTO `sys_language` VALUES (74, 'sys_menu', 35784994493317120, 'menu_name', 'Dict Update', 'en-US');
+INSERT INTO `sys_language` VALUES (75, 'sys_menu', 35784996384948224, 'menu_name', 'Dict Delete', 'en-US');
+INSERT INTO `sys_language` VALUES (76, 'sys_menu', 35784998272385024, 'menu_name', 'Dict Export', 'en-US');
+INSERT INTO `sys_language` VALUES (77, 'sys_menu', 35784998272390241, 'menu_name', 'Log Management', 'en-US');
+INSERT INTO `sys_language` VALUES (78, 'sys_menu', 35784998273492243, 'menu_name', 'Log Query', 'en-US');
+
+-- ----------------------------
+-- Records of sys_menu
+-- ----------------------------
+INSERT INTO `sys_menu` VALUES (35782761320038400, 0, 0, '系统管理', '', '/sys', 'icon-setting', 0, 0);
+INSERT INTO `sys_menu` VALUES (35783059505692672, 35782761320038400, 0, '用户管理', '', '/sys/user', 'icon-user', 0, 0);
+INSERT INTO `sys_menu` VALUES (35783467523391488, 35783059505692672, 1, '用户查询', 'sys:user:list,sys:user:info', '', '', 0, 0);
+INSERT INTO `sys_menu` VALUES (35783541309587456, 35783059505692672, 1, '用户新增', 'sys:user:save', '', '', 1, 0);
+INSERT INTO `sys_menu` VALUES (35783682821210112, 35783059505692672, 1, '用户更新', 'sys:user:update', '', '', 2, 0);
+INSERT INTO `sys_menu` VALUES (35783727977086976, 35783059505692672, 1, '用户删除', 'sys:user:delete', '', '', 3, 0);
+INSERT INTO `sys_menu` VALUES (35783807568199680, 35783059505692672, 1, '用户导出', 'sys:user:export', '', '', 4, 0);
+INSERT INTO `sys_menu` VALUES (35783915168874496, 35782761320038400, 0, '部门管理', '', '/sys/dept', 'icon-adjust', 0, 0);
+INSERT INTO `sys_menu` VALUES (35784093372268544, 35783915168874496, 1, '部门查询', 'sys:dept:list,sys:dept:info', '', '', 0, 0);
+INSERT INTO `sys_menu` VALUES (35784174175535104, 35783915168874496, 1, '部门新增', 'sys:dept:save', '', '', 1, 0);
+INSERT INTO `sys_menu` VALUES (35784189501521920, 35783915168874496, 1, '部门更新', 'sys:dept:update', '', '', 2, 0);
+INSERT INTO `sys_menu` VALUES (35784195071557632, 35783915168874496, 1, '部门删除', 'sys:dept:delete', '', '', 3, 0);
+INSERT INTO `sys_menu` VALUES (35784212310147072, 35783915168874496, 1, '部门导出', 'sys:dept:export', '', '', 4, 0);
+INSERT INTO `sys_menu` VALUES (35784408578408448, 35782761320038400, 0, '角色管理', '', '/sys/role', 'icon-layers', 0, 0);
+INSERT INTO `sys_menu` VALUES (35784473598509056, 35784408578408448, 1, '角色查询', 'sys:role:list,sys:role:info', '', '', 0, 0);
+INSERT INTO `sys_menu` VALUES (35784478723948544, 35784408578408448, 1, '角色新增', 'sys:role:save', '', '', 1, 0);
+INSERT INTO `sys_menu` VALUES (35784480661716992, 35784408578408448, 1, '角色更新', 'sys:role:update', '', '', 2, 0);
+INSERT INTO `sys_menu` VALUES (35784482863726592, 35784408578408448, 1, '角色删除', 'sys:role:delete', '', '', 3, 0);
+INSERT INTO `sys_menu` VALUES (35784510512578560, 35784408578408448, 1, '角色导出', 'sys:role:export', '', '', 4, 0);
+INSERT INTO `sys_menu` VALUES (35784620759859200, 35782761320038400, 0, '菜单管理', '', '/sys/menu', 'icon-menu', 0, 0);
+INSERT INTO `sys_menu` VALUES (35784671951339520, 35784620759859200, 1, '菜单查询', 'sys:menu:list,sys:menu:info', '', '', 0, 0);
+INSERT INTO `sys_menu` VALUES (35784673624866816, 35784620759859200, 1, '菜单新增', 'sys:menu:save', '', '', 1, 0);
+INSERT INTO `sys_menu` VALUES (35784675684270080, 35784620759859200, 1, '菜单更新', 'sys:menu:update', '', '', 2, 0);
+INSERT INTO `sys_menu` VALUES (35784677496209408, 35784620759859200, 1, '菜单删除', 'sys:menu:delete', '', '', 3, 0);
+INSERT INTO `sys_menu` VALUES (35784679819853824, 35784620759859200, 1, '菜单导出', 'sys:menu:export', '', '', 4, 0);
+INSERT INTO `sys_menu` VALUES (35784783909896192, 35782761320038400, 0, '参数管理', '', '/sys/param', 'icon-modular', 0, 0);
+INSERT INTO `sys_menu` VALUES (35784842730815488, 35784783909896192, 1, '参数查询', 'sys:param:list,sys:param:info', '', '', 0, 0);
+INSERT INTO `sys_menu` VALUES (35784844320456704, 35784783909896192, 1, '参数新增', 'sys:param:save', '', '', 1, 0);
+INSERT INTO `sys_menu` VALUES (35784846027538432, 35784783909896192, 1, '参数更新', 'sys:param:update', '', '', 2, 0);
+INSERT INTO `sys_menu` VALUES (35784847692677120, 35784783909896192, 1, '参数删除', 'sys:param:delete', '', '', 3, 0);
+INSERT INTO `sys_menu` VALUES (35784849408147456, 35784783909896192, 1, '参数导出', 'sys:param:export', '', '', 4, 0);
+INSERT INTO `sys_menu` VALUES (35784905746038784, 35782761320038400, 0, '字典管理', '', '/sys/dict', 'icon-file-common', 0, 0);
+INSERT INTO `sys_menu` VALUES (35784991360172032, 35784905746038784, 1, '字典查询', 'sys:dict:list,sys:dict:info', '', '', 0, 0);
+INSERT INTO `sys_menu` VALUES (35784992954007552, 35784905746038784, 1, '字典新增', 'sys:dict:save', '', '', 1, 0);
+INSERT INTO `sys_menu` VALUES (35784994493317120, 35784905746038784, 1, '字典更新', 'sys:dict:update', '', '', 2, 0);
+INSERT INTO `sys_menu` VALUES (35784996384948224, 35784905746038784, 1, '字典删除', 'sys:dict:delete', '', '', 3, 0);
+INSERT INTO `sys_menu` VALUES (35784998272385024, 35784905746038784, 1, '字典导出', 'sys:dict:export', '', '', 4, 0);
+INSERT INTO `sys_menu` VALUES (35784998272390241, 35782761320038400, 0, '日志管理', '', '/sys/log', 'icon-file', 0, 0);
+INSERT INTO `sys_menu` VALUES (35784998273492243, 35784998272390241, 1, '日志查询', 'log:operation:list,log:operation:info', '', '', 0, 0);
+INSERT INTO `sys_menu` VALUES (35784998273492244, 35784998272390241, 1, '日志导出', 'log:operation:export', '', '', 0, 0);
+
+-- ----------------------------
+-- Records of sys_user
+-- ----------------------------
+INSERT INTO `sys_user` VALUES (126742336940032000, 'H001', 'H001', '$2a$10$Blav.U6cFEu7/1ONBeRAoudAQK12bA0qnysGEcl9CIOq.b4L7E94m', 0, NULL, 1, NULL, NULL, '2020-12-15 09:48:47.812', NULL, '2020-12-15 09:48:47.812', 0);
+INSERT INTO `sys_user` VALUES (126742336940033000, 'H002', 'H002', '$2a$10$Blav.U6cFEu7/1ONBeRAoudAQK12bA0qnysGEcl9CIOq.b4L7E94m', 0, NULL, 1, NULL, NULL, '2020-12-15 09:48:47.812', NULL, '2020-12-15 09:48:47.812', 0);
+
+-- ----------------------------
+-- Records of sys_user_role
+-- ----------------------------
+INSERT INTO `sys_user_role` VALUES (1, 126742336940032000, 1);
