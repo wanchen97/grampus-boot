@@ -360,8 +360,8 @@ INSERT INTO `sys_menu` VALUES (35784998273492244, 35784998272390241, 1, '日志�
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (126742336940032000, 'H001', 'H001', '$2a$10$Blav.U6cFEu7/1ONBeRAoudAQK12bA0qnysGEcl9CIOq.b4L7E94m', 0, NULL, 1, NULL, NULL, '2020-12-15 09:48:47.812', NULL, '2020-12-15 09:48:47.812', 0);
-INSERT INTO `sys_user` VALUES (126742336940033000, 'H002', 'H002', '$2a$10$Blav.U6cFEu7/1ONBeRAoudAQK12bA0qnysGEcl9CIOq.b4L7E94m', 0, NULL, 1, NULL, NULL, '2020-12-15 09:48:47.812', NULL, '2020-12-15 09:48:47.812', 0);
+INSERT INTO `sys_user` (`id`, `user_no`, `name`, `password`, `gender`, `dept_id`, `super_admin`, `status`, `create_by`, `create_date`, `update_by`, `update_date`, `del_flag`) VALUES (126742336940032000, 'H001', 'H001', '$2a$10$Blav.U6cFEu7/1ONBeRAoudAQK12bA0qnysGEcl9CIOq.b4L7E94m', 0, 0, 1, 1, '-1', '2020-12-15 09:48:47.812', '-1', '2020-12-15 09:48:47.812', 0);
+INSERT INTO `sys_user` (`id`, `user_no`, `name`, `password`, `gender`, `dept_id`, `super_admin`, `status`, `create_by`, `create_date`, `update_by`, `update_date`, `del_flag`) VALUES (126742336940033000, 'H002', 'H002', '$2a$10$Blav.U6cFEu7/1ONBeRAoudAQK12bA0qnysGEcl9CIOq.b4L7E94m', 0, 0, 1, 1, '-1', '2020-12-15 09:48:47.812', '-1', '2020-12-15 09:48:47.812', 0);
 
 -- ----------------------------
 -- Records of sys_user_role
