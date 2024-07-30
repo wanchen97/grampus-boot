@@ -1,5 +1,6 @@
 package com.oceancloud.grampus.admin.modules.security.users;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -72,6 +73,7 @@ public class SystemUserDetails implements UserDetails {
 	 * 拥有权限集合
 	 */
 	@Override
+	@JsonIgnore
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return AuthorityUtils.commaSeparatedStringToAuthorityList(permissions);
 	}
@@ -88,6 +90,7 @@ public class SystemUserDetails implements UserDetails {
 	 * }
 	 */
 	@Override
+	@JsonIgnore
 	public String getUsername() {
 		return this.getUserNo();
 	}
@@ -97,14 +100,17 @@ public class SystemUserDetails implements UserDetails {
 	 * void check(UserDetails user)
 	 */
 	@Override
+	@JsonIgnore
 	public boolean isAccountNonLocked() {
 		return true;
 	}
 	@Override
+	@JsonIgnore
 	public boolean isEnabled() {
 		return true;
 	}
 	@Override
+	@JsonIgnore
 	public boolean isAccountNonExpired() {
 		return true;
 	}
@@ -114,6 +120,7 @@ public class SystemUserDetails implements UserDetails {
 	 * void check(UserDetails user)
 	 */
 	@Override
+	@JsonIgnore
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
