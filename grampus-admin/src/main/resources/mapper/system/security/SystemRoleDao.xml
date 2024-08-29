@@ -23,6 +23,7 @@
 		<foreach collection="roleIds" item="item" open="(" separator="," close=")">
 			#{item}
 		</foreach>
+		  AND sm.`permission` != ''
 	</select>
 
 	<select id="getPermissions" resultType="java.lang.String">
@@ -33,6 +34,7 @@
 		LEFT JOIN sys_menu sm
 		    ON srm.`menu_id` = sm.`id`
 		WHERE sur.`user_id` = #{userId}
+		  AND sm.`permission` != ''
 	</select>
 
 	<select id="getAllPermissions" resultType="java.lang.String">
